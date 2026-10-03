@@ -81,6 +81,18 @@ public final class CookingResolver {
 				.orElse(input);
 	}
 
+	/**
+	 * What the pot makes from copies of one raw ingredient and nothing else: its cooked version, one for each copy, the way
+	 * a furnace would. So raw potatoes come out as baked potatoes rather than Dubious Mush. Empty for anything else.
+	 */
+	public Optional<String> cookedAlone(List<CookingInput> inputs) {
+		if (inputs.isEmpty() || inputs.stream().map(CookingInput::itemId).distinct().count() != 1) {
+			return Optional.empty();
+		}
+
+		return inputs.getFirst().profile().raw().flatMap(IngredientProfile.Raw::cooksInto);
+	}
+
 	/** Whether cooking these ingredients again would cook any of them, like a skewer made with raw chicken. */
 	public boolean canRecook(List<CookingInput> inputs) {
 		return !inputs.equals(cooked(inputs));
@@ -175,6 +187,11 @@ public final class CookingResolver {
 			saturation += profile.saturation();
 			sideEffects.addAll(profile.effects());
 
+			if (profile.roles().stream().noneMatch(rules.containerRoles()::contains)) {
+				nutrition += rules.perIngredientNutrition();
+				saturation += rules.perIngredientSaturation();
+			}
+
 			// The pot cooks everything, so only crafted dishes can still be raw.
 			boolean raw = method == CookingMethod.CRAFTING && profile.raw().isPresent();
 
@@ -208,8 +225,9 @@ public final class CookingResolver {
 				.toList();
 
 		nutrition += rules.varietyBonus() * Math.max(0, flavors.size() - 1);
-		nutrition = Math.clamp(nutrition, 1, rules.maxNutrition());
-		saturation = Math.clamp(saturation, 0.0f, (float) rules.maxNutrition());
+		// A batch of several, like kelp rolls, shares the food out; rounding up so no piece is worth nothing.
+		nutrition = Math.clamp(Math.ceilDiv(nutrition, type.makes()), 1, rules.maxNutrition());
+		saturation = Math.clamp(saturation / type.makes(), 0.0f, (float) rules.maxNutrition());
 
 		return Optional.of(new DishResult(
 				type.item(),
@@ -226,7 +244,8 @@ public final class CookingResolver {
 				false,
 				type.liquid(),
 				type.servedWith(),
-				type.servings()
+				type.servings(),
+				type.makes()
 		));
 	}
 
@@ -322,6 +341,7 @@ public final class CookingResolver {
 				true,
 				false,
 				Optional.empty(),
+				1,
 				1
 		);
 	}

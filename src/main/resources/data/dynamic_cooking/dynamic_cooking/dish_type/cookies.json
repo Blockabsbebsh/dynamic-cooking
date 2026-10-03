@@ -14,13 +14,6 @@
 				"roles": [
 					"sweet"
 				]
-			}
-		},
-		{
-			"match": {
-				"roles": [
-					"produce"
-				]
 			},
 			"flavor": true
 		}
@@ -33,5 +26,8 @@
 		}
 	],
 	"bonus_nutrition": 1,
-	"bonus_saturation": 0.5
+	"bonus_saturation": 0.5,
+	"flavor_roles": [
+		"produce"
+	]
 }

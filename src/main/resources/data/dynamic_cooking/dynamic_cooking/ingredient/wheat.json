@@ -5,5 +5,7 @@
 	"roles": [
 		"flour"
 	],
-	"color": "#D8C68A"
+	"color": "#D8C68A",
+	"nutrition": 1,
+	"saturation": 1.5
 }

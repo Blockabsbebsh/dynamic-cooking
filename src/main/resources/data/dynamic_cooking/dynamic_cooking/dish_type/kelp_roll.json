@@ -14,7 +14,9 @@
 			"match": {
 				"roles": [
 					"protein",
-					"produce"
+					"produce",
+					"mushroom",
+					"egg"
 				]
 			},
 			"flavor": true
@@ -28,5 +30,6 @@
 				"fish"
 			]
 		}
-	]
+	],
+	"makes": 4
 }

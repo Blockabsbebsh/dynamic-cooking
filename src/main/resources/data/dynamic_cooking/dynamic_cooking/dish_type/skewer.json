@@ -14,7 +14,8 @@
 			"match": {
 				"roles": [
 					"protein",
-					"produce"
+					"produce",
+					"mushroom"
 				]
 			},
 			"flavor": true

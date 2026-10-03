@@ -26,7 +26,8 @@ import io.github.blockabsbebsh.dynamiccooking.cooking.SideEffect;
 import io.github.blockabsbebsh.dynamiccooking.item.ModItems;
 
 /**
- * Turns a {@link DishResult} into an item stack with its name, food value, buff, look and contents set.
+ * Turns a {@link DishResult} into an item stack with its name, food value, buff, look and contents set. The stack holds
+ * as many items as one batch makes, like 4 kelp rolls.
  */
 public final class DishFactory {
 	/** Buff id for a chorus-fruit style random teleport instead of a status effect. */
@@ -39,7 +40,7 @@ public final class DishFactory {
 
 	public static ItemStack create(DishResult result) {
 		Item item = BuiltInRegistries.ITEM.getOptional(Identifier.parse(result.item())).orElse(ModItems.DUBIOUS_MUSH);
-		ItemStack stack = new ItemStack(item);
+		ItemStack stack = new ItemStack(item, result.count());
 
 		stack.set(ModComponents.DISH, new DishContents(result.ingredients(), result.flavors()));
 		stack.set(DataComponents.FOOD, new FoodProperties(result.nutrition(), result.saturation(), false));

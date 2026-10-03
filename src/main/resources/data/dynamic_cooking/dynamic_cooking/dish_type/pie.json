@@ -5,7 +5,8 @@
 		{
 			"match": {
 				"roles": [
-					"flour"
+					"flour",
+					"sweet"
 				]
 			}
 		},
@@ -20,7 +21,8 @@
 			"match": {
 				"roles": [
 					"produce",
-					"protein"
+					"protein",
+					"mushroom"
 				]
 			},
 			"flavor": true

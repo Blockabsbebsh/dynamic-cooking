@@ -83,7 +83,8 @@ class ShippedDataTest {
 					json.has("liquid") && json.get("liquid").getAsBoolean(),
 					json.has("served_with") ? Optional.of(json.get("served_with").getAsString()) : Optional.empty(),
 					json.has("servings") ? json.get("servings").getAsInt() : 1,
-					matchers(json, "raw_ok")
+					matchers(json, "raw_ok"),
+					json.has("makes") ? json.get("makes").getAsInt() : 1
 			));
 		}
 
@@ -125,7 +126,61 @@ class ShippedDataTest {
 	void waterMakesStewsAndSoupsNotRoasts() {
 		assertDish("stew", List.of("cod", "carrot"), "water_bucket", "cod", "carrot");
 		assertDish("soup", List.of("carrot", "potato"), "water_bucket", "carrot", "potato");
-		assertTrue(cook("water_bucket", "beef").dubious());
+		assertDish("stew", List.of("beef"), "water_bucket", "beef");
+	}
+
+	@Test
+	void recipesThatShouldWork() {
+		assertDish("omelette", List.of("egg"), "egg", "egg");
+		assertDish("omelette", List.of(), "egg");
+		assertCrafted("kelp_roll", List.of("mushroom"), "dried_kelp", "shelf_mushroom");
+		assertCrafted("kelp_roll", List.of("carrot"), "dried_kelp", "carrot");
+		assertCrafted("sandwich", List.of("egg"), "bread", "egg");
+		assertCrafted("skewer", List.of("mushroom"), "stick", "brown_mushroom");
+		assertCrafted("salad", List.of("carrot"), "bowl", "carrot");
+		assertDish("cookies", List.of("chocolate"), "wheat", "cocoa_beans");
+		assertDish("cake", List.of(), "wheat", "sugar", "egg");
+		assertDish("cake", List.of(), "wheat", "sugar", "egg", "milk_bucket");
+		assertDish("pie", List.of("pumpkin"), "pumpkin", "sugar", "egg");
+		assertDish("pie", List.of("mutton"), "wheat", "sugar", "egg", "cooked_mutton");
+		assertDish("roast", List.of("carrot"), "carrot");
+	}
+
+	@Test
+	void oneKindOfRawIngredientJustCooks() {
+		assertEquals(Optional.of("minecraft:baked_potato"), resolver.cookedAlone(inputs("potato", "potato")));
+		assertEquals(Optional.of("minecraft:cooked_beef"), resolver.cookedAlone(inputs("beef")));
+		assertTrue(resolver.cookedAlone(inputs("beef", "potato")).isEmpty());
+		assertTrue(resolver.cookedAlone(inputs("carrot")).isEmpty());
+	}
+
+	@Test
+	void rawSandwichesCookInThePot() {
+		DishResult beef = resolver.recook("dynamic_cooking:sandwich", inputs("bread", "beef")).orElseThrow();
+		DishResult potato = resolver.recook("dynamic_cooking:sandwich", inputs("bread", "potato")).orElseThrow();
+
+		assertFalse(beef.raw());
+		assertEquals(List.of("minecraft:bread", "minecraft:cooked_beef"), beef.ingredients());
+		assertEquals(List.of("minecraft:bread", "minecraft:baked_potato"), potato.ingredients());
+	}
+
+	@Test
+	void everyIngredientUsedAddsFood() {
+		assertTrue(cook("water_bucket", "beef", "potato", "carrot").nutrition() > cook("water_bucket", "beef", "potato").nutrition());
+		assertTrue(cook("egg", "egg", "egg").nutrition() > cook("egg", "egg").nutrition());
+		// A dish beats eating its ingredients one by one.
+		assertTrue(craft("bread", "cooked_beef").nutrition() > 5 + 8);
+	}
+
+	@Test
+	void kelpRollsComeFourAtATimeAndShareTheirFood() {
+		DishResult roll = craft("dried_kelp", "cooked_salmon");
+		DishResult sandwich = craft("bread", "cooked_salmon");
+
+		assertEquals(4, roll.count());
+		assertEquals(1, sandwich.count());
+		assertTrue(roll.nutrition() * roll.count() > 1 + 6);
+		assertTrue(roll.nutrition() < sandwich.nutrition());
 	}
 
 	@Test
