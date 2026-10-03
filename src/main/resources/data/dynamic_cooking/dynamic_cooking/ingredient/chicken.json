@@ -1,13 +1,25 @@
 {
 	"items": [
-		"minecraft:chicken",
-		"minecraft:cooked_chicken"
+		"minecraft:chicken"
 	],
 	"roles": [
-		"protein"
+		"protein",
+		"meat"
 	],
 	"flavor": "chicken",
-	"nutrition": 2,
-	"saturation": 1.2,
-	"color": "#E0B98A"
+	"nutrition": 3,
+	"saturation": 1.8,
+	"color": "#EBC3A8",
+	"raw": {
+		"cooks_into": "minecraft:cooked_chicken",
+		"nutrition_penalty": 2,
+		"saturation_penalty": 1.1,
+		"effects": [
+			{
+				"effect": "minecraft:hunger",
+				"seconds": 30,
+				"chance": 0.3
+			}
+		]
+	}
 }

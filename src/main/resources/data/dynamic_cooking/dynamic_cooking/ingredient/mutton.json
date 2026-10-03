@@ -1,13 +1,18 @@
 {
 	"items": [
-		"minecraft:mutton",
-		"minecraft:cooked_mutton"
+		"minecraft:mutton"
 	],
 	"roles": [
-		"protein"
+		"protein",
+		"meat"
 	],
 	"flavor": "mutton",
-	"nutrition": 2,
-	"saturation": 1.2,
-	"color": "#A84E3E"
+	"nutrition": 3,
+	"saturation": 1.8,
+	"color": "#C8524A",
+	"raw": {
+		"cooks_into": "minecraft:cooked_mutton",
+		"nutrition_penalty": 2,
+		"saturation_penalty": 1.1
+	}
 }

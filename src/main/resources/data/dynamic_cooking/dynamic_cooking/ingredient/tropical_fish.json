@@ -1,0 +1,13 @@
+{
+	"items": [
+		"minecraft:tropical_fish"
+	],
+	"roles": [
+		"protein",
+		"fish"
+	],
+	"flavor": "tropical_fish",
+	"nutrition": 1,
+	"saturation": 0.4,
+	"color": "#E8803A"
+}

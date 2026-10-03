@@ -121,6 +121,13 @@
 							}
 						},
 						{
+							"when": "poisonous_potato",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_broth_poisonous_potato"
+							}
+						},
+						{
 							"when": "porkchop",
 							"model": {
 								"type": "minecraft:model",
@@ -156,6 +163,13 @@
 							}
 						},
 						{
+							"when": "rotten_flesh",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_broth_rotten_flesh"
+							}
+						},
+						{
 							"when": "salmon",
 							"model": {
 								"type": "minecraft:model",
@@ -167,6 +181,13 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/stew_broth_sweet_berry"
+							}
+						},
+						{
+							"when": "tropical_fish",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_broth_tropical_fish"
 							}
 						}
 					],
@@ -302,6 +323,13 @@
 							}
 						},
 						{
+							"when": "poisonous_potato",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_chunks_poisonous_potato"
+							}
+						},
+						{
 							"when": "porkchop",
 							"model": {
 								"type": "minecraft:model",
@@ -337,6 +365,13 @@
 							}
 						},
 						{
+							"when": "rotten_flesh",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_chunks_rotten_flesh"
+							}
+						},
+						{
 							"when": "salmon",
 							"model": {
 								"type": "minecraft:model",
@@ -348,6 +383,13 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/stew_chunks_sweet_berry"
+							}
+						},
+						{
+							"when": "tropical_fish",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_chunks_tropical_fish"
 							}
 						}
 					],
@@ -462,6 +504,13 @@
 								}
 							},
 							{
+								"when": "poisonous_potato",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/stew_chunks_poisonous_potato"
+								}
+							},
+							{
 								"when": "porkchop",
 								"model": {
 									"type": "minecraft:model",
@@ -497,6 +546,13 @@
 								}
 							},
 							{
+								"when": "rotten_flesh",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/stew_chunks_rotten_flesh"
+								}
+							},
+							{
 								"when": "salmon",
 								"model": {
 									"type": "minecraft:model",
@@ -508,6 +564,13 @@
 								"model": {
 									"type": "minecraft:model",
 									"model": "dynamic_cooking:item/dish/stew_chunks_sweet_berry"
+								}
+							},
+							{
+								"when": "tropical_fish",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/stew_chunks_tropical_fish"
 								}
 							}
 						],

@@ -3,7 +3,8 @@
 		"minecraft:pufferfish"
 	],
 	"roles": [
-		"protein"
+		"protein",
+		"fish"
 	],
 	"flavor": "pufferfish",
 	"nutrition": 1,
@@ -11,5 +12,12 @@
 	"buff": {
 		"effect": "minecraft:water_breathing"
 	},
-	"color": "#D7B54E"
+	"color": "#D7B54E",
+	"effects": [
+		{
+			"effect": "minecraft:nausea",
+			"seconds": 15,
+			"chance": 0.5
+		}
+	]
 }

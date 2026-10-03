@@ -1,13 +1,18 @@
 {
 	"items": [
-		"minecraft:porkchop",
-		"minecraft:cooked_porkchop"
+		"minecraft:porkchop"
 	],
 	"roles": [
-		"protein"
+		"protein",
+		"meat"
 	],
 	"flavor": "porkchop",
-	"nutrition": 3,
-	"saturation": 1.8,
-	"color": "#D88A7A"
+	"nutrition": 4,
+	"saturation": 2.4,
+	"color": "#E89A8C",
+	"raw": {
+		"cooks_into": "minecraft:cooked_porkchop",
+		"nutrition_penalty": 2,
+		"saturation_penalty": 1.4
+	}
 }

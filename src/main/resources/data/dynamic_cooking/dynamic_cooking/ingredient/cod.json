@@ -1,13 +1,18 @@
 {
 	"items": [
-		"minecraft:cod",
-		"minecraft:cooked_cod"
+		"minecraft:cod"
 	],
 	"roles": [
-		"protein"
+		"protein",
+		"fish"
 	],
 	"flavor": "cod",
-	"nutrition": 2,
-	"saturation": 0.4,
-	"color": "#D9C3A0"
+	"nutrition": 3,
+	"saturation": 1.2,
+	"color": "#C9B79A",
+	"raw": {
+		"cooks_into": "minecraft:cooked_cod",
+		"nutrition_penalty": 2,
+		"saturation_penalty": 0.7
+	}
 }

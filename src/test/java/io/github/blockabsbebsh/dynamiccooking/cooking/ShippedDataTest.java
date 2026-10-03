@@ -1,6 +1,7 @@
 package io.github.blockabsbebsh.dynamiccooking.cooking;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
@@ -43,7 +44,9 @@ class ShippedDataTest {
 					json.has("nutrition") ? json.get("nutrition").getAsInt() : 0,
 					json.has("saturation") ? json.get("saturation").getAsFloat() : 0.0f,
 					json.has("buff") ? Optional.of(buff(json.getAsJsonObject("buff"))) : Optional.empty(),
-					json.has("color") ? Optional.of(Integer.parseInt(json.get("color").getAsString().substring(1), 16)) : Optional.empty()
+					json.has("color") ? Optional.of(Integer.parseInt(json.get("color").getAsString().substring(1), 16)) : Optional.empty(),
+					json.has("raw") ? Optional.of(raw(json.getAsJsonObject("raw"))) : Optional.empty(),
+					effects(json)
 			);
 
 			for (String item : profile.items()) {
@@ -66,11 +69,7 @@ class ShippedDataTest {
 				));
 			}
 
-			List<Matcher> forbids = new ArrayList<>();
-
-			if (json.has("forbids")) {
-				json.getAsJsonArray("forbids").forEach(element -> forbids.add(matcher(element.getAsJsonObject())));
-			}
+			List<Matcher> forbids = matchers(json, "forbids");
 
 			types.add(new DishType(
 					json.get("item").getAsString(),
@@ -83,11 +82,12 @@ class ShippedDataTest {
 					json.has("bonus_saturation") ? json.get("bonus_saturation").getAsFloat() : 0.0f,
 					json.has("liquid") && json.get("liquid").getAsBoolean(),
 					json.has("served_with") ? Optional.of(json.get("served_with").getAsString()) : Optional.empty(),
-					json.has("servings") ? json.get("servings").getAsInt() : 1
+					json.has("servings") ? json.get("servings").getAsInt() : 1,
+					matchers(json, "raw_ok")
 			));
 		}
 
-		resolver = new CookingResolver(types, CookingRules.DEFAULT);
+		resolver = new CookingResolver(types, CookingRules.DEFAULT, id -> Optional.ofNullable(PROFILES.get(id)));
 	}
 
 	@Test
@@ -174,6 +174,88 @@ class ShippedDataTest {
 		assertTrue(resolver.match(CookingMethod.CRAFTING, inputs("wheat", "sugar", "egg", "carrot")).isEmpty());
 	}
 
+	@Test
+	void sticksAndBreadDoNotMix() {
+		assertCrafted("skewer", List.of("melon"), "stick", "melon_slice");
+		assertCrafted("sandwich", List.of("melon"), "bread", "melon_slice");
+		assertTrue(resolver.match(CookingMethod.CRAFTING, inputs("stick", "melon_slice", "bread")).isEmpty());
+		assertTrue(resolver.match(CookingMethod.CRAFTING, inputs("dried_kelp", "cod", "stick")).isEmpty());
+	}
+
+	@Test
+	void seedsAndSeasoningsGoInAnything() {
+		assertCrafted("salad", List.of("apple", "melon"), "bowl", "apple", "melon_slice", "pumpkin_seeds");
+		assertDish("cake", List.of("carrot"), "wheat", "sugar", "egg", "carrot", "wheat_seeds");
+		assertCrafted("skewer", List.of("beef"), "stick", "cooked_beef", "golden_dandelion");
+	}
+
+	@Test
+	void shelfMushroomsAreMushrooms() {
+		assertDish("soup", List.of("mushroom"), "water_bucket", "shelf_mushroom");
+	}
+
+	@Test
+	void everyRawIngredientCooksIntoSomethingThePotKnows() {
+		for (IngredientProfile profile : PROFILES.values()) {
+			profile.raw().flatMap(IngredientProfile.Raw::cooksInto).ifPresent(cooked -> {
+				IngredientProfile into = PROFILES.get(cooked);
+				assertTrue(into != null, profile.items() + " cooks into " + cooked + ", which has no profile");
+				assertEquals(profile.flavor(), into.flavor(), cooked + " should keep the raw flavor");
+				assertTrue(into.raw().isEmpty(), cooked + " should not be raw");
+			});
+		}
+	}
+
+	@Test
+	void thePotCooksRawIngredients() {
+		DishResult stew = cook("water_bucket", "beef", "potato");
+
+		assertEquals(List.of("minecraft:water_bucket", "minecraft:cooked_beef", "minecraft:baked_potato"), stew.ingredients());
+		assertFalse(stew.raw());
+		assertEquals(List.of(false, false), stew.rawFlavors());
+		assertEquals(cook("water_bucket", "cooked_beef", "baked_potato").nutrition(), stew.nutrition());
+	}
+
+	@Test
+	void rawMeatInACraftedDishCostsFoodAndMaySicken() {
+		DishResult raw = craft("stick", "chicken", "carrot");
+		DishResult cooked = craft("stick", "cooked_chicken", "carrot");
+
+		assertTrue(raw.raw());
+		assertEquals(List.of(true, false), raw.rawFlavors());
+		assertTrue(raw.nutrition() < cooked.nutrition());
+		assertEquals("minecraft:hunger", raw.sideEffects().getFirst().effect());
+		assertFalse(cooked.raw());
+		assertTrue(cooked.sideEffects().isEmpty());
+	}
+
+	@Test
+	void rawFishIsFineInAKelpRoll() {
+		DishResult roll = craft("dried_kelp", "salmon");
+
+		assertFalse(roll.raw());
+		assertEquals(List.of(true), roll.rawFlavors());
+		assertEquals(craft("dried_kelp", "cooked_salmon").nutrition(), roll.nutrition());
+		assertTrue(craft("bread", "salmon").raw());
+	}
+
+	@Test
+	void cookingARawDishAgainCooksItsIngredients() {
+		DishResult raw = craft("stick", "chicken", "carrot");
+		DishResult recooked = resolver.recook(raw.item(), inputs("stick", "chicken", "carrot")).orElseThrow();
+
+		assertEquals("dynamic_cooking:skewer", recooked.item());
+		assertEquals(List.of("minecraft:stick", "minecraft:cooked_chicken", "minecraft:carrot"), recooked.ingredients());
+		assertFalse(recooked.raw());
+		assertEquals(craft("stick", "cooked_chicken", "carrot").nutrition(), recooked.nutrition());
+		assertTrue(resolver.recook("dynamic_cooking:skewer", inputs("stick", "cooked_chicken", "carrot")).isEmpty());
+	}
+
+	@Test
+	void spoiledFoodSickensEvenWhenCooked() {
+		assertEquals("minecraft:hunger", cook("water_bucket", "rotten_flesh", "carrot").sideEffects().getFirst().effect());
+	}
+
 	private static void assertDish(String dish, List<String> nameFlavors, String... items) {
 		assertResult(cook(items), dish, nameFlavors, items);
 	}
@@ -214,6 +296,43 @@ class ShippedDataTest {
 				json.has("items") ? new HashSet<>(strings(json.getAsJsonArray("items"))) : Set.of(),
 				json.has("roles") ? new HashSet<>(strings(json.getAsJsonArray("roles"))) : Set.of()
 		);
+	}
+
+	private static List<Matcher> matchers(JsonObject json, String key) {
+		List<Matcher> out = new ArrayList<>();
+
+		if (json.has(key)) {
+			json.getAsJsonArray(key).forEach(element -> out.add(matcher(element.getAsJsonObject())));
+		}
+
+		return out;
+	}
+
+	private static IngredientProfile.Raw raw(JsonObject json) {
+		return new IngredientProfile.Raw(
+				json.has("cooks_into") ? Optional.of(json.get("cooks_into").getAsString()) : Optional.empty(),
+				json.has("nutrition_penalty") ? json.get("nutrition_penalty").getAsInt() : 0,
+				json.has("saturation_penalty") ? json.get("saturation_penalty").getAsFloat() : 0.0f,
+				effects(json)
+		);
+	}
+
+	private static List<SideEffect> effects(JsonObject json) {
+		List<SideEffect> out = new ArrayList<>();
+
+		if (json.has("effects")) {
+			for (JsonElement element : json.getAsJsonArray("effects")) {
+				JsonObject effect = element.getAsJsonObject();
+				out.add(new SideEffect(
+						effect.get("effect").getAsString(),
+						effect.has("amplifier") ? effect.get("amplifier").getAsInt() : 0,
+						(effect.has("seconds") ? effect.get("seconds").getAsInt() : 30) * 20,
+						effect.has("chance") ? effect.get("chance").getAsFloat() : 1.0f
+				));
+			}
+		}
+
+		return out;
 	}
 
 	private static IngredientProfile.BuffSource buff(JsonObject json) {

@@ -10,22 +10,38 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.Function;
 
 /**
  * Decides what a set of ingredients cooks into.
  *
  * <p>Only dish types made with the given {@link CookingMethod} are considered. They are tried in priority order
- * and the first one whose requirements can all be filled wins.
+ * and the first one whose requirements can all be filled wins. Ingredients left over after the requirements are filled
+ * must suit the dish: a flavor role, a role the dish already asks for, or an extra any dish takes, like a seasoning.
+ * So a stick next to bread makes neither a skewer nor a sandwich.
+ *
+ * <p>The pot cooks raw ingredients into their cooked versions first. Crafted dishes keep them raw, which costs food
+ * points and may add side effects, unless the dish type allows them raw.
  */
 public final class CookingResolver {
 	private static final Comparator<DishType> ORDER = Comparator.comparingInt(DishType::priority).thenComparing(DishType::item);
 
 	private final List<DishType> dishTypes;
 	private final CookingRules rules;
+	private final Function<String, Optional<IngredientProfile>> profiles;
 
-	public CookingResolver(Collection<DishType> dishTypes, CookingRules rules) {
+	/**
+	 * @param profiles looks up the profile of an item id, used to find what a raw ingredient cooks into
+	 */
+	public CookingResolver(Collection<DishType> dishTypes, CookingRules rules, Function<String, Optional<IngredientProfile>> profiles) {
 		this.dishTypes = dishTypes.stream().sorted(ORDER).toList();
 		this.rules = rules;
+		this.profiles = profiles;
+	}
+
+	/** A resolver that can't look up cooked versions; raw ingredients cooked in the pot keep their own profile. */
+	public CookingResolver(Collection<DishType> dishTypes, CookingRules rules) {
+		this(dishTypes, rules, id -> Optional.empty());
 	}
 
 	public CookingRules rules() {
@@ -49,7 +65,47 @@ public final class CookingResolver {
 			throw new IllegalArgumentException("At most " + rules.maxIngredients() + " ingredients, got " + inputs.size());
 		}
 
-		return match(CookingMethod.POT, inputs).orElseGet(() -> fallback(inputs));
+		List<CookingInput> cooked = cooked(inputs);
+		return match(CookingMethod.POT, cooked).orElseGet(() -> fallback(cooked));
+	}
+
+	/** Swaps every raw ingredient for its cooked version, when there is one with a profile. */
+	public List<CookingInput> cooked(List<CookingInput> inputs) {
+		return inputs.stream().map(this::cooked).toList();
+	}
+
+	private CookingInput cooked(CookingInput input) {
+		return input.profile().raw()
+				.flatMap(IngredientProfile.Raw::cooksInto)
+				.flatMap(id -> profiles.apply(id).map(profile -> new CookingInput(id, profile)))
+				.orElse(input);
+	}
+
+	/** Whether cooking these ingredients again would cook any of them, like a skewer made with raw chicken. */
+	public boolean canRecook(List<CookingInput> inputs) {
+		return !inputs.equals(cooked(inputs));
+	}
+
+	/**
+	 * Cooks a finished dish again: its raw ingredients become cooked and it is rebuilt as the same kind of dish.
+	 * Empty when nothing in it can be cooked, or the cooked ingredients no longer make that dish.
+	 */
+	public Optional<DishResult> recook(String item, List<CookingInput> inputs) {
+		if (!canRecook(inputs)) {
+			return Optional.empty();
+		}
+
+		List<CookingInput> cooked = cooked(inputs);
+
+		for (CookingMethod method : CookingMethod.values()) {
+			Optional<DishResult> result = match(method, cooked).filter(dish -> dish.item().equals(item));
+
+			if (result.isPresent()) {
+				return result;
+			}
+		}
+
+		return Optional.empty();
 	}
 
 	/**
@@ -65,7 +121,7 @@ public final class CookingResolver {
 				continue;
 			}
 
-			Optional<DishResult> result = tryCook(type, inputs);
+			Optional<DishResult> result = tryCook(type, method, inputs);
 
 			if (result.isPresent()) {
 				return result;
@@ -75,7 +131,7 @@ public final class CookingResolver {
 		return Optional.empty();
 	}
 
-	private Optional<DishResult> tryCook(DishType type, List<CookingInput> inputs) {
+	private Optional<DishResult> tryCook(DishType type, CookingMethod method, List<CookingInput> inputs) {
 		for (CookingInput input : inputs) {
 			for (Matcher forbidden : type.forbids()) {
 				if (forbidden.matches(input)) {
@@ -98,19 +154,45 @@ public final class CookingResolver {
 			return Optional.empty();
 		}
 
+		for (int i = 0; i < inputs.size(); i++) {
+			if (assignment[i] == null && !suitsAsExtra(type, inputs.get(i))) {
+				return Optional.empty();
+			}
+		}
+
 		Map<String, Integer> flavorCounts = new LinkedHashMap<>();
 		Map<String, Integer> flavorColors = new HashMap<>();
+		Set<String> rawFlavors = new HashSet<>();
+		List<SideEffect> sideEffects = new ArrayList<>();
+		boolean heldRaw = false;
 		int nutrition = type.bonusNutrition();
 		float saturation = type.bonusSaturation();
 
 		for (int i = 0; i < inputs.size(); i++) {
-			IngredientProfile profile = inputs.get(i).profile();
+			CookingInput input = inputs.get(i);
+			IngredientProfile profile = input.profile();
 			nutrition += profile.nutrition();
 			saturation += profile.saturation();
+			sideEffects.addAll(profile.effects());
+
+			// The pot cooks everything, so only crafted dishes can still be raw.
+			boolean raw = method == CookingMethod.CRAFTING && profile.raw().isPresent();
+
+			if (raw && type.rawOk().stream().noneMatch(matcher -> matcher.matches(input))) {
+				IngredientProfile.Raw penalty = profile.raw().get();
+				nutrition -= penalty.nutritionPenalty();
+				saturation -= penalty.saturationPenalty();
+				sideEffects.addAll(penalty.effects());
+				heldRaw = true;
+			}
 
 			if (givesFlavor(type, profile, assignment[i]) && profile.flavor().isPresent()) {
 				flavorCounts.merge(profile.flavor().get(), 1, Integer::sum);
 				profile.color().ifPresent(color -> flavorColors.putIfAbsent(profile.flavor().get(), color));
+
+				if (raw) {
+					rawFlavors.add(profile.flavor().get());
+				}
 			}
 		}
 
@@ -134,15 +216,29 @@ public final class CookingResolver {
 				itemIds(inputs),
 				flavors,
 				flavors.stream().map(flavor -> flavorColors.getOrDefault(flavor, DishResult.NO_COLOR)).toList(),
+				flavors.stream().map(rawFlavors::contains).toList(),
 				nameFlavors,
 				nutrition,
 				saturation,
 				resolveBuff(inputs),
+				sideEffects,
+				heldRaw,
 				false,
 				type.liquid(),
 				type.servedWith(),
 				type.servings()
 		));
+	}
+
+	/** Whether an ingredient no requirement took still belongs in the dish. */
+	private boolean suitsAsExtra(DishType type, CookingInput input) {
+		for (String role : input.profile().roles()) {
+			if (type.flavorRoles().contains(role) || rules.extraRoles().contains(role)) {
+				return true;
+			}
+		}
+
+		return type.requires().stream().anyMatch(requirement -> requirement.matcher().matches(input));
 	}
 
 	private static boolean givesFlavor(DishType type, IngredientProfile profile, Requirement filled) {
@@ -217,9 +313,12 @@ public final class CookingResolver {
 				List.of(),
 				List.of(),
 				List.of(),
+				List.of(),
 				rules.fallbackNutrition(),
 				rules.fallbackSaturation(),
 				Optional.empty(),
+				inputs.stream().flatMap(input -> input.profile().effects().stream()).toList(),
+				false,
 				true,
 				false,
 				Optional.empty(),

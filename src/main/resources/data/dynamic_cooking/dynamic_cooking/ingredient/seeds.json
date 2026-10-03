@@ -1,0 +1,14 @@
+{
+	"items": [
+		"minecraft:wheat_seeds",
+		"minecraft:beetroot_seeds",
+		"minecraft:melon_seeds",
+		"minecraft:pumpkin_seeds",
+		"minecraft:torchflower_seeds",
+		"minecraft:pitcher_pod"
+	],
+	"roles": [
+		"seeds"
+	],
+	"saturation": 0.4
+}

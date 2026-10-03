@@ -86,6 +86,13 @@
 							}
 						},
 						{
+							"when": "poisonous_potato",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cookies_chips_poisonous_potato"
+							}
+						},
+						{
 							"when": "potato",
 							"model": {
 								"type": "minecraft:model",

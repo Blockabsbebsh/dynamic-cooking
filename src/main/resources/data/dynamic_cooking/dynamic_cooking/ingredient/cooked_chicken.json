@@ -1,0 +1,13 @@
+{
+	"items": [
+		"minecraft:cooked_chicken"
+	],
+	"roles": [
+		"protein",
+		"meat"
+	],
+	"flavor": "chicken",
+	"nutrition": 3,
+	"saturation": 1.8,
+	"color": "#C8925A"
+}

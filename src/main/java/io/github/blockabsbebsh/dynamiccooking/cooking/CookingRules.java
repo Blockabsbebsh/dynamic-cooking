@@ -1,5 +1,7 @@
 package io.github.blockabsbebsh.dynamiccooking.cooking;
 
+import java.util.Set;
+
 /**
  * Tunable numbers for cooking. Kept in one place so balancing never means hunting through logic.
  *
@@ -14,6 +16,7 @@ package io.github.blockabsbebsh.dynamiccooking.cooking;
  * @param buffTicksPerPotency  extra duration per further unit of potency
  * @param buffMaxTicks         cap on buff duration
  * @param buffLevelTwoPotency  potency at which the buff becomes level II
+ * @param extraRoles           roles any dish accepts as extras on top of its requirements, like seasonings
  */
 public record CookingRules(
 		int maxIngredients,
@@ -26,11 +29,17 @@ public record CookingRules(
 		int buffBaseTicks,
 		int buffTicksPerPotency,
 		int buffMaxTicks,
-		int buffLevelTwoPotency
+		int buffLevelTwoPotency,
+		Set<String> extraRoles
 ) {
 	public static final CookingRules DEFAULT = new CookingRules(
 			5, 20, 1, 2,
 			"dynamic_cooking:dubious_mush", 2, 1.0f,
-			30 * 20, 30 * 20, 5 * 60 * 20, 4
+			30 * 20, 30 * 20, 5 * 60 * 20, 4,
+			Set.of("seasoning", "seeds")
 	);
+
+	public CookingRules {
+		extraRoles = Set.copyOf(extraRoles);
+	}
 }

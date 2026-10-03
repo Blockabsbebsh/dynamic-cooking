@@ -93,6 +93,13 @@
 							}
 						},
 						{
+							"when": "poisonous_potato",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/soup_broth_poisonous_potato"
+							}
+						},
+						{
 							"when": "potato",
 							"model": {
 								"type": "minecraft:model",
@@ -218,6 +225,13 @@
 							}
 						},
 						{
+							"when": "poisonous_potato",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/soup_garnish_poisonous_potato"
+							}
+						},
+						{
 							"when": "potato",
 							"model": {
 								"type": "minecraft:model",
@@ -319,6 +333,13 @@
 								"model": {
 									"type": "minecraft:model",
 									"model": "dynamic_cooking:item/dish/soup_garnish_mushroom"
+								}
+							},
+							{
+								"when": "poisonous_potato",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/soup_garnish_poisonous_potato"
 								}
 							},
 							{

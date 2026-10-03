@@ -1,7 +1,6 @@
 {
 	"items": [
-		"minecraft:potato",
-		"minecraft:baked_potato"
+		"minecraft:potato"
 	],
 	"roles": [
 		"produce"
@@ -9,5 +8,10 @@
 	"flavor": "potato",
 	"nutrition": 3,
 	"saturation": 3.0,
-	"color": "#D9B26A"
+	"color": "#D9B26A",
+	"raw": {
+		"cooks_into": "minecraft:baked_potato",
+		"nutrition_penalty": 2,
+		"saturation_penalty": 1.8
+	}
 }

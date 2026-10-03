@@ -1,13 +1,18 @@
 {
 	"items": [
-		"minecraft:beef",
-		"minecraft:cooked_beef"
+		"minecraft:beef"
 	],
 	"roles": [
-		"protein"
+		"protein",
+		"meat"
 	],
 	"flavor": "beef",
-	"nutrition": 3,
-	"saturation": 1.8,
-	"color": "#9A4A33"
+	"nutrition": 4,
+	"saturation": 2.4,
+	"color": "#C8463C",
+	"raw": {
+		"cooks_into": "minecraft:cooked_beef",
+		"nutrition_penalty": 2,
+		"saturation_penalty": 1.4
+	}
 }

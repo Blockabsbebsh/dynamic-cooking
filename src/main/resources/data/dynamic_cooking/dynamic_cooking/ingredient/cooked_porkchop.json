@@ -1,0 +1,13 @@
+{
+	"items": [
+		"minecraft:cooked_porkchop"
+	],
+	"roles": [
+		"protein",
+		"meat"
+	],
+	"flavor": "porkchop",
+	"nutrition": 4,
+	"saturation": 2.4,
+	"color": "#B8754E"
+}

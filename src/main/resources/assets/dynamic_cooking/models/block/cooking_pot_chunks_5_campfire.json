@@ -1,0 +1,328 @@
+{
+	"textures": {
+		"particle": "minecraft:block/white_concrete_powder",
+		"chunk": "minecraft:block/white_concrete_powder"
+	},
+	"elements": [
+		{
+			"from": [
+				5,
+				0.5,
+				5
+			],
+			"to": [
+				7,
+				1.5,
+				7
+			],
+			"faces": {
+				"up": {
+					"texture": "#chunk",
+					"uv": [
+						5,
+						5,
+						7,
+						7
+					],
+					"tintindex": 1
+				},
+				"north": {
+					"texture": "#chunk",
+					"uv": [
+						5,
+						0,
+						7,
+						1
+					],
+					"tintindex": 1
+				},
+				"south": {
+					"texture": "#chunk",
+					"uv": [
+						5,
+						0,
+						7,
+						1
+					],
+					"tintindex": 1
+				},
+				"east": {
+					"texture": "#chunk",
+					"uv": [
+						5,
+						0,
+						7,
+						1
+					],
+					"tintindex": 1
+				},
+				"west": {
+					"texture": "#chunk",
+					"uv": [
+						5,
+						0,
+						7,
+						1
+					],
+					"tintindex": 1
+				}
+			}
+		},
+		{
+			"from": [
+				9,
+				0.5,
+				5
+			],
+			"to": [
+				11,
+				1.5,
+				7
+			],
+			"faces": {
+				"up": {
+					"texture": "#chunk",
+					"uv": [
+						9,
+						5,
+						11,
+						7
+					],
+					"tintindex": 2
+				},
+				"north": {
+					"texture": "#chunk",
+					"uv": [
+						9,
+						0,
+						11,
+						1
+					],
+					"tintindex": 2
+				},
+				"south": {
+					"texture": "#chunk",
+					"uv": [
+						9,
+						0,
+						11,
+						1
+					],
+					"tintindex": 2
+				},
+				"east": {
+					"texture": "#chunk",
+					"uv": [
+						5,
+						0,
+						7,
+						1
+					],
+					"tintindex": 2
+				},
+				"west": {
+					"texture": "#chunk",
+					"uv": [
+						5,
+						0,
+						7,
+						1
+					],
+					"tintindex": 2
+				}
+			}
+		},
+		{
+			"from": [
+				7,
+				0.5,
+				9
+			],
+			"to": [
+				9,
+				1.5,
+				11
+			],
+			"faces": {
+				"up": {
+					"texture": "#chunk",
+					"uv": [
+						7,
+						9,
+						9,
+						11
+					],
+					"tintindex": 3
+				},
+				"north": {
+					"texture": "#chunk",
+					"uv": [
+						7,
+						0,
+						9,
+						1
+					],
+					"tintindex": 3
+				},
+				"south": {
+					"texture": "#chunk",
+					"uv": [
+						7,
+						0,
+						9,
+						1
+					],
+					"tintindex": 3
+				},
+				"east": {
+					"texture": "#chunk",
+					"uv": [
+						9,
+						0,
+						11,
+						1
+					],
+					"tintindex": 3
+				},
+				"west": {
+					"texture": "#chunk",
+					"uv": [
+						9,
+						0,
+						11,
+						1
+					],
+					"tintindex": 3
+				}
+			}
+		},
+		{
+			"from": [
+				10,
+				0.5,
+				9
+			],
+			"to": [
+				11,
+				1.5,
+				11
+			],
+			"faces": {
+				"up": {
+					"texture": "#chunk",
+					"uv": [
+						10,
+						9,
+						11,
+						11
+					],
+					"tintindex": 4
+				},
+				"north": {
+					"texture": "#chunk",
+					"uv": [
+						10,
+						0,
+						11,
+						1
+					],
+					"tintindex": 4
+				},
+				"south": {
+					"texture": "#chunk",
+					"uv": [
+						10,
+						0,
+						11,
+						1
+					],
+					"tintindex": 4
+				},
+				"east": {
+					"texture": "#chunk",
+					"uv": [
+						9,
+						0,
+						11,
+						1
+					],
+					"tintindex": 4
+				},
+				"west": {
+					"texture": "#chunk",
+					"uv": [
+						9,
+						0,
+						11,
+						1
+					],
+					"tintindex": 4
+				}
+			}
+		},
+		{
+			"from": [
+				5,
+				0.5,
+				10
+			],
+			"to": [
+				6,
+				1.5,
+				11
+			],
+			"faces": {
+				"up": {
+					"texture": "#chunk",
+					"uv": [
+						5,
+						10,
+						6,
+						11
+					],
+					"tintindex": 5
+				},
+				"north": {
+					"texture": "#chunk",
+					"uv": [
+						5,
+						0,
+						6,
+						1
+					],
+					"tintindex": 5
+				},
+				"south": {
+					"texture": "#chunk",
+					"uv": [
+						5,
+						0,
+						6,
+						1
+					],
+					"tintindex": 5
+				},
+				"east": {
+					"texture": "#chunk",
+					"uv": [
+						10,
+						0,
+						11,
+						1
+					],
+					"tintindex": 5
+				},
+				"west": {
+					"texture": "#chunk",
+					"uv": [
+						10,
+						0,
+						11,
+						1
+					],
+					"tintindex": 5
+				}
+			}
+		}
+	]
+}

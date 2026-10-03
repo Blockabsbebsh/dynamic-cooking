@@ -117,6 +117,13 @@
 							}
 						},
 						{
+							"when": "poisonous_potato",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/roast_main_poisonous_potato"
+							}
+						},
+						{
 							"when": "porkchop",
 							"model": {
 								"type": "minecraft:model",
@@ -152,6 +159,13 @@
 							}
 						},
 						{
+							"when": "rotten_flesh",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/roast_main_rotten_flesh"
+							}
+						},
+						{
 							"when": "salmon",
 							"model": {
 								"type": "minecraft:model",
@@ -163,6 +177,13 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/roast_main_sweet_berry"
+							}
+						},
+						{
+							"when": "tropical_fish",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/roast_main_tropical_fish"
 							}
 						}
 					],
@@ -298,6 +319,13 @@
 							}
 						},
 						{
+							"when": "poisonous_potato",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/roast_side_poisonous_potato"
+							}
+						},
+						{
 							"when": "porkchop",
 							"model": {
 								"type": "minecraft:model",
@@ -333,6 +361,13 @@
 							}
 						},
 						{
+							"when": "rotten_flesh",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/roast_side_rotten_flesh"
+							}
+						},
+						{
 							"when": "salmon",
 							"model": {
 								"type": "minecraft:model",
@@ -344,6 +379,13 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/roast_side_sweet_berry"
+							}
+						},
+						{
+							"when": "tropical_fish",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/roast_side_tropical_fish"
 							}
 						}
 					],
@@ -458,6 +500,13 @@
 								}
 							},
 							{
+								"when": "poisonous_potato",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/roast_side_poisonous_potato"
+								}
+							},
+							{
 								"when": "porkchop",
 								"model": {
 									"type": "minecraft:model",
@@ -493,6 +542,13 @@
 								}
 							},
 							{
+								"when": "rotten_flesh",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/roast_side_rotten_flesh"
+								}
+							},
+							{
 								"when": "salmon",
 								"model": {
 									"type": "minecraft:model",
@@ -504,6 +560,13 @@
 								"model": {
 									"type": "minecraft:model",
 									"model": "dynamic_cooking:item/dish/roast_side_sweet_berry"
+								}
+							},
+							{
+								"when": "tropical_fish",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/roast_side_tropical_fish"
 								}
 							}
 						],

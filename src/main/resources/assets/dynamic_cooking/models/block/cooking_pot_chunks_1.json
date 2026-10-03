@@ -1,0 +1,72 @@
+{
+	"textures": {
+		"particle": "minecraft:block/white_concrete_powder",
+		"chunk": "minecraft:block/white_concrete_powder"
+	},
+	"elements": [
+		{
+			"from": [
+				5,
+				1.7000000000000002,
+				5
+			],
+			"to": [
+				7,
+				2.7,
+				7
+			],
+			"faces": {
+				"up": {
+					"texture": "#chunk",
+					"uv": [
+						5,
+						5,
+						7,
+						7
+					],
+					"tintindex": 1
+				},
+				"north": {
+					"texture": "#chunk",
+					"uv": [
+						5,
+						0,
+						7,
+						1
+					],
+					"tintindex": 1
+				},
+				"south": {
+					"texture": "#chunk",
+					"uv": [
+						5,
+						0,
+						7,
+						1
+					],
+					"tintindex": 1
+				},
+				"east": {
+					"texture": "#chunk",
+					"uv": [
+						5,
+						0,
+						7,
+						1
+					],
+					"tintindex": 1
+				},
+				"west": {
+					"texture": "#chunk",
+					"uv": [
+						5,
+						0,
+						7,
+						1
+					],
+					"tintindex": 1
+				}
+			}
+		}
+	]
+}

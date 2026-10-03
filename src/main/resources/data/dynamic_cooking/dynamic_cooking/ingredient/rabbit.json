@@ -1,13 +1,18 @@
 {
 	"items": [
-		"minecraft:rabbit",
-		"minecraft:cooked_rabbit"
+		"minecraft:rabbit"
 	],
 	"roles": [
-		"protein"
+		"protein",
+		"meat"
 	],
 	"flavor": "rabbit",
 	"nutrition": 3,
 	"saturation": 1.8,
-	"color": "#C99A7E"
+	"color": "#D9A090",
+	"raw": {
+		"cooks_into": "minecraft:cooked_rabbit",
+		"nutrition_penalty": 2,
+		"saturation_penalty": 1.1
+	}
 }

@@ -32,9 +32,24 @@ Add a file to `data/<namespace>/dynamic_cooking/ingredient/`:
 
 `buff` is optional: `{"effect": "minecraft:night_vision", "potency": 1}`.
 
+`effects` lists side effects the ingredient always gives, like hunger from rotten flesh: `[{"effect": "minecraft:hunger", "seconds": 30, "chance": 0.8}]`.
+
+A raw ingredient gets a `raw` block. The pot swaps it for its `cooks_into` item. Crafted dishes keep it raw: it is worth `nutrition_penalty` and `saturation_penalty` less, and its own `effects` may apply. A raw dish can be put back in the pot on its own to cook it.
+
+```json
+"raw": {
+	"cooks_into": "minecraft:cooked_chicken",
+	"nutrition_penalty": 2,
+	"saturation_penalty": 1.1,
+	"effects": [{"effect": "minecraft:hunger", "seconds": 30, "chance": 0.3}]
+}
+```
+
 ### Adding a dish type
 
 Add a file to `data/<namespace>/dynamic_cooking/dish_type/`. Dish types are tried from the lowest `priority` up and the first one whose `requires` can all be filled wins. Requirements marked `flavor` name and color the dish. `method` is `pot` (the default) or `crafting`; only dish types with the matching method are tried. Anything the pot can't place becomes Dubious Mush, while a crafting grid that fits no dish just doesn't craft.
+
+Ingredients left over once the requirements are filled must suit the dish: they need one of the dish's `flavor_roles` (produce, protein and mushroom by default), a role the dish already requires, or a role any dish takes as an extra (seasoning, seeds). That is why a stick next to bread makes neither a skewer nor a sandwich. `raw_ok` lists raw ingredients the dish takes without a penalty, like fish in a kelp roll.
 
 ```json
 {
@@ -63,6 +78,14 @@ python3 tools/textures/generate.py
 ```
 
 `python3 tools/textures/preview.py OUT_DIR` renders review sheets with every flavour of every dish.
+
+### Pot models
+
+The pot body is drawn by hand in `models/block/cooking_pot.json`. Its campfire version (sunk so it sits just above the logs), legs, liquid and mash levels, floating ingredient chunks and the blockstate are generated from it:
+
+```
+python3 tools/models/pot_models.py
+```
 
 ## Building
 

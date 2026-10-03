@@ -1,0 +1,19 @@
+{
+	"items": [
+		"minecraft:poisonous_potato"
+	],
+	"roles": [
+		"produce"
+	],
+	"flavor": "poisonous_potato",
+	"nutrition": 1,
+	"saturation": 0.6,
+	"color": "#A8B04A",
+	"effects": [
+		{
+			"effect": "minecraft:poison",
+			"seconds": 5,
+			"chance": 0.6
+		}
+	]
+}

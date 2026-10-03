@@ -19,6 +19,7 @@ import java.util.Set;
  * @param servedWith        item id of the container that takes the dish out of the pot, like {@code minecraft:bowl};
  *                          when empty the dish pops out of the pot by itself
  * @param servings          how many times the pot can be served from before it is empty, when {@code servedWith} is set
+ * @param rawOk             raw ingredients matching one of these are fine uncooked in this dish, like raw fish in a kelp roll
  */
 public record DishType(
 		String item,
@@ -31,7 +32,8 @@ public record DishType(
 		float bonusSaturation,
 		boolean liquid,
 		Optional<String> servedWith,
-		int servings
+		int servings,
+		List<Matcher> rawOk
 ) {
 	public static final Set<String> DEFAULT_FLAVOR_ROLES = Set.of("produce", "protein", "mushroom");
 
@@ -39,9 +41,16 @@ public record DishType(
 		requires = List.copyOf(requires);
 		forbids = List.copyOf(forbids);
 		flavorRoles = Set.copyOf(flavorRoles);
+		rawOk = List.copyOf(rawOk);
 
 		if (servings < 1) {
 			throw new IllegalArgumentException("servings must be at least 1, got " + servings);
 		}
+	}
+
+	/** A dish type where no raw ingredient is excused. */
+	public DishType(String item, int priority, CookingMethod method, List<Requirement> requires, List<Matcher> forbids, Set<String> flavorRoles,
+			int bonusNutrition, float bonusSaturation, boolean liquid, Optional<String> servedWith, int servings) {
+		this(item, priority, method, requires, forbids, flavorRoles, bonusNutrition, bonusSaturation, liquid, servedWith, servings, List.of());
 	}
 }
