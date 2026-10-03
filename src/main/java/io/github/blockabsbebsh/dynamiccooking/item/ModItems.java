@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
 import net.minecraft.core.Registry;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -16,6 +18,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.Consumables;
 
 import io.github.blockabsbebsh.dynamiccooking.DynamicCooking;
+import io.github.blockabsbebsh.dynamiccooking.block.ModBlocks;
 
 /**
  * One item per dish type, plus the cookbook. A stack's name, food value, buff and look come from its components, set when it is cooked;
@@ -24,7 +27,7 @@ import io.github.blockabsbebsh.dynamiccooking.DynamicCooking;
 public final class ModItems {
 	private static final List<Item> DISHES = new ArrayList<>();
 
-	public static final Item CAKE = dish("cake", 4, 0.6f, UnaryOperator.identity());
+	public static final Item CAKE = cake("cake", 4, 0.6f);
 	public static final Item PIE = dish("pie", 4, 0.6f, UnaryOperator.identity());
 	public static final Item COOKIES = dish("cookies", 2, 0.2f, UnaryOperator.identity());
 	public static final Item JUICE = drink("juice", 2, 0.2f);
@@ -59,6 +62,12 @@ public final class ModItems {
 		return register(name, extra.apply(new Item.Properties().stacksTo(16).food(food)));
 	}
 
+	/** A dish placed as a block and eaten a slice at a time. It keeps its food value for the slices but can't be eaten from the hand. */
+	private static Item cake(String name, int nutrition, float saturationModifier) {
+		FoodProperties food = new FoodProperties.Builder().nutrition(nutrition).saturationModifier(saturationModifier).build();
+		return register(name, new Item.Properties().stacksTo(16).component(DataComponents.FOOD, food), properties -> new DishCakeItem(ModBlocks.CAKE, properties));
+	}
+
 	private static Item drink(String name, int nutrition, float saturationModifier) {
 		FoodProperties food = new FoodProperties.Builder().nutrition(nutrition).saturationModifier(saturationModifier).build();
 		return register(name, new Item.Properties().stacksTo(16).food(food, Consumables.DEFAULT_DRINK).usingConvertsTo(Items.GLASS_BOTTLE));
@@ -70,8 +79,12 @@ public final class ModItems {
 	}
 
 	private static Item register(String name, Item.Properties properties) {
+		return register(name, properties, Item::new);
+	}
+
+	private static Item register(String name, Item.Properties properties, Function<Item.Properties, Item> factory) {
 		ResourceKey<Item> key = ResourceKey.create(Registries.ITEM, DynamicCooking.id(name));
-		Item item = Registry.register(BuiltInRegistries.ITEM, key, new Item(properties.setId(key)));
+		Item item = Registry.register(BuiltInRegistries.ITEM, key, factory.apply(properties.setId(key)));
 		DISHES.add(item);
 		return item;
 	}

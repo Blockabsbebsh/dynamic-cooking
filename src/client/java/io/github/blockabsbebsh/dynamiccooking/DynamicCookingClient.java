@@ -4,6 +4,7 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockgetter.v2.FabricBlockGetter;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockColorRegistry;
 
+import io.github.blockabsbebsh.dynamiccooking.block.DishCakeBlockEntity;
 import io.github.blockabsbebsh.dynamiccooking.block.ModBlocks;
 import io.github.blockabsbebsh.dynamiccooking.cooking.CookingRules;
 import io.github.blockabsbebsh.dynamiccooking.cooking.PotColors;
@@ -19,5 +20,14 @@ public class DynamicCookingClient implements ClientModInitializer {
 				tints.add(0xFF000000 | (i < colors.length ? colors[i] : PotColors.WATER));
 			}
 		}, ModBlocks.COOKING_POT);
+
+		// A placed cake: tint index 0 is the fruit on top, 1 the filling between the layers.
+		BlockColorRegistry.register((state, level, pos, tints) -> {
+			int[] colors = ((FabricBlockGetter) level).getBlockEntityRenderData(pos) instanceof int[] synced ? synced : new int[0];
+
+			for (int i = 0; i < 2; i++) {
+				tints.add(0xFF000000 | (i < colors.length ? colors[i] : DishCakeBlockEntity.DEFAULT_COLOR));
+			}
+		}, ModBlocks.CAKE);
 	}
 }

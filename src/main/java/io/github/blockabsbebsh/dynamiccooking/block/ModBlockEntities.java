@@ -15,6 +15,12 @@ public final class ModBlockEntities {
 			FabricBlockEntityTypeBuilder.create(CookingPotBlockEntity::new, ModBlocks.COOKING_POT).build()
 	);
 
+	public static final BlockEntityType<DishCakeBlockEntity> CAKE = Registry.register(
+			BuiltInRegistries.BLOCK_ENTITY_TYPE,
+			DynamicCooking.id("cake"),
+			FabricBlockEntityTypeBuilder.create(DishCakeBlockEntity::new, ModBlocks.CAKE).build()
+	);
+
 	private ModBlockEntities() {
 	}
 

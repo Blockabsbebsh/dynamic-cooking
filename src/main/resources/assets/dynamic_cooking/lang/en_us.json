@@ -6,6 +6,7 @@
 	"dish.dynamic_cooking.buffed": "%s %s",
 	"dish.dynamic_cooking.raw": "Raw %s",
 	"item.dynamic_cooking.cake": "Cake",
+	"block.dynamic_cooking.cake": "Cake",
 	"dish.dynamic_cooking.cake": "%s Cake",
 	"item.dynamic_cooking.pie": "Pie",
 	"dish.dynamic_cooking.pie": "%s Pie",
