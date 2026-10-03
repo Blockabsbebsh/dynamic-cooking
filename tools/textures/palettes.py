@@ -36,6 +36,8 @@ PALETTES = {
 	"potato":           ["#F0CD5A", "#D9AA51", "#C8973A", "#9D772E", "#86693E", "#9A5500", "#6D3701", "#F6DE8A"],
 	"pumpkin":          ["#FFC66A", "#F0A23C", "#E3901D", "#C8740F", "#A45413", "#7E3F0C", "#5A2C08", "#6E8A2A"],
 	"sweet_berry":      ["#F06A8E", "#DF467E", "#C0102A", "#A50700", "#820B05", "#691F21", "#380E0F", "#286240"],
+	# cooked egg: white with yolk in the shadows, for scrambled or fried egg fillings
+	"egg":              ["#FFFDF0", "#F7F0D8", "#EDE2BC", "#F2C23A", "#D9A21E", "#C9B58A", "#8E7A4E", "#F5C83C"],
 	"mushroom":         ["#CC9978", "#B5947D", "#916D55", "#725643", "#6A4E3B", "#5A4434", "#3E3129", "#EDE8CA"],
 	"poisonous_potato": ["#D2E962", "#C4D951", "#B0C83A", "#6B863E", "#49673F", "#315237", "#1F3324", "#D9AA51"],
 	# meat and fish, cooked

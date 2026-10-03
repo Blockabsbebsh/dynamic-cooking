@@ -1,6 +1,6 @@
 {
 	"parent": "minecraft:item/generated",
 	"textures": {
-		"layer0": "dynamic_cooking:item/dish/stew_chunks_pumpkin"
+		"layer0": "dynamic_cooking:item/dish/salad_top_beetroot"
 	}
 }

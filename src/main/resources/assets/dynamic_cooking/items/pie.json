@@ -107,6 +107,13 @@
 							}
 						},
 						{
+							"when": "mushroom",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/pie_filling_mushroom"
+							}
+						},
+						{
 							"when": "mutton",
 							"model": {
 								"type": "minecraft:model",
