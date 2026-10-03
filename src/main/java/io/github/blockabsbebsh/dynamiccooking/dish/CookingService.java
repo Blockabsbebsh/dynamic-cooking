@@ -116,7 +116,7 @@ public final class CookingService {
 
 		return dishInputs(dish)
 				.flatMap(inputs -> resolver.recook(item, inputs))
-				.map(DishFactory::create)
+				.map(result -> DishFactory.create(result).copyWithCount(1))
 				.orElseGet(() -> dish.copyWithCount(1));
 	}
 
@@ -144,8 +144,9 @@ public final class CookingService {
 	}
 
 	/**
-	 * Cooks what is in the pot: either loose ingredients, or copies of one raw dish to cook again.
-	 * The result's {@link DishResult#servings()} is how many dishes come out.
+	 * Cooks what is in the pot: loose ingredients, copies of one raw dish to cook again, or copies of one raw ingredient,
+	 * which simply come out cooked, like raw potatoes as baked potatoes.
+	 * The result's {@link PotResult#servings()} is how many dishes come out.
 	 */
 	public PotResult cookPot(List<ItemStack> contents) {
 		if (!contents.isEmpty() && isRecookable(contents.getFirst())) {
@@ -154,12 +155,38 @@ public final class CookingService {
 			return new PotResult(dish, contents.size(), Optional.empty(), false, liquidColor(cooked), colors(cooked));
 		}
 
+		Optional<Item> cookedAlone = inputs(contents).flatMap(resolver::cookedAlone).flatMap(id -> BuiltInRegistries.ITEM.getOptional(Identifier.parse(id)));
+
+		if (cookedAlone.isPresent()) {
+			List<ItemStack> cooked = contents.stream().map(stack -> new ItemStack(cookedAlone.get())).toList();
+			return new PotResult(cooked.getFirst(), cooked.size(), Optional.empty(), false, liquidColor(cooked), colors(cooked));
+		}
+
 		DishResult result = resolve(contents);
 		// Colors come from the cooked ingredients, so raw meat chunks turn brown when the dish is done.
 		List<ItemStack> cooked = result.ingredients().stream()
 				.map(id -> BuiltInRegistries.ITEM.getOptional(Identifier.parse(id)).map(ItemStack::new).orElse(ItemStack.EMPTY))
 				.toList();
-		return new PotResult(DishFactory.create(result), result.servings(), result.servedWith(), result.liquid(), liquidColor(cooked), colors(cooked));
+		// The pot hands out a batch of several, like kelp rolls, one at a time.
+		ItemStack dish = DishFactory.create(result);
+		return new PotResult(dish.copyWithCount(1), result.servings() * dish.getCount(), result.servedWith(), result.liquid(), liquidColor(cooked), colors(cooked));
+	}
+
+	/** One cooking input per stack, or empty if any stack isn't an ingredient. */
+	private Optional<List<CookingInput>> inputs(List<ItemStack> stacks) {
+		List<CookingInput> inputs = new ArrayList<>();
+
+		for (ItemStack stack : stacks) {
+			Optional<CookingInput> input = input(stack);
+
+			if (input.isEmpty()) {
+				return Optional.empty();
+			}
+
+			inputs.add(input.get());
+		}
+
+		return Optional.of(inputs);
 	}
 
 	/**
@@ -221,19 +248,7 @@ public final class CookingService {
 	 * any stack that isn't an ingredient, or a mix no dish type fits, gives nothing.
 	 */
 	public Optional<DishResult> match(CookingMethod method, List<ItemStack> ingredients) {
-		List<CookingInput> inputs = new ArrayList<>();
-
-		for (ItemStack stack : ingredients) {
-			Optional<CookingInput> input = input(stack);
-
-			if (input.isEmpty()) {
-				return Optional.empty();
-			}
-
-			inputs.add(input.get());
-		}
-
-		return resolver.match(method, inputs);
+		return inputs(ingredients).flatMap(inputs -> resolver.match(method, inputs));
 	}
 
 	public Optional<ItemStack> craft(List<ItemStack> ingredients) {

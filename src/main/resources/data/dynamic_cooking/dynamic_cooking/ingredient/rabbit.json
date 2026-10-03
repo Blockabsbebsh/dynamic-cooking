@@ -7,12 +7,12 @@
 		"meat"
 	],
 	"flavor": "rabbit",
-	"nutrition": 3,
-	"saturation": 1.8,
+	"nutrition": 5,
+	"saturation": 6.0,
 	"color": "#D9A090",
 	"raw": {
 		"cooks_into": "minecraft:cooked_rabbit",
 		"nutrition_penalty": 2,
-		"saturation_penalty": 1.1
+		"saturation_penalty": 4.2
 	}
 }

@@ -21,6 +21,7 @@ import java.util.Optional;
  * @param liquid       whether the dish is runny, see {@link DishType#liquid()}
  * @param servedWith   item id that takes the dish out of the pot, see {@link DishType#servedWith()}
  * @param servings     how many dishes the pot serves, see {@link DishType#servings()}
+ * @param count        how many items one batch makes, see {@link DishType#makes()}; food values are per item
  */
 public record DishResult(
 		String item,
@@ -37,7 +38,8 @@ public record DishResult(
 		boolean dubious,
 		boolean liquid,
 		Optional<String> servedWith,
-		int servings
+		int servings,
+		int count
 ) {
 	/** Color for an ingredient that has none, so its texture layer keeps the template's grey. */
 	public static final int NO_COLOR = 0xFFFFFF;

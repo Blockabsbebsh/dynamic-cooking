@@ -5,13 +5,12 @@ Run from the repository root after changing the pot model, its fill levels or th
 	python3 tools/models/pot_models.py
 
 The pot body, models/block/cooking_pot.json, is drawn by hand and read from disk. Everything else is generated from it:
-- cooking_pot_campfire.json: the same pot sunk CAMPFIRE_DROP pixels, so on a campfire it rests just above the logs
 - legs for a campfire (short) and for fire, lava or a gap (long)
 - liquid and mash surfaces for each fill level, and one floating chunk per ingredient tinted with its color
-Each surface and chunk model has a campfire copy, sunk the same way.
+On a campfire the pot stays a full block up, because the campfire's flames reach the top of its block and would show
+through the pot's floor; short legs reach down to the logs instead.
 """
 
-import copy
 import json
 from pathlib import Path
 
@@ -20,8 +19,7 @@ ASSETS = ROOT / "src/main/resources/assets/dynamic_cooking"
 MODELS = ASSETS / "models/block"
 NS = "dynamic_cooking"
 
-# Must match CookingPotBlock.CAMPFIRE_DROP and CookingPotBlock.FILL.
-CAMPFIRE_DROP = 6
+# Must match CookingPotBlock.FILL.
 MAX_FILL = 5
 # Campfire logs are 7 pixels tall, so legs on a campfire reach down to 9 pixels below the pot's block.
 CAMPFIRE_LOGS = -9
@@ -45,16 +43,6 @@ def surface_height(fill):
 def write(name, model):
 	(MODELS / f"{name}.json").write_text(json.dumps(model, indent="\t") + "\n")
 
-
-def sunk(model, pixels):
-	"""A copy of the model moved down by the given number of pixels."""
-	out = copy.deepcopy(model)
-
-	for element in out["elements"]:
-		element["from"][1] -= pixels
-		element["to"][1] -= pixels
-
-	return out
 
 
 def box(x1, y1, z1, x2, y2, z2, faces):
@@ -117,14 +105,11 @@ def part(model, **when):
 
 def main():
 	pot = json.loads((MODELS / "cooking_pot.json").read_text())
-	write("cooking_pot_campfire", sunk(pot, CAMPFIRE_DROP))
-	write("cooking_pot_legs_short", legs(CAMPFIRE_LOGS, -CAMPFIRE_DROP))
+	write("cooking_pot_legs_short", legs(CAMPFIRE_LOGS, 0))
 	write("cooking_pot_legs_long", legs(-16, 0))
 
-	off_campfire = "none|long"
 	parts = [
-		part("cooking_pot", legs=off_campfire),
-		part("cooking_pot_campfire", legs="short"),
+		part("cooking_pot"),
 		part("cooking_pot_legs_short", legs="short"),
 		part("cooking_pot_legs_long", legs="long"),
 	]
@@ -135,11 +120,9 @@ def main():
 
 		for name, model in models.items():
 			write(f"cooking_pot_{name}", model)
-			write(f"cooking_pot_{name}_campfire", sunk(model, CAMPFIRE_DROP))
 
 		for name, extra in ((f"liquid_{fill}", {"liquid": "true"}), (f"mash_{fill}", {"liquid": "false"}), (f"chunks_{fill}", {})):
-			parts.append(part(f"cooking_pot_{name}", fill=str(fill), legs=off_campfire, **extra))
-			parts.append(part(f"cooking_pot_{name}_campfire", fill=str(fill), legs="short", **extra))
+			parts.append(part(f"cooking_pot_{name}", fill=str(fill), **extra))
 
 	(ASSETS / "blockstates/cooking_pot.json").write_text(json.dumps({"multipart": parts}, indent="\t") + "\n")
 

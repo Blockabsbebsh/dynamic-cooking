@@ -3,7 +3,8 @@
 		"minecraft:beetroot"
 	],
 	"roles": [
-		"produce"
+		"produce",
+		"fresh"
 	],
 	"flavor": "beetroot",
 	"nutrition": 1,

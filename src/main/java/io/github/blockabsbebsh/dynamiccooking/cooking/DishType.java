@@ -20,6 +20,7 @@ import java.util.Set;
  *                          when empty the dish pops out of the pot by itself
  * @param servings          how many times the pot can be served from before it is empty, when {@code servedWith} is set
  * @param rawOk             raw ingredients matching one of these are fine uncooked in this dish, like raw fish in a kelp roll
+ * @param makes             how many items one batch makes, like 4 kelp rolls; the dish's food is shared out between them
  */
 public record DishType(
 		String item,
@@ -33,7 +34,8 @@ public record DishType(
 		boolean liquid,
 		Optional<String> servedWith,
 		int servings,
-		List<Matcher> rawOk
+		List<Matcher> rawOk,
+		int makes
 ) {
 	public static final Set<String> DEFAULT_FLAVOR_ROLES = Set.of("produce", "protein", "mushroom");
 
@@ -46,11 +48,15 @@ public record DishType(
 		if (servings < 1) {
 			throw new IllegalArgumentException("servings must be at least 1, got " + servings);
 		}
+
+		if (makes < 1) {
+			throw new IllegalArgumentException("makes must be at least 1, got " + makes);
+		}
 	}
 
 	/** A dish type where no raw ingredient is excused. */
 	public DishType(String item, int priority, CookingMethod method, List<Requirement> requires, List<Matcher> forbids, Set<String> flavorRoles,
 			int bonusNutrition, float bonusSaturation, boolean liquid, Optional<String> servedWith, int servings) {
-		this(item, priority, method, requires, forbids, flavorRoles, bonusNutrition, bonusSaturation, liquid, servedWith, servings, List.of());
+		this(item, priority, method, requires, forbids, flavorRoles, bonusNutrition, bonusSaturation, liquid, servedWith, servings, List.of(), 1);
 	}
 }

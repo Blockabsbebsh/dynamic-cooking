@@ -8,16 +8,6 @@
 					"egg"
 				]
 			}
-		},
-		{
-			"match": {
-				"roles": [
-					"produce",
-					"protein",
-					"mushroom"
-				]
-			},
-			"flavor": true
 		}
 	],
 	"forbids": [
@@ -28,5 +18,11 @@
 		}
 	],
 	"bonus_nutrition": 2,
-	"bonus_saturation": 1.0
+	"bonus_saturation": 1.0,
+	"flavor_roles": [
+		"produce",
+		"protein",
+		"mushroom",
+		"egg"
+	]
 }

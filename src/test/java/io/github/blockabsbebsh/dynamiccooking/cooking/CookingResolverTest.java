@@ -163,8 +163,8 @@ class CookingResolverTest {
 
 	@Test
 	void nutritionAddsIngredientsBonusAndVariety() {
-		// beef 3 + potato 1 + stew bonus 2 + variety 1 for the second flavor
-		assertEquals(7, resolver().resolve(inputs("water_bucket", "beef", "potato")).nutrition());
+		// beef 3 + potato 1 + 1 for each ingredient used (the water bucket only holds it) + stew bonus 2 + variety 1 for the second flavor
+		assertEquals(9, resolver().resolve(inputs("water_bucket", "beef", "potato")).nutrition());
 	}
 
 	@Test

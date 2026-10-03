@@ -16,15 +16,6 @@
 				]
 			},
 			"flavor": true
-		},
-		{
-			"match": {
-				"roles": [
-					"produce",
-					"mushroom"
-				]
-			},
-			"flavor": true
 		}
 	],
 	"bonus_nutrition": 2,

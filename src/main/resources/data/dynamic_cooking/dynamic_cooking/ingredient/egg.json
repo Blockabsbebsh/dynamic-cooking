@@ -8,7 +8,7 @@
 		"egg"
 	],
 	"flavor": "egg",
-	"nutrition": 1,
-	"saturation": 0.5,
+	"nutrition": 2,
+	"saturation": 1.2,
 	"color": "#F2D27A"
 }

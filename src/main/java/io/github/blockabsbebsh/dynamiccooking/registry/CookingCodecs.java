@@ -83,7 +83,8 @@ public final class CookingCodecs {
 			Codec.BOOL.optionalFieldOf("liquid", false).forGetter(DishType::liquid),
 			ID.optionalFieldOf("served_with").forGetter(DishType::servedWith),
 			Codec.intRange(1, 64).optionalFieldOf("servings", 1).forGetter(DishType::servings),
-			MATCHER.listOf().optionalFieldOf("raw_ok", List.of()).forGetter(DishType::rawOk)
+			MATCHER.listOf().optionalFieldOf("raw_ok", List.of()).forGetter(DishType::rawOk),
+			Codec.intRange(1, 64).optionalFieldOf("makes", 1).forGetter(DishType::makes)
 	).apply(instance, DishType::new));
 
 	private CookingCodecs() {
