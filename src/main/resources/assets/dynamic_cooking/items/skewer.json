@@ -114,6 +114,13 @@
 							}
 						},
 						{
+							"when": "poisonous_potato",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_chunk_poisonous_potato"
+							}
+						},
+						{
 							"when": "porkchop",
 							"model": {
 								"type": "minecraft:model",
@@ -205,6 +212,13 @@
 							}
 						},
 						{
+							"when": "rotten_flesh",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_chunk_rotten_flesh"
+							}
+						},
+						{
 							"when": "salmon",
 							"model": {
 								"type": "minecraft:model",
@@ -216,6 +230,13 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/skewer_chunk_sweet_berry"
+							}
+						},
+						{
+							"when": "tropical_fish",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_chunk_tropical_fish"
 							}
 						}
 					],
@@ -344,6 +365,13 @@
 							}
 						},
 						{
+							"when": "poisonous_potato",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_lower_poisonous_potato"
+							}
+						},
+						{
 							"when": "porkchop",
 							"model": {
 								"type": "minecraft:model",
@@ -435,6 +463,13 @@
 							}
 						},
 						{
+							"when": "rotten_flesh",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_lower_rotten_flesh"
+							}
+						},
+						{
 							"when": "salmon",
 							"model": {
 								"type": "minecraft:model",
@@ -446,6 +481,13 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/skewer_lower_sweet_berry"
+							}
+						},
+						{
+							"when": "tropical_fish",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_lower_tropical_fish"
 							}
 						}
 					],
@@ -553,6 +595,13 @@
 								}
 							},
 							{
+								"when": "poisonous_potato",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/skewer_lower_poisonous_potato"
+								}
+							},
+							{
 								"when": "porkchop",
 								"model": {
 									"type": "minecraft:model",
@@ -644,6 +693,13 @@
 								}
 							},
 							{
+								"when": "rotten_flesh",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/skewer_lower_rotten_flesh"
+								}
+							},
+							{
 								"when": "salmon",
 								"model": {
 									"type": "minecraft:model",
@@ -655,6 +711,13 @@
 								"model": {
 									"type": "minecraft:model",
 									"model": "dynamic_cooking:item/dish/skewer_lower_sweet_berry"
+								}
+							},
+							{
+								"when": "tropical_fish",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/skewer_lower_tropical_fish"
 								}
 							}
 						],

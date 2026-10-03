@@ -1,0 +1,6 @@
+{
+	"parent": "minecraft:item/generated",
+	"textures": {
+		"layer0": "dynamic_cooking:item/dish/pie_filling_rotten_flesh"
+	}
+}

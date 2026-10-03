@@ -121,6 +121,13 @@
 							}
 						},
 						{
+							"when": "poisonous_potato",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_poisonous_potato"
+							}
+						},
+						{
 							"when": "porkchop",
 							"model": {
 								"type": "minecraft:model",
@@ -156,6 +163,13 @@
 							}
 						},
 						{
+							"when": "rotten_flesh",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_rotten_flesh"
+							}
+						},
+						{
 							"when": "salmon",
 							"model": {
 								"type": "minecraft:model",
@@ -167,6 +181,13 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/omelette_filling_sweet_berry"
+							}
+						},
+						{
+							"when": "tropical_fish",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_tropical_fish"
 							}
 						}
 					],

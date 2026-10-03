@@ -23,13 +23,16 @@
 				"melon": "dynamic_cooking:dish/melon",
 				"mushroom": "dynamic_cooking:dish/mushroom",
 				"mutton": "dynamic_cooking:dish/mutton",
+				"poisonous_potato": "dynamic_cooking:dish/poisonous_potato",
 				"porkchop": "dynamic_cooking:dish/porkchop",
 				"potato": "dynamic_cooking:dish/potato",
 				"pufferfish": "dynamic_cooking:dish/pufferfish",
 				"pumpkin": "dynamic_cooking:dish/pumpkin",
 				"rabbit": "dynamic_cooking:dish/rabbit",
+				"rotten_flesh": "dynamic_cooking:dish/rotten_flesh",
 				"salmon": "dynamic_cooking:dish/salmon",
-				"sweet_berry": "dynamic_cooking:dish/sweet_berry"
+				"sweet_berry": "dynamic_cooking:dish/sweet_berry",
+				"tropical_fish": "dynamic_cooking:dish/tropical_fish"
 			}
 		},
 		{
@@ -51,6 +54,7 @@
 				"golden_carrot": "dynamic_cooking:dish/golden_carrot",
 				"melon": "dynamic_cooking:dish/melon",
 				"mushroom": "dynamic_cooking:dish/mushroom",
+				"poisonous_potato": "dynamic_cooking:dish/poisonous_potato",
 				"potato": "dynamic_cooking:dish/potato",
 				"pumpkin": "dynamic_cooking:dish/pumpkin",
 				"sweet_berry": "dynamic_cooking:dish/sweet_berry"
@@ -90,6 +94,7 @@
 				"golden_apple": "dynamic_cooking:dish/golden_apple",
 				"golden_carrot": "dynamic_cooking:dish/golden_carrot",
 				"melon": "dynamic_cooking:dish/melon",
+				"poisonous_potato": "dynamic_cooking:dish/poisonous_potato",
 				"potato": "dynamic_cooking:dish/potato",
 				"pumpkin": "dynamic_cooking:dish/pumpkin",
 				"raw_potato": "dynamic_cooking:dish/raw_potato",
@@ -113,6 +118,7 @@
 				"golden_apple": "dynamic_cooking:dish/golden_apple",
 				"golden_carrot": "dynamic_cooking:dish/golden_carrot",
 				"melon": "dynamic_cooking:dish/melon",
+				"poisonous_potato": "dynamic_cooking:dish/poisonous_potato",
 				"potato": "dynamic_cooking:dish/potato",
 				"pumpkin": "dynamic_cooking:dish/pumpkin",
 				"sweet_berry": "dynamic_cooking:dish/sweet_berry"
@@ -139,13 +145,16 @@
 				"golden_carrot": "dynamic_cooking:dish/golden_carrot",
 				"melon": "dynamic_cooking:dish/melon",
 				"mutton": "dynamic_cooking:dish/mutton",
+				"poisonous_potato": "dynamic_cooking:dish/poisonous_potato",
 				"porkchop": "dynamic_cooking:dish/porkchop",
 				"potato": "dynamic_cooking:dish/potato",
 				"pufferfish": "dynamic_cooking:dish/pufferfish",
 				"pumpkin": "dynamic_cooking:dish/pumpkin",
 				"rabbit": "dynamic_cooking:dish/rabbit",
+				"rotten_flesh": "dynamic_cooking:dish/rotten_flesh",
 				"salmon": "dynamic_cooking:dish/salmon",
-				"sweet_berry": "dynamic_cooking:dish/sweet_berry"
+				"sweet_berry": "dynamic_cooking:dish/sweet_berry",
+				"tropical_fish": "dynamic_cooking:dish/tropical_fish"
 			}
 		},
 		{
@@ -165,6 +174,7 @@
 				"golden_apple": "dynamic_cooking:dish/golden_apple",
 				"golden_carrot": "dynamic_cooking:dish/golden_carrot",
 				"melon": "dynamic_cooking:dish/melon",
+				"poisonous_potato": "dynamic_cooking:dish/poisonous_potato",
 				"potato": "dynamic_cooking:dish/potato",
 				"pumpkin": "dynamic_cooking:dish/pumpkin",
 				"sweet_berry": "dynamic_cooking:dish/sweet_berry"
@@ -192,6 +202,7 @@
 				"golden_carrot": "dynamic_cooking:dish/golden_carrot",
 				"melon": "dynamic_cooking:dish/melon",
 				"mutton": "dynamic_cooking:dish/mutton",
+				"poisonous_potato": "dynamic_cooking:dish/poisonous_potato",
 				"porkchop": "dynamic_cooking:dish/porkchop",
 				"potato": "dynamic_cooking:dish/potato",
 				"pufferfish": "dynamic_cooking:dish/pufferfish",
@@ -205,8 +216,10 @@
 				"raw_potato": "dynamic_cooking:dish/raw_potato",
 				"raw_rabbit": "dynamic_cooking:dish/raw_rabbit",
 				"raw_salmon": "dynamic_cooking:dish/raw_salmon",
+				"rotten_flesh": "dynamic_cooking:dish/rotten_flesh",
 				"salmon": "dynamic_cooking:dish/salmon",
-				"sweet_berry": "dynamic_cooking:dish/sweet_berry"
+				"sweet_berry": "dynamic_cooking:dish/sweet_berry",
+				"tropical_fish": "dynamic_cooking:dish/tropical_fish"
 			}
 		},
 		{
@@ -230,6 +243,7 @@
 				"golden_carrot": "dynamic_cooking:dish/golden_carrot",
 				"melon": "dynamic_cooking:dish/melon",
 				"mutton": "dynamic_cooking:dish/mutton",
+				"poisonous_potato": "dynamic_cooking:dish/poisonous_potato",
 				"porkchop": "dynamic_cooking:dish/porkchop",
 				"potato": "dynamic_cooking:dish/potato",
 				"pufferfish": "dynamic_cooking:dish/pufferfish",
@@ -243,8 +257,10 @@
 				"raw_potato": "dynamic_cooking:dish/raw_potato",
 				"raw_rabbit": "dynamic_cooking:dish/raw_rabbit",
 				"raw_salmon": "dynamic_cooking:dish/raw_salmon",
+				"rotten_flesh": "dynamic_cooking:dish/rotten_flesh",
 				"salmon": "dynamic_cooking:dish/salmon",
-				"sweet_berry": "dynamic_cooking:dish/sweet_berry"
+				"sweet_berry": "dynamic_cooking:dish/sweet_berry",
+				"tropical_fish": "dynamic_cooking:dish/tropical_fish"
 			}
 		},
 		{
@@ -268,6 +284,7 @@
 				"golden_carrot": "dynamic_cooking:dish/golden_carrot",
 				"melon": "dynamic_cooking:dish/melon",
 				"mutton": "dynamic_cooking:dish/mutton",
+				"poisonous_potato": "dynamic_cooking:dish/poisonous_potato",
 				"porkchop": "dynamic_cooking:dish/porkchop",
 				"potato": "dynamic_cooking:dish/potato",
 				"pufferfish": "dynamic_cooking:dish/pufferfish",
@@ -281,8 +298,10 @@
 				"raw_potato": "dynamic_cooking:dish/raw_potato",
 				"raw_rabbit": "dynamic_cooking:dish/raw_rabbit",
 				"raw_salmon": "dynamic_cooking:dish/raw_salmon",
+				"rotten_flesh": "dynamic_cooking:dish/rotten_flesh",
 				"salmon": "dynamic_cooking:dish/salmon",
-				"sweet_berry": "dynamic_cooking:dish/sweet_berry"
+				"sweet_berry": "dynamic_cooking:dish/sweet_berry",
+				"tropical_fish": "dynamic_cooking:dish/tropical_fish"
 			}
 		},
 		{
@@ -307,13 +326,16 @@
 				"melon": "dynamic_cooking:dish/melon",
 				"mushroom": "dynamic_cooking:dish/mushroom",
 				"mutton": "dynamic_cooking:dish/mutton",
+				"poisonous_potato": "dynamic_cooking:dish/poisonous_potato",
 				"porkchop": "dynamic_cooking:dish/porkchop",
 				"potato": "dynamic_cooking:dish/potato",
 				"pufferfish": "dynamic_cooking:dish/pufferfish",
 				"pumpkin": "dynamic_cooking:dish/pumpkin",
 				"rabbit": "dynamic_cooking:dish/rabbit",
+				"rotten_flesh": "dynamic_cooking:dish/rotten_flesh",
 				"salmon": "dynamic_cooking:dish/salmon",
-				"sweet_berry": "dynamic_cooking:dish/sweet_berry"
+				"sweet_berry": "dynamic_cooking:dish/sweet_berry",
+				"tropical_fish": "dynamic_cooking:dish/tropical_fish"
 			}
 		},
 		{
@@ -339,13 +361,16 @@
 				"melon": "dynamic_cooking:dish/melon",
 				"mushroom": "dynamic_cooking:dish/mushroom",
 				"mutton": "dynamic_cooking:dish/mutton",
+				"poisonous_potato": "dynamic_cooking:dish/poisonous_potato",
 				"porkchop": "dynamic_cooking:dish/porkchop",
 				"potato": "dynamic_cooking:dish/potato",
 				"pufferfish": "dynamic_cooking:dish/pufferfish",
 				"pumpkin": "dynamic_cooking:dish/pumpkin",
 				"rabbit": "dynamic_cooking:dish/rabbit",
+				"rotten_flesh": "dynamic_cooking:dish/rotten_flesh",
 				"salmon": "dynamic_cooking:dish/salmon",
-				"sweet_berry": "dynamic_cooking:dish/sweet_berry"
+				"sweet_berry": "dynamic_cooking:dish/sweet_berry",
+				"tropical_fish": "dynamic_cooking:dish/tropical_fish"
 			}
 		}
 	]
