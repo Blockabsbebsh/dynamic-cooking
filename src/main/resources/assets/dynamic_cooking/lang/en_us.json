@@ -1,6 +1,7 @@
 {
 	"itemGroup.dynamic_cooking.dishes": "Dynamic Cooking",
 	"tooltip.dynamic_cooking.made_with": "Made with %s",
+	"tooltip.dynamic_cooking.ingredient_count": "%s x%s",
 	"dish.dynamic_cooking.flavor_pair": "%s and %s",
 	"dish.dynamic_cooking.buffed": "%s %s",
 	"item.dynamic_cooking.cake": "Cake",

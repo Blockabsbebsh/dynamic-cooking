@@ -23,7 +23,8 @@
 		},
 		{
 			"when": {
-				"fill": "1"
+				"fill": "1",
+				"liquid": "true"
 			},
 			"apply": {
 				"model": "dynamic_cooking:block/cooking_pot_liquid_1"
@@ -31,7 +32,17 @@
 		},
 		{
 			"when": {
-				"fill": "2"
+				"fill": "1",
+				"liquid": "false"
+			},
+			"apply": {
+				"model": "dynamic_cooking:block/cooking_pot_mash_1"
+			}
+		},
+		{
+			"when": {
+				"fill": "2",
+				"liquid": "true"
 			},
 			"apply": {
 				"model": "dynamic_cooking:block/cooking_pot_liquid_2"
@@ -39,7 +50,17 @@
 		},
 		{
 			"when": {
-				"fill": "3"
+				"fill": "2",
+				"liquid": "false"
+			},
+			"apply": {
+				"model": "dynamic_cooking:block/cooking_pot_mash_2"
+			}
+		},
+		{
+			"when": {
+				"fill": "3",
+				"liquid": "true"
 			},
 			"apply": {
 				"model": "dynamic_cooking:block/cooking_pot_liquid_3"
@@ -47,7 +68,17 @@
 		},
 		{
 			"when": {
-				"fill": "4"
+				"fill": "3",
+				"liquid": "false"
+			},
+			"apply": {
+				"model": "dynamic_cooking:block/cooking_pot_mash_3"
+			}
+		},
+		{
+			"when": {
+				"fill": "4",
+				"liquid": "true"
 			},
 			"apply": {
 				"model": "dynamic_cooking:block/cooking_pot_liquid_4"
@@ -55,10 +86,29 @@
 		},
 		{
 			"when": {
-				"fill": "5"
+				"fill": "4",
+				"liquid": "false"
+			},
+			"apply": {
+				"model": "dynamic_cooking:block/cooking_pot_mash_4"
+			}
+		},
+		{
+			"when": {
+				"fill": "5",
+				"liquid": "true"
 			},
 			"apply": {
 				"model": "dynamic_cooking:block/cooking_pot_liquid_5"
+			}
+		},
+		{
+			"when": {
+				"fill": "5",
+				"liquid": "false"
+			},
+			"apply": {
+				"model": "dynamic_cooking:block/cooking_pot_mash_5"
 			}
 		}
 	]

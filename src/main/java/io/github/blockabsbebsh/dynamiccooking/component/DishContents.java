@@ -1,6 +1,8 @@
 package io.github.blockabsbebsh.dynamiccooking.component;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Consumer;
 
 import com.mojang.serialization.Codec;
@@ -50,14 +52,21 @@ public record DishContents(List<String> ingredients, List<String> flavors) imple
 			return;
 		}
 
-		MutableComponent list = Component.empty();
+		// Repeats are grouped, so two carrots read "Carrot x2".
+		Map<String, Integer> counts = new LinkedHashMap<>();
+		ingredients.forEach(id -> counts.merge(id, 1, Integer::sum));
 
-		for (int i = 0; i < ingredients.size(); i++) {
-			if (i > 0) {
+		MutableComponent list = Component.empty();
+		boolean first = true;
+
+		for (Map.Entry<String, Integer> entry : counts.entrySet()) {
+			if (!first) {
 				list.append(", ");
 			}
 
-			list.append(ingredientName(ingredients.get(i)));
+			Component name = ingredientName(entry.getKey());
+			list.append(entry.getValue() > 1 ? Component.translatable("tooltip.dynamic_cooking.ingredient_count", name, entry.getValue()) : name);
+			first = false;
 		}
 
 		tooltip.accept(Component.translatable("tooltip.dynamic_cooking.made_with", list).withStyle(ChatFormatting.GRAY));

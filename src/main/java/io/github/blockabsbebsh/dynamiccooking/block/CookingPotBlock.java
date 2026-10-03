@@ -50,6 +50,8 @@ public class CookingPotBlock extends BaseEntityBlock {
 	public static final BooleanProperty COOKING = BooleanProperty.create("cooking");
 	/** How many ingredients are in the pot, which sets how high the liquid is drawn. */
 	public static final IntegerProperty FILL = IntegerProperty.create("fill", 0, CookingRules.DEFAULT.maxIngredients());
+	/** Whether the pot would make a runny dish like stew, drawn as liquid; otherwise the contents are a thick mash. */
+	public static final BooleanProperty LIQUID = BooleanProperty.create("liquid");
 	public static final EnumProperty<Legs> LEGS = EnumProperty.create("legs", Legs.class);
 
 	/** Blocks that can heat the pot when directly underneath it. Ones that can be lit, like campfires and furnaces, must be lit. */
@@ -59,12 +61,12 @@ public class CookingPotBlock extends BaseEntityBlock {
 
 	public CookingPotBlock(Properties properties) {
 		super(properties);
-		registerDefaultState(stateDefinition.any().setValue(COOKING, false).setValue(FILL, 0).setValue(LEGS, Legs.NONE));
+		registerDefaultState(stateDefinition.any().setValue(COOKING, false).setValue(FILL, 0).setValue(LIQUID, false).setValue(LEGS, Legs.NONE));
 	}
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-		builder.add(COOKING, FILL, LEGS);
+		builder.add(COOKING, FILL, LIQUID, LEGS);
 	}
 
 	@Override

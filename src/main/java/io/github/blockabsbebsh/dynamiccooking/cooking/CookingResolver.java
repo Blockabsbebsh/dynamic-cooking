@@ -129,7 +129,8 @@ public final class CookingResolver {
 				nutrition,
 				saturation,
 				resolveBuff(inputs),
-				false
+				false,
+				type.liquid()
 		));
 	}
 
@@ -207,7 +208,8 @@ public final class CookingResolver {
 				rules.fallbackNutrition(),
 				rules.fallbackSaturation(),
 				Optional.empty(),
-				true
+				true,
+				false
 		);
 	}
 

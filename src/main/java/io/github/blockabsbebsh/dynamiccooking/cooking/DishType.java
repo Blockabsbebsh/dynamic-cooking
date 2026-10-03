@@ -14,6 +14,7 @@ import java.util.Set;
  * @param flavorRoles       leftover ingredients with one of these roles also flavor the dish
  * @param bonusNutrition    food points added on top of the ingredients
  * @param bonusSaturation   saturation added on top of the ingredients
+ * @param liquid            whether the dish is runny, like a stew; the pot then shows liquid instead of a thick mash
  */
 public record DishType(
 		String item,
@@ -23,7 +24,8 @@ public record DishType(
 		List<Matcher> forbids,
 		Set<String> flavorRoles,
 		int bonusNutrition,
-		float bonusSaturation
+		float bonusSaturation,
+		boolean liquid
 ) {
 	public static final Set<String> DEFAULT_FLAVOR_ROLES = Set.of("produce", "protein", "mushroom");
 

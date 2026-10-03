@@ -14,6 +14,7 @@ import java.util.Optional;
  * @param saturation   saturation points
  * @param buff         the buff, if the ingredients agreed on one
  * @param dubious      true when no dish type matched
+ * @param liquid       whether the dish is runny, see {@link DishType#liquid()}
  */
 public record DishResult(
 		String item,
@@ -23,7 +24,8 @@ public record DishResult(
 		int nutrition,
 		float saturation,
 		Optional<Buff> buff,
-		boolean dubious
+		boolean dubious,
+		boolean liquid
 ) {
 	public DishResult {
 		ingredients = List.copyOf(ingredients);

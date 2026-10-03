@@ -136,17 +136,34 @@ public class CookingPotBlockEntity extends BlockEntity implements RenderDataBloc
 		}
 	}
 
-	/** Updates the liquid's height and color after ingredients go in or come out. */
+	/** Updates the contents' height, color and look after ingredients go in or come out. */
 	private void contentsChanged() {
 		if (level != null && !level.isClientSide()) {
-			liquidColor = CookingService.create(level.registryAccess()).liquidColor(contents());
+			CookingService cooking = CookingService.create(level.registryAccess());
+			liquidColor = cooking.liquidColor(contents());
 
-			if (getBlockState().getValue(CookingPotBlock.FILL) != count()) {
-				level.setBlock(worldPosition, getBlockState().setValue(CookingPotBlock.FILL, count()), Block.UPDATE_ALL);
+			BlockState state = getBlockState()
+					.setValue(CookingPotBlock.FILL, count())
+					.setValue(CookingPotBlock.LIQUID, isRunny(cooking));
+
+			if (state != getBlockState()) {
+				level.setBlock(worldPosition, state, Block.UPDATE_ALL);
 			}
 		}
 
 		setChanged();
+	}
+
+	private boolean isRunny(CookingService cooking) {
+		if (isEmpty()) {
+			return false;
+		}
+
+		try {
+			return cooking.resolve(contents()).liquid();
+		} catch (IllegalArgumentException e) {
+			return false;
+		}
 	}
 
 	@Override

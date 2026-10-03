@@ -61,7 +61,8 @@ public final class CookingCodecs {
 			MATCHER.listOf().optionalFieldOf("forbids", List.of()).forGetter(DishType::forbids),
 			NAMES.xmap(Set::copyOf, List::copyOf).optionalFieldOf("flavor_roles", DishType.DEFAULT_FLAVOR_ROLES).forGetter(DishType::flavorRoles),
 			Codec.intRange(0, 20).optionalFieldOf("bonus_nutrition", 0).forGetter(DishType::bonusNutrition),
-			Codec.floatRange(0.0f, 20.0f).optionalFieldOf("bonus_saturation", 0.0f).forGetter(DishType::bonusSaturation)
+			Codec.floatRange(0.0f, 20.0f).optionalFieldOf("bonus_saturation", 0.0f).forGetter(DishType::bonusSaturation),
+			Codec.BOOL.optionalFieldOf("liquid", false).forGetter(DishType::liquid)
 	).apply(instance, DishType::new));
 
 	private CookingCodecs() {
