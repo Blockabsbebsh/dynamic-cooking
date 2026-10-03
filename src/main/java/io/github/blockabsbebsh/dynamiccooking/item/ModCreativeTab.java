@@ -20,7 +20,7 @@ import io.github.blockabsbebsh.dynamiccooking.block.ModBlocks;
 import io.github.blockabsbebsh.dynamiccooking.dish.CookingService;
 
 /**
- * The mod's creative tab: the pot, the cookbook, then sample dishes made through the real rules, exactly as the pot or a
+ * The mod's creative tab: the pot, the cooking guide, then sample dishes made through the real rules, exactly as the pot or a
  * crafting table would make them from the listed ingredients. Plain never-cooked dish items are left out, since they
  * have no buff or flavor and would look like broken dishes.
  */
