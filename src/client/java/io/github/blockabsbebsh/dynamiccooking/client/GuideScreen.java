@@ -1,6 +1,7 @@
 package io.github.blockabsbebsh.dynamiccooking.client;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
@@ -114,44 +115,86 @@ public class GuideScreen extends Screen {
 		Optional<CookingService> cooking = Optional.ofNullable(minecraft.level).map(level -> CookingService.create(level.registryAccess()));
 		int maxIngredients = cooking.map(CookingService::maxIngredients).orElse(5);
 		ItemStack pot = new ItemStack(ModBlocks.COOKING_POT);
+		List<Component> crafted = cooking.map(service -> service.dishTypes().stream()
+				.filter(type -> type.method() == CookingMethod.CRAFTING)
+				.map(type -> itemStack(type.item()).getHoverName())
+				.toList()).orElse(List.of());
 
-		pages.add(List.of(
-				heading("guide.dynamic_cooking.pot.title"),
-				new Picture(List.of(pot, "+", stack(Items.CAMPFIRE))),
-				text(Component.translatable("guide.dynamic_cooking.pot.text")),
-				heading("guide.dynamic_cooking.add.title"),
-				new Picture(List.of(stack(Items.CARROT), stack(Items.POTATO), stack(Items.BEEF), "→", pot)),
-				text(Component.translatable("guide.dynamic_cooking.add.text", maxIngredients))
-		));
-		pages.add(List.of(
-				heading("guide.dynamic_cooking.water.title"),
-				new Picture(List.of(stack(Items.WATER_BUCKET), "→", pot)),
-				text(Component.translatable("guide.dynamic_cooking.water.text")),
-				heading("guide.dynamic_cooking.cook.title"),
-				new Picture(List.of(pot, "→", stack(Items.BELL))),
-				text(Component.translatable("guide.dynamic_cooking.cook.text"))
-		));
-		pages.add(List.of(
-				heading("guide.dynamic_cooking.serve.title"),
-				new Picture(List.of(pot, "+", stack(Items.BOWL), "→", stack(ModItems.STEW))),
-				text(Component.translatable("guide.dynamic_cooking.serve.text")),
-				heading("guide.dynamic_cooking.craft.title"),
-				new Picture(List.of(stack(Items.BREAD), stack(Items.COOKED_BEEF), stack(Items.BREAD), "→", stack(Items.CRAFTING_TABLE), "→",
-						stack(ModItems.SANDWICH))),
-				text(Component.translatable("guide.dynamic_cooking.craft.text"))
-		));
-		pages.add(List.of(
-				heading("guide.dynamic_cooking.raw.title"),
-				new Picture(List.of(stack(ModItems.SKEWER), "→", stack(Items.FURNACE), stack(Items.SMOKER), stack(Items.CAMPFIRE), pot)),
-				text(Component.translatable("guide.dynamic_cooking.raw.text")),
-				text(Component.translatable("guide.dynamic_cooking.dishes").withStyle(ChatFormatting.ITALIC))
-		));
+		List<List<Row>> steps = new ArrayList<>();
+		steps.add(step("pot", new Picture(List.of(pot, "+", stack(Items.CAMPFIRE), stack(Items.FURNACE), stack(Items.MAGMA_BLOCK))),
+				Component.translatable("guide.dynamic_cooking.pot.text")));
+		steps.add(step("add", new Picture(List.of(stack(Items.CARROT), stack(Items.POTATO), stack(Items.BEEF), "→", pot)),
+				Component.translatable("guide.dynamic_cooking.add.text", maxIngredients)));
+		steps.add(step("water", new Picture(List.of(stack(Items.WATER_BUCKET), "→", pot)),
+				Component.translatable("guide.dynamic_cooking.water.text")));
+		steps.add(step("cook", new Picture(List.of(pot, "→", stack(Items.BELL))),
+				Component.translatable("guide.dynamic_cooking.cook.text")));
+		steps.add(step("serve", new Picture(List.of(pot, "+", stack(Items.BOWL), "→", stack(ModItems.STEW))),
+				Component.translatable("guide.dynamic_cooking.serve.text")));
+
+		if (!crafted.isEmpty()) {
+			steps.add(step("craft", new Picture(List.of(stack(Items.BREAD), stack(Items.COOKED_BEEF), stack(Items.BREAD), "→",
+					stack(Items.CRAFTING_TABLE), "→", stack(ModItems.SANDWICH))),
+					Component.translatable("guide.dynamic_cooking.craft.text", join(crafted, ", "))));
+		}
+
+		steps.add(step("raw", new Picture(List.of(stack(ModItems.SKEWER), "→", stack(Items.FURNACE), stack(Items.SMOKER), stack(Items.CAMPFIRE), pot)),
+				Component.translatable("guide.dynamic_cooking.raw.text")));
+		steps.add(step("mix", new Picture(List.of(stack(Items.ENCHANTED_GOLDEN_APPLE), "→", stack(ModItems.PIE))),
+				Component.translatable("guide.dynamic_cooking.mix.text")));
+		steps.add(List.of(text(Component.translatable("guide.dynamic_cooking.dishes").withStyle(ChatFormatting.ITALIC))));
+		pack(steps);
 
 		cooking.ifPresent(service -> {
 			for (DishType type : service.dishTypes()) {
-				pages.add(dishPage(service, type));
+				pack(List.of(dishPage(service, type)));
 			}
 		});
+	}
+
+	private static List<Row> step(String key, Picture picture, Component text) {
+		return List.of(heading("guide.dynamic_cooking." + key + ".title"), picture, text(text));
+	}
+
+	/**
+	 * Lays blocks of rows out on pages, starting a new page whenever the next block doesn't fit. A block taller than a page
+	 * is split between rows.
+	 */
+	private void pack(List<List<Row>> blocks) {
+		int available = PAGE_HEIGHT - 2 * PADDING;
+		List<Row> page = new ArrayList<>();
+		int used = 0;
+
+		for (List<Row> block : blocks) {
+			int height = block.stream().mapToInt(row -> row.height(this) + 4).sum();
+			int gap = Spacer.INSTANCE.height(this) + 4;
+
+			if (!page.isEmpty() && used + gap + height > available) {
+				pages.add(page);
+				page = new ArrayList<>();
+				used = 0;
+			} else if (!page.isEmpty()) {
+				page.add(Spacer.INSTANCE);
+				used += gap;
+			}
+
+			for (Row row : block) {
+				int rowHeight = row.height(this) + 4;
+
+				if (!page.isEmpty() && used + rowHeight > available) {
+					pages.add(page);
+					page = new ArrayList<>();
+					used = 0;
+				}
+
+				page.add(row);
+				used += rowHeight;
+			}
+		}
+
+		if (!page.isEmpty()) {
+			pages.add(page);
+		}
 	}
 
 	private List<Row> dishPage(CookingService cooking, DishType type) {
@@ -163,6 +206,10 @@ public class GuideScreen extends Screen {
 
 		if (type.method() == CookingMethod.POT && type.servedWith().isPresent()) {
 			method.append(" · ").append(Component.translatable("guide.dynamic_cooking.served_with", itemStack(type.servedWith().get()).getHoverName()));
+		}
+
+		if (type.makes() > 1) {
+			method.append(" · ").append(Component.translatable("guide.dynamic_cooking.makes", type.makes()));
 		}
 
 		rows.add(new Text(method, INK_LIGHT));
@@ -177,9 +224,21 @@ public class GuideScreen extends Screen {
 			rows.add(new Icons(label, items(cooking, requirement.matcher())));
 		}
 
+		// Extras: flavors the dish takes on top of what it needs, minus anything it refuses.
+		Set<String> required = new HashSet<>();
+		type.requires().forEach(requirement -> required.addAll(requirement.matcher().roles()));
+		Set<String> forbidden = new HashSet<>();
+		type.forbids().forEach(matcher -> forbidden.addAll(matcher.roles()));
+		List<String> extras = type.flavorRoles().stream().filter(role -> !required.contains(role) && !forbidden.contains(role)).sorted().toList();
+
+		if (!extras.isEmpty()) {
+			Matcher matcher = new Matcher(Set.of(), Set.copyOf(extras));
+			rows.add(new Icons(Component.translatable("guide.dynamic_cooking.extras", matcherText(matcher)), items(cooking, matcher)));
+		}
+
 		if (!type.forbids().isEmpty()) {
-			List<Component> forbidden = type.forbids().stream().map(GuideScreen::matcherText).toList();
-			rows.add(new Text(Component.translatable("guide.dynamic_cooking.forbids", join(forbidden, ", ")), INK_RED));
+			List<Component> refused = type.forbids().stream().map(GuideScreen::matcherText).toList();
+			rows.add(new Text(Component.translatable("guide.dynamic_cooking.forbids", join(refused, ", ")), INK_RED));
 		}
 
 		return rows;
@@ -202,7 +261,10 @@ public class GuideScreen extends Screen {
 		List<Component> options = new ArrayList<>();
 		matcher.items().stream().sorted().map(id -> itemStack(id).getHoverName()).forEach(options::add);
 		matcher.roles().stream().sorted().map(GuideScreen::roleName).forEach(options::add);
+		return joinOr(options);
+	}
 
+	private static Component joinOr(List<Component> options) {
 		if (options.size() == 1) {
 			return options.getFirst();
 		}
@@ -257,7 +319,7 @@ public class GuideScreen extends Screen {
 		return over ? stack : ItemStack.EMPTY;
 	}
 
-	private sealed interface Row permits Text, Heading, Picture, Icons {
+	private sealed interface Row permits Text, Heading, Picture, Icons, Spacer {
 		int height(GuideScreen screen);
 
 		/** Draws the row and returns the item under the mouse, or an empty stack. */
@@ -277,6 +339,21 @@ public class GuideScreen extends Screen {
 				y += screen.font.lineHeight;
 			}
 
+			return ItemStack.EMPTY;
+		}
+	}
+
+	/** A little extra room between steps that share a page. */
+	private record Spacer() implements Row {
+		static final Spacer INSTANCE = new Spacer();
+
+		@Override
+		public int height(GuideScreen screen) {
+			return 4;
+		}
+
+		@Override
+		public ItemStack draw(GuideScreen screen, GuiGraphicsExtractor graphics, int x, int y, int mouseX, int mouseY) {
 			return ItemStack.EMPTY;
 		}
 	}
