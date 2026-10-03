@@ -1,0 +1,79 @@
+{
+	"textures": {
+		"particle": "minecraft:block/cake_side",
+		"bottom": "minecraft:block/cake_bottom",
+		"top": "minecraft:block/cake_top",
+		"side": "minecraft:block/cake_side",
+		"fruit": "dynamic_cooking:block/cake_fruit_top",
+		"filling_side": "dynamic_cooking:block/cake_filling_side"
+	},
+	"elements": [
+		{
+			"from": [
+				1,
+				0,
+				1
+			],
+			"to": [
+				15,
+				8,
+				15
+			],
+			"faces": {
+				"down": {
+					"texture": "#bottom",
+					"cullface": "down"
+				},
+				"up": {
+					"texture": "#top"
+				},
+				"north": {
+					"texture": "#side"
+				},
+				"south": {
+					"texture": "#side"
+				},
+				"west": {
+					"texture": "#side"
+				},
+				"east": {
+					"texture": "#side"
+				}
+			}
+		},
+		{
+			"from": [
+				1,
+				0,
+				1
+			],
+			"to": [
+				15,
+				8,
+				15
+			],
+			"faces": {
+				"up": {
+					"texture": "#fruit",
+					"tintindex": 0
+				},
+				"north": {
+					"texture": "#filling_side",
+					"tintindex": 1
+				},
+				"south": {
+					"texture": "#filling_side",
+					"tintindex": 1
+				},
+				"west": {
+					"texture": "#filling_side",
+					"tintindex": 1
+				},
+				"east": {
+					"texture": "#filling_side",
+					"tintindex": 1
+				}
+			}
+		}
+	]
+}
