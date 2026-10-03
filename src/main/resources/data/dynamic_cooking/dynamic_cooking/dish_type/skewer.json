@@ -1,6 +1,7 @@
 {
 	"item": "dynamic_cooking:skewer",
 	"priority": 10,
+	"method": "crafting",
 	"requires": [
 		{
 			"match": {

@@ -13,8 +13,8 @@ import java.util.Set;
 /**
  * Decides what a set of ingredients cooks into.
  *
- * <p>Dish types are tried in priority order and the first one whose requirements can all be filled wins.
- * If none fits, the result is the fallback dish from {@link CookingRules}.
+ * <p>Only dish types made with the given {@link CookingMethod} are considered. They are tried in priority order
+ * and the first one whose requirements can all be filled wins.
  */
 public final class CookingResolver {
 	private static final Comparator<DishType> ORDER = Comparator.comparingInt(DishType::priority).thenComparing(DishType::item);
@@ -31,6 +31,9 @@ public final class CookingResolver {
 		return rules;
 	}
 
+	/**
+	 * Cooks in the pot. If no pot dish fits, the result is the fallback dish from {@link CookingRules}.
+	 */
 	public DishResult resolve(List<CookingInput> inputs) {
 		if (inputs.isEmpty()) {
 			throw new IllegalArgumentException("Nothing to cook");
@@ -40,15 +43,30 @@ public final class CookingResolver {
 			throw new IllegalArgumentException("At most " + rules.maxIngredients() + " ingredients, got " + inputs.size());
 		}
 
+		return match(CookingMethod.POT, inputs).orElseGet(() -> fallback(inputs));
+	}
+
+	/**
+	 * Finds the dish these ingredients make with the given method, or nothing if no dish type fits.
+	 */
+	public Optional<DishResult> match(CookingMethod method, List<CookingInput> inputs) {
+		if (inputs.isEmpty() || inputs.size() > rules.maxIngredients()) {
+			return Optional.empty();
+		}
+
 		for (DishType type : dishTypes) {
+			if (type.method() != method) {
+				continue;
+			}
+
 			Optional<DishResult> result = tryCook(type, inputs);
 
 			if (result.isPresent()) {
-				return result.get();
+				return result;
 			}
 		}
 
-		return fallback(inputs);
+		return Optional.empty();
 	}
 
 	private Optional<DishResult> tryCook(DishType type, List<CookingInput> inputs) {
