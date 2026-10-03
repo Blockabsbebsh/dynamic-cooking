@@ -4,7 +4,7 @@
 		"models": [
 			{
 				"type": "minecraft:model",
-				"model": "dynamic_cooking:item/dish/cookies_dough"
+				"model": "minecraft:item/cookie"
 			},
 			{
 				"type": "minecraft:condition",

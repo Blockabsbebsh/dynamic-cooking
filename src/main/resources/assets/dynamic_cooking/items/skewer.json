@@ -4,7 +4,7 @@
 		"models": [
 			{
 				"type": "minecraft:model",
-				"model": "dynamic_cooking:item/dish/skewer_stick"
+				"model": "minecraft:item/stick"
 			},
 			{
 				"type": "minecraft:condition",
@@ -19,153 +19,209 @@
 							"when": "apple",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_chunks_apple"
+								"model": "dynamic_cooking:item/dish/skewer_chunk_apple"
 							}
 						},
 						{
 							"when": "beef",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_chunks_beef"
+								"model": "dynamic_cooking:item/dish/skewer_chunk_beef"
 							}
 						},
 						{
 							"when": "beetroot",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_chunks_beetroot"
+								"model": "dynamic_cooking:item/dish/skewer_chunk_beetroot"
 							}
 						},
 						{
 							"when": "carrot",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_chunks_carrot"
+								"model": "dynamic_cooking:item/dish/skewer_chunk_carrot"
 							}
 						},
 						{
 							"when": "chicken",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_chunks_chicken"
+								"model": "dynamic_cooking:item/dish/skewer_chunk_chicken"
 							}
 						},
 						{
 							"when": "chocolate",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_chunks_chocolate"
+								"model": "dynamic_cooking:item/dish/skewer_chunk_chocolate"
 							}
 						},
 						{
 							"when": "chorus_fruit",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_chunks_chorus_fruit"
+								"model": "dynamic_cooking:item/dish/skewer_chunk_chorus_fruit"
 							}
 						},
 						{
 							"when": "cod",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_chunks_cod"
+								"model": "dynamic_cooking:item/dish/skewer_chunk_cod"
 							}
 						},
 						{
 							"when": "glistering_melon",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_chunks_glistering_melon"
+								"model": "dynamic_cooking:item/dish/skewer_chunk_glistering_melon"
 							}
 						},
 						{
 							"when": "glow_berry",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_chunks_glow_berry"
+								"model": "dynamic_cooking:item/dish/skewer_chunk_glow_berry"
 							}
 						},
 						{
 							"when": "golden_apple",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_chunks_golden_apple"
+								"model": "dynamic_cooking:item/dish/skewer_chunk_golden_apple"
 							}
 						},
 						{
 							"when": "golden_carrot",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_chunks_golden_carrot"
+								"model": "dynamic_cooking:item/dish/skewer_chunk_golden_carrot"
 							}
 						},
 						{
 							"when": "melon",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_chunks_melon"
+								"model": "dynamic_cooking:item/dish/skewer_chunk_melon"
 							}
 						},
 						{
 							"when": "mutton",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_chunks_mutton"
+								"model": "dynamic_cooking:item/dish/skewer_chunk_mutton"
 							}
 						},
 						{
 							"when": "porkchop",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_chunks_porkchop"
+								"model": "dynamic_cooking:item/dish/skewer_chunk_porkchop"
 							}
 						},
 						{
 							"when": "potato",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_chunks_potato"
+								"model": "dynamic_cooking:item/dish/skewer_chunk_potato"
 							}
 						},
 						{
 							"when": "pufferfish",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_chunks_pufferfish"
+								"model": "dynamic_cooking:item/dish/skewer_chunk_pufferfish"
 							}
 						},
 						{
 							"when": "pumpkin",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_chunks_pumpkin"
+								"model": "dynamic_cooking:item/dish/skewer_chunk_pumpkin"
 							}
 						},
 						{
 							"when": "rabbit",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_chunks_rabbit"
+								"model": "dynamic_cooking:item/dish/skewer_chunk_rabbit"
+							}
+						},
+						{
+							"when": "raw_beef",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_chunk_raw_beef"
+							}
+						},
+						{
+							"when": "raw_chicken",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_chunk_raw_chicken"
+							}
+						},
+						{
+							"when": "raw_cod",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_chunk_raw_cod"
+							}
+						},
+						{
+							"when": "raw_mutton",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_chunk_raw_mutton"
+							}
+						},
+						{
+							"when": "raw_porkchop",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_chunk_raw_porkchop"
+							}
+						},
+						{
+							"when": "raw_potato",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_chunk_raw_potato"
+							}
+						},
+						{
+							"when": "raw_rabbit",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_chunk_raw_rabbit"
+							}
+						},
+						{
+							"when": "raw_salmon",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_chunk_raw_salmon"
 							}
 						},
 						{
 							"when": "salmon",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_chunks_salmon"
+								"model": "dynamic_cooking:item/dish/skewer_chunk_salmon"
 							}
 						},
 						{
 							"when": "sweet_berry",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_chunks_sweet_berry"
+								"model": "dynamic_cooking:item/dish/skewer_chunk_sweet_berry"
 							}
 						}
 					],
 					"fallback": {
 						"type": "minecraft:model",
-						"model": "dynamic_cooking:item/dish/skewer_chunks",
+						"model": "dynamic_cooking:item/dish/skewer_chunk",
 						"tints": [
 							{
 								"type": "minecraft:custom_model_data",
@@ -177,7 +233,7 @@
 				},
 				"on_false": {
 					"type": "minecraft:model",
-					"model": "dynamic_cooking:item/dish/skewer_chunks_beef"
+					"model": "dynamic_cooking:item/dish/skewer_chunk_beef"
 				}
 			},
 			{
@@ -193,147 +249,203 @@
 							"when": "apple",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_middle_apple"
+								"model": "dynamic_cooking:item/dish/skewer_lower_apple"
 							}
 						},
 						{
 							"when": "beef",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_middle_beef"
+								"model": "dynamic_cooking:item/dish/skewer_lower_beef"
 							}
 						},
 						{
 							"when": "beetroot",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_middle_beetroot"
+								"model": "dynamic_cooking:item/dish/skewer_lower_beetroot"
 							}
 						},
 						{
 							"when": "carrot",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_middle_carrot"
+								"model": "dynamic_cooking:item/dish/skewer_lower_carrot"
 							}
 						},
 						{
 							"when": "chicken",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_middle_chicken"
+								"model": "dynamic_cooking:item/dish/skewer_lower_chicken"
 							}
 						},
 						{
 							"when": "chocolate",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_middle_chocolate"
+								"model": "dynamic_cooking:item/dish/skewer_lower_chocolate"
 							}
 						},
 						{
 							"when": "chorus_fruit",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_middle_chorus_fruit"
+								"model": "dynamic_cooking:item/dish/skewer_lower_chorus_fruit"
 							}
 						},
 						{
 							"when": "cod",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_middle_cod"
+								"model": "dynamic_cooking:item/dish/skewer_lower_cod"
 							}
 						},
 						{
 							"when": "glistering_melon",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_middle_glistering_melon"
+								"model": "dynamic_cooking:item/dish/skewer_lower_glistering_melon"
 							}
 						},
 						{
 							"when": "glow_berry",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_middle_glow_berry"
+								"model": "dynamic_cooking:item/dish/skewer_lower_glow_berry"
 							}
 						},
 						{
 							"when": "golden_apple",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_middle_golden_apple"
+								"model": "dynamic_cooking:item/dish/skewer_lower_golden_apple"
 							}
 						},
 						{
 							"when": "golden_carrot",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_middle_golden_carrot"
+								"model": "dynamic_cooking:item/dish/skewer_lower_golden_carrot"
 							}
 						},
 						{
 							"when": "melon",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_middle_melon"
+								"model": "dynamic_cooking:item/dish/skewer_lower_melon"
 							}
 						},
 						{
 							"when": "mutton",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_middle_mutton"
+								"model": "dynamic_cooking:item/dish/skewer_lower_mutton"
 							}
 						},
 						{
 							"when": "porkchop",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_middle_porkchop"
+								"model": "dynamic_cooking:item/dish/skewer_lower_porkchop"
 							}
 						},
 						{
 							"when": "potato",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_middle_potato"
+								"model": "dynamic_cooking:item/dish/skewer_lower_potato"
 							}
 						},
 						{
 							"when": "pufferfish",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_middle_pufferfish"
+								"model": "dynamic_cooking:item/dish/skewer_lower_pufferfish"
 							}
 						},
 						{
 							"when": "pumpkin",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_middle_pumpkin"
+								"model": "dynamic_cooking:item/dish/skewer_lower_pumpkin"
 							}
 						},
 						{
 							"when": "rabbit",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_middle_rabbit"
+								"model": "dynamic_cooking:item/dish/skewer_lower_rabbit"
+							}
+						},
+						{
+							"when": "raw_beef",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_lower_raw_beef"
+							}
+						},
+						{
+							"when": "raw_chicken",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_lower_raw_chicken"
+							}
+						},
+						{
+							"when": "raw_cod",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_lower_raw_cod"
+							}
+						},
+						{
+							"when": "raw_mutton",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_lower_raw_mutton"
+							}
+						},
+						{
+							"when": "raw_porkchop",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_lower_raw_porkchop"
+							}
+						},
+						{
+							"when": "raw_potato",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_lower_raw_potato"
+							}
+						},
+						{
+							"when": "raw_rabbit",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_lower_raw_rabbit"
+							}
+						},
+						{
+							"when": "raw_salmon",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_lower_raw_salmon"
 							}
 						},
 						{
 							"when": "salmon",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_middle_salmon"
+								"model": "dynamic_cooking:item/dish/skewer_lower_salmon"
 							}
 						},
 						{
 							"when": "sweet_berry",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/skewer_middle_sweet_berry"
+								"model": "dynamic_cooking:item/dish/skewer_lower_sweet_berry"
 							}
 						}
 					],
@@ -346,153 +458,209 @@
 								"when": "apple",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/skewer_middle_apple"
+									"model": "dynamic_cooking:item/dish/skewer_lower_apple"
 								}
 							},
 							{
 								"when": "beef",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/skewer_middle_beef"
+									"model": "dynamic_cooking:item/dish/skewer_lower_beef"
 								}
 							},
 							{
 								"when": "beetroot",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/skewer_middle_beetroot"
+									"model": "dynamic_cooking:item/dish/skewer_lower_beetroot"
 								}
 							},
 							{
 								"when": "carrot",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/skewer_middle_carrot"
+									"model": "dynamic_cooking:item/dish/skewer_lower_carrot"
 								}
 							},
 							{
 								"when": "chicken",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/skewer_middle_chicken"
+									"model": "dynamic_cooking:item/dish/skewer_lower_chicken"
 								}
 							},
 							{
 								"when": "chocolate",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/skewer_middle_chocolate"
+									"model": "dynamic_cooking:item/dish/skewer_lower_chocolate"
 								}
 							},
 							{
 								"when": "chorus_fruit",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/skewer_middle_chorus_fruit"
+									"model": "dynamic_cooking:item/dish/skewer_lower_chorus_fruit"
 								}
 							},
 							{
 								"when": "cod",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/skewer_middle_cod"
+									"model": "dynamic_cooking:item/dish/skewer_lower_cod"
 								}
 							},
 							{
 								"when": "glistering_melon",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/skewer_middle_glistering_melon"
+									"model": "dynamic_cooking:item/dish/skewer_lower_glistering_melon"
 								}
 							},
 							{
 								"when": "glow_berry",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/skewer_middle_glow_berry"
+									"model": "dynamic_cooking:item/dish/skewer_lower_glow_berry"
 								}
 							},
 							{
 								"when": "golden_apple",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/skewer_middle_golden_apple"
+									"model": "dynamic_cooking:item/dish/skewer_lower_golden_apple"
 								}
 							},
 							{
 								"when": "golden_carrot",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/skewer_middle_golden_carrot"
+									"model": "dynamic_cooking:item/dish/skewer_lower_golden_carrot"
 								}
 							},
 							{
 								"when": "melon",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/skewer_middle_melon"
+									"model": "dynamic_cooking:item/dish/skewer_lower_melon"
 								}
 							},
 							{
 								"when": "mutton",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/skewer_middle_mutton"
+									"model": "dynamic_cooking:item/dish/skewer_lower_mutton"
 								}
 							},
 							{
 								"when": "porkchop",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/skewer_middle_porkchop"
+									"model": "dynamic_cooking:item/dish/skewer_lower_porkchop"
 								}
 							},
 							{
 								"when": "potato",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/skewer_middle_potato"
+									"model": "dynamic_cooking:item/dish/skewer_lower_potato"
 								}
 							},
 							{
 								"when": "pufferfish",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/skewer_middle_pufferfish"
+									"model": "dynamic_cooking:item/dish/skewer_lower_pufferfish"
 								}
 							},
 							{
 								"when": "pumpkin",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/skewer_middle_pumpkin"
+									"model": "dynamic_cooking:item/dish/skewer_lower_pumpkin"
 								}
 							},
 							{
 								"when": "rabbit",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/skewer_middle_rabbit"
+									"model": "dynamic_cooking:item/dish/skewer_lower_rabbit"
+								}
+							},
+							{
+								"when": "raw_beef",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/skewer_lower_raw_beef"
+								}
+							},
+							{
+								"when": "raw_chicken",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/skewer_lower_raw_chicken"
+								}
+							},
+							{
+								"when": "raw_cod",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/skewer_lower_raw_cod"
+								}
+							},
+							{
+								"when": "raw_mutton",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/skewer_lower_raw_mutton"
+								}
+							},
+							{
+								"when": "raw_porkchop",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/skewer_lower_raw_porkchop"
+								}
+							},
+							{
+								"when": "raw_potato",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/skewer_lower_raw_potato"
+								}
+							},
+							{
+								"when": "raw_rabbit",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/skewer_lower_raw_rabbit"
+								}
+							},
+							{
+								"when": "raw_salmon",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/skewer_lower_raw_salmon"
 								}
 							},
 							{
 								"when": "salmon",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/skewer_middle_salmon"
+									"model": "dynamic_cooking:item/dish/skewer_lower_salmon"
 								}
 							},
 							{
 								"when": "sweet_berry",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/skewer_middle_sweet_berry"
+									"model": "dynamic_cooking:item/dish/skewer_lower_sweet_berry"
 								}
 							}
 						],
 						"fallback": {
 							"type": "minecraft:model",
-							"model": "dynamic_cooking:item/dish/skewer_middle",
+							"model": "dynamic_cooking:item/dish/skewer_lower",
 							"tints": [
 								{
 									"type": "minecraft:custom_model_data",
@@ -505,7 +673,7 @@
 				},
 				"on_false": {
 					"type": "minecraft:model",
-					"model": "dynamic_cooking:item/dish/skewer_middle_carrot"
+					"model": "dynamic_cooking:item/dish/skewer_lower_carrot"
 				}
 			}
 		]

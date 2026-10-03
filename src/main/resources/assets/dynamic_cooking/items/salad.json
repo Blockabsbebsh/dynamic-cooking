@@ -4,7 +4,7 @@
 		"models": [
 			{
 				"type": "minecraft:model",
-				"model": "dynamic_cooking:item/dish/salad_bowl"
+				"model": "minecraft:item/bowl"
 			},
 			{
 				"type": "minecraft:condition",
