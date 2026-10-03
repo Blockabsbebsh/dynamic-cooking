@@ -1,6 +1,9 @@
 name: build
 on: [pull_request, push]
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-24.04
@@ -18,8 +21,22 @@ jobs:
         run: chmod +x ./gradlew
       - name: build
         run: ./gradlew build
-      - name: capture build artifacts
+      - name: capture mod jar
         uses: actions/upload-artifact@v7
         with:
-          name: Artifacts
-          path: build/libs/
+          name: dynamic-cooking-mod
+          path: |
+            build/libs/*.jar
+            !build/libs/*-sources.jar
+      # Every push to main also becomes a pre-release, so the jar can be downloaded from the Releases page.
+      - name: publish dev build
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          jar=$(ls build/libs/*.jar | grep -v -- '-sources.jar')
+          gh release create "build-${{ github.run_number }}" "$jar" \
+            --prerelease \
+            --target "${{ github.sha }}" \
+            --title "Dev build ${{ github.run_number }}" \
+            --notes "Automatic build of ${{ github.sha }}. Drop the jar in your mods folder along with Fabric API for 26.3."
