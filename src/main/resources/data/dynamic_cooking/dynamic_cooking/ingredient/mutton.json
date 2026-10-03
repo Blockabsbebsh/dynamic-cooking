@@ -1,0 +1,12 @@
+{
+	"items": [
+		"minecraft:mutton",
+		"minecraft:cooked_mutton"
+	],
+	"roles": [
+		"protein"
+	],
+	"flavor": "mutton",
+	"nutrition": 2,
+	"saturation": 1.2
+}

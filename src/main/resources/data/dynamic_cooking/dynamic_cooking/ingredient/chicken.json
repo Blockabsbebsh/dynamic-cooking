@@ -1,0 +1,12 @@
+{
+	"items": [
+		"minecraft:chicken",
+		"minecraft:cooked_chicken"
+	],
+	"roles": [
+		"protein"
+	],
+	"flavor": "chicken",
+	"nutrition": 2,
+	"saturation": 1.2
+}

@@ -1,0 +1,37 @@
+{
+	"item": "dynamic_cooking:cake",
+	"priority": 1,
+	"requires": [
+		{
+			"match": {
+				"roles": [
+					"flour"
+				]
+			}
+		},
+		{
+			"match": {
+				"roles": [
+					"sweet"
+				]
+			}
+		},
+		{
+			"match": {
+				"roles": [
+					"egg"
+				]
+			}
+		},
+		{
+			"match": {
+				"roles": [
+					"produce"
+				]
+			},
+			"flavor": true
+		}
+	],
+	"bonus_nutrition": 4,
+	"bonus_saturation": 2.0
+}

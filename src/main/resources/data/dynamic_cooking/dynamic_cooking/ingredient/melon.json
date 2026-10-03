@@ -1,0 +1,12 @@
+{
+	"items": [
+		"minecraft:melon_slice"
+	],
+	"roles": [
+		"produce",
+		"fresh"
+	],
+	"flavor": "melon",
+	"nutrition": 2,
+	"saturation": 1.2
+}

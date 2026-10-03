@@ -1,0 +1,10 @@
+{
+	"items": [
+		"minecraft:bread"
+	],
+	"roles": [
+		"bread"
+	],
+	"nutrition": 5,
+	"saturation": 6.0
+}

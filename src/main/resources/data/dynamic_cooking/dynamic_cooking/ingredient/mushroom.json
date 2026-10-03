@@ -1,0 +1,12 @@
+{
+	"items": [
+		"minecraft:brown_mushroom",
+		"minecraft:red_mushroom"
+	],
+	"roles": [
+		"mushroom"
+	],
+	"flavor": "mushroom",
+	"nutrition": 1,
+	"saturation": 0.6
+}

@@ -1,0 +1,15 @@
+{
+	"items": [
+		"minecraft:golden_apple"
+	],
+	"roles": [
+		"produce",
+		"fresh"
+	],
+	"flavor": "golden_apple",
+	"nutrition": 4,
+	"saturation": 9.6,
+	"buff": {
+		"effect": "minecraft:absorption"
+	}
+}

@@ -1,0 +1,12 @@
+{
+	"items": [
+		"minecraft:apple"
+	],
+	"roles": [
+		"produce",
+		"fresh"
+	],
+	"flavor": "apple",
+	"nutrition": 4,
+	"saturation": 2.4
+}

@@ -1,0 +1,10 @@
+{
+	"items": [
+		"minecraft:milk_bucket"
+	],
+	"roles": [
+		"dairy"
+	],
+	"nutrition": 1,
+	"saturation": 1.0
+}

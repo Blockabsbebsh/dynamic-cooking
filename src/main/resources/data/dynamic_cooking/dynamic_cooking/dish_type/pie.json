@@ -1,0 +1,31 @@
+{
+	"item": "dynamic_cooking:pie",
+	"priority": 2,
+	"requires": [
+		{
+			"match": {
+				"roles": [
+					"flour"
+				]
+			}
+		},
+		{
+			"match": {
+				"roles": [
+					"egg"
+				]
+			}
+		},
+		{
+			"match": {
+				"roles": [
+					"produce",
+					"protein"
+				]
+			},
+			"flavor": true
+		}
+	],
+	"bonus_nutrition": 3,
+	"bonus_saturation": 1.5
+}

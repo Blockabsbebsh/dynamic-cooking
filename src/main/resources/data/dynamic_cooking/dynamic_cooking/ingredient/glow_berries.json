@@ -1,0 +1,12 @@
+{
+	"items": [
+		"minecraft:glow_berries"
+	],
+	"roles": [
+		"produce",
+		"fresh"
+	],
+	"flavor": "glow_berry",
+	"nutrition": 2,
+	"saturation": 0.4
+}

@@ -1,0 +1,26 @@
+{
+	"schemaVersion": 1,
+	"id": "dynamic_cooking",
+	"version": "${version}",
+	"name": "Dynamic Cooking",
+	"description": "Breath of the Wild style cooking: throw vanilla ingredients into a pot and get a dish named after what went in.",
+	"authors": [
+		"Gabrielius"
+	],
+	"contact": {
+		"sources": "https://github.com/Blockabsbebsh/dynamic-cooking"
+	},
+	"license": "MIT",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"io.github.blockabsbebsh.dynamiccooking.DynamicCooking"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.19.5",
+		"minecraft": "~26.3",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}

@@ -1,0 +1,14 @@
+{
+	"items": [
+		"minecraft:golden_carrot"
+	],
+	"roles": [
+		"produce"
+	],
+	"flavor": "golden_carrot",
+	"nutrition": 6,
+	"saturation": 14.4,
+	"buff": {
+		"effect": "minecraft:night_vision"
+	}
+}

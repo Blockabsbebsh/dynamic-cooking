@@ -1,0 +1,12 @@
+{
+	"items": [
+		"minecraft:rabbit",
+		"minecraft:cooked_rabbit"
+	],
+	"roles": [
+		"protein"
+	],
+	"flavor": "rabbit",
+	"nutrition": 3,
+	"saturation": 1.8
+}

@@ -1,0 +1,12 @@
+{
+	"items": [
+		"minecraft:beef",
+		"minecraft:cooked_beef"
+	],
+	"roles": [
+		"protein"
+	],
+	"flavor": "beef",
+	"nutrition": 3,
+	"saturation": 1.8
+}

@@ -1,0 +1,31 @@
+{
+	"item": "dynamic_cooking:soup",
+	"priority": 7,
+	"requires": [
+		{
+			"match": {
+				"roles": [
+					"bowl"
+				]
+			}
+		},
+		{
+			"match": {
+				"roles": [
+					"produce",
+					"mushroom"
+				]
+			},
+			"flavor": true
+		}
+	],
+	"forbids": [
+		{
+			"roles": [
+				"protein"
+			]
+		}
+	],
+	"bonus_nutrition": 2,
+	"bonus_saturation": 1.0
+}

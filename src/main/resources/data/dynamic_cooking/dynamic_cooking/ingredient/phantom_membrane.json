@@ -1,0 +1,11 @@
+{
+	"items": [
+		"minecraft:phantom_membrane"
+	],
+	"roles": [
+		"seasoning"
+	],
+	"buff": {
+		"effect": "minecraft:slow_falling"
+	}
+}

@@ -1,0 +1,12 @@
+{
+	"items": [
+		"minecraft:salmon",
+		"minecraft:cooked_salmon"
+	],
+	"roles": [
+		"protein"
+	],
+	"flavor": "salmon",
+	"nutrition": 2,
+	"saturation": 0.4
+}

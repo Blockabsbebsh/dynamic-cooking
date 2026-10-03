@@ -1,0 +1,24 @@
+{
+	"item": "dynamic_cooking:sandwich",
+	"priority": 8,
+	"requires": [
+		{
+			"match": {
+				"roles": [
+					"bread"
+				]
+			}
+		},
+		{
+			"match": {
+				"roles": [
+					"protein",
+					"produce"
+				]
+			},
+			"flavor": true
+		}
+	],
+	"bonus_nutrition": 2,
+	"bonus_saturation": 2.0
+}

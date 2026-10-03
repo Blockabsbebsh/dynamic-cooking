@@ -1,0 +1,38 @@
+{
+	"item": "dynamic_cooking:roast",
+	"priority": 12,
+	"requires": [
+		{
+			"match": {
+				"roles": [
+					"protein"
+				]
+			},
+			"flavor": true
+		},
+		{
+			"match": {
+				"roles": [
+					"produce",
+					"mushroom"
+				]
+			},
+			"flavor": true
+		}
+	],
+	"forbids": [
+		{
+			"roles": [
+				"bowl",
+				"bottle",
+				"stick",
+				"bread",
+				"wrap",
+				"flour",
+				"sweet"
+			]
+		}
+	],
+	"bonus_nutrition": 2,
+	"bonus_saturation": 2.0
+}

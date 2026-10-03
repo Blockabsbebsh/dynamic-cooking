@@ -1,0 +1,15 @@
+{
+	"items": [
+		"minecraft:glistering_melon_slice"
+	],
+	"roles": [
+		"produce",
+		"fresh"
+	],
+	"flavor": "glistering_melon",
+	"nutrition": 2,
+	"saturation": 1.2,
+	"buff": {
+		"effect": "minecraft:regeneration"
+	}
+}

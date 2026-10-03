@@ -1,0 +1,11 @@
+{
+	"items": [
+		"minecraft:pumpkin"
+	],
+	"roles": [
+		"produce"
+	],
+	"flavor": "pumpkin",
+	"nutrition": 2,
+	"saturation": 1.0
+}

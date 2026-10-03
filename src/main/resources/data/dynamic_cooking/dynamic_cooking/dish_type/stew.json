@@ -1,0 +1,32 @@
+{
+	"item": "dynamic_cooking:stew",
+	"priority": 5,
+	"requires": [
+		{
+			"match": {
+				"roles": [
+					"bowl"
+				]
+			}
+		},
+		{
+			"match": {
+				"roles": [
+					"protein"
+				]
+			},
+			"flavor": true
+		},
+		{
+			"match": {
+				"roles": [
+					"produce",
+					"mushroom"
+				]
+			},
+			"flavor": true
+		}
+	],
+	"bonus_nutrition": 2,
+	"bonus_saturation": 2.0
+}

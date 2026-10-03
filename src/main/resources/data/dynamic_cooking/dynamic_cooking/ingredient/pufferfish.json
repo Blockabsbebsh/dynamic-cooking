@@ -1,0 +1,14 @@
+{
+	"items": [
+		"minecraft:pufferfish"
+	],
+	"roles": [
+		"protein"
+	],
+	"flavor": "pufferfish",
+	"nutrition": 1,
+	"saturation": 0.2,
+	"buff": {
+		"effect": "minecraft:water_breathing"
+	}
+}

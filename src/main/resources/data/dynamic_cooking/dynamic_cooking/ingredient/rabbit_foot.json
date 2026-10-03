@@ -1,0 +1,11 @@
+{
+	"items": [
+		"minecraft:rabbit_foot"
+	],
+	"roles": [
+		"seasoning"
+	],
+	"buff": {
+		"effect": "minecraft:jump_boost"
+	}
+}

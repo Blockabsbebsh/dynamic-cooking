@@ -1,0 +1,32 @@
+{
+	"item": "dynamic_cooking:salad",
+	"priority": 6,
+	"requires": [
+		{
+			"match": {
+				"roles": [
+					"bowl"
+				]
+			}
+		},
+		{
+			"match": {
+				"roles": [
+					"fresh"
+				]
+			},
+			"count": 2,
+			"flavor": true
+		}
+	],
+	"forbids": [
+		{
+			"roles": [
+				"protein",
+				"mushroom"
+			]
+		}
+	],
+	"bonus_nutrition": 1,
+	"bonus_saturation": 1.0
+}

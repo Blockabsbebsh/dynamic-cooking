@@ -1,0 +1,13 @@
+{
+	"items": [
+		"minecraft:egg",
+		"minecraft:brown_egg",
+		"minecraft:blue_egg"
+	],
+	"roles": [
+		"egg"
+	],
+	"flavor": "egg",
+	"nutrition": 1,
+	"saturation": 0.5
+}

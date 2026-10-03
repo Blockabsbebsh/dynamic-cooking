@@ -1,0 +1,11 @@
+{
+	"items": [
+		"minecraft:beetroot"
+	],
+	"roles": [
+		"produce"
+	],
+	"flavor": "beetroot",
+	"nutrition": 1,
+	"saturation": 1.2
+}

@@ -1,0 +1,11 @@
+{
+	"items": [
+		"minecraft:carrot"
+	],
+	"roles": [
+		"produce"
+	],
+	"flavor": "carrot",
+	"nutrition": 3,
+	"saturation": 3.6
+}

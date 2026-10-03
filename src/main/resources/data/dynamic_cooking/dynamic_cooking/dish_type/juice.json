@@ -1,0 +1,32 @@
+{
+	"item": "dynamic_cooking:juice",
+	"priority": 4,
+	"requires": [
+		{
+			"match": {
+				"roles": [
+					"bottle"
+				]
+			}
+		},
+		{
+			"match": {
+				"roles": [
+					"produce"
+				]
+			},
+			"flavor": true
+		}
+	],
+	"forbids": [
+		{
+			"roles": [
+				"protein",
+				"mushroom",
+				"flour"
+			]
+		}
+	],
+	"bonus_nutrition": 1,
+	"bonus_saturation": 0.5
+}

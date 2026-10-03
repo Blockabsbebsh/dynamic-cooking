@@ -1,0 +1,11 @@
+{
+	"items": [
+		"minecraft:magma_cream"
+	],
+	"roles": [
+		"seasoning"
+	],
+	"buff": {
+		"effect": "minecraft:fire_resistance"
+	}
+}

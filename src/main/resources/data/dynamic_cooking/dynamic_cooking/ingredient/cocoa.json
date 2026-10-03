@@ -1,0 +1,13 @@
+{
+	"items": [
+		"minecraft:cocoa_beans"
+	],
+	"roles": [
+		"sweet",
+		"produce"
+	],
+	"flavor": "chocolate",
+	"buff": {
+		"effect": "minecraft:speed"
+	}
+}

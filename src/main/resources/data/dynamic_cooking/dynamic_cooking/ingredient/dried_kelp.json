@@ -1,0 +1,11 @@
+{
+	"items": [
+		"minecraft:dried_kelp"
+	],
+	"roles": [
+		"wrap"
+	],
+	"flavor": "kelp",
+	"nutrition": 1,
+	"saturation": 0.6
+}
