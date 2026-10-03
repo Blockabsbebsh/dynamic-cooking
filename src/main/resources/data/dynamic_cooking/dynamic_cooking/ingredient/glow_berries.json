@@ -8,5 +8,6 @@
 	],
 	"flavor": "glow_berry",
 	"nutrition": 2,
-	"saturation": 0.4
+	"saturation": 0.4,
+	"color": "#F0A030"
 }

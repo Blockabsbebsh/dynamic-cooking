@@ -1,6 +1,7 @@
 {
 	"item": "dynamic_cooking:sandwich",
 	"priority": 8,
+	"method": "crafting",
 	"requires": [
 		{
 			"match": {

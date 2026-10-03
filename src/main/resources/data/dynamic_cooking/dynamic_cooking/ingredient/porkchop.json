@@ -8,5 +8,6 @@
 	],
 	"flavor": "porkchop",
 	"nutrition": 3,
-	"saturation": 1.8
+	"saturation": 1.8,
+	"color": "#D88A7A"
 }

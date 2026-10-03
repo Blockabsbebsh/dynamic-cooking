@@ -8,5 +8,6 @@
 	],
 	"flavor": "chicken",
 	"nutrition": 2,
-	"saturation": 1.2
+	"saturation": 1.2,
+	"color": "#E0B98A"
 }

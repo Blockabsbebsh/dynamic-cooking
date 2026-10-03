@@ -62,7 +62,8 @@ public final class ModCreativeTab {
 						List<ItemStack> stacks = sample.stream().map(ItemStack::new).toList();
 
 						if (stacks.stream().allMatch(cooking::isIngredient)) {
-							output.accept(cooking.cook(stacks));
+							// Crafted dishes first; everything else goes through the pot, which also shows Dubious Mush.
+							output.accept(cooking.craft(stacks).orElseGet(() -> cooking.cook(stacks)));
 						} else {
 							DynamicCooking.LOGGER.warn("Sample dish {} uses an item with no ingredient profile", Arrays.toString(sample.toArray()));
 						}

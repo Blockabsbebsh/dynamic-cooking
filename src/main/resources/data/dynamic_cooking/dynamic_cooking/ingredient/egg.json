@@ -9,5 +9,6 @@
 	],
 	"flavor": "egg",
 	"nutrition": 1,
-	"saturation": 0.5
+	"saturation": 0.5,
+	"color": "#F2D27A"
 }

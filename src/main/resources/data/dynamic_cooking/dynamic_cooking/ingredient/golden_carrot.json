@@ -10,5 +10,6 @@
 	"saturation": 14.4,
 	"buff": {
 		"effect": "minecraft:night_vision"
-	}
+	},
+	"color": "#E8B030"
 }

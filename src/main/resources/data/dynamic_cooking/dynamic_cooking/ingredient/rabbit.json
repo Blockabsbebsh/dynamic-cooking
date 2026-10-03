@@ -8,5 +8,6 @@
 	],
 	"flavor": "rabbit",
 	"nutrition": 3,
-	"saturation": 1.8
+	"saturation": 1.8,
+	"color": "#C99A7E"
 }

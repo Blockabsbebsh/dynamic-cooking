@@ -9,6 +9,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 import net.minecraft.resources.Identifier;
 
+import io.github.blockabsbebsh.dynamiccooking.cooking.CookingMethod;
 import io.github.blockabsbebsh.dynamiccooking.cooking.DishType;
 import io.github.blockabsbebsh.dynamiccooking.cooking.IngredientProfile;
 import io.github.blockabsbebsh.dynamiccooking.cooking.Matcher;
@@ -23,6 +24,8 @@ public final class CookingCodecs {
 
 	private static final Codec<List<String>> IDS = ID.listOf();
 	private static final Codec<List<String>> NAMES = Codec.STRING.listOf();
+
+	public static final Codec<CookingMethod> METHOD = Codec.STRING.comapFlatMap(CookingCodecs::parseMethod, CookingMethod::id);
 
 	public static final Codec<Matcher> MATCHER = RecordCodecBuilder.<Matcher>create(instance -> instance.group(
 			IDS.optionalFieldOf("items", List.of()).forGetter(matcher -> List.copyOf(matcher.items())),
@@ -46,12 +49,14 @@ public final class CookingCodecs {
 			Codec.STRING.optionalFieldOf("flavor").forGetter(IngredientProfile::flavor),
 			Codec.intRange(0, 20).optionalFieldOf("nutrition", 0).forGetter(IngredientProfile::nutrition),
 			Codec.floatRange(0.0f, 20.0f).optionalFieldOf("saturation", 0.0f).forGetter(IngredientProfile::saturation),
-			BUFF_SOURCE.optionalFieldOf("buff").forGetter(IngredientProfile::buff)
+			BUFF_SOURCE.optionalFieldOf("buff").forGetter(IngredientProfile::buff),
+			Codec.STRING.comapFlatMap(CookingCodecs::parseColor, CookingCodecs::formatColor).optionalFieldOf("color").forGetter(IngredientProfile::color)
 	).apply(instance, IngredientProfile::new));
 
 	public static final Codec<DishType> DISH_TYPE = RecordCodecBuilder.create(instance -> instance.group(
 			ID.fieldOf("item").forGetter(DishType::item),
 			Codec.INT.fieldOf("priority").forGetter(DishType::priority),
+			METHOD.optionalFieldOf("method", CookingMethod.POT).forGetter(DishType::method),
 			REQUIREMENT.listOf().fieldOf("requires").forGetter(DishType::requires),
 			MATCHER.listOf().optionalFieldOf("forbids", List.of()).forGetter(DishType::forbids),
 			NAMES.xmap(Set::copyOf, List::copyOf).optionalFieldOf("flavor_roles", DishType.DEFAULT_FLAVOR_ROLES).forGetter(DishType::flavorRoles),
@@ -60,6 +65,29 @@ public final class CookingCodecs {
 	).apply(instance, DishType::new));
 
 	private CookingCodecs() {
+	}
+
+	/** Reads a {@code #RRGGBB} color. */
+	private static DataResult<Integer> parseColor(String color) {
+		if (!color.matches("#[0-9a-fA-F]{6}")) {
+			return DataResult.error(() -> "Expected a color like #E58A1F, got " + color);
+		}
+
+		return DataResult.success(Integer.parseInt(color.substring(1), 16));
+	}
+
+	private static String formatColor(int color) {
+		return String.format("#%06X", color & 0xFFFFFF);
+	}
+
+	private static DataResult<CookingMethod> parseMethod(String id) {
+		for (CookingMethod method : CookingMethod.values()) {
+			if (method.id().equals(id)) {
+				return DataResult.success(method);
+			}
+		}
+
+		return DataResult.error(() -> "Unknown cooking method " + id + ", expected pot or crafting");
 	}
 
 	private static DataResult<Matcher> validateMatcher(Matcher matcher) {

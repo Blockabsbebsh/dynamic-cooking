@@ -1,6 +1,7 @@
 {
 	"item": "dynamic_cooking:kelp_roll",
 	"priority": 9,
+	"method": "crafting",
 	"requires": [
 		{
 			"match": {

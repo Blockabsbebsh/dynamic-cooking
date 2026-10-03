@@ -15,6 +15,9 @@
 	"entrypoints": {
 		"main": [
 			"io.github.blockabsbebsh.dynamiccooking.DynamicCooking"
+		],
+		"client": [
+			"io.github.blockabsbebsh.dynamiccooking.DynamicCookingClient"
 		]
 	},
 	"depends": {

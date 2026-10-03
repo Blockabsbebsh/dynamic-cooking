@@ -7,5 +7,6 @@
 	],
 	"flavor": "honey",
 	"nutrition": 2,
-	"saturation": 0.4
+	"saturation": 0.4,
+	"color": "#E8A23A"
 }

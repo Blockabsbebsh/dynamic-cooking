@@ -1,6 +1,7 @@
 {
 	"item": "dynamic_cooking:juice",
 	"priority": 4,
+	"method": "crafting",
 	"requires": [
 		{
 			"match": {

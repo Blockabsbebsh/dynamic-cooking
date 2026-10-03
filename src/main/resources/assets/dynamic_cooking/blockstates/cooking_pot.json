@@ -1,10 +1,65 @@
 {
-	"variants": {
-		"cooking=false": {
-			"model": "dynamic_cooking:block/cooking_pot"
+	"multipart": [
+		{
+			"apply": {
+				"model": "dynamic_cooking:block/cooking_pot"
+			}
 		},
-		"cooking=true": {
-			"model": "dynamic_cooking:block/cooking_pot"
+		{
+			"when": {
+				"legs": "short"
+			},
+			"apply": {
+				"model": "dynamic_cooking:block/cooking_pot_legs_short"
+			}
+		},
+		{
+			"when": {
+				"legs": "long"
+			},
+			"apply": {
+				"model": "dynamic_cooking:block/cooking_pot_legs_long"
+			}
+		},
+		{
+			"when": {
+				"fill": "1"
+			},
+			"apply": {
+				"model": "dynamic_cooking:block/cooking_pot_liquid_1"
+			}
+		},
+		{
+			"when": {
+				"fill": "2"
+			},
+			"apply": {
+				"model": "dynamic_cooking:block/cooking_pot_liquid_2"
+			}
+		},
+		{
+			"when": {
+				"fill": "3"
+			},
+			"apply": {
+				"model": "dynamic_cooking:block/cooking_pot_liquid_3"
+			}
+		},
+		{
+			"when": {
+				"fill": "4"
+			},
+			"apply": {
+				"model": "dynamic_cooking:block/cooking_pot_liquid_4"
+			}
+		},
+		{
+			"when": {
+				"fill": "5"
+			},
+			"apply": {
+				"model": "dynamic_cooking:block/cooking_pot_liquid_5"
+			}
 		}
-	}
+	]
 }

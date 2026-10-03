@@ -3,8 +3,12 @@ package io.github.blockabsbebsh.dynamiccooking.block;
 import java.util.List;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.ContainerHelper;
@@ -17,19 +21,24 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 
+import net.fabricmc.fabric.api.blockgetter.v2.RenderDataBlockEntity;
+
 import io.github.blockabsbebsh.dynamiccooking.DynamicCooking;
 import io.github.blockabsbebsh.dynamiccooking.cooking.CookingRules;
+import io.github.blockabsbebsh.dynamiccooking.cooking.PotColors;
 import io.github.blockabsbebsh.dynamiccooking.dish.CookingService;
 
 /**
  * Holds the ingredients in the order they were added and runs the cooking timer.
+ * The liquid color is synced to clients, which tint the liquid with it.
  */
-public class CookingPotBlockEntity extends BlockEntity {
+public class CookingPotBlockEntity extends BlockEntity implements RenderDataBlockEntity {
 	/** How long cooking takes, in ticks. */
 	public static final int COOK_TICKS = 3 * 20;
 
 	private final NonNullList<ItemStack> items = NonNullList.withSize(CookingRules.DEFAULT.maxIngredients(), ItemStack.EMPTY);
 	private int cookTicksLeft;
+	private int liquidColor = PotColors.WATER;
 
 	public CookingPotBlockEntity(BlockPos pos, BlockState state) {
 		super(ModBlockEntities.COOKING_POT, pos, state);
@@ -61,7 +70,7 @@ public class CookingPotBlockEntity extends BlockEntity {
 
 	public void add(ItemStack ingredient) {
 		items.set(count(), ingredient);
-		setChanged();
+		contentsChanged();
 	}
 
 	public ItemStack removeLast() {
@@ -73,7 +82,7 @@ public class CookingPotBlockEntity extends BlockEntity {
 
 		ItemStack stack = items.get(last);
 		items.set(last, ItemStack.EMPTY);
-		setChanged();
+		contentsChanged();
 		return stack;
 	}
 
@@ -110,13 +119,13 @@ public class CookingPotBlockEntity extends BlockEntity {
 			Containers.dropContents(level, pos, pot.items);
 			pot.items.clear();
 			pot.setCookingState(false);
-			pot.setChanged();
+			pot.contentsChanged();
 			return;
 		}
 
 		pot.items.clear();
 		pot.setCookingState(false);
-		pot.setChanged();
+		pot.contentsChanged();
 		Block.popResourceFromFace(level, pos, Direction.UP, dish);
 		level.playSound(null, pos, SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.BLOCKS, 1.0f, 1.2f);
 	}
@@ -125,6 +134,45 @@ public class CookingPotBlockEntity extends BlockEntity {
 		if (level != null && getBlockState().getValue(CookingPotBlock.COOKING) != cooking) {
 			level.setBlock(worldPosition, getBlockState().setValue(CookingPotBlock.COOKING, cooking), Block.UPDATE_ALL);
 		}
+	}
+
+	/** Updates the liquid's height and color after ingredients go in or come out. */
+	private void contentsChanged() {
+		if (level != null && !level.isClientSide()) {
+			liquidColor = CookingService.create(level.registryAccess()).liquidColor(contents());
+
+			if (getBlockState().getValue(CookingPotBlock.FILL) != count()) {
+				level.setBlock(worldPosition, getBlockState().setValue(CookingPotBlock.FILL, count()), Block.UPDATE_ALL);
+			}
+		}
+
+		setChanged();
+	}
+
+	@Override
+	public void setChanged() {
+		super.setChanged();
+
+		// Sends the new liquid color to players nearby.
+		if (level instanceof ServerLevel serverLevel) {
+			serverLevel.getChunkSource().blockChanged(worldPosition);
+		}
+	}
+
+	/** The liquid color, read by the client tint for the pot. */
+	@Override
+	public Object getRenderData() {
+		return liquidColor;
+	}
+
+	@Override
+	public ClientboundBlockEntityDataPacket getUpdatePacket() {
+		return ClientboundBlockEntityDataPacket.create(this);
+	}
+
+	@Override
+	public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+		return saveCustomOnly(registries);
 	}
 
 	@Override
@@ -140,12 +188,19 @@ public class CookingPotBlockEntity extends BlockEntity {
 		items.clear();
 		ContainerHelper.loadAllItems(input, items);
 		cookTicksLeft = input.getIntOr("cook_ticks_left", 0);
+		liquidColor = input.getIntOr("liquid_color", PotColors.WATER);
+
+		if (level != null && level.isClientSide()) {
+			// Redraw the pot so the liquid picks up the new color.
+			level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 0);
+		}
 	}
 
 	@Override
 	protected void saveAdditional(ValueOutput output) {
 		ContainerHelper.saveAllItems(output, items);
 		output.putInt("cook_ticks_left", cookTicksLeft);
+		output.putInt("liquid_color", liquidColor);
 		super.saveAdditional(output);
 	}
 }

@@ -8,5 +8,6 @@
 	],
 	"flavor": "potato",
 	"nutrition": 3,
-	"saturation": 3.0
+	"saturation": 3.0,
+	"color": "#D9B26A"
 }

@@ -12,6 +12,7 @@ import io.github.blockabsbebsh.dynamiccooking.block.ModBlocks;
 import io.github.blockabsbebsh.dynamiccooking.component.ModComponents;
 import io.github.blockabsbebsh.dynamiccooking.item.ModCreativeTab;
 import io.github.blockabsbebsh.dynamiccooking.item.ModItems;
+import io.github.blockabsbebsh.dynamiccooking.recipe.ModRecipes;
 import io.github.blockabsbebsh.dynamiccooking.registry.ModRegistries;
 
 public class DynamicCooking implements ModInitializer {
@@ -25,6 +26,7 @@ public class DynamicCooking implements ModInitializer {
 		ModItems.initialize();
 		ModBlocks.initialize();
 		ModBlockEntities.initialize();
+		ModRecipes.initialize();
 		ModCreativeTab.initialize();
 	}
 

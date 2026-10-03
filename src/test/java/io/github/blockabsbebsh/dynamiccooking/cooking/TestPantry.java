@@ -38,13 +38,13 @@ final class TestPantry {
 	static final DishType STEW = type("stew", 5, 2, 2.0f,
 			List.of(req(Matcher.role("bowl")), flavor(Matcher.role("protein")), flavor(Matcher.role("produce", "mushroom"))),
 			List.of());
-	static final DishType SALAD = type("salad", 6, 1, 1.0f,
+	static final DishType SALAD = crafted("salad", 6, 1, 1.0f,
 			List.of(req(Matcher.role("bowl")), new Requirement(Matcher.role("fresh"), 2, true)),
 			List.of(Matcher.role("protein", "mushroom")));
 	static final DishType SOUP = type("soup", 7, 2, 1.0f,
 			List.of(req(Matcher.role("bowl")), flavor(Matcher.role("produce", "mushroom"))),
 			List.of(Matcher.role("protein")));
-	static final DishType SKEWER = type("skewer", 10, 1, 1.0f,
+	static final DishType SKEWER = crafted("skewer", 10, 1, 1.0f,
 			List.of(req(Matcher.role("stick")), flavor(Matcher.role("protein", "produce"))),
 			List.of());
 
@@ -55,6 +55,11 @@ final class TestPantry {
 
 	static CookingResolver resolver() {
 		return new CookingResolver(ALL, CookingRules.DEFAULT);
+	}
+
+	/** Crafts the named ingredients, failing the test if they make nothing. */
+	static DishResult craft(String... names) {
+		return resolver().match(CookingMethod.CRAFTING, inputs(names)).orElseThrow(() -> new AssertionError(List.of(names) + " crafts nothing"));
 	}
 
 	static List<CookingInput> inputs(String... names) {
@@ -72,7 +77,11 @@ final class TestPantry {
 	}
 
 	static DishType type(String name, int priority, int bonusNutrition, float bonusSaturation, List<Requirement> requires, List<Matcher> forbids) {
-		return new DishType("dynamic_cooking:" + name, priority, requires, forbids, DishType.DEFAULT_FLAVOR_ROLES, bonusNutrition, bonusSaturation);
+		return new DishType("dynamic_cooking:" + name, priority, CookingMethod.POT, requires, forbids, DishType.DEFAULT_FLAVOR_ROLES, bonusNutrition, bonusSaturation);
+	}
+
+	static DishType crafted(String name, int priority, int bonusNutrition, float bonusSaturation, List<Requirement> requires, List<Matcher> forbids) {
+		return new DishType("dynamic_cooking:" + name, priority, CookingMethod.CRAFTING, requires, forbids, DishType.DEFAULT_FLAVOR_ROLES, bonusNutrition, bonusSaturation);
 	}
 
 	static Requirement req(Matcher matcher) {
@@ -90,7 +99,8 @@ final class TestPantry {
 				Optional.ofNullable(flavor),
 				nutrition,
 				saturation,
-				Optional.ofNullable(buff)
+				Optional.ofNullable(buff),
+				Optional.empty()
 		));
 	}
 }

@@ -8,6 +8,7 @@ import java.util.Set;
  *
  * @param item              the item id the dish is made as, e.g. {@code dynamic_cooking:cake}
  * @param priority          lower is checked first, so specific dishes should have lower numbers than general ones
+ * @param method            where the dish is made, the pot or a crafting table
  * @param requires          slots that must all be filled, each by different ingredients
  * @param forbids           if any ingredient matches one of these, the dish type does not apply
  * @param flavorRoles       leftover ingredients with one of these roles also flavor the dish
@@ -17,6 +18,7 @@ import java.util.Set;
 public record DishType(
 		String item,
 		int priority,
+		CookingMethod method,
 		List<Requirement> requires,
 		List<Matcher> forbids,
 		Set<String> flavorRoles,

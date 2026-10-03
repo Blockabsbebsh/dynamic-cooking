@@ -8,5 +8,6 @@
 	],
 	"flavor": "mutton",
 	"nutrition": 2,
-	"saturation": 1.2
+	"saturation": 1.2,
+	"color": "#A84E3E"
 }

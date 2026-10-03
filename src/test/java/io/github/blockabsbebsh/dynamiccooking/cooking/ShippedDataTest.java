@@ -42,7 +42,8 @@ class ShippedDataTest {
 					json.has("flavor") ? Optional.of(json.get("flavor").getAsString()) : Optional.empty(),
 					json.has("nutrition") ? json.get("nutrition").getAsInt() : 0,
 					json.has("saturation") ? json.get("saturation").getAsFloat() : 0.0f,
-					json.has("buff") ? Optional.of(buff(json.getAsJsonObject("buff"))) : Optional.empty()
+					json.has("buff") ? Optional.of(buff(json.getAsJsonObject("buff"))) : Optional.empty(),
+					json.has("color") ? Optional.of(Integer.parseInt(json.get("color").getAsString().substring(1), 16)) : Optional.empty()
 			);
 
 			for (String item : profile.items()) {
@@ -74,6 +75,7 @@ class ShippedDataTest {
 			types.add(new DishType(
 					json.get("item").getAsString(),
 					json.get("priority").getAsInt(),
+					json.has("method") ? CookingMethod.byId(json.get("method").getAsString()) : CookingMethod.POT,
 					requires,
 					forbids,
 					json.has("flavor_roles") ? new HashSet<>(strings(json.getAsJsonArray("flavor_roles"))) : DishType.DEFAULT_FLAVOR_ROLES,
@@ -101,14 +103,14 @@ class ShippedDataTest {
 		assertDish("pie", List.of("apple"), "wheat", "egg", "apple");
 		assertDish("pie", List.of("mutton"), "wheat", "egg", "cooked_mutton");
 		assertDish("cookies", List.of("sweet_berry"), "wheat", "sugar", "sweet_berries");
-		assertDish("juice", List.of("melon"), "glass_bottle", "melon_slice");
+		assertCrafted("juice", List.of("melon"), "glass_bottle", "melon_slice");
 		assertDish("stew", List.of("beef", "potato"), "bowl", "beef", "potato");
-		assertDish("salad", List.of("apple", "sweet_berry"), "bowl", "apple", "sweet_berries");
+		assertCrafted("salad", List.of("apple", "sweet_berry"), "bowl", "apple", "sweet_berries");
 		assertDish("soup", List.of("pumpkin"), "bowl", "pumpkin");
 		assertDish("soup", List.of("mushroom"), "bowl", "red_mushroom", "brown_mushroom");
-		assertDish("sandwich", List.of("porkchop"), "bread", "cooked_porkchop");
-		assertDish("kelp_roll", List.of("cod"), "dried_kelp", "cod");
-		assertDish("skewer", List.of("chicken", "carrot"), "stick", "chicken", "carrot");
+		assertCrafted("sandwich", List.of("porkchop"), "bread", "cooked_porkchop");
+		assertCrafted("kelp_roll", List.of("cod"), "dried_kelp", "cod");
+		assertCrafted("skewer", List.of("chicken", "carrot"), "stick", "chicken", "carrot");
 		assertDish("omelette", List.of("mushroom"), "egg", "brown_mushroom");
 		assertDish("roast", List.of("rabbit", "potato"), "rabbit", "baked_potato");
 	}
@@ -118,7 +120,7 @@ class ShippedDataTest {
 		DishResult cake = cook("wheat", "sugar", "egg", "golden_carrot");
 
 		assertEquals("minecraft:night_vision", cake.buff().orElseThrow().effect());
-		assertTrue(cook("stick", "beef", "magma_cream", "rabbit_foot").buff().isEmpty());
+		assertTrue(craft("stick", "beef", "magma_cream", "rabbit_foot").buff().isEmpty());
 	}
 
 	@Test
@@ -127,14 +129,45 @@ class ShippedDataTest {
 		assertTrue(cook("bowl", "stick").dubious());
 	}
 
+	@Test
+	void everyFlavorTintsThePot() {
+		for (IngredientProfile profile : PROFILES.values()) {
+			if (profile.flavor().isPresent()) {
+				assertTrue(profile.color().isPresent(), profile.items() + " has a flavor but no pot color");
+			}
+		}
+	}
+
+	@Test
+	void craftedDishesNeedACraftingTable() {
+		assertTrue(cook("bread", "cooked_porkchop").dubious());
+		assertTrue(cook("dried_kelp", "cod").dubious());
+		assertTrue(resolver.match(CookingMethod.CRAFTING, inputs("wheat", "sugar", "egg", "carrot")).isEmpty());
+	}
+
 	private static void assertDish(String dish, List<String> nameFlavors, String... items) {
-		DishResult result = cook(items);
+		assertResult(cook(items), dish, nameFlavors, items);
+	}
+
+	private static void assertCrafted(String dish, List<String> nameFlavors, String... items) {
+		assertResult(craft(items), dish, nameFlavors, items);
+	}
+
+	private static void assertResult(DishResult result, String dish, List<String> nameFlavors, String... items) {
 
 		assertEquals("dynamic_cooking:" + dish, result.item(), () -> List.of(items) + " made " + result.item());
 		assertEquals(nameFlavors, result.nameFlavors(), () -> List.of(items) + " named by " + result.nameFlavors());
 	}
 
 	private static DishResult cook(String... items) {
+		return resolver.resolve(inputs(items));
+	}
+
+	private static DishResult craft(String... items) {
+		return resolver.match(CookingMethod.CRAFTING, inputs(items)).orElseThrow(() -> new AssertionError(List.of(items) + " crafts nothing"));
+	}
+
+	private static List<CookingInput> inputs(String... items) {
 		List<CookingInput> inputs = new ArrayList<>();
 
 		for (String name : items) {
@@ -144,7 +177,7 @@ class ShippedDataTest {
 			inputs.add(new CookingInput(id, profile));
 		}
 
-		return resolver.resolve(inputs);
+		return inputs;
 	}
 
 	private static Matcher matcher(JsonObject json) {

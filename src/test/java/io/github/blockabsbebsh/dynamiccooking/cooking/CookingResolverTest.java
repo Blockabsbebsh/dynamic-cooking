@@ -1,5 +1,6 @@
 package io.github.blockabsbebsh.dynamiccooking.cooking;
 
+import static io.github.blockabsbebsh.dynamiccooking.cooking.TestPantry.craft;
 import static io.github.blockabsbebsh.dynamiccooking.cooking.TestPantry.inputs;
 import static io.github.blockabsbebsh.dynamiccooking.cooking.TestPantry.resolver;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -54,7 +55,7 @@ class CookingResolverTest {
 
 	@Test
 	void theMostCommonFlavorNamesTheDish() {
-		DishResult result = resolver().resolve(inputs("stick", "carrot", "beef", "beef"));
+		DishResult result = craft("stick", "carrot", "beef", "beef");
 
 		assertEquals("dynamic_cooking:skewer", result.item());
 		assertEquals(List.of("beef", "carrot"), result.flavors());
@@ -64,8 +65,25 @@ class CookingResolverTest {
 	@Test
 	void forbiddenIngredientsSkipADishType() {
 		assertEquals("dynamic_cooking:soup", resolver().resolve(inputs("bowl", "carrot")).item());
-		assertEquals("dynamic_cooking:salad", resolver().resolve(inputs("bowl", "apple", "melon_slice")).item());
+		assertEquals("dynamic_cooking:salad", craft("bowl", "apple", "melon_slice").item());
 		assertEquals("dynamic_cooking:stew", resolver().resolve(inputs("bowl", "apple", "melon_slice", "beef")).item());
+	}
+
+	@Test
+	void craftedDishesAreNotCookedInThePot() {
+		assertTrue(resolver().resolve(inputs("stick", "beef")).dubious());
+		assertEquals("dynamic_cooking:soup", resolver().resolve(inputs("bowl", "apple", "melon_slice")).item());
+	}
+
+	@Test
+	void potDishesAreNotCrafted() {
+		assertTrue(resolver().match(CookingMethod.CRAFTING, inputs("wheat", "sugar", "egg", "carrot")).isEmpty());
+		assertTrue(resolver().match(CookingMethod.CRAFTING, inputs("sugar", "sugar")).isEmpty());
+	}
+
+	@Test
+	void craftingRejectsTooManyIngredientsQuietly() {
+		assertTrue(resolver().match(CookingMethod.CRAFTING, inputs("stick", "beef", "beef", "beef", "beef", "beef")).isEmpty());
 	}
 
 	@Test
@@ -80,8 +98,8 @@ class CookingResolverTest {
 	@Test
 	void slotsBacktrackWhenAGreedyChoiceBlocksALaterSlot() {
 		// The first slot accepts either role, the second only "x". Greedy would give the x-ingredient to the first slot.
-		IngredientProfile x = new IngredientProfile(List.of("test:x"), Set.of("x"), Optional.of("x"), 1, 0, Optional.empty());
-		IngredientProfile y = new IngredientProfile(List.of("test:y"), Set.of("y"), Optional.of("y"), 1, 0, Optional.empty());
+		IngredientProfile x = new IngredientProfile(List.of("test:x"), Set.of("x"), Optional.of("x"), 1, 0, Optional.empty(), Optional.empty());
+		IngredientProfile y = new IngredientProfile(List.of("test:y"), Set.of("y"), Optional.of("y"), 1, 0, Optional.empty(), Optional.empty());
 		DishType type = TestPantry.type("tricky", 1, 0, 0,
 				List.of(TestPantry.req(Matcher.role("x", "y")), TestPantry.req(Matcher.role("x"))), List.of());
 
@@ -108,7 +126,7 @@ class CookingResolverTest {
 
 	@Test
 	void nutritionIsCapped() {
-		DishResult result = resolver().resolve(inputs("stick", "golden_carrot", "golden_carrot", "golden_carrot", "golden_carrot"));
+		DishResult result = craft("stick", "golden_carrot", "golden_carrot", "golden_carrot", "golden_carrot");
 
 		assertEquals(CookingRules.DEFAULT.maxNutrition(), result.nutrition());
 	}

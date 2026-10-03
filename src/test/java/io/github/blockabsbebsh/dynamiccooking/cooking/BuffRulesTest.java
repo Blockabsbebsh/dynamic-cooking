@@ -1,5 +1,6 @@
 package io.github.blockabsbebsh.dynamiccooking.cooking;
 
+import static io.github.blockabsbebsh.dynamiccooking.cooking.TestPantry.craft;
 import static io.github.blockabsbebsh.dynamiccooking.cooking.TestPantry.inputs;
 import static io.github.blockabsbebsh.dynamiccooking.cooking.TestPantry.resolver;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -21,7 +22,7 @@ class BuffRulesTest {
 
 	@Test
 	void moreOfTheSameBuffLastsLonger() {
-		DishResult.Buff buff = resolver().resolve(inputs("stick", "golden_carrot", "golden_carrot")).buff().orElseThrow();
+		DishResult.Buff buff = craft("stick", "golden_carrot", "golden_carrot").buff().orElseThrow();
 
 		assertEquals(RULES.buffBaseTicks() + RULES.buffTicksPerPotency(), buff.durationTicks());
 		assertEquals(0, buff.amplifier());
@@ -29,14 +30,14 @@ class BuffRulesTest {
 
 	@Test
 	void enoughOfTheSameBuffBecomesLevelTwo() {
-		DishResult.Buff buff = resolver().resolve(inputs("stick", "golden_carrot", "golden_carrot", "golden_carrot", "golden_carrot")).buff().orElseThrow();
+		DishResult.Buff buff = craft("stick", "golden_carrot", "golden_carrot", "golden_carrot", "golden_carrot").buff().orElseThrow();
 
 		assertEquals(1, buff.amplifier());
 	}
 
 	@Test
 	void differentBuffsCancelOut() {
-		assertTrue(resolver().resolve(inputs("stick", "golden_carrot", "magma_cream")).buff().isEmpty());
+		assertTrue(craft("stick", "golden_carrot", "magma_cream").buff().isEmpty());
 	}
 
 	@Test

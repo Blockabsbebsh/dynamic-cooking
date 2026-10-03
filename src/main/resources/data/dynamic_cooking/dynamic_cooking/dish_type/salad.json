@@ -1,6 +1,7 @@
 {
 	"item": "dynamic_cooking:salad",
 	"priority": 6,
+	"method": "crafting",
 	"requires": [
 		{
 			"match": {
