@@ -14,7 +14,8 @@
 				"roles": [
 					"sweet"
 				]
-			}
+			},
+			"flavor": true
 		},
 		{
 			"match": {
@@ -22,16 +23,19 @@
 					"egg"
 				]
 			}
-		},
-		{
-			"match": {
-				"roles": [
-					"produce"
-				]
-			},
-			"flavor": true
 		}
 	],
 	"bonus_nutrition": 4,
-	"bonus_saturation": 2.0
+	"bonus_saturation": 2.0,
+	"forbids": [
+		{
+			"roles": [
+				"protein",
+				"mushroom"
+			]
+		}
+	],
+	"flavor_roles": [
+		"produce"
+	]
 }

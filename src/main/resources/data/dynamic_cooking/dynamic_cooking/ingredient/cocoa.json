@@ -10,5 +10,7 @@
 	"buff": {
 		"effect": "minecraft:speed"
 	},
-	"color": "#5A3520"
+	"color": "#5A3520",
+	"nutrition": 1,
+	"saturation": 0.5
 }

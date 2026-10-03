@@ -7,13 +7,13 @@
 		"meat"
 	],
 	"flavor": "chicken",
-	"nutrition": 3,
-	"saturation": 1.8,
+	"nutrition": 6,
+	"saturation": 7.2,
 	"color": "#EBC3A8",
 	"raw": {
 		"cooks_into": "minecraft:cooked_chicken",
-		"nutrition_penalty": 2,
-		"saturation_penalty": 1.1,
+		"nutrition_penalty": 4,
+		"saturation_penalty": 6.0,
 		"effects": [
 			{
 				"effect": "minecraft:hunger",

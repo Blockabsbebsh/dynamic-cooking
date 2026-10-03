@@ -5,5 +5,7 @@
 	"roles": [
 		"sweet"
 	],
-	"color": "#F4F4F4"
+	"color": "#F4F4F4",
+	"nutrition": 1,
+	"saturation": 0.5
 }

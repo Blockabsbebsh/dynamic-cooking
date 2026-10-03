@@ -27,34 +27,61 @@ import io.github.blockabsbebsh.dynamiccooking.dish.CookingService;
 public final class ModCreativeTab {
 	public static final ResourceKey<CreativeModeTab> KEY = ResourceKey.create(Registries.CREATIVE_MODE_TAB, DynamicCooking.id("dishes"));
 
-	/** Each sample is made on a crafting table if it can be, otherwise in the pot. */
+	/**
+	 * Each sample is made on a crafting table if it can be, otherwise in the pot. Grouped by dish, meals first, then baked
+	 * goods, then drinks, with Dubious Mush last. Only cooked dishes are shown: raw versions would look like duplicates.
+	 */
 	private static final List<List<Item>> SAMPLES = List.of(
+			// Roasts
+			List.of(Items.COOKED_BEEF, Items.BAKED_POTATO),
+			List.of(Items.RABBIT, Items.CARROT),
+			List.of(Items.CARROT, Items.POTATO),
+			List.of(Items.SHELF_MUSHROOM, Items.BEETROOT),
+			// Stews and soups
+			List.of(Items.WATER_BUCKET, Items.BEEF, Items.POTATO),
+			List.of(Items.WATER_BUCKET, Items.RABBIT, Items.CARROT, Items.SHELF_MUSHROOM),
+			List.of(Items.WATER_BUCKET, Items.COD, Items.CARROT),
+			List.of(Items.WATER_BUCKET, Items.PUMPKIN),
+			List.of(Items.WATER_BUCKET, Items.BROWN_MUSHROOM, Items.RED_MUSHROOM),
+			List.of(Items.WATER_BUCKET, Items.BEETROOT),
+			// Skewers
+			List.of(Items.STICK, Items.COOKED_CHICKEN, Items.CARROT),
+			List.of(Items.STICK, Items.COOKED_PORKCHOP, Items.BROWN_MUSHROOM),
+			List.of(Items.STICK, Items.GOLDEN_CARROT, Items.COOKED_BEEF),
+			List.of(Items.STICK, Items.MAGMA_CREAM, Items.COOKED_BEEF),
+			// Sandwiches
+			List.of(Items.BREAD, Items.COOKED_PORKCHOP),
+			List.of(Items.BREAD, Items.COOKED_CHICKEN, Items.CARROT),
+			List.of(Items.BREAD, Items.EGG),
+			// Kelp rolls
+			List.of(Items.DRIED_KELP, Items.SALMON),
+			List.of(Items.DRIED_KELP, Items.COD, Items.CARROT),
+			List.of(Items.DRIED_KELP, Items.SHELF_MUSHROOM),
+			List.of(Items.DRIED_KELP, Items.PUFFERFISH),
+			// Omelettes
+			List.of(Items.EGG, Items.EGG),
+			List.of(Items.EGG, Items.BROWN_MUSHROOM),
+			List.of(Items.EGG, Items.COOKED_PORKCHOP),
+			// Salads
+			List.of(Items.BOWL, Items.APPLE, Items.SWEET_BERRIES),
+			List.of(Items.BOWL, Items.MELON_SLICE, Items.GLOW_BERRIES, Items.PUMPKIN_SEEDS),
+			List.of(Items.BOWL, Items.CARROT, Items.BEETROOT),
+			// Pies
+			List.of(Items.WHEAT, Items.EGG, Items.APPLE),
+			List.of(Items.WHEAT, Items.EGG, Items.MUTTON),
+			List.of(Items.PUMPKIN, Items.SUGAR, Items.EGG),
+			// Cakes
 			List.of(Items.WHEAT, Items.SUGAR, Items.EGG, Items.CARROT),
 			List.of(Items.WHEAT, Items.SUGAR, Items.EGG, Items.CHORUS_FRUIT),
 			List.of(Items.WHEAT, Items.SUGAR, Items.EGG, Items.GOLDEN_CARROT),
-			List.of(Items.WHEAT, Items.EGG, Items.APPLE),
-			List.of(Items.WHEAT, Items.EGG, Items.MUTTON),
+			// Cookies
+			List.of(Items.WHEAT, Items.COCOA_BEANS),
 			List.of(Items.WHEAT, Items.SUGAR, Items.SWEET_BERRIES),
-			List.of(Items.WHEAT, Items.COCOA_BEANS, Items.SUGAR),
+			// Juices
 			List.of(Items.GLASS_BOTTLE, Items.MELON_SLICE),
+			List.of(Items.GLASS_BOTTLE, Items.APPLE),
 			List.of(Items.GLASS_BOTTLE, Items.GLISTERING_MELON_SLICE),
-			List.of(Items.WATER_BUCKET, Items.BEEF, Items.POTATO),
-			List.of(Items.WATER_BUCKET, Items.RABBIT, Items.CARROT, Items.SHELF_MUSHROOM),
-			List.of(Items.WATER_BUCKET, Items.PUMPKIN),
-			List.of(Items.WATER_BUCKET, Items.BROWN_MUSHROOM, Items.RED_MUSHROOM),
-			List.of(Items.BOWL, Items.APPLE, Items.SWEET_BERRIES),
-			List.of(Items.BOWL, Items.MELON_SLICE, Items.GLOW_BERRIES, Items.PUMPKIN_SEEDS),
-			List.of(Items.BREAD, Items.COOKED_PORKCHOP),
-			List.of(Items.BREAD, Items.BEEF),
-			List.of(Items.DRIED_KELP, Items.SALMON),
-			List.of(Items.DRIED_KELP, Items.PUFFERFISH),
-			List.of(Items.STICK, Items.COOKED_CHICKEN, Items.CARROT),
-			List.of(Items.STICK, Items.CHICKEN, Items.CARROT),
-			List.of(Items.STICK, Items.GOLDEN_CARROT, Items.COOKED_BEEF),
-			List.of(Items.STICK, Items.MAGMA_CREAM, Items.COOKED_BEEF),
-			List.of(Items.EGG, Items.BROWN_MUSHROOM),
-			List.of(Items.RABBIT, Items.POTATO),
-			List.of(Items.CARROT, Items.SHELF_MUSHROOM),
+			// Dubious Mush
 			List.of(Items.SUGAR, Items.SUGAR)
 	);
 
@@ -76,7 +103,8 @@ public final class ModCreativeTab {
 
 						if (stacks.stream().allMatch(cooking::isIngredient)) {
 							// Crafted dishes first; everything else goes through the pot, which also shows Dubious Mush.
-							output.accept(cooking.craft(stacks).orElseGet(() -> cooking.cookPot(stacks).dish()));
+							// One of each, even for dishes made in batches like kelp rolls.
+							output.accept(cooking.craft(stacks).orElseGet(() -> cooking.cookPot(stacks).dish()).copyWithCount(1));
 						} else {
 							DynamicCooking.LOGGER.warn("Sample dish {} uses an item with no ingredient profile", Arrays.toString(sample.toArray()));
 						}

@@ -8,7 +8,7 @@
 		"mushroom"
 	],
 	"flavor": "mushroom",
-	"nutrition": 1,
-	"saturation": 0.6,
+	"nutrition": 2,
+	"saturation": 1.2,
 	"color": "#A07960"
 }

@@ -11,11 +11,9 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.ContainerHelper;
@@ -45,8 +43,6 @@ import io.github.blockabsbebsh.dynamiccooking.dish.CookingService;
 public class CookingPotBlockEntity extends BlockEntity implements RenderDataBlockEntity {
 	/** How long cooking takes, in ticks. */
 	public static final int COOK_TICKS = 3 * 20;
-	/** Players this close hear that a dish is ready. */
-	private static final double ANNOUNCE_RANGE = 16.0;
 
 	private final NonNullList<ItemStack> items = NonNullList.withSize(CookingRules.DEFAULT.maxIngredients(), ItemStack.EMPTY);
 	private int cookTicksLeft;
@@ -237,7 +233,7 @@ public class CookingPotBlockEntity extends BlockEntity implements RenderDataBloc
 		announceReady(level, pos, pot);
 	}
 
-	/** A bell, a puff of steam and a message for players nearby, so nobody has to watch the pot. */
+	/** A bell and a puff of steam, so nobody has to watch the pot. */
 	private static void announceReady(Level level, BlockPos pos, CookingPotBlockEntity pot) {
 		level.playSound(null, pos, SoundEvents.NOTE_BLOCK_BELL.value(), SoundSource.BLOCKS, 1.0f, 1.2f);
 		level.playSound(null, pos, SoundEvents.BUBBLE_COLUMN_BUBBLE_POP, SoundSource.BLOCKS, 0.8f, 1.0f);
@@ -245,14 +241,6 @@ public class CookingPotBlockEntity extends BlockEntity implements RenderDataBloc
 		if (level instanceof ServerLevel serverLevel) {
 			double y = pos.getY() + CookingPotBlock.surfaceY(pot.getBlockState());
 			serverLevel.sendParticles(ParticleTypes.CLOUD, pos.getX() + 0.5, y + 0.1, pos.getZ() + 0.5, 8, 0.15, 0.05, 0.15, 0.01);
-
-			Component message = CookingPotBlock.readyMessage(pot);
-
-			for (ServerPlayer player : serverLevel.players()) {
-				if (player.blockPosition().closerThan(pos, ANNOUNCE_RANGE)) {
-					player.sendOverlayMessage(message);
-				}
-			}
 		}
 	}
 
