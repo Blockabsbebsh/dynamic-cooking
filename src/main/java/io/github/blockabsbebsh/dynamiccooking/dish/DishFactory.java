@@ -40,7 +40,8 @@ public final class DishFactory {
 		stack.set(ModComponents.DISH, new DishContents(result.ingredients(), result.flavors()));
 		stack.set(DataComponents.FOOD, new FoodProperties(result.nutrition(), result.saturation(), false));
 		// The item model picks one recolored sprite per layer from these strings, strongest flavor first.
-		stack.set(DataComponents.CUSTOM_MODEL_DATA, new CustomModelData(List.of(), List.of(), result.flavors(), List.of()));
+		// The colors tint the grey template instead when a flavor has no palette, such as one added by a data pack.
+		stack.set(DataComponents.CUSTOM_MODEL_DATA, new CustomModelData(List.of(), List.of(), result.flavors(), result.flavorColors()));
 
 		result.buff().flatMap(DishFactory::consumeEffect).ifPresent(effect -> {
 			Consumable.Builder consumable = ModItems.DRINKS.contains(item) ? Consumables.defaultDrink() : Consumables.defaultFood();

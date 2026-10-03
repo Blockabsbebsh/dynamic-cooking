@@ -12,6 +12,7 @@ import java.util.Set;
  */
 final class TestPantry {
 	private static final Map<String, IngredientProfile> PROFILES = new HashMap<>();
+	private static final Map<String, Integer> COLORS = Map.of("beef", 0x9A4A33, "carrot", 0xE58A1F);
 
 	static {
 		add("wheat", null, 0, 0, null, "flour");
@@ -111,7 +112,7 @@ final class TestPantry {
 				nutrition,
 				saturation,
 				Optional.ofNullable(buff),
-				Optional.empty()
+				Optional.ofNullable(COLORS.get(name))
 		));
 	}
 }

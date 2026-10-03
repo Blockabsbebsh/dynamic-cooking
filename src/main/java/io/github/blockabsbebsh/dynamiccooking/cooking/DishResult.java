@@ -9,6 +9,7 @@ import java.util.Optional;
  * @param item         item id of the dish
  * @param ingredients  item ids that went in, in the order they were added
  * @param flavors      flavor keys, strongest first; drive texture layers
+ * @param flavorColors one {@code 0xRRGGBB} color per flavor, from the first ingredient that gave it; tints texture layers that have no palette
  * @param nameFlavors  the one or two flavors that appear in the dish name
  * @param nutrition    food points
  * @param saturation   saturation points
@@ -22,6 +23,7 @@ public record DishResult(
 		String item,
 		List<String> ingredients,
 		List<String> flavors,
+		List<Integer> flavorColors,
 		List<String> nameFlavors,
 		int nutrition,
 		float saturation,
@@ -34,6 +36,7 @@ public record DishResult(
 	public DishResult {
 		ingredients = List.copyOf(ingredients);
 		flavors = List.copyOf(flavors);
+		flavorColors = List.copyOf(flavorColors);
 		nameFlavors = List.copyOf(nameFlavors);
 	}
 
@@ -44,6 +47,9 @@ public record DishResult(
 	 * @param amplifier     0 for level I, 1 for level II
 	 * @param durationTicks duration in ticks, 20 per second
 	 */
+	/** Color for an ingredient that has none, so its texture layer keeps the template's grey. */
+	public static final int NO_COLOR = 0xFFFFFF;
+
 	public record Buff(String effect, int amplifier, int durationTicks) {
 	}
 }

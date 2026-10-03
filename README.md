@@ -52,6 +52,18 @@ Add a file to `data/<namespace>/dynamic_cooking/dish_type/`. Dish types are trie
 }
 ```
 
+### Textures
+
+Each dish is drawn once in `tools/textures/dishes.py` as a fixed base layer (bowl, bottle, stick, bread) plus one or two flavour layers in 8 grey keys. Each flavour has an 8-colour palette in `tools/textures/palettes.py`. At resource load, Minecraft's `paletted_permutations` atlas source recolours every flavour layer once per palette, and the dish's item model picks the sprites from the flavours cooking wrote into `custom_model_data`. A flavour without a palette, for example one from a data pack, shows the grey layer tinted with its ingredient's `color`.
+
+After changing a template, a palette, a dish type or an ingredient, regenerate the textures, atlas, models and item definitions (needs Pillow):
+
+```
+python3 tools/textures/generate.py
+```
+
+`python3 tools/textures/preview.py OUT_DIR` renders review sheets with every flavour of every dish.
+
 ## Building
 
 Needs Java 25. `./gradlew build` builds the mod and runs the tests; `./gradlew runClient` starts a dev client.

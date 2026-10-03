@@ -1,0 +1,329 @@
+{
+	"sources": [
+		{
+			"type": "minecraft:paletted_permutations",
+			"textures": [
+				"dynamic_cooking:item/dish/stew_broth",
+				"dynamic_cooking:item/dish/stew_chunks"
+			],
+			"palette_key": "dynamic_cooking:dish/key",
+			"permutations": {
+				"apple": "dynamic_cooking:dish/apple",
+				"beef": "dynamic_cooking:dish/beef",
+				"beetroot": "dynamic_cooking:dish/beetroot",
+				"carrot": "dynamic_cooking:dish/carrot",
+				"chicken": "dynamic_cooking:dish/chicken",
+				"chocolate": "dynamic_cooking:dish/chocolate",
+				"chorus_fruit": "dynamic_cooking:dish/chorus_fruit",
+				"cod": "dynamic_cooking:dish/cod",
+				"glistering_melon": "dynamic_cooking:dish/glistering_melon",
+				"glow_berry": "dynamic_cooking:dish/glow_berry",
+				"golden_apple": "dynamic_cooking:dish/golden_apple",
+				"golden_carrot": "dynamic_cooking:dish/golden_carrot",
+				"melon": "dynamic_cooking:dish/melon",
+				"mushroom": "dynamic_cooking:dish/mushroom",
+				"mutton": "dynamic_cooking:dish/mutton",
+				"porkchop": "dynamic_cooking:dish/porkchop",
+				"potato": "dynamic_cooking:dish/potato",
+				"pufferfish": "dynamic_cooking:dish/pufferfish",
+				"pumpkin": "dynamic_cooking:dish/pumpkin",
+				"rabbit": "dynamic_cooking:dish/rabbit",
+				"salmon": "dynamic_cooking:dish/salmon",
+				"sweet_berry": "dynamic_cooking:dish/sweet_berry"
+			}
+		},
+		{
+			"type": "minecraft:paletted_permutations",
+			"textures": [
+				"dynamic_cooking:item/dish/cake_frosting",
+				"dynamic_cooking:item/dish/cake_fruit"
+			],
+			"palette_key": "dynamic_cooking:dish/key",
+			"permutations": {
+				"apple": "dynamic_cooking:dish/apple",
+				"beetroot": "dynamic_cooking:dish/beetroot",
+				"carrot": "dynamic_cooking:dish/carrot",
+				"chocolate": "dynamic_cooking:dish/chocolate",
+				"chorus_fruit": "dynamic_cooking:dish/chorus_fruit",
+				"glistering_melon": "dynamic_cooking:dish/glistering_melon",
+				"glow_berry": "dynamic_cooking:dish/glow_berry",
+				"golden_apple": "dynamic_cooking:dish/golden_apple",
+				"golden_carrot": "dynamic_cooking:dish/golden_carrot",
+				"melon": "dynamic_cooking:dish/melon",
+				"potato": "dynamic_cooking:dish/potato",
+				"pumpkin": "dynamic_cooking:dish/pumpkin",
+				"sweet_berry": "dynamic_cooking:dish/sweet_berry"
+			}
+		},
+		{
+			"type": "minecraft:paletted_permutations",
+			"textures": [
+				"dynamic_cooking:item/dish/skewer_chunks",
+				"dynamic_cooking:item/dish/skewer_middle"
+			],
+			"palette_key": "dynamic_cooking:dish/key",
+			"permutations": {
+				"apple": "dynamic_cooking:dish/apple",
+				"beef": "dynamic_cooking:dish/beef",
+				"beetroot": "dynamic_cooking:dish/beetroot",
+				"carrot": "dynamic_cooking:dish/carrot",
+				"chicken": "dynamic_cooking:dish/chicken",
+				"chocolate": "dynamic_cooking:dish/chocolate",
+				"chorus_fruit": "dynamic_cooking:dish/chorus_fruit",
+				"cod": "dynamic_cooking:dish/cod",
+				"glistering_melon": "dynamic_cooking:dish/glistering_melon",
+				"glow_berry": "dynamic_cooking:dish/glow_berry",
+				"golden_apple": "dynamic_cooking:dish/golden_apple",
+				"golden_carrot": "dynamic_cooking:dish/golden_carrot",
+				"melon": "dynamic_cooking:dish/melon",
+				"mutton": "dynamic_cooking:dish/mutton",
+				"porkchop": "dynamic_cooking:dish/porkchop",
+				"potato": "dynamic_cooking:dish/potato",
+				"pufferfish": "dynamic_cooking:dish/pufferfish",
+				"pumpkin": "dynamic_cooking:dish/pumpkin",
+				"rabbit": "dynamic_cooking:dish/rabbit",
+				"salmon": "dynamic_cooking:dish/salmon",
+				"sweet_berry": "dynamic_cooking:dish/sweet_berry"
+			}
+		},
+		{
+			"type": "minecraft:paletted_permutations",
+			"textures": [
+				"dynamic_cooking:item/dish/sandwich_filling",
+				"dynamic_cooking:item/dish/sandwich_bits"
+			],
+			"palette_key": "dynamic_cooking:dish/key",
+			"permutations": {
+				"apple": "dynamic_cooking:dish/apple",
+				"beef": "dynamic_cooking:dish/beef",
+				"beetroot": "dynamic_cooking:dish/beetroot",
+				"carrot": "dynamic_cooking:dish/carrot",
+				"chicken": "dynamic_cooking:dish/chicken",
+				"chocolate": "dynamic_cooking:dish/chocolate",
+				"chorus_fruit": "dynamic_cooking:dish/chorus_fruit",
+				"cod": "dynamic_cooking:dish/cod",
+				"glistering_melon": "dynamic_cooking:dish/glistering_melon",
+				"glow_berry": "dynamic_cooking:dish/glow_berry",
+				"golden_apple": "dynamic_cooking:dish/golden_apple",
+				"golden_carrot": "dynamic_cooking:dish/golden_carrot",
+				"melon": "dynamic_cooking:dish/melon",
+				"mutton": "dynamic_cooking:dish/mutton",
+				"porkchop": "dynamic_cooking:dish/porkchop",
+				"potato": "dynamic_cooking:dish/potato",
+				"pufferfish": "dynamic_cooking:dish/pufferfish",
+				"pumpkin": "dynamic_cooking:dish/pumpkin",
+				"rabbit": "dynamic_cooking:dish/rabbit",
+				"salmon": "dynamic_cooking:dish/salmon",
+				"sweet_berry": "dynamic_cooking:dish/sweet_berry"
+			}
+		},
+		{
+			"type": "minecraft:paletted_permutations",
+			"textures": [
+				"dynamic_cooking:item/dish/kelp_roll_filling"
+			],
+			"palette_key": "dynamic_cooking:dish/key",
+			"permutations": {
+				"apple": "dynamic_cooking:dish/apple",
+				"beef": "dynamic_cooking:dish/beef",
+				"beetroot": "dynamic_cooking:dish/beetroot",
+				"carrot": "dynamic_cooking:dish/carrot",
+				"chicken": "dynamic_cooking:dish/chicken",
+				"chocolate": "dynamic_cooking:dish/chocolate",
+				"chorus_fruit": "dynamic_cooking:dish/chorus_fruit",
+				"cod": "dynamic_cooking:dish/cod",
+				"glistering_melon": "dynamic_cooking:dish/glistering_melon",
+				"glow_berry": "dynamic_cooking:dish/glow_berry",
+				"golden_apple": "dynamic_cooking:dish/golden_apple",
+				"golden_carrot": "dynamic_cooking:dish/golden_carrot",
+				"melon": "dynamic_cooking:dish/melon",
+				"mutton": "dynamic_cooking:dish/mutton",
+				"porkchop": "dynamic_cooking:dish/porkchop",
+				"potato": "dynamic_cooking:dish/potato",
+				"pufferfish": "dynamic_cooking:dish/pufferfish",
+				"pumpkin": "dynamic_cooking:dish/pumpkin",
+				"rabbit": "dynamic_cooking:dish/rabbit",
+				"salmon": "dynamic_cooking:dish/salmon",
+				"sweet_berry": "dynamic_cooking:dish/sweet_berry"
+			}
+		},
+		{
+			"type": "minecraft:paletted_permutations",
+			"textures": [
+				"dynamic_cooking:item/dish/salad_pieces",
+				"dynamic_cooking:item/dish/salad_top"
+			],
+			"palette_key": "dynamic_cooking:dish/key",
+			"permutations": {
+				"apple": "dynamic_cooking:dish/apple",
+				"chorus_fruit": "dynamic_cooking:dish/chorus_fruit",
+				"glistering_melon": "dynamic_cooking:dish/glistering_melon",
+				"glow_berry": "dynamic_cooking:dish/glow_berry",
+				"golden_apple": "dynamic_cooking:dish/golden_apple",
+				"melon": "dynamic_cooking:dish/melon",
+				"sweet_berry": "dynamic_cooking:dish/sweet_berry"
+			}
+		},
+		{
+			"type": "minecraft:paletted_permutations",
+			"textures": [
+				"dynamic_cooking:item/dish/soup_broth",
+				"dynamic_cooking:item/dish/soup_garnish"
+			],
+			"palette_key": "dynamic_cooking:dish/key",
+			"permutations": {
+				"apple": "dynamic_cooking:dish/apple",
+				"beetroot": "dynamic_cooking:dish/beetroot",
+				"carrot": "dynamic_cooking:dish/carrot",
+				"chocolate": "dynamic_cooking:dish/chocolate",
+				"chorus_fruit": "dynamic_cooking:dish/chorus_fruit",
+				"glistering_melon": "dynamic_cooking:dish/glistering_melon",
+				"glow_berry": "dynamic_cooking:dish/glow_berry",
+				"golden_apple": "dynamic_cooking:dish/golden_apple",
+				"golden_carrot": "dynamic_cooking:dish/golden_carrot",
+				"melon": "dynamic_cooking:dish/melon",
+				"mushroom": "dynamic_cooking:dish/mushroom",
+				"potato": "dynamic_cooking:dish/potato",
+				"pumpkin": "dynamic_cooking:dish/pumpkin",
+				"sweet_berry": "dynamic_cooking:dish/sweet_berry"
+			}
+		},
+		{
+			"type": "minecraft:paletted_permutations",
+			"textures": [
+				"dynamic_cooking:item/dish/juice_liquid"
+			],
+			"palette_key": "dynamic_cooking:dish/key",
+			"permutations": {
+				"apple": "dynamic_cooking:dish/apple",
+				"beetroot": "dynamic_cooking:dish/beetroot",
+				"carrot": "dynamic_cooking:dish/carrot",
+				"chocolate": "dynamic_cooking:dish/chocolate",
+				"chorus_fruit": "dynamic_cooking:dish/chorus_fruit",
+				"glistering_melon": "dynamic_cooking:dish/glistering_melon",
+				"glow_berry": "dynamic_cooking:dish/glow_berry",
+				"golden_apple": "dynamic_cooking:dish/golden_apple",
+				"golden_carrot": "dynamic_cooking:dish/golden_carrot",
+				"melon": "dynamic_cooking:dish/melon",
+				"potato": "dynamic_cooking:dish/potato",
+				"pumpkin": "dynamic_cooking:dish/pumpkin",
+				"sweet_berry": "dynamic_cooking:dish/sweet_berry"
+			}
+		},
+		{
+			"type": "minecraft:paletted_permutations",
+			"textures": [
+				"dynamic_cooking:item/dish/pie_filling"
+			],
+			"palette_key": "dynamic_cooking:dish/key",
+			"permutations": {
+				"apple": "dynamic_cooking:dish/apple",
+				"beef": "dynamic_cooking:dish/beef",
+				"beetroot": "dynamic_cooking:dish/beetroot",
+				"carrot": "dynamic_cooking:dish/carrot",
+				"chicken": "dynamic_cooking:dish/chicken",
+				"chocolate": "dynamic_cooking:dish/chocolate",
+				"chorus_fruit": "dynamic_cooking:dish/chorus_fruit",
+				"cod": "dynamic_cooking:dish/cod",
+				"glistering_melon": "dynamic_cooking:dish/glistering_melon",
+				"glow_berry": "dynamic_cooking:dish/glow_berry",
+				"golden_apple": "dynamic_cooking:dish/golden_apple",
+				"golden_carrot": "dynamic_cooking:dish/golden_carrot",
+				"melon": "dynamic_cooking:dish/melon",
+				"mutton": "dynamic_cooking:dish/mutton",
+				"porkchop": "dynamic_cooking:dish/porkchop",
+				"potato": "dynamic_cooking:dish/potato",
+				"pufferfish": "dynamic_cooking:dish/pufferfish",
+				"pumpkin": "dynamic_cooking:dish/pumpkin",
+				"rabbit": "dynamic_cooking:dish/rabbit",
+				"salmon": "dynamic_cooking:dish/salmon",
+				"sweet_berry": "dynamic_cooking:dish/sweet_berry"
+			}
+		},
+		{
+			"type": "minecraft:paletted_permutations",
+			"textures": [
+				"dynamic_cooking:item/dish/cookies_chips"
+			],
+			"palette_key": "dynamic_cooking:dish/key",
+			"permutations": {
+				"apple": "dynamic_cooking:dish/apple",
+				"beetroot": "dynamic_cooking:dish/beetroot",
+				"carrot": "dynamic_cooking:dish/carrot",
+				"chocolate": "dynamic_cooking:dish/chocolate",
+				"chorus_fruit": "dynamic_cooking:dish/chorus_fruit",
+				"glistering_melon": "dynamic_cooking:dish/glistering_melon",
+				"glow_berry": "dynamic_cooking:dish/glow_berry",
+				"golden_apple": "dynamic_cooking:dish/golden_apple",
+				"golden_carrot": "dynamic_cooking:dish/golden_carrot",
+				"melon": "dynamic_cooking:dish/melon",
+				"potato": "dynamic_cooking:dish/potato",
+				"pumpkin": "dynamic_cooking:dish/pumpkin",
+				"sweet_berry": "dynamic_cooking:dish/sweet_berry"
+			}
+		},
+		{
+			"type": "minecraft:paletted_permutations",
+			"textures": [
+				"dynamic_cooking:item/dish/omelette_filling"
+			],
+			"palette_key": "dynamic_cooking:dish/key",
+			"permutations": {
+				"apple": "dynamic_cooking:dish/apple",
+				"beef": "dynamic_cooking:dish/beef",
+				"beetroot": "dynamic_cooking:dish/beetroot",
+				"carrot": "dynamic_cooking:dish/carrot",
+				"chicken": "dynamic_cooking:dish/chicken",
+				"chocolate": "dynamic_cooking:dish/chocolate",
+				"chorus_fruit": "dynamic_cooking:dish/chorus_fruit",
+				"cod": "dynamic_cooking:dish/cod",
+				"glistering_melon": "dynamic_cooking:dish/glistering_melon",
+				"glow_berry": "dynamic_cooking:dish/glow_berry",
+				"golden_apple": "dynamic_cooking:dish/golden_apple",
+				"golden_carrot": "dynamic_cooking:dish/golden_carrot",
+				"melon": "dynamic_cooking:dish/melon",
+				"mushroom": "dynamic_cooking:dish/mushroom",
+				"mutton": "dynamic_cooking:dish/mutton",
+				"porkchop": "dynamic_cooking:dish/porkchop",
+				"potato": "dynamic_cooking:dish/potato",
+				"pufferfish": "dynamic_cooking:dish/pufferfish",
+				"pumpkin": "dynamic_cooking:dish/pumpkin",
+				"rabbit": "dynamic_cooking:dish/rabbit",
+				"salmon": "dynamic_cooking:dish/salmon",
+				"sweet_berry": "dynamic_cooking:dish/sweet_berry"
+			}
+		},
+		{
+			"type": "minecraft:paletted_permutations",
+			"textures": [
+				"dynamic_cooking:item/dish/roast_main",
+				"dynamic_cooking:item/dish/roast_side"
+			],
+			"palette_key": "dynamic_cooking:dish/key",
+			"permutations": {
+				"apple": "dynamic_cooking:dish/apple",
+				"beef": "dynamic_cooking:dish/beef",
+				"beetroot": "dynamic_cooking:dish/beetroot",
+				"carrot": "dynamic_cooking:dish/carrot",
+				"chicken": "dynamic_cooking:dish/chicken",
+				"chocolate": "dynamic_cooking:dish/chocolate",
+				"chorus_fruit": "dynamic_cooking:dish/chorus_fruit",
+				"cod": "dynamic_cooking:dish/cod",
+				"glistering_melon": "dynamic_cooking:dish/glistering_melon",
+				"glow_berry": "dynamic_cooking:dish/glow_berry",
+				"golden_apple": "dynamic_cooking:dish/golden_apple",
+				"golden_carrot": "dynamic_cooking:dish/golden_carrot",
+				"melon": "dynamic_cooking:dish/melon",
+				"mushroom": "dynamic_cooking:dish/mushroom",
+				"mutton": "dynamic_cooking:dish/mutton",
+				"porkchop": "dynamic_cooking:dish/porkchop",
+				"potato": "dynamic_cooking:dish/potato",
+				"pufferfish": "dynamic_cooking:dish/pufferfish",
+				"pumpkin": "dynamic_cooking:dish/pumpkin",
+				"rabbit": "dynamic_cooking:dish/rabbit",
+				"salmon": "dynamic_cooking:dish/salmon",
+				"sweet_berry": "dynamic_cooking:dish/sweet_berry"
+			}
+		}
+	]
+}
