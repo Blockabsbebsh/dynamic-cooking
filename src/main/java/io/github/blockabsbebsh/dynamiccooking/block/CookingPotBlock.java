@@ -1,6 +1,5 @@
 package io.github.blockabsbebsh.dynamiccooking.block;
 
-import com.mojang.serialization.MapCodec;
 import org.jetbrains.annotations.Nullable;
 
 import net.minecraft.core.BlockPos;
@@ -10,6 +9,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.Prediction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -40,7 +40,6 @@ import io.github.blockabsbebsh.dynamiccooking.dish.CookingService;
  * sneak and right-click with an empty hand to take the last ingredient back.
  */
 public class CookingPotBlock extends BaseEntityBlock {
-	public static final MapCodec<CookingPotBlock> CODEC = simpleCodec(CookingPotBlock::new);
 	public static final BooleanProperty COOKING = BooleanProperty.create("cooking");
 
 	/** Blocks that can heat the pot when directly underneath it. Campfires must also be lit. */
@@ -51,11 +50,6 @@ public class CookingPotBlock extends BaseEntityBlock {
 	public CookingPotBlock(Properties properties) {
 		super(properties);
 		registerDefaultState(stateDefinition.any().setValue(COOKING, false));
-	}
-
-	@Override
-	protected MapCodec<? extends BaseEntityBlock> codec() {
-		return CODEC;
 	}
 
 	@Override
@@ -201,8 +195,6 @@ public class CookingPotBlock extends BaseEntityBlock {
 	}
 
 	private static void give(Player player, ItemStack stack) {
-		if (!player.getInventory().add(stack)) {
-			player.drop(stack, false);
-		}
+		player.getInventory().placeItemBackInInventory(stack, Prediction.SERVER_ONLY);
 	}
 }
