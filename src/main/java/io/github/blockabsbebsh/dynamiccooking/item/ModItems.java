@@ -41,6 +41,12 @@ public final class ModItems {
 	public static final Item ROAST = dish("roast", 7, 0.8f, UnaryOperator.identity());
 	public static final Item DUBIOUS_MUSH = dish("dubious_mush", 2, 0.1f, UnaryOperator.identity());
 
+	/**
+	 * A slice cut from a placed cake with a sword. A slice of a cooked cake carries that cake's name, buff and colors; one cut
+	 * from a vanilla cake keeps these defaults, a vanilla cake slice's food value.
+	 */
+	public static final Item CAKE_SLICE = registerCakeSlice();
+
 	public static final Item COOKBOOK = registerCookbook();
 
 	/** Dishes that are drunk rather than eaten. */
@@ -71,6 +77,12 @@ public final class ModItems {
 	private static Item drink(String name, int nutrition, float saturationModifier) {
 		FoodProperties food = new FoodProperties.Builder().nutrition(nutrition).saturationModifier(saturationModifier).build();
 		return register(name, new Item.Properties().stacksTo(16).food(food, Consumables.DEFAULT_DRINK).usingConvertsTo(Items.GLASS_BOTTLE));
+	}
+
+	private static Item registerCakeSlice() {
+		ResourceKey<Item> key = ResourceKey.create(Registries.ITEM, DynamicCooking.id("cake_slice"));
+		FoodProperties food = new FoodProperties.Builder().nutrition(2).saturationModifier(0.1f).build();
+		return Registry.register(BuiltInRegistries.ITEM, key, new Item(new Item.Properties().food(food).setId(key)));
 	}
 
 	private static Item registerCookbook() {

@@ -7,6 +7,7 @@ import net.minecraft.resources.Identifier;
 
 import net.fabricmc.api.ModInitializer;
 
+import io.github.blockabsbebsh.dynamiccooking.block.CakeCutting;
 import io.github.blockabsbebsh.dynamiccooking.block.ModBlockEntities;
 import io.github.blockabsbebsh.dynamiccooking.block.ModBlocks;
 import io.github.blockabsbebsh.dynamiccooking.component.ModComponents;
@@ -26,6 +27,7 @@ public class DynamicCooking implements ModInitializer {
 		ModItems.initialize();
 		ModBlocks.initialize();
 		ModBlockEntities.initialize();
+		CakeCutting.initialize();
 		ModRecipes.initialize();
 		ModCreativeTab.initialize();
 	}
