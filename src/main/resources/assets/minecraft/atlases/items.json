@@ -373,6 +373,41 @@
 				"sweet_berry": "dynamic_cooking:dish/sweet_berry",
 				"tropical_fish": "dynamic_cooking:dish/tropical_fish"
 			}
+		},
+		{
+			"type": "minecraft:paletted_permutations",
+			"textures": [
+				"dynamic_cooking:item/dish/roast_meat_joint",
+				"dynamic_cooking:item/dish/roast_meat_side"
+			],
+			"palette_key": "dynamic_cooking:dish/key",
+			"permutations": {
+				"apple": "dynamic_cooking:dish/apple",
+				"beef": "dynamic_cooking:dish/beef",
+				"beetroot": "dynamic_cooking:dish/beetroot",
+				"carrot": "dynamic_cooking:dish/carrot",
+				"chicken": "dynamic_cooking:dish/chicken",
+				"chocolate": "dynamic_cooking:dish/chocolate",
+				"chorus_fruit": "dynamic_cooking:dish/chorus_fruit",
+				"cod": "dynamic_cooking:dish/cod",
+				"glistering_melon": "dynamic_cooking:dish/glistering_melon",
+				"glow_berry": "dynamic_cooking:dish/glow_berry",
+				"golden_apple": "dynamic_cooking:dish/golden_apple",
+				"golden_carrot": "dynamic_cooking:dish/golden_carrot",
+				"melon": "dynamic_cooking:dish/melon",
+				"mushroom": "dynamic_cooking:dish/mushroom",
+				"mutton": "dynamic_cooking:dish/mutton",
+				"poisonous_potato": "dynamic_cooking:dish/poisonous_potato",
+				"porkchop": "dynamic_cooking:dish/porkchop",
+				"potato": "dynamic_cooking:dish/potato",
+				"pufferfish": "dynamic_cooking:dish/pufferfish",
+				"pumpkin": "dynamic_cooking:dish/pumpkin",
+				"rabbit": "dynamic_cooking:dish/rabbit",
+				"rotten_flesh": "dynamic_cooking:dish/rotten_flesh",
+				"salmon": "dynamic_cooking:dish/salmon",
+				"sweet_berry": "dynamic_cooking:dish/sweet_berry",
+				"tropical_fish": "dynamic_cooking:dish/tropical_fish"
+			}
 		}
 	]
 }

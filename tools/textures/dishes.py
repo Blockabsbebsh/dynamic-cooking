@@ -277,15 +277,15 @@ DISHES["kelp_roll"] = dict(
 	grid="""
 ................
 ................
-................
 .....XXXXXX.....
 ...XXNNNNNNYY...
-..XNN011112NNY..
-..XN01112223NY..
-..XN11222233NY..
-..XNN223333NNY..
+..XNN013112NNY..
+..XN01121232NY..
+..XN13221323NY..
+..XNN231343NNY..
 ..XKNNNNNNNNMY..
 ..XHKLLLLLLMMY..
+..XKKLLLLLLMMY..
 ...XKKLLLLMMY...
 ....YYYYYYYY....
 ................
@@ -323,7 +323,11 @@ DISHES["omelette"] = dict(
 ................
 """)
 
+# Meat roasts show a roasted joint on the bone instead, with the side pieces next to it.
+MEATS = ["beef", "chicken", "mutton", "porkchop", "rabbit", "rotten_flesh"]
+
 DISHES["roast"] = dict(
+	variant=dict(dish="roast_meat", flavors=MEATS),
 	layers={"a": "main", "b": "side"},
 	order=["a", "b"],
 	defaults=["beef", "potato"],
@@ -347,6 +351,34 @@ DISHES["roast"] = dict(
 ................
 """)
 
+
+BONE = {"W": "#EFE9D6", "V": "#D6CCAE", "U": "#ADA080", "Q": "#6E6450"}
+
+DISHES["roast_meat"] = dict(
+	variant_of="roast",
+	layers={"base": "bone", "a": "joint", "b": "side"},
+	order=["a", "base", "b"],
+	defaults=["beef", "potato"],
+	refs=["cooked_chicken", "cooked_mutton", "baked_potato"],
+	pal=BONE,
+	grid="""
+................
+...........QWQ..
+..........QWVVQ.
+.........QWVUQ..
+.....555QWVUQ...
+...55011WVUQ....
+..5011312236....
+.5011122233ffg..
+.511223233fabcg.
+.512223334fbcdg.
+..523334ffgcdeg.
+...6666fabcggg..
+.......fbcdg....
+.......fcdeg....
+........ggg.....
+................
+""")
 MUSH = {
 	"A": "#8A7E6A", "B": "#74684F", "C": "#5E5440", "D": "#4A4232", "E": "#383226",
 	"F": "#50473A", "G": "#221E16", "H": "#A89A80",

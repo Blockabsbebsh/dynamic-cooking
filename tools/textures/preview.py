@@ -107,7 +107,7 @@ def main():
 	flavors = dish_flavors()
 
 	for name in names:
-		preview(name, flavors.get(name) or ["beef"], refs_dir).convert("RGB").save(out / f"{name}_preview.png")
+		preview(name, flavors.get(DISHES[name].get("variant_of", name)) or ["beef"], refs_dir).convert("RGB").save(out / f"{name}_preview.png")
 		compose(name, DISHES[name].get("defaults") or []).save(out / f"{name}.png")
 	overview(names).convert("RGB").save(out / "overview.png")
 
