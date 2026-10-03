@@ -1,6 +1,6 @@
 {
 	"model": {
 		"type": "minecraft:model",
-		"model": "dynamic_cooking:block/cooking_pot"
+		"model": "dynamic_cooking:item/cooking_pot"
 	}
 }
