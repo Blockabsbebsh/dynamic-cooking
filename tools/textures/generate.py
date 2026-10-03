@@ -89,6 +89,9 @@ def recolor(image, flavor):
 def compose(name, flavors):
 	"""The finished 16x16 sprite for a dish with the given flavours, strongest first."""
 	dish = DISHES[name]
+	variant = dish.get("variant")
+	if variant and flavors and flavors[0] in variant["flavors"]:
+		return compose(variant["dish"], flavors)
 	images = split_layers(dish)
 	main = flavors[0] if flavors else None
 	second = flavors[1] if len(flavors) > 1 else main
@@ -194,6 +197,63 @@ def layer_model(name, layer, flavors, defaults):
 	}
 
 
+def dish_model(name, dish, flavors):
+	"""Writes a dish template's sprites and models. Returns its item model and its atlas source."""
+	images = split_layers(dish)
+	defaults = dish.get("defaults", [])
+	assert set(defaults) <= set(flavors), f"{name}: default flavours {defaults} not among {flavors}"
+	parts = []
+
+	for layer in dish["order"]:
+		if layer == "vanilla":
+			# Drawn on the game's own sprite, so it follows resource packs too.
+			parts.append(ref(f"minecraft:item/{dish['vanilla']}"))
+			continue
+
+		texture = f"{name}_{dish['layers'][layer]}"
+		save_png(images[layer], OUT / f"textures/item/dish/{texture}.png")
+		write_json(OUT / f"models/item/dish/{texture}.json", model(texture))
+
+		if layer == "base":
+			parts.append(ref(texture))
+			continue
+
+		for flavor in flavors:
+			write_json(OUT / f"models/item/dish/{texture}_{flavor}.json", model(f"{texture}_{flavor}"))
+		parts.append(layer_model(name, layer, flavors, defaults))
+
+	source = None
+	templates = [f"{NS}:item/dish/{name}_{dish['layers'][layer]}" for layer in dish["order"] if layer in LAYER_INDEX]
+	if templates:
+		source = {
+			"type": "minecraft:paletted_permutations",
+			"textures": templates,
+			"palette_key": f"{NS}:dish/key",
+			"permutations": {flavor: f"{NS}:dish/{flavor}" for flavor in flavors},
+		}
+
+	item_model = parts[0] if len(parts) == 1 else {"type": "minecraft:composite", "models": parts}
+	return item_model, source
+
+
+def with_variant(base, variant, variant_flavors, defaults):
+	"""Shows the variant template when the main flavour is one of variant_flavors, else the dish's own template."""
+	cooked = {
+		"type": "minecraft:select",
+		"property": "minecraft:custom_model_data",
+		"index": 0,
+		"cases": [{"when": variant_flavors, "model": variant}],
+		"fallback": base,
+	}
+	return {
+		"type": "minecraft:condition",
+		"property": "minecraft:has_component",
+		"component": "minecraft:custom_model_data",
+		"on_true": cooked,
+		"on_false": variant if defaults and defaults[0] in variant_flavors else base,
+	}
+
+
 def main():
 	flavors_by_dish = dish_flavors()
 
@@ -213,42 +273,22 @@ def main():
 		save_png(strip, OUT / f"textures/palettes/dish/{flavor}.png")
 
 	sources = []
+	models = {}
 
 	for name, dish in DISHES.items():
-		images = split_layers(dish)
-		flavors = flavors_by_dish.get(name, [])
-		defaults = dish.get("defaults", [])
-		assert set(defaults) <= set(flavors), f"{name}: default flavours {defaults} not among {flavors}"
-		parts = []
+		# A variant template (such as the meat roast) shares its dish's flavours.
+		flavors = flavors_by_dish.get(dish.get("variant_of", name), [])
+		models[name], source = dish_model(name, dish, flavors)
+		if source:
+			sources.append(source)
 
-		for layer in dish["order"]:
-			if layer == "vanilla":
-				# Drawn on the game's own sprite, so it follows resource packs too.
-				parts.append(ref(f"minecraft:item/{dish['vanilla']}"))
-				continue
-
-			texture = f"{name}_{dish['layers'][layer]}"
-			save_png(images[layer], OUT / f"textures/item/dish/{texture}.png")
-			write_json(OUT / f"models/item/dish/{texture}.json", model(texture))
-
-			if layer == "base":
-				parts.append(ref(texture))
-				continue
-
-			for flavor in flavors:
-				write_json(OUT / f"models/item/dish/{texture}_{flavor}.json", model(f"{texture}_{flavor}"))
-			parts.append(layer_model(name, layer, flavors, defaults))
-
-		templates = [f"{NS}:item/dish/{name}_{dish['layers'][layer]}" for layer in dish["order"] if layer in LAYER_INDEX]
-		if templates:
-			sources.append({
-				"type": "minecraft:paletted_permutations",
-				"textures": templates,
-				"palette_key": f"{NS}:dish/key",
-				"permutations": {flavor: f"{NS}:dish/{flavor}" for flavor in flavors},
-			})
-
-		item_model = parts[0] if len(parts) == 1 else {"type": "minecraft:composite", "models": parts}
+	for name, dish in DISHES.items():
+		if dish.get("variant_of"):
+			continue
+		item_model = models[name]
+		variant = dish.get("variant")
+		if variant:
+			item_model = with_variant(item_model, models[variant["dish"]], variant["flavors"], dish.get("defaults", []))
 		write_json(OUT / f"items/{name}.json", {"model": item_model})
 
 	# Atlas files are merged across packs, so this only adds the dish sprites to the vanilla items atlas.
