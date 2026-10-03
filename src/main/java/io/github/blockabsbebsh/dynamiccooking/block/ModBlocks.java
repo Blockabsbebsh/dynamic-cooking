@@ -12,7 +12,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.PushReaction;
 
 import io.github.blockabsbebsh.dynamiccooking.DynamicCooking;
 
@@ -33,8 +32,7 @@ public final class ModBlocks {
 			"cake",
 			properties -> new DishCakeBlock(properties
 					.strength(0.5f)
-					.sound(SoundType.WOOL)
-					.pushReaction(PushReaction.DESTROY))
+					.sound(SoundType.WOOL))
 	);
 
 	private ModBlocks() {
