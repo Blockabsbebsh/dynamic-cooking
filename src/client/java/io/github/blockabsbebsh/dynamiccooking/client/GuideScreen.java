@@ -251,7 +251,7 @@ public class GuideScreen extends Screen {
 	}
 
 	/** Draws an item icon and returns it if the mouse is over it. */
-	private static ItemStack icon(GuiGraphicsExtractor graphics, ItemStack stack, int x, int y, int mouseX, int mouseY) {
+	private static ItemStack drawItem(GuiGraphicsExtractor graphics, ItemStack stack, int x, int y, int mouseX, int mouseY) {
 		graphics.item(stack, x, y);
 		boolean over = mouseX >= x && mouseX < x + 16 && mouseY >= y && mouseY < y + 16;
 		return over ? stack : ItemStack.EMPTY;
@@ -291,7 +291,7 @@ public class GuideScreen extends Screen {
 		@Override
 		public ItemStack draw(GuideScreen screen, GuiGraphicsExtractor graphics, int x, int y, int mouseX, int mouseY) {
 			graphics.text(screen.font, name, x + 20, y + 4, INK, false);
-			return icon(graphics, icon, x, y, mouseX, mouseY);
+			return drawItem(graphics, icon, x, y, mouseX, mouseY);
 		}
 	}
 
@@ -312,7 +312,7 @@ public class GuideScreen extends Screen {
 
 			for (Object part : parts) {
 				if (part instanceof ItemStack stack) {
-					ItemStack hit = icon(graphics, stack, partX + 1, y + 3, mouseX, mouseY);
+					ItemStack hit = drawItem(graphics, stack, partX + 1, y + 3, mouseX, mouseY);
 					hovered = hit.isEmpty() ? hovered : hit;
 				} else {
 					graphics.text(screen.font, part.toString(), partX + 3, y + 7, INK, false);
@@ -348,7 +348,7 @@ public class GuideScreen extends Screen {
 			ItemStack hovered = ItemStack.EMPTY;
 
 			for (int i = 0; i < shown; i++) {
-				ItemStack hit = icon(graphics, items.get((start + i) % items.size()), x + 6 + i * 18, y + 1, mouseX, mouseY);
+				ItemStack hit = drawItem(graphics, items.get((start + i) % items.size()), x + 6 + i * 18, y + 1, mouseX, mouseY);
 				hovered = hit.isEmpty() ? hovered : hit;
 			}
 
