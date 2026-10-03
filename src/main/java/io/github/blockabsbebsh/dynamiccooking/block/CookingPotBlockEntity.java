@@ -1,18 +1,22 @@
 package io.github.blockabsbebsh.dynamiccooking.block;
 
 import java.util.List;
+import java.util.Optional;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.Containers;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -25,11 +29,14 @@ import net.fabricmc.fabric.api.blockgetter.v2.RenderDataBlockEntity;
 
 import io.github.blockabsbebsh.dynamiccooking.DynamicCooking;
 import io.github.blockabsbebsh.dynamiccooking.cooking.CookingRules;
+import io.github.blockabsbebsh.dynamiccooking.cooking.DishResult;
 import io.github.blockabsbebsh.dynamiccooking.cooking.PotColors;
 import io.github.blockabsbebsh.dynamiccooking.dish.CookingService;
+import io.github.blockabsbebsh.dynamiccooking.dish.DishFactory;
 
 /**
  * Holds the ingredients in the order they were added and runs the cooking timer.
+ * Dishes with a serving item, like stew and a bowl, stay in the pot once cooked until they are served.
  * The liquid color is synced to clients, which tint the liquid with it.
  */
 public class CookingPotBlockEntity extends BlockEntity implements RenderDataBlockEntity {
@@ -39,6 +46,10 @@ public class CookingPotBlockEntity extends BlockEntity implements RenderDataBloc
 	private final NonNullList<ItemStack> items = NonNullList.withSize(CookingRules.DEFAULT.maxIngredients(), ItemStack.EMPTY);
 	private int cookTicksLeft;
 	private int liquidColor = PotColors.WATER;
+	/** A cooked dish waiting to be served, or empty. */
+	private ItemStack serving = ItemStack.EMPTY;
+	private String servedWith = "";
+	private int servingsLeft;
 
 	public CookingPotBlockEntity(BlockPos pos, BlockState state) {
 		super(ModBlockEntities.COOKING_POT, pos, state);
@@ -62,6 +73,52 @@ public class CookingPotBlockEntity extends BlockEntity implements RenderDataBloc
 
 	public boolean isCooking() {
 		return cookTicksLeft > 0;
+	}
+
+	public boolean hasServing() {
+		return !serving.isEmpty() && servingsLeft > 0;
+	}
+
+	/** The dish waiting to be served, for its name. */
+	public ItemStack serving() {
+		return serving;
+	}
+
+	/** The item that serves the waiting dish, like a bowl. */
+	public Optional<Item> servedWith() {
+		return servedWith.isEmpty() ? Optional.empty() : BuiltInRegistries.ITEM.getOptional(Identifier.parse(servedWith));
+	}
+
+	public boolean isServedWith(ItemStack stack) {
+		return hasServing() && BuiltInRegistries.ITEM.getKey(stack.getItem()).toString().equals(servedWith);
+	}
+
+	public int servingsLeft() {
+		return servingsLeft;
+	}
+
+	/** Takes one dish out of the pot. The pot empties after the last one. */
+	public ItemStack serve() {
+		if (!hasServing()) {
+			return ItemStack.EMPTY;
+		}
+
+		ItemStack dish = serving.copyWithCount(1);
+
+		if (--servingsLeft <= 0) {
+			clearServing();
+			contentsChanged();
+		} else {
+			setChanged();
+		}
+
+		return dish;
+	}
+
+	private void clearServing() {
+		serving = ItemStack.EMPTY;
+		servedWith = "";
+		servingsLeft = 0;
 	}
 
 	public List<ItemStack> contents() {
@@ -109,10 +166,10 @@ public class CookingPotBlockEntity extends BlockEntity implements RenderDataBloc
 			return;
 		}
 
-		ItemStack dish;
+		DishResult result;
 
 		try {
-			dish = CookingService.create(level.registryAccess()).cook(pot.contents());
+			result = CookingService.create(level.registryAccess()).resolve(pot.contents());
 		} catch (IllegalArgumentException e) {
 			// Data packs changed since the ingredients went in. Give everything back rather than lose it.
 			DynamicCooking.LOGGER.warn("Cooking pot at {} could not cook: {}", pos, e.getMessage());
@@ -123,10 +180,21 @@ public class CookingPotBlockEntity extends BlockEntity implements RenderDataBloc
 			return;
 		}
 
+		ItemStack dish = DishFactory.create(result);
 		pot.items.clear();
 		pot.setCookingState(false);
-		pot.contentsChanged();
-		Block.popResourceFromFace(level, pos, Direction.UP, dish);
+
+		if (result.servedWith().isPresent()) {
+			// Runny dishes stay in the pot, so the liquid keeps its height and color until the last serving.
+			pot.serving = dish;
+			pot.servedWith = result.servedWith().get();
+			pot.servingsLeft = result.servings();
+			pot.setChanged();
+		} else {
+			pot.contentsChanged();
+			Block.popResourceFromFace(level, pos, Direction.UP, dish);
+		}
+
 		level.playSound(null, pos, SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.BLOCKS, 1.0f, 1.2f);
 	}
 
@@ -196,6 +264,11 @@ public class CookingPotBlockEntity extends BlockEntity implements RenderDataBloc
 	public void preRemoveSideEffects(BlockPos pos, BlockState state) {
 		if (level != null) {
 			Containers.dropContents(level, pos, items);
+
+			// Breaking the pot spills nothing: whatever was left to serve drops as finished dishes.
+			for (int i = 0; i < servingsLeft && !serving.isEmpty(); i++) {
+				Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), serving.copyWithCount(1));
+			}
 		}
 	}
 
@@ -206,6 +279,9 @@ public class CookingPotBlockEntity extends BlockEntity implements RenderDataBloc
 		ContainerHelper.loadAllItems(input, items);
 		cookTicksLeft = input.getIntOr("cook_ticks_left", 0);
 		liquidColor = input.getIntOr("liquid_color", PotColors.WATER);
+		serving = input.read("serving", ItemStack.CODEC).orElse(ItemStack.EMPTY);
+		servedWith = input.getStringOr("served_with", "");
+		servingsLeft = input.getIntOr("servings_left", 0);
 
 		if (level != null && level.isClientSide()) {
 			// Redraw the pot so the liquid picks up the new color.
@@ -218,6 +294,12 @@ public class CookingPotBlockEntity extends BlockEntity implements RenderDataBloc
 		ContainerHelper.saveAllItems(output, items);
 		output.putInt("cook_ticks_left", cookTicksLeft);
 		output.putInt("liquid_color", liquidColor);
+
+		if (hasServing()) {
+			output.store("serving", ItemStack.CODEC, serving);
+			output.putString("served_with", servedWith);
+			output.putInt("servings_left", servingsLeft);
+		}
 		super.saveAdditional(output);
 	}
 }

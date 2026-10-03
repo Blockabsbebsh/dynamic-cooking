@@ -1,0 +1,9 @@
+{
+	"items": [
+		"minecraft:water_bucket"
+	],
+	"roles": [
+		"water"
+	],
+	"color": "#3F76E4"
+}

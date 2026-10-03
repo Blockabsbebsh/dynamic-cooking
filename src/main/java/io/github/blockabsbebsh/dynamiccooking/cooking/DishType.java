@@ -1,6 +1,7 @@
 package io.github.blockabsbebsh.dynamiccooking.cooking;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -15,6 +16,9 @@ import java.util.Set;
  * @param bonusNutrition    food points added on top of the ingredients
  * @param bonusSaturation   saturation added on top of the ingredients
  * @param liquid            whether the dish is runny, like a stew; the pot then shows liquid instead of a thick mash
+ * @param servedWith        item id of the container that takes the dish out of the pot, like {@code minecraft:bowl};
+ *                          when empty the dish pops out of the pot by itself
+ * @param servings          how many times the pot can be served from before it is empty, when {@code servedWith} is set
  */
 public record DishType(
 		String item,
@@ -25,7 +29,9 @@ public record DishType(
 		Set<String> flavorRoles,
 		int bonusNutrition,
 		float bonusSaturation,
-		boolean liquid
+		boolean liquid,
+		Optional<String> servedWith,
+		int servings
 ) {
 	public static final Set<String> DEFAULT_FLAVOR_ROLES = Set.of("produce", "protein", "mushroom");
 
@@ -33,5 +39,9 @@ public record DishType(
 		requires = List.copyOf(requires);
 		forbids = List.copyOf(forbids);
 		flavorRoles = Set.copyOf(flavorRoles);
+
+		if (servings < 1) {
+			throw new IllegalArgumentException("servings must be at least 1, got " + servings);
+		}
 	}
 }

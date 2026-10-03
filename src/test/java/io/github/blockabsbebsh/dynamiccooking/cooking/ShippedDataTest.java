@@ -81,7 +81,9 @@ class ShippedDataTest {
 					json.has("flavor_roles") ? new HashSet<>(strings(json.getAsJsonArray("flavor_roles"))) : DishType.DEFAULT_FLAVOR_ROLES,
 					json.has("bonus_nutrition") ? json.get("bonus_nutrition").getAsInt() : 0,
 					json.has("bonus_saturation") ? json.get("bonus_saturation").getAsFloat() : 0.0f,
-					json.has("liquid") && json.get("liquid").getAsBoolean()
+					json.has("liquid") && json.get("liquid").getAsBoolean(),
+					json.has("served_with") ? Optional.of(json.get("served_with").getAsString()) : Optional.empty(),
+					json.has("servings") ? json.get("servings").getAsInt() : 1
 			));
 		}
 
@@ -105,15 +107,33 @@ class ShippedDataTest {
 		assertDish("pie", List.of("mutton"), "wheat", "egg", "cooked_mutton");
 		assertDish("cookies", List.of("sweet_berry"), "wheat", "sugar", "sweet_berries");
 		assertCrafted("juice", List.of("melon"), "glass_bottle", "melon_slice");
-		assertDish("stew", List.of("beef", "potato"), "bowl", "beef", "potato");
+		assertDish("stew", List.of("beef", "potato"), "water_bucket", "beef", "potato");
 		assertCrafted("salad", List.of("apple", "sweet_berry"), "bowl", "apple", "sweet_berries");
-		assertDish("soup", List.of("pumpkin"), "bowl", "pumpkin");
-		assertDish("soup", List.of("mushroom"), "bowl", "red_mushroom", "brown_mushroom");
+		assertDish("soup", List.of("pumpkin"), "water_bucket", "pumpkin");
+		assertDish("soup", List.of("mushroom"), "water_bucket", "red_mushroom", "brown_mushroom");
 		assertCrafted("sandwich", List.of("porkchop"), "bread", "cooked_porkchop");
 		assertCrafted("kelp_roll", List.of("cod"), "dried_kelp", "cod");
 		assertCrafted("skewer", List.of("chicken", "carrot"), "stick", "chicken", "carrot");
 		assertDish("omelette", List.of("mushroom"), "egg", "brown_mushroom");
 		assertDish("roast", List.of("rabbit", "potato"), "rabbit", "baked_potato");
+		assertDish("roast", List.of("cod", "potato"), "cod", "potato");
+		assertDish("roast", List.of("carrot", "potato"), "carrot", "potato");
+		assertDish("roast", List.of("mushroom", "beetroot"), "brown_mushroom", "beetroot");
+	}
+
+	@Test
+	void waterMakesStewsAndSoupsNotRoasts() {
+		assertDish("stew", List.of("cod", "carrot"), "water_bucket", "cod", "carrot");
+		assertDish("soup", List.of("carrot", "potato"), "water_bucket", "carrot", "potato");
+		assertTrue(cook("water_bucket", "beef").dubious());
+	}
+
+	@Test
+	void stewsAndSoupsAreServedWithABowl() {
+		assertEquals(Optional.of("minecraft:bowl"), cook("water_bucket", "beef", "potato").servedWith());
+		assertEquals(Optional.of("minecraft:bowl"), cook("water_bucket", "pumpkin").servedWith());
+		assertTrue(cook("carrot", "potato").servedWith().isEmpty());
+		assertTrue(cook("wheat", "sugar", "egg", "carrot").servedWith().isEmpty());
 	}
 
 	@Test
@@ -132,8 +152,8 @@ class ShippedDataTest {
 
 	@Test
 	void onlyRunnyDishesShowLiquidInThePot() {
-		assertTrue(cook("bowl", "beef", "potato").liquid());
-		assertTrue(cook("bowl", "pumpkin").liquid());
+		assertTrue(cook("water_bucket", "beef", "potato").liquid());
+		assertTrue(cook("water_bucket", "pumpkin").liquid());
 		assertTrue(!cook("wheat", "sugar", "egg", "carrot").liquid());
 		assertTrue(!cook("sugar", "sugar").liquid());
 	}
