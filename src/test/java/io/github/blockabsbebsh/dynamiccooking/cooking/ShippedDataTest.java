@@ -311,6 +311,26 @@ class ShippedDataTest {
 		assertEquals("minecraft:hunger", cook("water_bucket", "rotten_flesh", "carrot").sideEffects().getFirst().effect());
 	}
 
+	@Test
+	void anEnchantedGoldenAppleKeepsAllItsEffects() {
+		List<SideEffect> effects = cook("wheat", "sugar", "egg", "enchanted_golden_apple").sideEffects();
+
+		assertEquals(List.of("minecraft:regeneration", "minecraft:absorption", "minecraft:resistance", "minecraft:fire_resistance"),
+				effects.stream().map(SideEffect::effect).toList());
+		assertEquals(3, effects.get(1).amplifier());
+		assertEquals(300 * 20, effects.get(2).durationTicks());
+	}
+
+	@Test
+	void sameEffectsAddUpAndBatchesShareThem() {
+		SideEffect two = cook("wheat", "sugar", "egg", "golden_apple", "golden_apple").sideEffects().get(1);
+		assertEquals("minecraft:absorption", two.effect());
+		assertEquals(240 * 20, two.durationTicks());
+
+		SideEffect roll = craft("dried_kelp", "golden_apple").sideEffects().get(1);
+		assertEquals(30 * 20, roll.durationTicks());
+	}
+
 	private static void assertDish(String dish, List<String> nameFlavors, String... items) {
 		assertResult(cook(items), dish, nameFlavors, items);
 	}

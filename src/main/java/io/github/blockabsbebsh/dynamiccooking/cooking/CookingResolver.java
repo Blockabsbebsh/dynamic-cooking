@@ -239,7 +239,7 @@ public final class CookingResolver {
 				nutrition,
 				saturation,
 				resolveBuff(inputs),
-				sideEffects,
+				combineEffects(sideEffects, type.makes()),
 				heldRaw,
 				false,
 				type.liquid(),
@@ -325,6 +325,23 @@ public final class CookingResolver {
 		return Optional.of(new DishResult.Buff(effects.iterator().next(), amplifier, duration));
 	}
 
+	/**
+	 * Every ingredient's effects carry over in full, so a dish with an enchanted golden apple gives all of that apple's effects.
+	 * Copies of the same effect add their durations, and a batch like kelp rolls shares the duration out between its pieces.
+	 */
+	static List<SideEffect> combineEffects(List<SideEffect> effects, int makes) {
+		Map<SideEffect, Integer> durations = new LinkedHashMap<>();
+
+		for (SideEffect effect : effects) {
+			durations.merge(new SideEffect(effect.effect(), effect.amplifier(), 0, effect.chance()), effect.durationTicks(), Integer::sum);
+		}
+
+		List<SideEffect> combined = new ArrayList<>();
+		durations.forEach((effect, ticks) -> combined.add(
+				new SideEffect(effect.effect(), effect.amplifier(), Math.max(20, Math.ceilDiv(ticks, makes)), effect.chance())));
+		return combined;
+	}
+
 	private DishResult fallback(List<CookingInput> inputs) {
 		return new DishResult(
 				rules.fallbackItem(),
@@ -336,7 +353,7 @@ public final class CookingResolver {
 				rules.fallbackNutrition(),
 				rules.fallbackSaturation(),
 				Optional.empty(),
-				inputs.stream().flatMap(input -> input.profile().effects().stream()).toList(),
+				combineEffects(inputs.stream().flatMap(input -> input.profile().effects().stream()).toList(), 1),
 				false,
 				true,
 				false,

@@ -9,9 +9,25 @@
 	"flavor": "golden_apple",
 	"nutrition": 4,
 	"saturation": 9.6,
-	"buff": {
-		"effect": "minecraft:absorption",
-		"potency": 3
-	},
-	"color": "#E8C040"
+	"color": "#E8C040",
+	"effects": [
+		{
+			"effect": "minecraft:regeneration",
+			"amplifier": 1,
+			"seconds": 20
+		},
+		{
+			"effect": "minecraft:absorption",
+			"amplifier": 3,
+			"seconds": 120
+		},
+		{
+			"effect": "minecraft:resistance",
+			"seconds": 300
+		},
+		{
+			"effect": "minecraft:fire_resistance",
+			"seconds": 300
+		}
+	]
 }
