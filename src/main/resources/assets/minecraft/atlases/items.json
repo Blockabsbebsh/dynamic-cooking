@@ -267,7 +267,8 @@
 		{
 			"type": "minecraft:paletted_permutations",
 			"textures": [
-				"dynamic_cooking:item/dish/kelp_roll_filling"
+				"dynamic_cooking:item/dish/kelp_roll_filling",
+				"dynamic_cooking:item/dish/kelp_roll_chunks"
 			],
 			"palette_key": "dynamic_cooking:dish/key",
 			"permutations": {
