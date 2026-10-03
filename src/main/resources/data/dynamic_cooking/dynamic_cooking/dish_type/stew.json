@@ -28,5 +28,6 @@
 		}
 	],
 	"bonus_nutrition": 2,
-	"bonus_saturation": 2.0
+	"bonus_saturation": 2.0,
+	"liquid": true
 }

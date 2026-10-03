@@ -80,7 +80,8 @@ class ShippedDataTest {
 					forbids,
 					json.has("flavor_roles") ? new HashSet<>(strings(json.getAsJsonArray("flavor_roles"))) : DishType.DEFAULT_FLAVOR_ROLES,
 					json.has("bonus_nutrition") ? json.get("bonus_nutrition").getAsInt() : 0,
-					json.has("bonus_saturation") ? json.get("bonus_saturation").getAsFloat() : 0.0f
+					json.has("bonus_saturation") ? json.get("bonus_saturation").getAsFloat() : 0.0f,
+					json.has("liquid") && json.get("liquid").getAsBoolean()
 			));
 		}
 
@@ -127,6 +128,14 @@ class ShippedDataTest {
 	void flavorlessMixesAreDubious() {
 		assertTrue(cook("sugar", "sugar").dubious());
 		assertTrue(cook("bowl", "stick").dubious());
+	}
+
+	@Test
+	void onlyRunnyDishesShowLiquidInThePot() {
+		assertTrue(cook("bowl", "beef", "potato").liquid());
+		assertTrue(cook("bowl", "pumpkin").liquid());
+		assertTrue(!cook("wheat", "sugar", "egg", "carrot").liquid());
+		assertTrue(!cook("sugar", "sugar").liquid());
 	}
 
 	@Test

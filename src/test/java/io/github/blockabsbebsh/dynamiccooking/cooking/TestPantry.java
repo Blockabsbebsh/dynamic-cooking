@@ -77,11 +77,11 @@ final class TestPantry {
 	}
 
 	static DishType type(String name, int priority, int bonusNutrition, float bonusSaturation, List<Requirement> requires, List<Matcher> forbids) {
-		return new DishType("dynamic_cooking:" + name, priority, CookingMethod.POT, requires, forbids, DishType.DEFAULT_FLAVOR_ROLES, bonusNutrition, bonusSaturation);
+		return new DishType("dynamic_cooking:" + name, priority, CookingMethod.POT, requires, forbids, DishType.DEFAULT_FLAVOR_ROLES, bonusNutrition, bonusSaturation, false);
 	}
 
 	static DishType crafted(String name, int priority, int bonusNutrition, float bonusSaturation, List<Requirement> requires, List<Matcher> forbids) {
-		return new DishType("dynamic_cooking:" + name, priority, CookingMethod.CRAFTING, requires, forbids, DishType.DEFAULT_FLAVOR_ROLES, bonusNutrition, bonusSaturation);
+		return new DishType("dynamic_cooking:" + name, priority, CookingMethod.CRAFTING, requires, forbids, DishType.DEFAULT_FLAVOR_ROLES, bonusNutrition, bonusSaturation, false);
 	}
 
 	static Requirement req(Matcher matcher) {

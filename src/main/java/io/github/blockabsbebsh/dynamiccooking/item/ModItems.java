@@ -33,7 +33,7 @@ public final class ModItems {
 	public static final Item SALAD = dish("salad", 3, 0.3f, properties -> properties.usingConvertsTo(Items.BOWL));
 	public static final Item SANDWICH = dish("sandwich", 6, 0.6f, UnaryOperator.identity());
 	public static final Item KELP_ROLL = dish("kelp_roll", 4, 0.5f, UnaryOperator.identity());
-	public static final Item SKEWER = dish("skewer", 5, 0.6f, UnaryOperator.identity());
+	public static final Item SKEWER = dish("skewer", 5, 0.6f, properties -> properties.usingConvertsTo(Items.STICK));
 	public static final Item OMELETTE = dish("omelette", 4, 0.6f, UnaryOperator.identity());
 	public static final Item ROAST = dish("roast", 7, 0.8f, UnaryOperator.identity());
 	public static final Item DUBIOUS_MUSH = dish("dubious_mush", 2, 0.1f, UnaryOperator.identity());
