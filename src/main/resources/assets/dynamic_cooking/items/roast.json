@@ -587,10 +587,6 @@
 					"type": "minecraft:model",
 					"model": "dynamic_cooking:item/dish/roast_side_potato"
 				}
-			},
-			{
-				"type": "minecraft:model",
-				"model": "dynamic_cooking:item/dish/roast_sear"
 			}
 		]
 	}

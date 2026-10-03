@@ -183,8 +183,8 @@
 		{
 			"type": "minecraft:paletted_permutations",
 			"textures": [
-				"dynamic_cooking:item/dish/skewer_chunk",
-				"dynamic_cooking:item/dish/skewer_lower"
+				"dynamic_cooking:item/dish/skewer_chunks",
+				"dynamic_cooking:item/dish/skewer_middle"
 			],
 			"palette_key": "dynamic_cooking:dish/key",
 			"permutations": {
@@ -225,7 +225,8 @@
 		{
 			"type": "minecraft:paletted_permutations",
 			"textures": [
-				"dynamic_cooking:item/dish/sandwich_filling"
+				"dynamic_cooking:item/dish/sandwich_filling",
+				"dynamic_cooking:item/dish/sandwich_bits"
 			],
 			"palette_key": "dynamic_cooking:dish/key",
 			"permutations": {
