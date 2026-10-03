@@ -1,5 +1,7 @@
 package io.github.blockabsbebsh.dynamiccooking.block;
 
+import java.util.List;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
@@ -10,6 +12,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.CustomModelData;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -67,6 +70,7 @@ public final class CakeCutting {
 		ItemStack slice = new ItemStack(ModItems.CAKE_SLICE);
 		copy(cake, slice, ModComponents.DISH);
 		copy(cake, slice, DataComponents.CUSTOM_MODEL_DATA);
+		repeatFirstColor(slice);
 		copy(cake, slice, DataComponents.CONSUMABLE);
 
 		FoodProperties whole = cake.get(DataComponents.FOOD);
@@ -80,6 +84,16 @@ public final class CakeCutting {
 		}
 
 		return slice;
+	}
+
+	/** The slice item tints its filling with color 1, so a one-flavor slice gets its only color twice. */
+	private static void repeatFirstColor(ItemStack slice) {
+		CustomModelData data = slice.get(DataComponents.CUSTOM_MODEL_DATA);
+
+		if (data != null && data.colors().size() == 1) {
+			int color = data.colors().get(0);
+			slice.set(DataComponents.CUSTOM_MODEL_DATA, new CustomModelData(data.floats(), data.flags(), data.strings(), List.of(color, color)));
+		}
 	}
 
 	private static <T> void copy(ItemStack from, ItemStack to, DataComponentType<T> type) {

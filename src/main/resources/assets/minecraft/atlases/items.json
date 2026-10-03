@@ -215,7 +215,7 @@
 			"type": "minecraft:paletted_permutations",
 			"textures": [
 				"dynamic_cooking:item/dish/sandwich_filling",
-				"dynamic_cooking:item/dish/sandwich_bits"
+				"dynamic_cooking:item/dish/sandwich_second"
 			],
 			"palette_key": "dynamic_cooking:dish/key",
 			"permutations": {
@@ -259,7 +259,7 @@
 			"type": "minecraft:paletted_permutations",
 			"textures": [
 				"dynamic_cooking:item/dish/kelp_roll_filling",
-				"dynamic_cooking:item/dish/kelp_roll_chunks"
+				"dynamic_cooking:item/dish/kelp_roll_second"
 			],
 			"palette_key": "dynamic_cooking:dish/key",
 			"permutations": {
@@ -302,7 +302,8 @@
 		{
 			"type": "minecraft:paletted_permutations",
 			"textures": [
-				"dynamic_cooking:item/dish/omelette_filling"
+				"dynamic_cooking:item/dish/omelette_filling",
+				"dynamic_cooking:item/dish/omelette_chunks"
 			],
 			"palette_key": "dynamic_cooking:dish/key",
 			"permutations": {
