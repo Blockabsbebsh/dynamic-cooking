@@ -23,6 +23,20 @@
 							}
 						},
 						{
+							"when": "beetroot",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/salad_pieces_beetroot"
+							}
+						},
+						{
+							"when": "carrot",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/salad_pieces_carrot"
+							}
+						},
+						{
 							"when": "chorus_fruit",
 							"model": {
 								"type": "minecraft:model",
@@ -99,6 +113,20 @@
 							}
 						},
 						{
+							"when": "beetroot",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/salad_top_beetroot"
+							}
+						},
+						{
+							"when": "carrot",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/salad_top_carrot"
+							}
+						},
+						{
 							"when": "chorus_fruit",
 							"model": {
 								"type": "minecraft:model",
@@ -151,6 +179,20 @@
 								"model": {
 									"type": "minecraft:model",
 									"model": "dynamic_cooking:item/dish/salad_top_apple"
+								}
+							},
+							{
+								"when": "beetroot",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/salad_top_beetroot"
+								}
+							},
+							{
+								"when": "carrot",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/salad_top_carrot"
 								}
 							},
 							{

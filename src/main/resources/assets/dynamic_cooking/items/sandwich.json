@@ -72,6 +72,13 @@
 							}
 						},
 						{
+							"when": "egg",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_filling_egg"
+							}
+						},
+						{
 							"when": "glistering_melon",
 							"model": {
 								"type": "minecraft:model",
@@ -104,6 +111,13 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/sandwich_filling_melon"
+							}
+						},
+						{
+							"when": "mushroom",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_filling_mushroom"
 							}
 						},
 						{
@@ -323,6 +337,13 @@
 							}
 						},
 						{
+							"when": "egg",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_bits_egg"
+							}
+						},
+						{
 							"when": "glistering_melon",
 							"model": {
 								"type": "minecraft:model",
@@ -355,6 +376,13 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/sandwich_bits_melon"
+							}
+						},
+						{
+							"when": "mushroom",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_bits_mushroom"
 							}
 						},
 						{
@@ -553,6 +581,13 @@
 								}
 							},
 							{
+								"when": "egg",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/sandwich_bits_egg"
+								}
+							},
+							{
 								"when": "glistering_melon",
 								"model": {
 									"type": "minecraft:model",
@@ -585,6 +620,13 @@
 								"model": {
 									"type": "minecraft:model",
 									"model": "dynamic_cooking:item/dish/sandwich_bits_melon"
+								}
+							},
+							{
+								"when": "mushroom",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/sandwich_bits_mushroom"
 								}
 							},
 							{

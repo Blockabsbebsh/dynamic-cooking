@@ -24,7 +24,7 @@ DISHES["stew"] = dict(
 	vanilla="bowl",
 	layers={"a": "broth", "b": "chunks"},
 	order=["vanilla", "a", "b"],
-	defaults=["beef", "carrot"],
+	defaults=["beef"],
 	refs=["rabbit_stew", "mushroom_stew", "bowl"],
 	grid="""
 ................

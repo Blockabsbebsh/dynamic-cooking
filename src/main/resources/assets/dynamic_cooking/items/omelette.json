@@ -72,6 +72,13 @@
 							}
 						},
 						{
+							"when": "egg",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_egg"
+							}
+						},
+						{
 							"when": "glistering_melon",
 							"model": {
 								"type": "minecraft:model",
