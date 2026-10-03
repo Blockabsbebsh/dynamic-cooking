@@ -7,5 +7,6 @@
 	],
 	"flavor": "carrot",
 	"nutrition": 3,
-	"saturation": 3.6
+	"saturation": 3.6,
+	"color": "#E58A1F"
 }

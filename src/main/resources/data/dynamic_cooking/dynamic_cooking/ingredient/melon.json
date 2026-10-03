@@ -8,5 +8,6 @@
 	],
 	"flavor": "melon",
 	"nutrition": 2,
-	"saturation": 1.2
+	"saturation": 1.2,
+	"color": "#D9503A"
 }

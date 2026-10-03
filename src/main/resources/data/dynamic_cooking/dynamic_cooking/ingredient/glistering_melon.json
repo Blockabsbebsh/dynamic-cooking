@@ -11,5 +11,6 @@
 	"saturation": 1.2,
 	"buff": {
 		"effect": "minecraft:regeneration"
-	}
+	},
+	"color": "#E8A040"
 }

@@ -99,7 +99,8 @@ final class TestPantry {
 				Optional.ofNullable(flavor),
 				nutrition,
 				saturation,
-				Optional.ofNullable(buff)
+				Optional.ofNullable(buff),
+				Optional.empty()
 		));
 	}
 }

@@ -10,5 +10,6 @@
 	"saturation": 0.2,
 	"buff": {
 		"effect": "minecraft:water_breathing"
-	}
+	},
+	"color": "#D7B54E"
 }

@@ -7,5 +7,6 @@
 	],
 	"flavor": "kelp",
 	"nutrition": 1,
-	"saturation": 0.6
+	"saturation": 0.6,
+	"color": "#3F5126"
 }

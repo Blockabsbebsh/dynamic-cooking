@@ -98,8 +98,8 @@ class CookingResolverTest {
 	@Test
 	void slotsBacktrackWhenAGreedyChoiceBlocksALaterSlot() {
 		// The first slot accepts either role, the second only "x". Greedy would give the x-ingredient to the first slot.
-		IngredientProfile x = new IngredientProfile(List.of("test:x"), Set.of("x"), Optional.of("x"), 1, 0, Optional.empty());
-		IngredientProfile y = new IngredientProfile(List.of("test:y"), Set.of("y"), Optional.of("y"), 1, 0, Optional.empty());
+		IngredientProfile x = new IngredientProfile(List.of("test:x"), Set.of("x"), Optional.of("x"), 1, 0, Optional.empty(), Optional.empty());
+		IngredientProfile y = new IngredientProfile(List.of("test:y"), Set.of("y"), Optional.of("y"), 1, 0, Optional.empty(), Optional.empty());
 		DishType type = TestPantry.type("tricky", 1, 0, 0,
 				List.of(TestPantry.req(Matcher.role("x", "y")), TestPantry.req(Matcher.role("x"))), List.of());
 

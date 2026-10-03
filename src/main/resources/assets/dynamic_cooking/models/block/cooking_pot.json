@@ -4,7 +4,6 @@
 		"particle": "minecraft:block/cauldron_side",
 		"side": "minecraft:block/cauldron_side",
 		"inside": "minecraft:block/cauldron_inner",
-		"bottom": "minecraft:block/cauldron_bottom",
 		"handle": "minecraft:block/anvil"
 	},
 	"elements": [
@@ -21,22 +20,46 @@
 			],
 			"faces": {
 				"north": {
-					"texture": "#side"
+					"texture": "#side",
+					"uv": [
+						3,
+						9,
+						13,
+						10
+					]
 				},
 				"south": {
-					"texture": "#side"
+					"texture": "#side",
+					"uv": [
+						3,
+						9,
+						13,
+						10
+					]
 				},
 				"east": {
-					"texture": "#side"
+					"texture": "#side",
+					"uv": [
+						3,
+						9,
+						13,
+						10
+					]
 				},
 				"west": {
-					"texture": "#side"
+					"texture": "#side",
+					"uv": [
+						3,
+						9,
+						13,
+						10
+					]
 				},
 				"up": {
 					"texture": "#inside"
 				},
 				"down": {
-					"texture": "#bottom"
+					"texture": "#inside"
 				}
 			}
 		},
@@ -53,16 +76,40 @@
 			],
 			"faces": {
 				"north": {
-					"texture": "#side"
+					"texture": "#side",
+					"uv": [
+						3,
+						2,
+						13,
+						9
+					]
 				},
 				"south": {
-					"texture": "#inside"
+					"texture": "#inside",
+					"uv": [
+						3,
+						2,
+						13,
+						9
+					]
 				},
 				"east": {
-					"texture": "#side"
+					"texture": "#side",
+					"uv": [
+						3,
+						2,
+						4,
+						9
+					]
 				},
 				"west": {
-					"texture": "#side"
+					"texture": "#side",
+					"uv": [
+						3,
+						2,
+						4,
+						9
+					]
 				},
 				"up": {
 					"texture": "#side"
@@ -85,16 +132,40 @@
 			],
 			"faces": {
 				"north": {
-					"texture": "#inside"
+					"texture": "#inside",
+					"uv": [
+						3,
+						2,
+						13,
+						9
+					]
 				},
 				"south": {
-					"texture": "#side"
+					"texture": "#side",
+					"uv": [
+						3,
+						2,
+						13,
+						9
+					]
 				},
 				"east": {
-					"texture": "#side"
+					"texture": "#side",
+					"uv": [
+						12,
+						2,
+						13,
+						9
+					]
 				},
 				"west": {
-					"texture": "#side"
+					"texture": "#side",
+					"uv": [
+						12,
+						2,
+						13,
+						9
+					]
 				},
 				"up": {
 					"texture": "#side"
@@ -117,16 +188,40 @@
 			],
 			"faces": {
 				"north": {
-					"texture": "#side"
+					"texture": "#side",
+					"uv": [
+						3,
+						2,
+						4,
+						9
+					]
 				},
 				"south": {
-					"texture": "#side"
+					"texture": "#side",
+					"uv": [
+						3,
+						2,
+						4,
+						9
+					]
 				},
 				"east": {
-					"texture": "#inside"
+					"texture": "#inside",
+					"uv": [
+						4,
+						2,
+						12,
+						9
+					]
 				},
 				"west": {
-					"texture": "#side"
+					"texture": "#side",
+					"uv": [
+						4,
+						2,
+						12,
+						9
+					]
 				},
 				"up": {
 					"texture": "#side"
@@ -149,16 +244,40 @@
 			],
 			"faces": {
 				"north": {
-					"texture": "#side"
+					"texture": "#side",
+					"uv": [
+						12,
+						2,
+						13,
+						9
+					]
 				},
 				"south": {
-					"texture": "#side"
+					"texture": "#side",
+					"uv": [
+						12,
+						2,
+						13,
+						9
+					]
 				},
 				"east": {
-					"texture": "#side"
+					"texture": "#side",
+					"uv": [
+						4,
+						2,
+						12,
+						9
+					]
 				},
 				"west": {
-					"texture": "#inside"
+					"texture": "#inside",
+					"uv": [
+						4,
+						2,
+						12,
+						9
+					]
 				},
 				"up": {
 					"texture": "#side"
@@ -181,16 +300,40 @@
 			],
 			"faces": {
 				"north": {
-					"texture": "#handle"
+					"texture": "#handle",
+					"uv": [
+						1,
+						2,
+						3,
+						3
+					]
 				},
 				"south": {
-					"texture": "#handle"
+					"texture": "#handle",
+					"uv": [
+						1,
+						2,
+						3,
+						3
+					]
 				},
 				"east": {
-					"texture": "#handle"
+					"texture": "#handle",
+					"uv": [
+						7,
+						2,
+						9,
+						3
+					]
 				},
 				"west": {
-					"texture": "#handle"
+					"texture": "#handle",
+					"uv": [
+						7,
+						2,
+						9,
+						3
+					]
 				},
 				"up": {
 					"texture": "#handle"
@@ -213,16 +356,40 @@
 			],
 			"faces": {
 				"north": {
-					"texture": "#handle"
+					"texture": "#handle",
+					"uv": [
+						13,
+						2,
+						15,
+						3
+					]
 				},
 				"south": {
-					"texture": "#handle"
+					"texture": "#handle",
+					"uv": [
+						13,
+						2,
+						15,
+						3
+					]
 				},
 				"east": {
-					"texture": "#handle"
+					"texture": "#handle",
+					"uv": [
+						7,
+						2,
+						9,
+						3
+					]
 				},
 				"west": {
-					"texture": "#handle"
+					"texture": "#handle",
+					"uv": [
+						7,
+						2,
+						9,
+						3
+					]
 				},
 				"up": {
 					"texture": "#handle"

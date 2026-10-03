@@ -42,7 +42,8 @@ class ShippedDataTest {
 					json.has("flavor") ? Optional.of(json.get("flavor").getAsString()) : Optional.empty(),
 					json.has("nutrition") ? json.get("nutrition").getAsInt() : 0,
 					json.has("saturation") ? json.get("saturation").getAsFloat() : 0.0f,
-					json.has("buff") ? Optional.of(buff(json.getAsJsonObject("buff"))) : Optional.empty()
+					json.has("buff") ? Optional.of(buff(json.getAsJsonObject("buff"))) : Optional.empty(),
+					json.has("color") ? Optional.of(Integer.parseInt(json.get("color").getAsString().substring(1), 16)) : Optional.empty()
 			);
 
 			for (String item : profile.items()) {
@@ -126,6 +127,15 @@ class ShippedDataTest {
 	void flavorlessMixesAreDubious() {
 		assertTrue(cook("sugar", "sugar").dubious());
 		assertTrue(cook("bowl", "stick").dubious());
+	}
+
+	@Test
+	void everyFlavorTintsThePot() {
+		for (IngredientProfile profile : PROFILES.values()) {
+			if (profile.flavor().isPresent()) {
+				assertTrue(profile.color().isPresent(), profile.items() + " has a flavor but no pot color");
+			}
+		}
 	}
 
 	@Test

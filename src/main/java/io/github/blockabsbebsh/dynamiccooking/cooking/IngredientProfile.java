@@ -13,6 +13,7 @@ import java.util.Set;
  * @param nutrition  food points this ingredient adds to a dish
  * @param saturation saturation points this ingredient adds to a dish
  * @param buff       optional buff this ingredient adds
+ * @param color      optional {@code 0xRRGGBB} color this ingredient gives the liquid in the pot; containers and seasonings have none
  */
 public record IngredientProfile(
 		List<String> items,
@@ -20,7 +21,8 @@ public record IngredientProfile(
 		Optional<String> flavor,
 		int nutrition,
 		float saturation,
-		Optional<BuffSource> buff
+		Optional<BuffSource> buff,
+		Optional<Integer> color
 ) {
 	public IngredientProfile {
 		items = List.copyOf(items);

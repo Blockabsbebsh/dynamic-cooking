@@ -11,5 +11,6 @@
 	"saturation": 2.4,
 	"buff": {
 		"effect": "dynamic_cooking:teleport"
-	}
+	},
+	"color": "#9B6FA0"
 }

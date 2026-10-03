@@ -49,7 +49,8 @@ public final class CookingCodecs {
 			Codec.STRING.optionalFieldOf("flavor").forGetter(IngredientProfile::flavor),
 			Codec.intRange(0, 20).optionalFieldOf("nutrition", 0).forGetter(IngredientProfile::nutrition),
 			Codec.floatRange(0.0f, 20.0f).optionalFieldOf("saturation", 0.0f).forGetter(IngredientProfile::saturation),
-			BUFF_SOURCE.optionalFieldOf("buff").forGetter(IngredientProfile::buff)
+			BUFF_SOURCE.optionalFieldOf("buff").forGetter(IngredientProfile::buff),
+			Codec.STRING.comapFlatMap(CookingCodecs::parseColor, CookingCodecs::formatColor).optionalFieldOf("color").forGetter(IngredientProfile::color)
 	).apply(instance, IngredientProfile::new));
 
 	public static final Codec<DishType> DISH_TYPE = RecordCodecBuilder.create(instance -> instance.group(
@@ -64,6 +65,19 @@ public final class CookingCodecs {
 	).apply(instance, DishType::new));
 
 	private CookingCodecs() {
+	}
+
+	/** Reads a {@code #RRGGBB} color. */
+	private static DataResult<Integer> parseColor(String color) {
+		if (!color.matches("#[0-9a-fA-F]{6}")) {
+			return DataResult.error(() -> "Expected a color like #E58A1F, got " + color);
+		}
+
+		return DataResult.success(Integer.parseInt(color.substring(1), 16));
+	}
+
+	private static String formatColor(int color) {
+		return String.format("#%06X", color & 0xFFFFFF);
 	}
 
 	private static DataResult<CookingMethod> parseMethod(String id) {

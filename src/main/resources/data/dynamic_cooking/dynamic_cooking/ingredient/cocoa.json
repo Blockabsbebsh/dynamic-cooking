@@ -9,5 +9,6 @@
 	"flavor": "chocolate",
 	"buff": {
 		"effect": "minecraft:speed"
-	}
+	},
+	"color": "#5A3520"
 }

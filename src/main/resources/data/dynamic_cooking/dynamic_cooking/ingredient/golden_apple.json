@@ -11,5 +11,6 @@
 	"saturation": 9.6,
 	"buff": {
 		"effect": "minecraft:absorption"
-	}
+	},
+	"color": "#E8C040"
 }

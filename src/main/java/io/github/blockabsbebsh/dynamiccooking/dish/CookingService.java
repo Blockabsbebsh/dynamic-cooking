@@ -19,6 +19,7 @@ import io.github.blockabsbebsh.dynamiccooking.cooking.CookingRules;
 import io.github.blockabsbebsh.dynamiccooking.cooking.DishResult;
 import io.github.blockabsbebsh.dynamiccooking.cooking.DishType;
 import io.github.blockabsbebsh.dynamiccooking.cooking.IngredientProfile;
+import io.github.blockabsbebsh.dynamiccooking.cooking.PotColors;
 import io.github.blockabsbebsh.dynamiccooking.registry.ModRegistries;
 
 /**
@@ -75,6 +76,11 @@ public final class CookingService {
 		}
 
 		return resolver.resolve(inputs);
+	}
+
+	/** The color of the liquid in a pot holding these stacks. Stacks that aren't ingredients are skipped. */
+	public int liquidColor(List<ItemStack> ingredients) {
+		return PotColors.mix(ingredients.stream().map(this::input).flatMap(Optional::stream).map(CookingInput::profile).toList());
 	}
 
 	public ItemStack cook(List<ItemStack> ingredients) {

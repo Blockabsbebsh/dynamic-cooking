@@ -3,6 +3,7 @@ package io.github.blockabsbebsh.dynamiccooking.block;
 import org.jetbrains.annotations.Nullable;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -16,8 +17,11 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemStackTemplate;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
@@ -28,11 +32,14 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import io.github.blockabsbebsh.dynamiccooking.DynamicCooking;
+import io.github.blockabsbebsh.dynamiccooking.cooking.CookingRules;
 import io.github.blockabsbebsh.dynamiccooking.dish.CookingService;
 
 /**
@@ -41,20 +48,33 @@ import io.github.blockabsbebsh.dynamiccooking.dish.CookingService;
  */
 public class CookingPotBlock extends BaseEntityBlock {
 	public static final BooleanProperty COOKING = BooleanProperty.create("cooking");
+	/** How many ingredients are in the pot, which sets how high the liquid is drawn. */
+	public static final IntegerProperty FILL = IntegerProperty.create("fill", 0, CookingRules.DEFAULT.maxIngredients());
+	public static final EnumProperty<Legs> LEGS = EnumProperty.create("legs", Legs.class);
 
-	/** Blocks that can heat the pot when directly underneath it. Campfires must also be lit. */
+	/** Blocks that can heat the pot when directly underneath it. Ones that can be lit, like campfires and furnaces, must be lit. */
 	public static final TagKey<Block> HEAT_SOURCES = TagKey.create(Registries.BLOCK, DynamicCooking.id("heat_sources"));
 
 	private static final VoxelShape SHAPE = Block.box(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
 
 	public CookingPotBlock(Properties properties) {
 		super(properties);
-		registerDefaultState(stateDefinition.any().setValue(COOKING, false));
+		registerDefaultState(stateDefinition.any().setValue(COOKING, false).setValue(FILL, 0).setValue(LEGS, Legs.NONE));
 	}
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-		builder.add(COOKING);
+		builder.add(COOKING, FILL, LEGS);
+	}
+
+	@Override
+	public BlockState getStateForPlacement(BlockPlaceContext context) {
+		return defaultBlockState().setValue(LEGS, Legs.below(context.getLevel(), context.getClickedPos()));
+	}
+
+	@Override
+	protected BlockState updateShape(BlockState state, LevelReader level, ScheduledTickAccess ticks, BlockPos pos, Direction direction, BlockPos neighborPos, BlockState neighborState, RandomSource random) {
+		return direction == Direction.DOWN ? state.setValue(LEGS, Legs.below(level, pos)) : state;
 	}
 
 	@Override
@@ -92,12 +112,14 @@ public class CookingPotBlock extends BaseEntityBlock {
 	@Override
 	protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
 		if (!(level.getBlockEntity(pos) instanceof CookingPotBlockEntity pot)) {
-			return InteractionResult.PASS;
+			return InteractionResult.TRY_WITH_EMPTY_HAND;
 		}
 
-		// Anything that isn't an ingredient keeps its normal use, like placing a block next to the pot.
-		if (!CookingService.create(level.registryAccess()).isIngredient(stack)) {
-			return InteractionResult.PASS;
+		CookingService cooking = CookingService.create(level.registryAccess());
+
+		// Anything that isn't an ingredient acts like an empty hand, so the game goes on to useWithoutItem.
+		if (!cooking.isIngredient(stack)) {
+			return InteractionResult.TRY_WITH_EMPTY_HAND;
 		}
 
 		if (pot.isCooking()) {
@@ -125,7 +147,7 @@ public class CookingPotBlock extends BaseEntityBlock {
 			}
 
 			level.playSound(null, pos, SoundEvents.GENERIC_SPLASH, SoundSource.BLOCKS, 0.4f, 1.4f);
-			message(level, player, "added", ingredient.getHoverName(), pot.count(), pot.capacity());
+			message(level, player, "added", ingredient.getHoverName(), pot.count(), pot.capacity(), preview(cooking, pot));
 		}
 
 		return InteractionResult.SUCCESS;
@@ -143,12 +165,13 @@ public class CookingPotBlock extends BaseEntityBlock {
 		}
 
 		if (player.isSecondaryUseActive()) {
-			if (!level.isClientSide()) {
+			if (pot.isEmpty()) {
+				message(level, player, "empty");
+			} else if (!level.isClientSide()) {
 				ItemStack last = pot.removeLast();
-
-				if (!last.isEmpty()) {
-					give(player, last);
-				}
+				message(level, player, "removed", last.getHoverName(), pot.count(), pot.capacity());
+				give(player, last);
+				level.playSound(null, pos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 0.4f, 1.4f);
 			}
 
 			return InteractionResult.SUCCESS;
@@ -160,7 +183,10 @@ public class CookingPotBlock extends BaseEntityBlock {
 		}
 
 		if (!hasHeat(level, pos)) {
-			message(level, player, "no_heat");
+			if (!level.isClientSide()) {
+				message(level, player, "no_heat", preview(CookingService.create(level.registryAccess()), pot));
+			}
+
 			return InteractionResult.SUCCESS;
 		}
 
@@ -174,17 +200,29 @@ public class CookingPotBlock extends BaseEntityBlock {
 
 	@Override
 	public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
-		if (!state.getValue(COOKING)) {
-			return;
-		}
-
+		int fill = state.getValue(FILL);
 		double x = pos.getX() + 0.3 + random.nextDouble() * 0.4;
-		double y = pos.getY() + 0.5;
+		double y = pos.getY() + (1.0 + fill * 1.2) / 16.0;
 		double z = pos.getZ() + 0.3 + random.nextDouble() * 0.4;
-		level.addParticle(ParticleTypes.BUBBLE_POP, x, y, z, 0.0, 0.02, 0.0);
 
-		if (random.nextInt(3) == 0) {
-			level.addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE, x, y + 0.1, z, 0.0, 0.03, 0.0);
+		if (state.getValue(COOKING)) {
+			level.addParticle(ParticleTypes.BUBBLE_POP, x, y, z, 0.0, 0.02, 0.0);
+
+			if (random.nextInt(3) == 0) {
+				level.addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE, x, y + 0.1, z, 0.0, 0.03, 0.0);
+			}
+		} else if (fill > 0 && random.nextInt(4) == 0 && hasHeat(level, pos)) {
+			// A warm pot steams gently while it waits to be cooked.
+			level.addParticle(ParticleTypes.WHITE_SMOKE, x, y + 0.1, z, 0.0, 0.02, 0.0);
+		}
+	}
+
+	/** The name of the dish the pot would make right now, so players can tell if their recipe works before cooking. */
+	private static Component preview(CookingService cooking, CookingPotBlockEntity pot) {
+		try {
+			return cooking.cook(pot.contents()).getHoverName();
+		} catch (IllegalArgumentException e) {
+			return Component.translatable("message.dynamic_cooking.pot.unknown");
 		}
 	}
 
