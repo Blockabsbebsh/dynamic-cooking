@@ -1,7 +1,7 @@
 {
 	"textures": {
-		"particle": "minecraft:block/anvil",
-		"leg": "minecraft:block/anvil"
+		"particle": "dynamic_cooking:block/cooking_pot_metal",
+		"leg": "dynamic_cooking:block/cooking_pot_metal"
 	},
 	"elements": [
 		{
