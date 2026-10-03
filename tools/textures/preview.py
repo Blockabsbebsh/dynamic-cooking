@@ -3,7 +3,8 @@ flavour variants at 4x and 1x on the grey inventory slot colour.
 
     python3 tools/textures/preview.py OUT_DIR [REFERENCE_DIR] [dish ...]
 
-REFERENCE_DIR holds 16x16 PNGs named after the `refs` of each dish (vanilla sprites are not in this repository).
+REFERENCE_DIR holds 16x16 PNGs named after the `refs` and `vanilla` sprite of each dish (vanilla sprites are not in
+this repository). Without it, dishes drawn on a vanilla sprite preview as their overlay only.
 """
 
 import sys
@@ -12,6 +13,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
 from dishes import DISHES
+import generate
 from generate import compose, dish_flavors
 
 SLOT = (0x8B, 0x8B, 0x8B, 255)
@@ -99,6 +101,7 @@ def overview(names):
 def main():
 	out = Path(sys.argv[1])
 	refs_dir = Path(sys.argv[2]) if len(sys.argv) > 2 else None
+	generate.VANILLA_DIR = refs_dir
 	names = sys.argv[3:] or list(DISHES)
 	out.mkdir(parents=True, exist_ok=True)
 	flavors = dish_flavors()

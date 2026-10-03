@@ -149,6 +149,62 @@
 							}
 						},
 						{
+							"when": "raw_beef",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/kelp_roll_filling_raw_beef"
+							}
+						},
+						{
+							"when": "raw_chicken",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/kelp_roll_filling_raw_chicken"
+							}
+						},
+						{
+							"when": "raw_cod",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/kelp_roll_filling_raw_cod"
+							}
+						},
+						{
+							"when": "raw_mutton",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/kelp_roll_filling_raw_mutton"
+							}
+						},
+						{
+							"when": "raw_porkchop",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/kelp_roll_filling_raw_porkchop"
+							}
+						},
+						{
+							"when": "raw_potato",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/kelp_roll_filling_raw_potato"
+							}
+						},
+						{
+							"when": "raw_rabbit",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/kelp_roll_filling_raw_rabbit"
+							}
+						},
+						{
+							"when": "raw_salmon",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/kelp_roll_filling_raw_salmon"
+							}
+						},
+						{
 							"when": "salmon",
 							"model": {
 								"type": "minecraft:model",

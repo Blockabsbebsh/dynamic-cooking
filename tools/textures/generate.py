@@ -25,6 +25,10 @@ OUT = ASSETS / NS
 SECOND = "abcdefgh"
 LAYER_INDEX = {"a": 0, "b": 1}
 
+# Where previews find vanilla sprites for dishes drawn on a vanilla base. The game loads those from its own
+# assets, so they are never copied into this repository.
+VANILLA_DIR = None
+
 
 def rgba(hex_color):
 	return tuple(int(hex_color[i:i + 2], 16) for i in (1, 3, 5)) + (255,)
@@ -45,6 +49,7 @@ def rows(dish):
 def split_layers(dish):
 	"""One RGBA image per layer: the base in its real colours, flavour layers in key greys."""
 	images = {name: Image.new("RGBA", (16, 16), (0, 0, 0, 0)) for name in dish["layers"]}
+	images["vanilla"] = vanilla_sprite(dish)
 
 	for y, row in enumerate(rows(dish)):
 		for x, ch in enumerate(row):
@@ -55,10 +60,18 @@ def split_layers(dish):
 			elif ch in SECOND:
 				images["b"].putpixel((x, y), rgba(KEY[SECOND.index(ch)]))
 			else:
-				assert ch in dish["pal"], f"{dish['layers']['base']}: no colour for {ch!r}"
+				assert ch in dish.get("pal", {}), f"{dish['layers']}: no colour for {ch!r}"
 				images["base"].putpixel((x, y), rgba(dish["pal"][ch]))
 
 	return images
+
+
+def vanilla_sprite(dish):
+	"""The vanilla item a dish is drawn on, when the previews have a copy of it. Blank otherwise."""
+	path = VANILLA_DIR / f"{dish['vanilla']}.png" if VANILLA_DIR and dish.get("vanilla") else None
+	if path and path.exists():
+		return Image.open(path).convert("RGBA")
+	return Image.new("RGBA", (16, 16), (0, 0, 0, 0))
 
 
 def recolor(image, flavor):
@@ -103,6 +116,7 @@ def dish_flavors():
 
 	for dish_type in json_files(DATA / "dish_type"):
 		name = dish_type["item"].split(":")[1]
+		raw = DISHES.get(name, {}).get("raw", False)
 		roles = set(dish_type.get("flavor_roles", []))
 		items = set()
 
@@ -117,6 +131,8 @@ def dish_flavors():
 			if flavor and flavor in PALETTES and flavor not in flavors:
 				if roles & set(ingredient["roles"]) or items & set(ingredient["items"]):
 					flavors.append(flavor)
+					if raw and f"raw_{flavor}" in PALETTES:
+						flavors.append(f"raw_{flavor}")
 
 		result[name] = sorted(flavors)
 
@@ -138,7 +154,8 @@ def model(texture):
 
 
 def ref(model_name, tints=None):
-	value = {"type": "minecraft:model", "model": f"{NS}:item/dish/{model_name}"}
+	model_id = model_name if ":" in model_name else f"{NS}:item/dish/{model_name}"
+	value = {"type": "minecraft:model", "model": model_id}
 	if tints:
 		value["tints"] = tints
 	return value
@@ -201,9 +218,15 @@ def main():
 		images = split_layers(dish)
 		flavors = flavors_by_dish.get(name, [])
 		defaults = dish.get("defaults", [])
+		assert set(defaults) <= set(flavors), f"{name}: default flavours {defaults} not among {flavors}"
 		parts = []
 
 		for layer in dish["order"]:
+			if layer == "vanilla":
+				# Drawn on the game's own sprite, so it follows resource packs too.
+				parts.append(ref(f"minecraft:item/{dish['vanilla']}"))
+				continue
+
 			texture = f"{name}_{dish['layers'][layer]}"
 			save_png(images[layer], OUT / f"textures/item/dish/{texture}.png")
 			write_json(OUT / f"models/item/dish/{texture}.json", model(texture))
@@ -216,7 +239,7 @@ def main():
 				write_json(OUT / f"models/item/dish/{texture}_{flavor}.json", model(f"{texture}_{flavor}"))
 			parts.append(layer_model(name, layer, flavors, defaults))
 
-		templates = [f"{NS}:item/dish/{name}_{dish['layers'][layer]}" for layer in dish["order"] if layer != "base"]
+		templates = [f"{NS}:item/dish/{name}_{dish['layers'][layer]}" for layer in dish["order"] if layer in LAYER_INDEX]
 		if templates:
 			sources.append({
 				"type": "minecraft:paletted_permutations",
