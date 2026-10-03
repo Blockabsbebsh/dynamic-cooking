@@ -5,24 +5,19 @@
 		{
 			"match": {
 				"roles": [
-					"protein"
-				]
-			},
-			"flavor": true
-		},
-		{
-			"match": {
-				"roles": [
+					"protein",
 					"produce",
 					"mushroom"
 				]
 			},
+			"count": 2,
 			"flavor": true
 		}
 	],
 	"forbids": [
 		{
 			"roles": [
+				"water",
 				"bowl",
 				"bottle",
 				"stick",

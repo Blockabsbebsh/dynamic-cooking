@@ -61,6 +61,27 @@ public final class CookingService {
 		return !stack.isEmpty() && profile(stack.getItem()).isPresent();
 	}
 
+	/**
+	 * Whether this item serves runny dishes out of the pot, like a bowl. Such items never go into the pot as an
+	 * ingredient, so a bowl clicked on the pot too early doesn't end up cooked.
+	 */
+	public boolean isServingItem(ItemStack stack) {
+		String id = BuiltInRegistries.ITEM.getKey(stack.getItem()).toString();
+
+		return resolver.dishTypes().stream()
+				.anyMatch(type -> type.method() == CookingMethod.POT && type.servedWith().filter(id::equals).isPresent());
+	}
+
+	/** Every dish type, in the order the pot and crafting table try them. */
+	public List<DishType> dishTypes() {
+		return resolver.dishTypes();
+	}
+
+	/** Every loaded ingredient profile, each once. */
+	public List<IngredientProfile> profiles() {
+		return profiles.values().stream().distinct().toList();
+	}
+
 	public int maxIngredients() {
 		return resolver.rules().maxIngredients();
 	}

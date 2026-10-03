@@ -18,6 +18,8 @@ final class TestPantry {
 		add("sugar", null, 0, 0, null, "sweet");
 		add("egg", "egg", 1, 0.5f, null, "egg");
 		add("bowl", null, 0, 0, null, "bowl");
+		add("water_bucket", null, 0, 0, null, "water");
+		add("brown_mushroom", "mushroom", 1, 0.6f, null, "mushroom");
 		add("stick", null, 0, 0, null, "stick");
 		add("carrot", "carrot", 3, 3.6f, null, "produce");
 		add("potato", "potato", 1, 0.6f, null, "produce");
@@ -35,20 +37,24 @@ final class TestPantry {
 	static final DishType PIE = type("pie", 2, 3, 1.5f,
 			List.of(req(Matcher.role("flour")), req(Matcher.role("egg")), flavor(Matcher.role("produce", "protein"))),
 			List.of());
-	static final DishType STEW = type("stew", 5, 2, 2.0f,
-			List.of(req(Matcher.role("bowl")), flavor(Matcher.role("protein")), flavor(Matcher.role("produce", "mushroom"))),
+	static final DishType STEW = served("stew", 5, 2, 2.0f,
+			List.of(req(Matcher.role("water")), flavor(Matcher.role("protein")), flavor(Matcher.role("produce", "mushroom"))),
 			List.of());
 	static final DishType SALAD = crafted("salad", 6, 1, 1.0f,
 			List.of(req(Matcher.role("bowl")), new Requirement(Matcher.role("fresh"), 2, true)),
 			List.of(Matcher.role("protein", "mushroom")));
-	static final DishType SOUP = type("soup", 7, 2, 1.0f,
-			List.of(req(Matcher.role("bowl")), flavor(Matcher.role("produce", "mushroom"))),
+	static final DishType SOUP = served("soup", 7, 2, 1.0f,
+			List.of(req(Matcher.role("water")), flavor(Matcher.role("produce", "mushroom"))),
 			List.of(Matcher.role("protein")));
 	static final DishType SKEWER = crafted("skewer", 10, 1, 1.0f,
 			List.of(req(Matcher.role("stick")), flavor(Matcher.role("protein", "produce"))),
 			List.of());
 
-	static final List<DishType> ALL = List.of(SKEWER, SOUP, SALAD, STEW, PIE, CAKE);
+	static final DishType ROAST = type("roast", 12, 2, 2.0f,
+			List.of(new Requirement(Matcher.role("protein", "produce", "mushroom"), 2, true)),
+			List.of(Matcher.role("water", "bowl", "stick", "flour", "sweet")));
+
+	static final List<DishType> ALL = List.of(SKEWER, ROAST, SOUP, SALAD, STEW, PIE, CAKE);
 
 	private TestPantry() {
 	}
@@ -77,11 +83,16 @@ final class TestPantry {
 	}
 
 	static DishType type(String name, int priority, int bonusNutrition, float bonusSaturation, List<Requirement> requires, List<Matcher> forbids) {
-		return new DishType("dynamic_cooking:" + name, priority, CookingMethod.POT, requires, forbids, DishType.DEFAULT_FLAVOR_ROLES, bonusNutrition, bonusSaturation, false);
+		return new DishType("dynamic_cooking:" + name, priority, CookingMethod.POT, requires, forbids, DishType.DEFAULT_FLAVOR_ROLES, bonusNutrition, bonusSaturation, false, Optional.empty(), 1);
+	}
+
+	/** A runny pot dish that stays in the pot until it is served with a bowl. */
+	static DishType served(String name, int priority, int bonusNutrition, float bonusSaturation, List<Requirement> requires, List<Matcher> forbids) {
+		return new DishType("dynamic_cooking:" + name, priority, CookingMethod.POT, requires, forbids, DishType.DEFAULT_FLAVOR_ROLES, bonusNutrition, bonusSaturation, true, Optional.of("minecraft:bowl"), 1);
 	}
 
 	static DishType crafted(String name, int priority, int bonusNutrition, float bonusSaturation, List<Requirement> requires, List<Matcher> forbids) {
-		return new DishType("dynamic_cooking:" + name, priority, CookingMethod.CRAFTING, requires, forbids, DishType.DEFAULT_FLAVOR_ROLES, bonusNutrition, bonusSaturation, false);
+		return new DishType("dynamic_cooking:" + name, priority, CookingMethod.CRAFTING, requires, forbids, DishType.DEFAULT_FLAVOR_ROLES, bonusNutrition, bonusSaturation, false, Optional.empty(), 1);
 	}
 
 	static Requirement req(Matcher matcher) {

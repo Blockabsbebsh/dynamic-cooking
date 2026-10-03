@@ -38,20 +38,23 @@ public final class DishNames {
 		Component name = Component.translatable("dish." + dish.getNamespace() + "." + dish.getPath(), flavor);
 
 		if (result.buff().isPresent()) {
-			Identifier effect = Identifier.parse(result.buff().get().effect());
-			Component prefix = Component.translatableWithFallback(
-					"buff." + effect.getNamespace() + "." + effect.getPath(), titleCase(effect.getPath()));
-			name = Component.translatable("dish.dynamic_cooking.buffed", prefix, name);
+			name = Component.translatable("dish.dynamic_cooking.buffed", buffName(result.buff().get().effect()), name);
 		}
 
 		return Optional.of(name);
+	}
+
+	/** The buff's name as a dish prefix, like "Hasty" for speed. */
+	static Component buffName(String effectId) {
+		Identifier effect = Identifier.parse(effectId);
+		return Component.translatableWithFallback("buff." + effect.getNamespace() + "." + effect.getPath(), titleCase(effect.getPath()));
 	}
 
 	private static Component flavorName(String flavor) {
 		return Component.translatableWithFallback("flavor." + flavor.replace(':', '.'), titleCase(flavor));
 	}
 
-	private static String titleCase(String key) {
+	static String titleCase(String key) {
 		String path = key.substring(key.indexOf(':') + 1);
 		StringBuilder out = new StringBuilder();
 

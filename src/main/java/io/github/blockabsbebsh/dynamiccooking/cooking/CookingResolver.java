@@ -31,6 +31,11 @@ public final class CookingResolver {
 		return rules;
 	}
 
+	/** Every dish type, in the order they are tried. */
+	public List<DishType> dishTypes() {
+		return dishTypes;
+	}
+
 	/**
 	 * Cooks in the pot. If no pot dish fits, the result is the fallback dish from {@link CookingRules}.
 	 */
@@ -130,7 +135,9 @@ public final class CookingResolver {
 				saturation,
 				resolveBuff(inputs),
 				false,
-				type.liquid()
+				type.liquid(),
+				type.servedWith(),
+				type.servings()
 		));
 	}
 
@@ -209,7 +216,9 @@ public final class CookingResolver {
 				rules.fallbackSaturation(),
 				Optional.empty(),
 				true,
-				false
+				false,
+				Optional.empty(),
+				1
 		);
 	}
 

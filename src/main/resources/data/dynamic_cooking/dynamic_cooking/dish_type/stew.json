@@ -5,7 +5,7 @@
 		{
 			"match": {
 				"roles": [
-					"bowl"
+					"water"
 				]
 			}
 		},
@@ -29,5 +29,6 @@
 	],
 	"bonus_nutrition": 2,
 	"bonus_saturation": 2.0,
-	"liquid": true
+	"liquid": true,
+	"served_with": "minecraft:bowl"
 }

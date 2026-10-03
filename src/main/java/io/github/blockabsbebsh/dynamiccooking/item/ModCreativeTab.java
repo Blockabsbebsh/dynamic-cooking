@@ -33,14 +33,15 @@ public final class ModCreativeTab {
 			List.of(Items.WHEAT, Items.EGG, Items.APPLE),
 			List.of(Items.WHEAT, Items.SUGAR, Items.SWEET_BERRIES),
 			List.of(Items.GLASS_BOTTLE, Items.MELON_SLICE),
-			List.of(Items.BOWL, Items.BEEF, Items.POTATO),
+			List.of(Items.WATER_BUCKET, Items.BEEF, Items.POTATO),
 			List.of(Items.BOWL, Items.APPLE, Items.SWEET_BERRIES),
-			List.of(Items.BOWL, Items.PUMPKIN),
+			List.of(Items.WATER_BUCKET, Items.PUMPKIN),
 			List.of(Items.BREAD, Items.COOKED_PORKCHOP),
 			List.of(Items.DRIED_KELP, Items.COD),
 			List.of(Items.STICK, Items.CHICKEN, Items.CARROT),
 			List.of(Items.EGG, Items.BROWN_MUSHROOM),
 			List.of(Items.RABBIT, Items.POTATO),
+			List.of(Items.CARROT, Items.BROWN_MUSHROOM),
 			List.of(Items.STICK, Items.MAGMA_CREAM, Items.GOLDEN_CARROT, Items.BEEF),
 			List.of(Items.SUGAR, Items.SUGAR)
 	);
@@ -54,6 +55,7 @@ public final class ModCreativeTab {
 				.title(Component.translatable("itemGroup.dynamic_cooking.dishes"))
 				.displayItems((parameters, output) -> {
 					output.accept(ModBlocks.COOKING_POT);
+					output.accept(ModItems.COOKBOOK);
 					ModItems.dishes().forEach(output::accept);
 
 					CookingService cooking = CookingService.create(parameters.holders());

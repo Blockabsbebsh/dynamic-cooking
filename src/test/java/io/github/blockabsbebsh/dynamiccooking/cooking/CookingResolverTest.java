@@ -47,10 +47,37 @@ class CookingResolverTest {
 
 	@Test
 	void twoEqualFlavorsGiveADoubleName() {
-		DishResult result = resolver().resolve(inputs("bowl", "beef", "potato"));
+		DishResult result = resolver().resolve(inputs("water_bucket", "beef", "potato"));
 
 		assertEquals("dynamic_cooking:stew", result.item());
 		assertEquals(List.of("beef", "potato"), result.nameFlavors());
+	}
+
+	@Test
+	void runnyDishesAreServedWithABowl() {
+		DishResult stew = resolver().resolve(inputs("water_bucket", "beef", "potato"));
+
+		assertEquals(Optional.of("minecraft:bowl"), stew.servedWith());
+		assertEquals(1, stew.servings());
+		assertTrue(resolver().resolve(inputs("wheat", "sugar", "egg", "carrot")).servedWith().isEmpty());
+		assertTrue(resolver().resolve(inputs("sugar", "sugar")).servedWith().isEmpty());
+	}
+
+	@Test
+	void waterTellsAStewFromARoast() {
+		assertEquals("dynamic_cooking:stew", resolver().resolve(inputs("water_bucket", "beef", "carrot")).item());
+		assertEquals("dynamic_cooking:roast", resolver().resolve(inputs("beef", "carrot")).item());
+	}
+
+	@Test
+	void roastsTakeAnyTwoOfMeatVegOrMushroom() {
+		DishResult veggie = resolver().resolve(inputs("carrot", "brown_mushroom"));
+
+		assertEquals("dynamic_cooking:roast", veggie.item());
+		assertEquals(List.of("carrot", "mushroom"), veggie.nameFlavors());
+		assertEquals("dynamic_cooking:roast", resolver().resolve(inputs("potato", "potato")).item());
+		assertEquals("dynamic_cooking:roast", resolver().resolve(inputs("beef", "beef")).item());
+		assertTrue(resolver().resolve(inputs("carrot")).dubious());
 	}
 
 	@Test
@@ -64,15 +91,15 @@ class CookingResolverTest {
 
 	@Test
 	void forbiddenIngredientsSkipADishType() {
-		assertEquals("dynamic_cooking:soup", resolver().resolve(inputs("bowl", "carrot")).item());
+		assertEquals("dynamic_cooking:soup", resolver().resolve(inputs("water_bucket", "carrot")).item());
 		assertEquals("dynamic_cooking:salad", craft("bowl", "apple", "melon_slice").item());
-		assertEquals("dynamic_cooking:stew", resolver().resolve(inputs("bowl", "apple", "melon_slice", "beef")).item());
+		assertEquals("dynamic_cooking:stew", resolver().resolve(inputs("water_bucket", "apple", "melon_slice", "beef")).item());
 	}
 
 	@Test
 	void craftedDishesAreNotCookedInThePot() {
 		assertTrue(resolver().resolve(inputs("stick", "beef")).dubious());
-		assertEquals("dynamic_cooking:soup", resolver().resolve(inputs("bowl", "apple", "melon_slice")).item());
+		assertEquals("dynamic_cooking:soup", resolver().resolve(inputs("water_bucket", "apple", "melon_slice")).item());
 	}
 
 	@Test
@@ -121,7 +148,7 @@ class CookingResolverTest {
 	@Test
 	void nutritionAddsIngredientsBonusAndVariety() {
 		// beef 3 + potato 1 + stew bonus 2 + variety 1 for the second flavor
-		assertEquals(7, resolver().resolve(inputs("bowl", "beef", "potato")).nutrition());
+		assertEquals(7, resolver().resolve(inputs("water_bucket", "beef", "potato")).nutrition());
 	}
 
 	@Test

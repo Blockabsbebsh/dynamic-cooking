@@ -15,6 +15,8 @@ import java.util.Optional;
  * @param buff         the buff, if the ingredients agreed on one
  * @param dubious      true when no dish type matched
  * @param liquid       whether the dish is runny, see {@link DishType#liquid()}
+ * @param servedWith   item id that takes the dish out of the pot, see {@link DishType#servedWith()}
+ * @param servings     how many dishes the pot serves, see {@link DishType#servings()}
  */
 public record DishResult(
 		String item,
@@ -25,7 +27,9 @@ public record DishResult(
 		float saturation,
 		Optional<Buff> buff,
 		boolean dubious,
-		boolean liquid
+		boolean liquid,
+		Optional<String> servedWith,
+		int servings
 ) {
 	public DishResult {
 		ingredients = List.copyOf(ingredients);

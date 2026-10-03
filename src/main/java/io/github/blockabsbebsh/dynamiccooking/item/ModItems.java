@@ -18,7 +18,7 @@ import net.minecraft.world.item.component.Consumables;
 import io.github.blockabsbebsh.dynamiccooking.DynamicCooking;
 
 /**
- * One item per dish type. A stack's name, food value, buff and look come from its components, set when it is cooked;
+ * One item per dish type, plus the cookbook. A stack's name, food value, buff and look come from its components, set when it is cooked;
  * the defaults here only apply to stacks that were never cooked, such as ones pulled from the creative menu.
  */
 public final class ModItems {
@@ -37,6 +37,8 @@ public final class ModItems {
 	public static final Item OMELETTE = dish("omelette", 4, 0.6f, UnaryOperator.identity());
 	public static final Item ROAST = dish("roast", 7, 0.8f, UnaryOperator.identity());
 	public static final Item DUBIOUS_MUSH = dish("dubious_mush", 2, 0.1f, UnaryOperator.identity());
+
+	public static final Item COOKBOOK = registerCookbook();
 
 	/** Dishes that are drunk rather than eaten. */
 	public static final Set<Item> DRINKS = Set.of(JUICE);
@@ -60,6 +62,11 @@ public final class ModItems {
 	private static Item drink(String name, int nutrition, float saturationModifier) {
 		FoodProperties food = new FoodProperties.Builder().nutrition(nutrition).saturationModifier(saturationModifier).build();
 		return register(name, new Item.Properties().stacksTo(16).food(food, Consumables.DEFAULT_DRINK).usingConvertsTo(Items.GLASS_BOTTLE));
+	}
+
+	private static Item registerCookbook() {
+		ResourceKey<Item> key = ResourceKey.create(Registries.ITEM, DynamicCooking.id("cookbook"));
+		return Registry.register(BuiltInRegistries.ITEM, key, new CookbookItem(new Item.Properties().stacksTo(1).setId(key)));
 	}
 
 	private static Item register(String name, Item.Properties properties) {

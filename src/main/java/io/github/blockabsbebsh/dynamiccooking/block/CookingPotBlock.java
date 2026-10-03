@@ -44,7 +44,8 @@ import io.github.blockabsbebsh.dynamiccooking.dish.CookingService;
 
 /**
  * A pot that sits on a heat source. Right-click with ingredients to add them, right-click with an empty hand to cook,
- * sneak and right-click with an empty hand to take the last ingredient back.
+ * sneak and right-click with an empty hand to take the last ingredient back. Runny dishes stay in the pot once cooked
+ * and are taken out with their serving item, like stew with a bowl.
  */
 public class CookingPotBlock extends BaseEntityBlock {
 	public static final BooleanProperty COOKING = BooleanProperty.create("cooking");
@@ -119,13 +120,40 @@ public class CookingPotBlock extends BaseEntityBlock {
 
 		CookingService cooking = CookingService.create(level.registryAccess());
 
+		if (pot.isServedWith(stack)) {
+			if (!level.isClientSide()) {
+				ItemStack dish = pot.serve();
+				exchange(player, hand, stack, dish);
+				level.playSound(null, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0f, 0.8f);
+
+				if (pot.hasServing()) {
+					message(level, player, "served", dish.getHoverName(), pot.servingsLeft());
+				}
+			}
+
+			return InteractionResult.SUCCESS;
+		}
+
+		boolean servingItem = cooking.isServingItem(stack);
+
 		// Anything that isn't an ingredient acts like an empty hand, so the game goes on to useWithoutItem.
-		if (!cooking.isIngredient(stack)) {
+		if (!servingItem && !cooking.isIngredient(stack)) {
 			return InteractionResult.TRY_WITH_EMPTY_HAND;
 		}
 
 		if (pot.isCooking()) {
 			message(level, player, "busy");
+			return InteractionResult.SUCCESS;
+		}
+
+		if (pot.hasServing()) {
+			messageReady(level, player, pot);
+			return InteractionResult.SUCCESS;
+		}
+
+		// A bowl clicked on a pot with nothing to serve yet is kept, never cooked.
+		if (servingItem) {
+			message(level, player, "nothing_to_serve");
 			return InteractionResult.SUCCESS;
 		}
 
@@ -139,13 +167,11 @@ public class CookingPotBlock extends BaseEntityBlock {
 			ItemStackTemplate remainder = stack.getItem().getCraftingRemainder();
 			pot.add(ingredient);
 
-			if (!player.hasInfiniteMaterials()) {
+			// Water and milk buckets give their bucket back, honey bottles their bottle.
+			if (remainder != null && !player.hasInfiniteMaterials()) {
+				exchange(player, hand, stack, remainder.create());
+			} else if (!player.hasInfiniteMaterials()) {
 				stack.shrink(1);
-
-				// Milk buckets give their bucket back, honey bottles their bottle.
-				if (remainder != null) {
-					give(player, remainder.create());
-				}
 			}
 
 			level.playSound(null, pos, SoundEvents.GENERIC_SPLASH, SoundSource.BLOCKS, 0.4f, 1.4f);
@@ -163,6 +189,11 @@ public class CookingPotBlock extends BaseEntityBlock {
 
 		if (pot.isCooking()) {
 			message(level, player, "busy");
+			return InteractionResult.SUCCESS;
+		}
+
+		if (pot.hasServing()) {
+			messageReady(level, player, pot);
 			return InteractionResult.SUCCESS;
 		}
 
@@ -231,6 +262,30 @@ public class CookingPotBlock extends BaseEntityBlock {
 	private static void message(Level level, Player player, String key, Object... args) {
 		if (!level.isClientSide()) {
 			player.sendOverlayMessage(Component.translatable("message.dynamic_cooking.pot." + key, args));
+		}
+	}
+
+	/** Tells the player a dish is waiting and what serves it. */
+	private static void messageReady(Level level, Player player, CookingPotBlockEntity pot) {
+		Component container = pot.servedWith()
+				.map(item -> (Component) Component.translatable(item.getDescriptionId()))
+				.orElseGet(() -> Component.translatable("message.dynamic_cooking.pot.unknown"));
+		message(level, player, "ready", pot.serving().getHoverName(), container);
+	}
+
+	/** Uses up one of the held stack and hands back what it turned into, in the same hand when the stack ran out. */
+	private static void exchange(Player player, InteractionHand hand, ItemStack used, ItemStack result) {
+		if (player.hasInfiniteMaterials()) {
+			give(player, result);
+			return;
+		}
+
+		used.shrink(1);
+
+		if (used.isEmpty()) {
+			player.setItemInHand(hand, result);
+		} else {
+			give(player, result);
 		}
 	}
 
