@@ -1,6 +1,345 @@
 {
 	"model": {
-		"type": "minecraft:model",
-		"model": "dynamic_cooking:item/cake"
+		"type": "minecraft:composite",
+		"models": [
+			{
+				"type": "minecraft:model",
+				"model": "dynamic_cooking:item/dish/cake_sponge"
+			},
+			{
+				"type": "minecraft:condition",
+				"property": "minecraft:has_component",
+				"component": "minecraft:custom_model_data",
+				"on_true": {
+					"type": "minecraft:select",
+					"property": "minecraft:custom_model_data",
+					"index": 0,
+					"cases": [
+						{
+							"when": "apple",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cake_frosting_apple"
+							}
+						},
+						{
+							"when": "beetroot",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cake_frosting_beetroot"
+							}
+						},
+						{
+							"when": "carrot",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cake_frosting_carrot"
+							}
+						},
+						{
+							"when": "chocolate",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cake_frosting_chocolate"
+							}
+						},
+						{
+							"when": "chorus_fruit",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cake_frosting_chorus_fruit"
+							}
+						},
+						{
+							"when": "glistering_melon",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cake_frosting_glistering_melon"
+							}
+						},
+						{
+							"when": "glow_berry",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cake_frosting_glow_berry"
+							}
+						},
+						{
+							"when": "golden_apple",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cake_frosting_golden_apple"
+							}
+						},
+						{
+							"when": "golden_carrot",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cake_frosting_golden_carrot"
+							}
+						},
+						{
+							"when": "melon",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cake_frosting_melon"
+							}
+						},
+						{
+							"when": "potato",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cake_frosting_potato"
+							}
+						},
+						{
+							"when": "pumpkin",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cake_frosting_pumpkin"
+							}
+						},
+						{
+							"when": "sweet_berry",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cake_frosting_sweet_berry"
+							}
+						}
+					],
+					"fallback": {
+						"type": "minecraft:model",
+						"model": "dynamic_cooking:item/dish/cake_frosting",
+						"tints": [
+							{
+								"type": "minecraft:custom_model_data",
+								"index": 0,
+								"default": -4190166
+							}
+						]
+					}
+				},
+				"on_false": {
+					"type": "minecraft:model",
+					"model": "dynamic_cooking:item/dish/cake_frosting_sweet_berry"
+				}
+			},
+			{
+				"type": "minecraft:condition",
+				"property": "minecraft:has_component",
+				"component": "minecraft:custom_model_data",
+				"on_true": {
+					"type": "minecraft:select",
+					"property": "minecraft:custom_model_data",
+					"index": 1,
+					"cases": [
+						{
+							"when": "apple",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cake_fruit_apple"
+							}
+						},
+						{
+							"when": "beetroot",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cake_fruit_beetroot"
+							}
+						},
+						{
+							"when": "carrot",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cake_fruit_carrot"
+							}
+						},
+						{
+							"when": "chocolate",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cake_fruit_chocolate"
+							}
+						},
+						{
+							"when": "chorus_fruit",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cake_fruit_chorus_fruit"
+							}
+						},
+						{
+							"when": "glistering_melon",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cake_fruit_glistering_melon"
+							}
+						},
+						{
+							"when": "glow_berry",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cake_fruit_glow_berry"
+							}
+						},
+						{
+							"when": "golden_apple",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cake_fruit_golden_apple"
+							}
+						},
+						{
+							"when": "golden_carrot",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cake_fruit_golden_carrot"
+							}
+						},
+						{
+							"when": "melon",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cake_fruit_melon"
+							}
+						},
+						{
+							"when": "potato",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cake_fruit_potato"
+							}
+						},
+						{
+							"when": "pumpkin",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cake_fruit_pumpkin"
+							}
+						},
+						{
+							"when": "sweet_berry",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cake_fruit_sweet_berry"
+							}
+						}
+					],
+					"fallback": {
+						"type": "minecraft:select",
+						"property": "minecraft:custom_model_data",
+						"index": 0,
+						"cases": [
+							{
+								"when": "apple",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/cake_fruit_apple"
+								}
+							},
+							{
+								"when": "beetroot",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/cake_fruit_beetroot"
+								}
+							},
+							{
+								"when": "carrot",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/cake_fruit_carrot"
+								}
+							},
+							{
+								"when": "chocolate",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/cake_fruit_chocolate"
+								}
+							},
+							{
+								"when": "chorus_fruit",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/cake_fruit_chorus_fruit"
+								}
+							},
+							{
+								"when": "glistering_melon",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/cake_fruit_glistering_melon"
+								}
+							},
+							{
+								"when": "glow_berry",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/cake_fruit_glow_berry"
+								}
+							},
+							{
+								"when": "golden_apple",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/cake_fruit_golden_apple"
+								}
+							},
+							{
+								"when": "golden_carrot",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/cake_fruit_golden_carrot"
+								}
+							},
+							{
+								"when": "melon",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/cake_fruit_melon"
+								}
+							},
+							{
+								"when": "potato",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/cake_fruit_potato"
+								}
+							},
+							{
+								"when": "pumpkin",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/cake_fruit_pumpkin"
+								}
+							},
+							{
+								"when": "sweet_berry",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/cake_fruit_sweet_berry"
+								}
+							}
+						],
+						"fallback": {
+							"type": "minecraft:model",
+							"model": "dynamic_cooking:item/dish/cake_fruit",
+							"tints": [
+								{
+									"type": "minecraft:custom_model_data",
+									"index": 0,
+									"default": -4190166
+								}
+							]
+						}
+					}
+				},
+				"on_false": {
+					"type": "minecraft:model",
+					"model": "dynamic_cooking:item/dish/cake_fruit_sweet_berry"
+				}
+			}
+		]
 	}
 }

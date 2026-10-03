@@ -1,6 +1,129 @@
 {
 	"model": {
-		"type": "minecraft:model",
-		"model": "dynamic_cooking:item/cookies"
+		"type": "minecraft:composite",
+		"models": [
+			{
+				"type": "minecraft:model",
+				"model": "dynamic_cooking:item/dish/cookies_dough"
+			},
+			{
+				"type": "minecraft:condition",
+				"property": "minecraft:has_component",
+				"component": "minecraft:custom_model_data",
+				"on_true": {
+					"type": "minecraft:select",
+					"property": "minecraft:custom_model_data",
+					"index": 0,
+					"cases": [
+						{
+							"when": "apple",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cookies_chips_apple"
+							}
+						},
+						{
+							"when": "beetroot",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cookies_chips_beetroot"
+							}
+						},
+						{
+							"when": "carrot",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cookies_chips_carrot"
+							}
+						},
+						{
+							"when": "chocolate",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cookies_chips_chocolate"
+							}
+						},
+						{
+							"when": "chorus_fruit",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cookies_chips_chorus_fruit"
+							}
+						},
+						{
+							"when": "glistering_melon",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cookies_chips_glistering_melon"
+							}
+						},
+						{
+							"when": "glow_berry",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cookies_chips_glow_berry"
+							}
+						},
+						{
+							"when": "golden_apple",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cookies_chips_golden_apple"
+							}
+						},
+						{
+							"when": "golden_carrot",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cookies_chips_golden_carrot"
+							}
+						},
+						{
+							"when": "melon",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cookies_chips_melon"
+							}
+						},
+						{
+							"when": "potato",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cookies_chips_potato"
+							}
+						},
+						{
+							"when": "pumpkin",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cookies_chips_pumpkin"
+							}
+						},
+						{
+							"when": "sweet_berry",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cookies_chips_sweet_berry"
+							}
+						}
+					],
+					"fallback": {
+						"type": "minecraft:model",
+						"model": "dynamic_cooking:item/dish/cookies_chips",
+						"tints": [
+							{
+								"type": "minecraft:custom_model_data",
+								"index": 0,
+								"default": -8366800
+							}
+						]
+					}
+				},
+				"on_false": {
+					"type": "minecraft:model",
+					"model": "dynamic_cooking:item/dish/cookies_chips_chocolate"
+				}
+			}
+		]
 	}
 }

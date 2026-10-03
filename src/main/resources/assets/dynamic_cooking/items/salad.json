@@ -1,6 +1,219 @@
 {
 	"model": {
-		"type": "minecraft:model",
-		"model": "dynamic_cooking:item/salad"
+		"type": "minecraft:composite",
+		"models": [
+			{
+				"type": "minecraft:model",
+				"model": "dynamic_cooking:item/dish/salad_bowl"
+			},
+			{
+				"type": "minecraft:condition",
+				"property": "minecraft:has_component",
+				"component": "minecraft:custom_model_data",
+				"on_true": {
+					"type": "minecraft:select",
+					"property": "minecraft:custom_model_data",
+					"index": 0,
+					"cases": [
+						{
+							"when": "apple",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/salad_pieces_apple"
+							}
+						},
+						{
+							"when": "chorus_fruit",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/salad_pieces_chorus_fruit"
+							}
+						},
+						{
+							"when": "glistering_melon",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/salad_pieces_glistering_melon"
+							}
+						},
+						{
+							"when": "glow_berry",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/salad_pieces_glow_berry"
+							}
+						},
+						{
+							"when": "golden_apple",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/salad_pieces_golden_apple"
+							}
+						},
+						{
+							"when": "melon",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/salad_pieces_melon"
+							}
+						},
+						{
+							"when": "sweet_berry",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/salad_pieces_sweet_berry"
+							}
+						}
+					],
+					"fallback": {
+						"type": "minecraft:model",
+						"model": "dynamic_cooking:item/dish/salad_pieces",
+						"tints": [
+							{
+								"type": "minecraft:custom_model_data",
+								"index": 0,
+								"default": -2287835
+							}
+						]
+					}
+				},
+				"on_false": {
+					"type": "minecraft:model",
+					"model": "dynamic_cooking:item/dish/salad_pieces_apple"
+				}
+			},
+			{
+				"type": "minecraft:condition",
+				"property": "minecraft:has_component",
+				"component": "minecraft:custom_model_data",
+				"on_true": {
+					"type": "minecraft:select",
+					"property": "minecraft:custom_model_data",
+					"index": 1,
+					"cases": [
+						{
+							"when": "apple",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/salad_top_apple"
+							}
+						},
+						{
+							"when": "chorus_fruit",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/salad_top_chorus_fruit"
+							}
+						},
+						{
+							"when": "glistering_melon",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/salad_top_glistering_melon"
+							}
+						},
+						{
+							"when": "glow_berry",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/salad_top_glow_berry"
+							}
+						},
+						{
+							"when": "golden_apple",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/salad_top_golden_apple"
+							}
+						},
+						{
+							"when": "melon",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/salad_top_melon"
+							}
+						},
+						{
+							"when": "sweet_berry",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/salad_top_sweet_berry"
+							}
+						}
+					],
+					"fallback": {
+						"type": "minecraft:select",
+						"property": "minecraft:custom_model_data",
+						"index": 0,
+						"cases": [
+							{
+								"when": "apple",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/salad_top_apple"
+								}
+							},
+							{
+								"when": "chorus_fruit",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/salad_top_chorus_fruit"
+								}
+							},
+							{
+								"when": "glistering_melon",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/salad_top_glistering_melon"
+								}
+							},
+							{
+								"when": "glow_berry",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/salad_top_glow_berry"
+								}
+							},
+							{
+								"when": "golden_apple",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/salad_top_golden_apple"
+								}
+							},
+							{
+								"when": "melon",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/salad_top_melon"
+								}
+							},
+							{
+								"when": "sweet_berry",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/salad_top_sweet_berry"
+								}
+							}
+						],
+						"fallback": {
+							"type": "minecraft:model",
+							"model": "dynamic_cooking:item/dish/salad_top",
+							"tints": [
+								{
+									"type": "minecraft:custom_model_data",
+									"index": 0,
+									"default": -4190166
+								}
+							]
+						}
+					}
+				},
+				"on_false": {
+					"type": "minecraft:model",
+					"model": "dynamic_cooking:item/dish/salad_top_sweet_berry"
+				}
+			}
+		]
 	}
 }

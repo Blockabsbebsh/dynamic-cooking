@@ -1,6 +1,513 @@
 {
 	"model": {
-		"type": "minecraft:model",
-		"model": "dynamic_cooking:item/sandwich"
+		"type": "minecraft:composite",
+		"models": [
+			{
+				"type": "minecraft:model",
+				"model": "dynamic_cooking:item/dish/sandwich_bread"
+			},
+			{
+				"type": "minecraft:condition",
+				"property": "minecraft:has_component",
+				"component": "minecraft:custom_model_data",
+				"on_true": {
+					"type": "minecraft:select",
+					"property": "minecraft:custom_model_data",
+					"index": 0,
+					"cases": [
+						{
+							"when": "apple",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_filling_apple"
+							}
+						},
+						{
+							"when": "beef",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_filling_beef"
+							}
+						},
+						{
+							"when": "beetroot",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_filling_beetroot"
+							}
+						},
+						{
+							"when": "carrot",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_filling_carrot"
+							}
+						},
+						{
+							"when": "chicken",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_filling_chicken"
+							}
+						},
+						{
+							"when": "chocolate",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_filling_chocolate"
+							}
+						},
+						{
+							"when": "chorus_fruit",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_filling_chorus_fruit"
+							}
+						},
+						{
+							"when": "cod",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_filling_cod"
+							}
+						},
+						{
+							"when": "glistering_melon",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_filling_glistering_melon"
+							}
+						},
+						{
+							"when": "glow_berry",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_filling_glow_berry"
+							}
+						},
+						{
+							"when": "golden_apple",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_filling_golden_apple"
+							}
+						},
+						{
+							"when": "golden_carrot",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_filling_golden_carrot"
+							}
+						},
+						{
+							"when": "melon",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_filling_melon"
+							}
+						},
+						{
+							"when": "mutton",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_filling_mutton"
+							}
+						},
+						{
+							"when": "porkchop",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_filling_porkchop"
+							}
+						},
+						{
+							"when": "potato",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_filling_potato"
+							}
+						},
+						{
+							"when": "pufferfish",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_filling_pufferfish"
+							}
+						},
+						{
+							"when": "pumpkin",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_filling_pumpkin"
+							}
+						},
+						{
+							"when": "rabbit",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_filling_rabbit"
+							}
+						},
+						{
+							"when": "salmon",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_filling_salmon"
+							}
+						},
+						{
+							"when": "sweet_berry",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_filling_sweet_berry"
+							}
+						}
+					],
+					"fallback": {
+						"type": "minecraft:model",
+						"model": "dynamic_cooking:item/dish/sandwich_filling",
+						"tints": [
+							{
+								"type": "minecraft:custom_model_data",
+								"index": 0,
+								"default": -2899832
+							}
+						]
+					}
+				},
+				"on_false": {
+					"type": "minecraft:model",
+					"model": "dynamic_cooking:item/dish/sandwich_filling_porkchop"
+				}
+			},
+			{
+				"type": "minecraft:condition",
+				"property": "minecraft:has_component",
+				"component": "minecraft:custom_model_data",
+				"on_true": {
+					"type": "minecraft:select",
+					"property": "minecraft:custom_model_data",
+					"index": 1,
+					"cases": [
+						{
+							"when": "apple",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_bits_apple"
+							}
+						},
+						{
+							"when": "beef",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_bits_beef"
+							}
+						},
+						{
+							"when": "beetroot",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_bits_beetroot"
+							}
+						},
+						{
+							"when": "carrot",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_bits_carrot"
+							}
+						},
+						{
+							"when": "chicken",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_bits_chicken"
+							}
+						},
+						{
+							"when": "chocolate",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_bits_chocolate"
+							}
+						},
+						{
+							"when": "chorus_fruit",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_bits_chorus_fruit"
+							}
+						},
+						{
+							"when": "cod",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_bits_cod"
+							}
+						},
+						{
+							"when": "glistering_melon",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_bits_glistering_melon"
+							}
+						},
+						{
+							"when": "glow_berry",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_bits_glow_berry"
+							}
+						},
+						{
+							"when": "golden_apple",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_bits_golden_apple"
+							}
+						},
+						{
+							"when": "golden_carrot",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_bits_golden_carrot"
+							}
+						},
+						{
+							"when": "melon",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_bits_melon"
+							}
+						},
+						{
+							"when": "mutton",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_bits_mutton"
+							}
+						},
+						{
+							"when": "porkchop",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_bits_porkchop"
+							}
+						},
+						{
+							"when": "potato",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_bits_potato"
+							}
+						},
+						{
+							"when": "pufferfish",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_bits_pufferfish"
+							}
+						},
+						{
+							"when": "pumpkin",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_bits_pumpkin"
+							}
+						},
+						{
+							"when": "rabbit",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_bits_rabbit"
+							}
+						},
+						{
+							"when": "salmon",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_bits_salmon"
+							}
+						},
+						{
+							"when": "sweet_berry",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/sandwich_bits_sweet_berry"
+							}
+						}
+					],
+					"fallback": {
+						"type": "minecraft:select",
+						"property": "minecraft:custom_model_data",
+						"index": 0,
+						"cases": [
+							{
+								"when": "apple",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/sandwich_bits_apple"
+								}
+							},
+							{
+								"when": "beef",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/sandwich_bits_beef"
+								}
+							},
+							{
+								"when": "beetroot",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/sandwich_bits_beetroot"
+								}
+							},
+							{
+								"when": "carrot",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/sandwich_bits_carrot"
+								}
+							},
+							{
+								"when": "chicken",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/sandwich_bits_chicken"
+								}
+							},
+							{
+								"when": "chocolate",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/sandwich_bits_chocolate"
+								}
+							},
+							{
+								"when": "chorus_fruit",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/sandwich_bits_chorus_fruit"
+								}
+							},
+							{
+								"when": "cod",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/sandwich_bits_cod"
+								}
+							},
+							{
+								"when": "glistering_melon",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/sandwich_bits_glistering_melon"
+								}
+							},
+							{
+								"when": "glow_berry",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/sandwich_bits_glow_berry"
+								}
+							},
+							{
+								"when": "golden_apple",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/sandwich_bits_golden_apple"
+								}
+							},
+							{
+								"when": "golden_carrot",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/sandwich_bits_golden_carrot"
+								}
+							},
+							{
+								"when": "melon",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/sandwich_bits_melon"
+								}
+							},
+							{
+								"when": "mutton",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/sandwich_bits_mutton"
+								}
+							},
+							{
+								"when": "porkchop",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/sandwich_bits_porkchop"
+								}
+							},
+							{
+								"when": "potato",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/sandwich_bits_potato"
+								}
+							},
+							{
+								"when": "pufferfish",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/sandwich_bits_pufferfish"
+								}
+							},
+							{
+								"when": "pumpkin",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/sandwich_bits_pumpkin"
+								}
+							},
+							{
+								"when": "rabbit",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/sandwich_bits_rabbit"
+								}
+							},
+							{
+								"when": "salmon",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/sandwich_bits_salmon"
+								}
+							},
+							{
+								"when": "sweet_berry",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/sandwich_bits_sweet_berry"
+								}
+							}
+						],
+						"fallback": {
+							"type": "minecraft:model",
+							"model": "dynamic_cooking:item/dish/sandwich_bits",
+							"tints": [
+								{
+									"type": "minecraft:custom_model_data",
+									"index": 0,
+									"default": -2899832
+								}
+							]
+						}
+					}
+				},
+				"on_false": {
+					"type": "minecraft:model",
+					"model": "dynamic_cooking:item/dish/sandwich_bits_porkchop"
+				}
+			}
+		]
 	}
 }

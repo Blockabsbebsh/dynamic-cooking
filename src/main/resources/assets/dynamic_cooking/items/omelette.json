@@ -1,6 +1,192 @@
 {
 	"model": {
-		"type": "minecraft:model",
-		"model": "dynamic_cooking:item/omelette"
+		"type": "minecraft:composite",
+		"models": [
+			{
+				"type": "minecraft:model",
+				"model": "dynamic_cooking:item/dish/omelette_egg"
+			},
+			{
+				"type": "minecraft:condition",
+				"property": "minecraft:has_component",
+				"component": "minecraft:custom_model_data",
+				"on_true": {
+					"type": "minecraft:select",
+					"property": "minecraft:custom_model_data",
+					"index": 0,
+					"cases": [
+						{
+							"when": "apple",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_apple"
+							}
+						},
+						{
+							"when": "beef",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_beef"
+							}
+						},
+						{
+							"when": "beetroot",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_beetroot"
+							}
+						},
+						{
+							"when": "carrot",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_carrot"
+							}
+						},
+						{
+							"when": "chicken",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_chicken"
+							}
+						},
+						{
+							"when": "chocolate",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_chocolate"
+							}
+						},
+						{
+							"when": "chorus_fruit",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_chorus_fruit"
+							}
+						},
+						{
+							"when": "cod",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_cod"
+							}
+						},
+						{
+							"when": "glistering_melon",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_glistering_melon"
+							}
+						},
+						{
+							"when": "glow_berry",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_glow_berry"
+							}
+						},
+						{
+							"when": "golden_apple",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_golden_apple"
+							}
+						},
+						{
+							"when": "golden_carrot",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_golden_carrot"
+							}
+						},
+						{
+							"when": "melon",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_melon"
+							}
+						},
+						{
+							"when": "mushroom",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_mushroom"
+							}
+						},
+						{
+							"when": "mutton",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_mutton"
+							}
+						},
+						{
+							"when": "porkchop",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_porkchop"
+							}
+						},
+						{
+							"when": "potato",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_potato"
+							}
+						},
+						{
+							"when": "pufferfish",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_pufferfish"
+							}
+						},
+						{
+							"when": "pumpkin",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_pumpkin"
+							}
+						},
+						{
+							"when": "rabbit",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_rabbit"
+							}
+						},
+						{
+							"when": "salmon",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_salmon"
+							}
+						},
+						{
+							"when": "sweet_berry",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_sweet_berry"
+							}
+						}
+					],
+					"fallback": {
+						"type": "minecraft:model",
+						"model": "dynamic_cooking:item/dish/omelette_filling",
+						"tints": [
+							{
+								"type": "minecraft:custom_model_data",
+								"index": 0,
+								"default": -7246507
+							}
+						]
+					}
+				},
+				"on_false": {
+					"type": "minecraft:model",
+					"model": "dynamic_cooking:item/dish/omelette_filling_mushroom"
+				}
+			}
+		]
 	}
 }

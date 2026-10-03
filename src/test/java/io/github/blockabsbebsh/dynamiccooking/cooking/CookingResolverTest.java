@@ -90,6 +90,12 @@ class CookingResolverTest {
 	}
 
 	@Test
+	void eachFlavorCarriesItsIngredientColor() {
+		assertEquals(List.of(0x9A4A33, 0xE58A1F), craft("stick", "carrot", "beef", "beef").flavorColors());
+		assertEquals(List.of(DishResult.NO_COLOR), craft("stick", "potato").flavorColors());
+	}
+
+	@Test
 	void forbiddenIngredientsSkipADishType() {
 		assertEquals("dynamic_cooking:soup", resolver().resolve(inputs("water_bucket", "carrot")).item());
 		assertEquals("dynamic_cooking:salad", craft("bowl", "apple", "melon_slice").item());

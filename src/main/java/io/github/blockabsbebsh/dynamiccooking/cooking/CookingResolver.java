@@ -3,6 +3,7 @@ package io.github.blockabsbebsh.dynamiccooking.cooking;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -98,6 +99,7 @@ public final class CookingResolver {
 		}
 
 		Map<String, Integer> flavorCounts = new LinkedHashMap<>();
+		Map<String, Integer> flavorColors = new HashMap<>();
 		int nutrition = type.bonusNutrition();
 		float saturation = type.bonusSaturation();
 
@@ -108,6 +110,7 @@ public final class CookingResolver {
 
 			if (givesFlavor(type, profile, assignment[i]) && profile.flavor().isPresent()) {
 				flavorCounts.merge(profile.flavor().get(), 1, Integer::sum);
+				profile.color().ifPresent(color -> flavorColors.putIfAbsent(profile.flavor().get(), color));
 			}
 		}
 
@@ -130,6 +133,7 @@ public final class CookingResolver {
 				type.item(),
 				itemIds(inputs),
 				flavors,
+				flavors.stream().map(flavor -> flavorColors.getOrDefault(flavor, DishResult.NO_COLOR)).toList(),
 				nameFlavors,
 				nutrition,
 				saturation,
@@ -210,6 +214,7 @@ public final class CookingResolver {
 		return new DishResult(
 				rules.fallbackItem(),
 				itemIds(inputs),
+				List.of(),
 				List.of(),
 				List.of(),
 				rules.fallbackNutrition(),
