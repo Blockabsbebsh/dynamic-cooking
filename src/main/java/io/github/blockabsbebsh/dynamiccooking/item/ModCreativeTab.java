@@ -16,11 +16,12 @@ import net.minecraft.world.item.Items;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 
 import io.github.blockabsbebsh.dynamiccooking.DynamicCooking;
+import io.github.blockabsbebsh.dynamiccooking.block.ModBlocks;
 import io.github.blockabsbebsh.dynamiccooking.dish.CookingService;
 
 /**
  * The mod's creative tab: the plain dish items, then sample dishes cooked through the real rules so the data can be
- * checked in game before the cooking pot exists.
+ * checked in game without cooking each one.
  */
 public final class ModCreativeTab {
 	public static final ResourceKey<CreativeModeTab> KEY = ResourceKey.create(Registries.CREATIVE_MODE_TAB, DynamicCooking.id("dishes"));
@@ -49,9 +50,10 @@ public final class ModCreativeTab {
 
 	public static void initialize() {
 		CreativeModeTab tab = FabricCreativeModeTab.builder()
-				.icon(() -> new ItemStack(ModItems.CAKE))
+				.icon(() -> new ItemStack(ModBlocks.COOKING_POT))
 				.title(Component.translatable("itemGroup.dynamic_cooking.dishes"))
 				.displayItems((parameters, output) -> {
+					output.accept(ModBlocks.COOKING_POT);
 					ModItems.dishes().forEach(output::accept);
 
 					CookingService cooking = CookingService.create(parameters.holders());

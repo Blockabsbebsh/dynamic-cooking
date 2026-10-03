@@ -1,0 +1,6 @@
+{
+	"model": {
+		"type": "minecraft:model",
+		"model": "dynamic_cooking:block/cooking_pot"
+	}
+}
