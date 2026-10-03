@@ -69,7 +69,7 @@ Ingredients left over once the requirements are filled must suit the dish: they 
 }
 ```
 
-A dish's food value is the sum of its ingredients' `nutrition`, plus 1 for every ingredient used (a bowl, bottle, stick or water bucket doesn't count), plus the dish's `bonus_nutrition`, plus 1 for each flavor after the first, capped at 20. Saturation adds up the same way, with 0.5 per ingredient. A dish that `makes` several shares that out between them. The numbers live in `CookingRules`.
+A dish's food value is the sum of its ingredients' `nutrition`, plus the dish's `bonus_nutrition` (1 for every shipped dish), plus 1 for every ingredient past the second (a bowl, bottle, stick or water bucket doesn't count), plus 1 for each flavor after the first, capped at 20. So a bread and steak sandwich is 5 + 8 + 1 = 14. Saturation adds up the same way, with 0.5 per extra ingredient. A dish that `makes` several shares that out between them. The numbers live in `CookingRules`.
 
 ### Textures
 

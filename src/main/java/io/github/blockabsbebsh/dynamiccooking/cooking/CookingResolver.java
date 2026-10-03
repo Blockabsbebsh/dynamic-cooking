@@ -179,6 +179,7 @@ public final class CookingResolver {
 		boolean heldRaw = false;
 		int nutrition = type.bonusNutrition();
 		float saturation = type.bonusSaturation();
+		int used = 0;
 
 		for (int i = 0; i < inputs.size(); i++) {
 			CookingInput input = inputs.get(i);
@@ -187,7 +188,7 @@ public final class CookingResolver {
 			saturation += profile.saturation();
 			sideEffects.addAll(profile.effects());
 
-			if (profile.roles().stream().noneMatch(rules.containerRoles()::contains)) {
+			if (profile.roles().stream().noneMatch(rules.containerRoles()::contains) && ++used > rules.freeIngredients()) {
 				nutrition += rules.perIngredientNutrition();
 				saturation += rules.perIngredientSaturation();
 			}

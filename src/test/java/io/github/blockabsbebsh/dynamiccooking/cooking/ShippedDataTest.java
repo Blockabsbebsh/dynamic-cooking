@@ -168,8 +168,8 @@ class ShippedDataTest {
 	void everyIngredientUsedAddsFood() {
 		assertTrue(cook("water_bucket", "beef", "potato", "carrot").nutrition() > cook("water_bucket", "beef", "potato").nutrition());
 		assertTrue(cook("egg", "egg", "egg").nutrition() > cook("egg", "egg").nutrition());
-		// A dish beats eating its ingredients one by one.
-		assertTrue(craft("bread", "cooked_beef").nutrition() > 5 + 8);
+		// A dish is worth a little more than eating its ingredients one by one: bread 5 + steak 8 + sandwich bonus 1.
+		assertEquals(14, craft("bread", "cooked_beef").nutrition());
 	}
 
 	@Test

@@ -17,8 +17,8 @@
 			]
 		}
 	],
-	"bonus_nutrition": 2,
-	"bonus_saturation": 1.0,
+	"bonus_nutrition": 1,
+	"bonus_saturation": 0.5,
 	"flavor_roles": [
 		"produce",
 		"protein",

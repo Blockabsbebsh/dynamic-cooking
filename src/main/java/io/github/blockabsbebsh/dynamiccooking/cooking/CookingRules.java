@@ -8,8 +8,9 @@ import java.util.Set;
  * @param maxIngredients       most ingredients the pot accepts
  * @param maxNutrition         cap on a dish's food points
  * @param varietyBonus         extra food points per distinct flavor after the first
- * @param perIngredientNutrition extra food points for every ingredient used, so each one added makes the dish more filling
- * @param perIngredientSaturation extra saturation for every ingredient used
+ * @param freeIngredients      how many ingredients a dish uses before each further one earns the extra below
+ * @param perIngredientNutrition extra food points for every ingredient past {@code freeIngredients}, so bigger recipes pay off
+ * @param perIngredientSaturation extra saturation for every ingredient past {@code freeIngredients}
  * @param containerRoles       roles of ingredients that only hold or serve the dish, like a bowl or a water bucket; they don't
  *                             count as an ingredient used
  * @param nameFlavorCount      how many flavors can appear in a dish name
@@ -26,6 +27,7 @@ public record CookingRules(
 		int maxIngredients,
 		int maxNutrition,
 		int varietyBonus,
+		int freeIngredients,
 		int perIngredientNutrition,
 		float perIngredientSaturation,
 		Set<String> containerRoles,
@@ -40,7 +42,7 @@ public record CookingRules(
 		Set<String> extraRoles
 ) {
 	public static final CookingRules DEFAULT = new CookingRules(
-			5, 20, 1, 1, 0.5f, Set.of("water", "bowl", "bottle", "stick"), 2,
+			5, 20, 1, 2, 1, 0.5f, Set.of("water", "bowl", "bottle", "stick"), 2,
 			"dynamic_cooking:dubious_mush", 2, 1.0f,
 			30 * 20, 30 * 20, 5 * 60 * 20, 4,
 			Set.of("seasoning", "seeds", "dairy")
