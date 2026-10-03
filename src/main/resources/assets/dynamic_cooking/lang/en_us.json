@@ -61,5 +61,11 @@
 	"buff.minecraft.jump_boost": "Springy",
 	"buff.minecraft.fire_resistance": "Fireproof",
 	"buff.minecraft.slow_falling": "Floating",
-	"buff.dynamic_cooking.teleport": "Warping"
+	"buff.dynamic_cooking.teleport": "Warping",
+	"block.dynamic_cooking.cooking_pot": "Cooking Pot",
+	"message.dynamic_cooking.pot.added": "%s added (%s/%s)",
+	"message.dynamic_cooking.pot.full": "The pot is full (%s ingredients)",
+	"message.dynamic_cooking.pot.busy": "Cooking...",
+	"message.dynamic_cooking.pot.empty": "Add ingredients first",
+	"message.dynamic_cooking.pot.no_heat": "The pot needs heat underneath: a lit campfire, fire, magma or lava"
 }

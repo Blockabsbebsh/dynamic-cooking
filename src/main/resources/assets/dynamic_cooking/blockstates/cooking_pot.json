@@ -1,0 +1,10 @@
+{
+	"variants": {
+		"cooking=false": {
+			"model": "dynamic_cooking:block/cooking_pot"
+		},
+		"cooking=true": {
+			"model": "dynamic_cooking:block/cooking_pot"
+		}
+	}
+}
