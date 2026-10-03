@@ -3,112 +3,323 @@
 		{
 			"apply": {
 				"model": "dynamic_cooking:block/cooking_pot"
+			},
+			"when": {
+				"legs": "none|long"
 			}
 		},
 		{
+			"apply": {
+				"model": "dynamic_cooking:block/cooking_pot_campfire"
+			},
 			"when": {
 				"legs": "short"
-			},
+			}
+		},
+		{
 			"apply": {
 				"model": "dynamic_cooking:block/cooking_pot_legs_short"
+			},
+			"when": {
+				"legs": "short"
 			}
 		},
 		{
-			"when": {
-				"legs": "long"
-			},
 			"apply": {
 				"model": "dynamic_cooking:block/cooking_pot_legs_long"
+			},
+			"when": {
+				"legs": "long"
 			}
 		},
 		{
-			"when": {
-				"fill": "1",
-				"liquid": "true"
-			},
 			"apply": {
 				"model": "dynamic_cooking:block/cooking_pot_liquid_1"
-			}
-		},
-		{
+			},
 			"when": {
 				"fill": "1",
-				"liquid": "false"
+				"legs": "none|long",
+				"liquid": "true"
+			}
+		},
+		{
+			"apply": {
+				"model": "dynamic_cooking:block/cooking_pot_liquid_1_campfire"
 			},
+			"when": {
+				"fill": "1",
+				"legs": "short",
+				"liquid": "true"
+			}
+		},
+		{
 			"apply": {
 				"model": "dynamic_cooking:block/cooking_pot_mash_1"
+			},
+			"when": {
+				"fill": "1",
+				"legs": "none|long",
+				"liquid": "false"
 			}
 		},
 		{
-			"when": {
-				"fill": "2",
-				"liquid": "true"
+			"apply": {
+				"model": "dynamic_cooking:block/cooking_pot_mash_1_campfire"
 			},
+			"when": {
+				"fill": "1",
+				"legs": "short",
+				"liquid": "false"
+			}
+		},
+		{
+			"apply": {
+				"model": "dynamic_cooking:block/cooking_pot_chunks_1"
+			},
+			"when": {
+				"fill": "1",
+				"legs": "none|long"
+			}
+		},
+		{
+			"apply": {
+				"model": "dynamic_cooking:block/cooking_pot_chunks_1_campfire"
+			},
+			"when": {
+				"fill": "1",
+				"legs": "short"
+			}
+		},
+		{
 			"apply": {
 				"model": "dynamic_cooking:block/cooking_pot_liquid_2"
-			}
-		},
-		{
+			},
 			"when": {
 				"fill": "2",
-				"liquid": "false"
+				"legs": "none|long",
+				"liquid": "true"
+			}
+		},
+		{
+			"apply": {
+				"model": "dynamic_cooking:block/cooking_pot_liquid_2_campfire"
 			},
+			"when": {
+				"fill": "2",
+				"legs": "short",
+				"liquid": "true"
+			}
+		},
+		{
 			"apply": {
 				"model": "dynamic_cooking:block/cooking_pot_mash_2"
+			},
+			"when": {
+				"fill": "2",
+				"legs": "none|long",
+				"liquid": "false"
 			}
 		},
 		{
-			"when": {
-				"fill": "3",
-				"liquid": "true"
+			"apply": {
+				"model": "dynamic_cooking:block/cooking_pot_mash_2_campfire"
 			},
+			"when": {
+				"fill": "2",
+				"legs": "short",
+				"liquid": "false"
+			}
+		},
+		{
+			"apply": {
+				"model": "dynamic_cooking:block/cooking_pot_chunks_2"
+			},
+			"when": {
+				"fill": "2",
+				"legs": "none|long"
+			}
+		},
+		{
+			"apply": {
+				"model": "dynamic_cooking:block/cooking_pot_chunks_2_campfire"
+			},
+			"when": {
+				"fill": "2",
+				"legs": "short"
+			}
+		},
+		{
 			"apply": {
 				"model": "dynamic_cooking:block/cooking_pot_liquid_3"
-			}
-		},
-		{
+			},
 			"when": {
 				"fill": "3",
-				"liquid": "false"
+				"legs": "none|long",
+				"liquid": "true"
+			}
+		},
+		{
+			"apply": {
+				"model": "dynamic_cooking:block/cooking_pot_liquid_3_campfire"
 			},
+			"when": {
+				"fill": "3",
+				"legs": "short",
+				"liquid": "true"
+			}
+		},
+		{
 			"apply": {
 				"model": "dynamic_cooking:block/cooking_pot_mash_3"
+			},
+			"when": {
+				"fill": "3",
+				"legs": "none|long",
+				"liquid": "false"
 			}
 		},
 		{
-			"when": {
-				"fill": "4",
-				"liquid": "true"
+			"apply": {
+				"model": "dynamic_cooking:block/cooking_pot_mash_3_campfire"
 			},
+			"when": {
+				"fill": "3",
+				"legs": "short",
+				"liquid": "false"
+			}
+		},
+		{
+			"apply": {
+				"model": "dynamic_cooking:block/cooking_pot_chunks_3"
+			},
+			"when": {
+				"fill": "3",
+				"legs": "none|long"
+			}
+		},
+		{
+			"apply": {
+				"model": "dynamic_cooking:block/cooking_pot_chunks_3_campfire"
+			},
+			"when": {
+				"fill": "3",
+				"legs": "short"
+			}
+		},
+		{
 			"apply": {
 				"model": "dynamic_cooking:block/cooking_pot_liquid_4"
-			}
-		},
-		{
+			},
 			"when": {
 				"fill": "4",
-				"liquid": "false"
+				"legs": "none|long",
+				"liquid": "true"
+			}
+		},
+		{
+			"apply": {
+				"model": "dynamic_cooking:block/cooking_pot_liquid_4_campfire"
 			},
+			"when": {
+				"fill": "4",
+				"legs": "short",
+				"liquid": "true"
+			}
+		},
+		{
 			"apply": {
 				"model": "dynamic_cooking:block/cooking_pot_mash_4"
+			},
+			"when": {
+				"fill": "4",
+				"legs": "none|long",
+				"liquid": "false"
 			}
 		},
 		{
-			"when": {
-				"fill": "5",
-				"liquid": "true"
+			"apply": {
+				"model": "dynamic_cooking:block/cooking_pot_mash_4_campfire"
 			},
+			"when": {
+				"fill": "4",
+				"legs": "short",
+				"liquid": "false"
+			}
+		},
+		{
+			"apply": {
+				"model": "dynamic_cooking:block/cooking_pot_chunks_4"
+			},
+			"when": {
+				"fill": "4",
+				"legs": "none|long"
+			}
+		},
+		{
+			"apply": {
+				"model": "dynamic_cooking:block/cooking_pot_chunks_4_campfire"
+			},
+			"when": {
+				"fill": "4",
+				"legs": "short"
+			}
+		},
+		{
 			"apply": {
 				"model": "dynamic_cooking:block/cooking_pot_liquid_5"
+			},
+			"when": {
+				"fill": "5",
+				"legs": "none|long",
+				"liquid": "true"
 			}
 		},
 		{
+			"apply": {
+				"model": "dynamic_cooking:block/cooking_pot_liquid_5_campfire"
+			},
 			"when": {
 				"fill": "5",
-				"liquid": "false"
-			},
+				"legs": "short",
+				"liquid": "true"
+			}
+		},
+		{
 			"apply": {
 				"model": "dynamic_cooking:block/cooking_pot_mash_5"
+			},
+			"when": {
+				"fill": "5",
+				"legs": "none|long",
+				"liquid": "false"
+			}
+		},
+		{
+			"apply": {
+				"model": "dynamic_cooking:block/cooking_pot_mash_5_campfire"
+			},
+			"when": {
+				"fill": "5",
+				"legs": "short",
+				"liquid": "false"
+			}
+		},
+		{
+			"apply": {
+				"model": "dynamic_cooking:block/cooking_pot_chunks_5"
+			},
+			"when": {
+				"fill": "5",
+				"legs": "none|long"
+			}
+		},
+		{
+			"apply": {
+				"model": "dynamic_cooking:block/cooking_pot_chunks_5_campfire"
+			},
+			"when": {
+				"fill": "5",
+				"legs": "short"
 			}
 		}
 	]

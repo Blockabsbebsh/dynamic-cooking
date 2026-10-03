@@ -1,13 +1,18 @@
 {
 	"items": [
-		"minecraft:salmon",
-		"minecraft:cooked_salmon"
+		"minecraft:salmon"
 	],
 	"roles": [
-		"protein"
+		"protein",
+		"fish"
 	],
 	"flavor": "salmon",
-	"nutrition": 2,
-	"saturation": 0.4,
-	"color": "#E07A5A"
+	"nutrition": 3,
+	"saturation": 1.2,
+	"color": "#E0705A",
+	"raw": {
+		"cooks_into": "minecraft:cooked_salmon",
+		"nutrition_penalty": 2,
+		"saturation_penalty": 0.7
+	}
 }

@@ -1,0 +1,17 @@
+{
+	"items": [
+		"minecraft:enchanted_golden_apple"
+	],
+	"roles": [
+		"produce",
+		"fresh"
+	],
+	"flavor": "golden_apple",
+	"nutrition": 4,
+	"saturation": 9.6,
+	"buff": {
+		"effect": "minecraft:absorption",
+		"potency": 3
+	},
+	"color": "#E8C040"
+}

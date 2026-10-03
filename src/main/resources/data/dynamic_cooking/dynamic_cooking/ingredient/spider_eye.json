@@ -1,0 +1,16 @@
+{
+	"items": [
+		"minecraft:spider_eye"
+	],
+	"roles": [
+		"seasoning"
+	],
+	"nutrition": 1,
+	"saturation": 1.0,
+	"effects": [
+		{
+			"effect": "minecraft:poison",
+			"seconds": 5
+		}
+	]
+}

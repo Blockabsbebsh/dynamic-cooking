@@ -20,29 +20,41 @@ import io.github.blockabsbebsh.dynamiccooking.block.ModBlocks;
 import io.github.blockabsbebsh.dynamiccooking.dish.CookingService;
 
 /**
- * The mod's creative tab: the plain dish items, then sample dishes cooked through the real rules so the data can be
- * checked in game without cooking each one.
+ * The mod's creative tab: the pot, the cookbook, then sample dishes made through the real rules, exactly as the pot or a
+ * crafting table would make them from the listed ingredients. Plain never-cooked dish items are left out, since they
+ * have no buff or flavor and would look like broken dishes.
  */
 public final class ModCreativeTab {
 	public static final ResourceKey<CreativeModeTab> KEY = ResourceKey.create(Registries.CREATIVE_MODE_TAB, DynamicCooking.id("dishes"));
 
+	/** Each sample is made on a crafting table if it can be, otherwise in the pot. */
 	private static final List<List<Item>> SAMPLES = List.of(
 			List.of(Items.WHEAT, Items.SUGAR, Items.EGG, Items.CARROT),
 			List.of(Items.WHEAT, Items.SUGAR, Items.EGG, Items.CHORUS_FRUIT),
 			List.of(Items.WHEAT, Items.SUGAR, Items.EGG, Items.GOLDEN_CARROT),
 			List.of(Items.WHEAT, Items.EGG, Items.APPLE),
+			List.of(Items.WHEAT, Items.EGG, Items.MUTTON),
 			List.of(Items.WHEAT, Items.SUGAR, Items.SWEET_BERRIES),
+			List.of(Items.WHEAT, Items.COCOA_BEANS, Items.SUGAR),
 			List.of(Items.GLASS_BOTTLE, Items.MELON_SLICE),
+			List.of(Items.GLASS_BOTTLE, Items.GLISTERING_MELON_SLICE),
 			List.of(Items.WATER_BUCKET, Items.BEEF, Items.POTATO),
-			List.of(Items.BOWL, Items.APPLE, Items.SWEET_BERRIES),
+			List.of(Items.WATER_BUCKET, Items.RABBIT, Items.CARROT, Items.SHELF_MUSHROOM),
 			List.of(Items.WATER_BUCKET, Items.PUMPKIN),
+			List.of(Items.WATER_BUCKET, Items.BROWN_MUSHROOM, Items.RED_MUSHROOM),
+			List.of(Items.BOWL, Items.APPLE, Items.SWEET_BERRIES),
+			List.of(Items.BOWL, Items.MELON_SLICE, Items.GLOW_BERRIES, Items.PUMPKIN_SEEDS),
 			List.of(Items.BREAD, Items.COOKED_PORKCHOP),
-			List.of(Items.DRIED_KELP, Items.COD),
+			List.of(Items.BREAD, Items.BEEF),
+			List.of(Items.DRIED_KELP, Items.SALMON),
+			List.of(Items.DRIED_KELP, Items.PUFFERFISH),
+			List.of(Items.STICK, Items.COOKED_CHICKEN, Items.CARROT),
 			List.of(Items.STICK, Items.CHICKEN, Items.CARROT),
+			List.of(Items.STICK, Items.GOLDEN_CARROT, Items.COOKED_BEEF),
+			List.of(Items.STICK, Items.MAGMA_CREAM, Items.COOKED_BEEF),
 			List.of(Items.EGG, Items.BROWN_MUSHROOM),
 			List.of(Items.RABBIT, Items.POTATO),
-			List.of(Items.CARROT, Items.BROWN_MUSHROOM),
-			List.of(Items.STICK, Items.MAGMA_CREAM, Items.GOLDEN_CARROT, Items.BEEF),
+			List.of(Items.CARROT, Items.SHELF_MUSHROOM),
 			List.of(Items.SUGAR, Items.SUGAR)
 	);
 
@@ -56,7 +68,6 @@ public final class ModCreativeTab {
 				.displayItems((parameters, output) -> {
 					output.accept(ModBlocks.COOKING_POT);
 					output.accept(ModItems.COOKBOOK);
-					ModItems.dishes().forEach(output::accept);
 
 					CookingService cooking = CookingService.create(parameters.holders());
 
@@ -65,7 +76,7 @@ public final class ModCreativeTab {
 
 						if (stacks.stream().allMatch(cooking::isIngredient)) {
 							// Crafted dishes first; everything else goes through the pot, which also shows Dubious Mush.
-							output.accept(cooking.craft(stacks).orElseGet(() -> cooking.cook(stacks)));
+							output.accept(cooking.craft(stacks).orElseGet(() -> cooking.cookPot(stacks).dish()));
 						} else {
 							DynamicCooking.LOGGER.warn("Sample dish {} uses an item with no ingredient profile", Arrays.toString(sample.toArray()));
 						}

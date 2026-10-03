@@ -17,6 +17,7 @@ import io.github.blockabsbebsh.dynamiccooking.cooking.DishResult;
  * <li>{@code flavor.<flavor>}: a flavor name, e.g. {@code "Carrot"}; unknown flavors fall back to their key in title case</li>
  * <li>{@code dish.dynamic_cooking.flavor_pair}: two flavors, {@code "%s and %s"}</li>
  * <li>{@code buff.<namespace>.<effect>} and {@code dish.dynamic_cooking.buffed}: the buff prefix</li>
+ * <li>{@code dish.dynamic_cooking.raw}: the prefix for a dish with raw ingredients, {@code "Raw %s"}</li>
  * </ul>
  */
 public final class DishNames {
@@ -39,6 +40,10 @@ public final class DishNames {
 
 		if (result.buff().isPresent()) {
 			name = Component.translatable("dish.dynamic_cooking.buffed", buffName(result.buff().get().effect()), name);
+		}
+
+		if (result.raw()) {
+			name = Component.translatable("dish.dynamic_cooking.raw", name);
 		}
 
 		return Optional.of(name);

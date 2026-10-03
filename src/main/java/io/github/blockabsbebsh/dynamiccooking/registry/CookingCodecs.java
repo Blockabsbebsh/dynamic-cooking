@@ -14,6 +14,7 @@ import io.github.blockabsbebsh.dynamiccooking.cooking.DishType;
 import io.github.blockabsbebsh.dynamiccooking.cooking.IngredientProfile;
 import io.github.blockabsbebsh.dynamiccooking.cooking.Matcher;
 import io.github.blockabsbebsh.dynamiccooking.cooking.Requirement;
+import io.github.blockabsbebsh.dynamiccooking.cooking.SideEffect;
 
 /**
  * JSON formats for the cooking data. The records themselves live in the Minecraft-free {@code cooking} package.
@@ -43,6 +44,21 @@ public final class CookingCodecs {
 			Codec.intRange(1, 64).optionalFieldOf("potency", 1).forGetter(IngredientProfile.BuffSource::potency)
 	).apply(instance, IngredientProfile.BuffSource::new));
 
+	/** Durations are written in seconds in JSON and kept in ticks in code. */
+	public static final Codec<SideEffect> SIDE_EFFECT = RecordCodecBuilder.create(instance -> instance.group(
+			ID.fieldOf("effect").forGetter(SideEffect::effect),
+			Codec.intRange(0, 255).optionalFieldOf("amplifier", 0).forGetter(SideEffect::amplifier),
+			Codec.intRange(1, 3600).optionalFieldOf("seconds", 30).forGetter(effect -> effect.durationTicks() / 20),
+			Codec.floatRange(0.0f, 1.0f).optionalFieldOf("chance", 1.0f).forGetter(SideEffect::chance)
+	).apply(instance, (effect, amplifier, seconds, chance) -> new SideEffect(effect, amplifier, seconds * 20, chance)));
+
+	public static final Codec<IngredientProfile.Raw> RAW = RecordCodecBuilder.create(instance -> instance.group(
+			ID.optionalFieldOf("cooks_into").forGetter(IngredientProfile.Raw::cooksInto),
+			Codec.intRange(0, 20).optionalFieldOf("nutrition_penalty", 0).forGetter(IngredientProfile.Raw::nutritionPenalty),
+			Codec.floatRange(0.0f, 20.0f).optionalFieldOf("saturation_penalty", 0.0f).forGetter(IngredientProfile.Raw::saturationPenalty),
+			SIDE_EFFECT.listOf().optionalFieldOf("effects", List.of()).forGetter(IngredientProfile.Raw::effects)
+	).apply(instance, IngredientProfile.Raw::new));
+
 	public static final Codec<IngredientProfile> INGREDIENT_PROFILE = RecordCodecBuilder.create(instance -> instance.group(
 			IDS.fieldOf("items").forGetter(IngredientProfile::items),
 			NAMES.xmap(Set::copyOf, List::copyOf).fieldOf("roles").forGetter(IngredientProfile::roles),
@@ -50,7 +66,9 @@ public final class CookingCodecs {
 			Codec.intRange(0, 20).optionalFieldOf("nutrition", 0).forGetter(IngredientProfile::nutrition),
 			Codec.floatRange(0.0f, 20.0f).optionalFieldOf("saturation", 0.0f).forGetter(IngredientProfile::saturation),
 			BUFF_SOURCE.optionalFieldOf("buff").forGetter(IngredientProfile::buff),
-			Codec.STRING.comapFlatMap(CookingCodecs::parseColor, CookingCodecs::formatColor).optionalFieldOf("color").forGetter(IngredientProfile::color)
+			Codec.STRING.comapFlatMap(CookingCodecs::parseColor, CookingCodecs::formatColor).optionalFieldOf("color").forGetter(IngredientProfile::color),
+			RAW.optionalFieldOf("raw").forGetter(IngredientProfile::raw),
+			SIDE_EFFECT.listOf().optionalFieldOf("effects", List.of()).forGetter(IngredientProfile::effects)
 	).apply(instance, IngredientProfile::new));
 
 	public static final Codec<DishType> DISH_TYPE = RecordCodecBuilder.create(instance -> instance.group(
@@ -64,7 +82,8 @@ public final class CookingCodecs {
 			Codec.floatRange(0.0f, 20.0f).optionalFieldOf("bonus_saturation", 0.0f).forGetter(DishType::bonusSaturation),
 			Codec.BOOL.optionalFieldOf("liquid", false).forGetter(DishType::liquid),
 			ID.optionalFieldOf("served_with").forGetter(DishType::servedWith),
-			Codec.intRange(1, 64).optionalFieldOf("servings", 1).forGetter(DishType::servings)
+			Codec.intRange(1, 64).optionalFieldOf("servings", 1).forGetter(DishType::servings),
+			MATCHER.listOf().optionalFieldOf("raw_ok", List.of()).forGetter(DishType::rawOk)
 	).apply(instance, DishType::new));
 
 	private CookingCodecs() {

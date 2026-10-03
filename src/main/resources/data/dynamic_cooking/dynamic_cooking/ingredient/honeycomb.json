@@ -1,0 +1,12 @@
+{
+	"items": [
+		"minecraft:honeycomb"
+	],
+	"roles": [
+		"sweet"
+	],
+	"flavor": "honey",
+	"nutrition": 1,
+	"saturation": 0.4,
+	"color": "#E8A23A"
+}

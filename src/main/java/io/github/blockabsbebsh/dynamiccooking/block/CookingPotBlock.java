@@ -1,5 +1,7 @@
 package io.github.blockabsbebsh.dynamiccooking.block;
 
+import java.util.Optional;
+
 import org.jetbrains.annotations.Nullable;
 
 import net.minecraft.core.BlockPos;
@@ -44,8 +46,9 @@ import io.github.blockabsbebsh.dynamiccooking.dish.CookingService;
 
 /**
  * A pot that sits on a heat source. Right-click with ingredients to add them, right-click with an empty hand to cook,
- * sneak and right-click with an empty hand to take the last ingredient back. Runny dishes stay in the pot once cooked
- * and are taken out with their serving item, like stew with a bowl.
+ * sneak and right-click with an empty hand to take the last ingredient back. Cooked dishes stay in the pot: runny ones
+ * are taken out with their serving item, like stew with a bowl, the rest with an empty hand. A crafted dish with raw
+ * ingredients, like a raw chicken skewer, can be put in on its own and cooked again.
  */
 public class CookingPotBlock extends BaseEntityBlock {
 	public static final BooleanProperty COOKING = BooleanProperty.create("cooking");
@@ -54,20 +57,41 @@ public class CookingPotBlock extends BaseEntityBlock {
 	/** Whether the pot would make a runny dish like stew, drawn as liquid; otherwise the contents are a thick mash. */
 	public static final BooleanProperty LIQUID = BooleanProperty.create("liquid");
 	public static final EnumProperty<Legs> LEGS = EnumProperty.create("legs", Legs.class);
+	/** A cooked dish is waiting in the pot. */
+	public static final BooleanProperty READY = BooleanProperty.create("ready");
 
 	/** Blocks that can heat the pot when directly underneath it. Ones that can be lit, like campfires and furnaces, must be lit. */
 	public static final TagKey<Block> HEAT_SOURCES = TagKey.create(Registries.BLOCK, DynamicCooking.id("heat_sources"));
 
+	/** How far the pot sinks into a campfire, in pixels, so it sits just above the logs instead of a block up. */
+	public static final int CAMPFIRE_DROP = 6;
+
 	private static final VoxelShape SHAPE = Block.box(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
+	private static final VoxelShape SHAPE_ON_CAMPFIRE = Block.box(3.0, -CAMPFIRE_DROP, 3.0, 13.0, 8.0 - CAMPFIRE_DROP, 13.0);
 
 	public CookingPotBlock(Properties properties) {
 		super(properties);
-		registerDefaultState(stateDefinition.any().setValue(COOKING, false).setValue(FILL, 0).setValue(LIQUID, false).setValue(LEGS, Legs.NONE));
+		registerDefaultState(stateDefinition.any()
+				.setValue(COOKING, false)
+				.setValue(FILL, 0)
+				.setValue(LIQUID, false)
+				.setValue(LEGS, Legs.NONE)
+				.setValue(READY, false));
 	}
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-		builder.add(COOKING, FILL, LIQUID, LEGS);
+		builder.add(COOKING, FILL, LIQUID, LEGS, READY);
+	}
+
+	/** Height of the pot's floor above its block, in blocks; below zero when it sits down in a campfire. */
+	public static double floorY(BlockState state) {
+		return state.getValue(LEGS) == Legs.SHORT ? -CAMPFIRE_DROP / 16.0 : 0.0;
+	}
+
+	/** Height of the contents' surface above the pot's block, in blocks. */
+	public static double surfaceY(BlockState state) {
+		return floorY(state) + (1.0 + state.getValue(FILL) * 1.2) / 16.0;
 	}
 
 	@Override
@@ -87,7 +111,7 @@ public class CookingPotBlock extends BaseEntityBlock {
 
 	@Override
 	protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-		return SHAPE;
+		return state.getValue(LEGS) == Legs.SHORT ? SHAPE_ON_CAMPFIRE : SHAPE;
 	}
 
 	@Nullable
@@ -135,9 +159,10 @@ public class CookingPotBlock extends BaseEntityBlock {
 		}
 
 		boolean servingItem = cooking.isServingItem(stack);
+		boolean rawDish = cooking.isRecookable(stack);
 
 		// Anything that isn't an ingredient acts like an empty hand, so the game goes on to useWithoutItem.
-		if (!servingItem && !cooking.isIngredient(stack)) {
+		if (!servingItem && !rawDish && !cooking.isIngredient(stack)) {
 			return InteractionResult.TRY_WITH_EMPTY_HAND;
 		}
 
@@ -159,6 +184,13 @@ public class CookingPotBlock extends BaseEntityBlock {
 
 		if (pot.isFull()) {
 			message(level, player, "full", pot.capacity());
+			return InteractionResult.SUCCESS;
+		}
+
+		Optional<String> refused = pot.refuses(cooking, stack);
+
+		if (refused.isPresent()) {
+			message(level, player, refused.get());
 			return InteractionResult.SUCCESS;
 		}
 
@@ -189,6 +221,20 @@ public class CookingPotBlock extends BaseEntityBlock {
 
 		if (pot.isCooking()) {
 			message(level, player, "busy");
+			return InteractionResult.SUCCESS;
+		}
+
+		if (pot.isServedByHand()) {
+			if (!level.isClientSide()) {
+				ItemStack dish = pot.serve();
+				give(player, dish);
+				level.playSound(null, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 0.6f, 1.0f);
+
+				if (pot.hasServing()) {
+					message(level, player, "taken", dish.getHoverName(), pot.servingsLeft());
+				}
+			}
+
 			return InteractionResult.SUCCESS;
 		}
 
@@ -235,10 +281,17 @@ public class CookingPotBlock extends BaseEntityBlock {
 	public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
 		int fill = state.getValue(FILL);
 		double x = pos.getX() + 0.3 + random.nextDouble() * 0.4;
-		double y = pos.getY() + (1.0 + fill * 1.2) / 16.0;
+		double y = pos.getY() + surfaceY(state);
 		double z = pos.getZ() + 0.3 + random.nextDouble() * 0.4;
 
-		if (state.getValue(COOKING)) {
+		if (state.getValue(READY)) {
+			// A finished dish keeps steaming until it is taken out, so it is easy to spot from across the kitchen.
+			level.addParticle(ParticleTypes.WHITE_SMOKE, x, y + 0.1, z, 0.0, 0.04, 0.0);
+
+			if (random.nextInt(2) == 0) {
+				level.addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE, x, y + 0.2, z, 0.0, 0.02, 0.0);
+			}
+		} else if (state.getValue(COOKING)) {
 			level.addParticle(ParticleTypes.BUBBLE_POP, x, y, z, 0.0, 0.02, 0.0);
 
 			if (random.nextInt(3) == 0) {
@@ -253,7 +306,7 @@ public class CookingPotBlock extends BaseEntityBlock {
 	/** The name of the dish the pot would make right now, so players can tell if their recipe works before cooking. */
 	private static Component preview(CookingService cooking, CookingPotBlockEntity pot) {
 		try {
-			return cooking.cook(pot.contents()).getHoverName();
+			return cooking.cookPot(pot.contents()).dish().getHoverName();
 		} catch (IllegalArgumentException e) {
 			return Component.translatable("message.dynamic_cooking.pot.unknown");
 		}
@@ -267,10 +320,21 @@ public class CookingPotBlock extends BaseEntityBlock {
 
 	/** Tells the player a dish is waiting and what serves it. */
 	private static void messageReady(Level level, Player player, CookingPotBlockEntity pot) {
+		if (!level.isClientSide()) {
+			player.sendOverlayMessage(readyMessage(pot));
+		}
+	}
+
+	/** "Beef Stew is ready", with how to take it out. */
+	public static Component readyMessage(CookingPotBlockEntity pot) {
+		if (pot.isServedByHand()) {
+			return Component.translatable("message.dynamic_cooking.pot.ready_hand", pot.serving().getHoverName());
+		}
+
 		Component container = pot.servedWith()
 				.map(item -> (Component) Component.translatable(item.getDescriptionId()))
 				.orElseGet(() -> Component.translatable("message.dynamic_cooking.pot.unknown"));
-		message(level, player, "ready", pot.serving().getHoverName(), container);
+		return Component.translatable("message.dynamic_cooking.pot.ready", pot.serving().getHoverName(), container);
 	}
 
 	/** Uses up one of the held stack and hands back what it turned into, in the same hand when the stack ran out. */

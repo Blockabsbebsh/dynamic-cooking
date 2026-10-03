@@ -1,0 +1,20 @@
+{
+	"items": [
+		"minecraft:rotten_flesh"
+	],
+	"roles": [
+		"protein",
+		"meat"
+	],
+	"flavor": "rotten_flesh",
+	"nutrition": 1,
+	"saturation": 0.2,
+	"color": "#7A8A3A",
+	"effects": [
+		{
+			"effect": "minecraft:hunger",
+			"seconds": 30,
+			"chance": 0.8
+		}
+	]
+}

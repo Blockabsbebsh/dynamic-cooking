@@ -1,0 +1,13 @@
+{
+	"items": [
+		"minecraft:cooked_cod"
+	],
+	"roles": [
+		"protein",
+		"fish"
+	],
+	"flavor": "cod",
+	"nutrition": 3,
+	"saturation": 1.2,
+	"color": "#E3CFA6"
+}

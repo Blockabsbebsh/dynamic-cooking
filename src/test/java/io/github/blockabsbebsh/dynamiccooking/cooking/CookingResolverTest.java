@@ -103,6 +103,16 @@ class CookingResolverTest {
 	}
 
 	@Test
+	void leftoversMustSuitTheDish() {
+		assertEquals("dynamic_cooking:skewer", craft("stick", "melon_slice").item());
+		assertTrue(resolver().match(CookingMethod.CRAFTING, inputs("stick", "melon_slice", "bowl")).isEmpty());
+		assertEquals("dynamic_cooking:skewer", craft("stick", "stick", "beef").item());
+		assertEquals("dynamic_cooking:skewer", craft("stick", "beef", "magma_cream").item());
+		assertEquals("dynamic_cooking:cake", resolver().resolve(inputs("wheat", "sugar", "sugar", "egg", "carrot")).item());
+		assertTrue(resolver().resolve(inputs("wheat", "egg", "carrot", "stick")).dubious());
+	}
+
+	@Test
 	void craftedDishesAreNotCookedInThePot() {
 		assertTrue(resolver().resolve(inputs("stick", "beef")).dubious());
 		assertEquals("dynamic_cooking:soup", resolver().resolve(inputs("water_bucket", "apple", "melon_slice")).item());

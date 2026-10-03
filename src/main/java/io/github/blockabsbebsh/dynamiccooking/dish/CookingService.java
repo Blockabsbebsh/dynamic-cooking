@@ -9,9 +9,12 @@ import java.util.Optional;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
+import io.github.blockabsbebsh.dynamiccooking.component.DishContents;
+import io.github.blockabsbebsh.dynamiccooking.component.ModComponents;
 import io.github.blockabsbebsh.dynamiccooking.cooking.CookingInput;
 import io.github.blockabsbebsh.dynamiccooking.cooking.CookingMethod;
 import io.github.blockabsbebsh.dynamiccooking.cooking.CookingResolver;
@@ -49,7 +52,7 @@ public final class CookingService {
 
 		List<DishType> dishTypes = registries.lookupOrThrow(ModRegistries.DISH_TYPE).listElements().map(Holder::value).toList();
 
-		return new CookingService(profiles, new CookingResolver(dishTypes, CookingRules.DEFAULT));
+		return new CookingService(profiles, new CookingResolver(dishTypes, CookingRules.DEFAULT, id -> Optional.ofNullable(profiles.get(id))));
 	}
 
 	public Optional<IngredientProfile> profile(Item item) {
@@ -99,13 +102,118 @@ public final class CookingService {
 		return resolver.resolve(inputs);
 	}
 
-	/** The color of the liquid in a pot holding these stacks. Stacks that aren't ingredients are skipped. */
-	public int liquidColor(List<ItemStack> ingredients) {
-		return PotColors.mix(ingredients.stream().map(this::input).flatMap(Optional::stream).map(CookingInput::profile).toList());
+	/**
+	 * Whether this is a finished dish with raw ingredients the pot can cook, like a skewer made with raw chicken.
+	 * The pot takes such dishes on their own and gives them back cooked.
+	 */
+	public boolean isRecookable(ItemStack stack) {
+		return dishInputs(stack).filter(resolver::canRecook).isPresent();
 	}
 
-	public ItemStack cook(List<ItemStack> ingredients) {
-		return DishFactory.create(resolve(ingredients));
+	/** The dish cooked again so its raw ingredients are cooked, or the same dish if nothing in it can be cooked. */
+	public ItemStack recook(ItemStack dish) {
+		String item = BuiltInRegistries.ITEM.getKey(dish.getItem()).toString();
+
+		return dishInputs(dish)
+				.flatMap(inputs -> resolver.recook(item, inputs))
+				.map(DishFactory::create)
+				.orElseGet(() -> dish.copyWithCount(1));
+	}
+
+	/** The ingredients a dish was made from, if they are all still known ingredients. */
+	private Optional<List<CookingInput>> dishInputs(ItemStack dish) {
+		DishContents contents = dish.get(ModComponents.DISH);
+
+		if (contents == null || contents.ingredients().isEmpty()) {
+			return Optional.empty();
+		}
+
+		List<CookingInput> inputs = new ArrayList<>();
+
+		for (String id : contents.ingredients()) {
+			IngredientProfile profile = profiles.get(id);
+
+			if (profile == null) {
+				return Optional.empty();
+			}
+
+			inputs.add(new CookingInput(id, profile));
+		}
+
+		return Optional.of(inputs);
+	}
+
+	/**
+	 * Cooks what is in the pot: either loose ingredients, or copies of one raw dish to cook again.
+	 * The result's {@link DishResult#servings()} is how many dishes come out.
+	 */
+	public PotResult cookPot(List<ItemStack> contents) {
+		if (!contents.isEmpty() && isRecookable(contents.getFirst())) {
+			ItemStack dish = recook(contents.getFirst());
+			List<ItemStack> cooked = contents.stream().map(stack -> dish).toList();
+			return new PotResult(dish, contents.size(), Optional.empty(), false, liquidColor(cooked), colors(cooked));
+		}
+
+		DishResult result = resolve(contents);
+		// Colors come from the cooked ingredients, so raw meat chunks turn brown when the dish is done.
+		List<ItemStack> cooked = result.ingredients().stream()
+				.map(id -> BuiltInRegistries.ITEM.getOptional(Identifier.parse(id)).map(ItemStack::new).orElse(ItemStack.EMPTY))
+				.toList();
+		return new PotResult(DishFactory.create(result), result.servings(), result.servedWith(), result.liquid(), liquidColor(cooked), colors(cooked));
+	}
+
+	/**
+	 * What came out of the pot.
+	 *
+	 * @param dish        one dish
+	 * @param servings    how many of it the pot holds
+	 * @param servedWith  item id that takes it out, or empty for an empty hand
+	 * @param liquid      whether it is runny
+	 * @param liquidColor the color of the cooked contents
+	 * @param colors      one color per ingredient, after cooking, for the chunks drawn in the pot
+	 */
+	public record PotResult(ItemStack dish, int servings, Optional<String> servedWith, boolean liquid, int liquidColor, List<Integer> colors) {
+	}
+
+	/** The color of the liquid in a pot holding these stacks. Stacks that aren't ingredients or dishes are skipped. */
+	public int liquidColor(List<ItemStack> contents) {
+		List<IngredientProfile> mixed = new ArrayList<>();
+
+		for (ItemStack stack : contents) {
+			input(stack).ifPresentOrElse(
+					input -> mixed.add(input.profile()),
+					() -> dishInputs(stack).ifPresent(inputs -> inputs.forEach(input -> mixed.add(input.profile())))
+			);
+		}
+
+		return PotColors.mix(mixed);
+	}
+
+	/**
+	 * One color per stack for the chunks floating in the pot. Ingredients without a flavor, like water or sugar, take the
+	 * liquid's color so their chunk blends in; a dish takes the color of its main flavor.
+	 */
+	public List<Integer> colors(List<ItemStack> contents) {
+		int liquid = liquidColor(contents);
+		List<Integer> colors = new ArrayList<>();
+
+		for (ItemStack stack : contents) {
+			Optional<IngredientProfile> profile = input(stack).map(CookingInput::profile);
+
+			if (profile.isPresent()) {
+				colors.add(chunkColor(profile.get()).orElse(liquid));
+			} else {
+				Optional<Integer> mainFlavor = dishInputs(stack)
+						.flatMap(inputs -> inputs.stream().map(input -> chunkColor(input.profile())).flatMap(Optional::stream).findFirst());
+				colors.add(mainFlavor.orElse(liquid));
+			}
+		}
+
+		return colors;
+	}
+
+	private static Optional<Integer> chunkColor(IngredientProfile profile) {
+		return profile.flavor().isPresent() ? profile.color() : Optional.empty();
 	}
 
 	/**
