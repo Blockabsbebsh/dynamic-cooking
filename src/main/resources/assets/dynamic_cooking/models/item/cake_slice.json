@@ -2,6 +2,7 @@
 	"parent": "minecraft:item/generated",
 	"textures": {
 		"layer0": "dynamic_cooking:item/cake_slice",
-		"layer1": "dynamic_cooking:item/cake_slice_fruit"
+		"layer1": "dynamic_cooking:item/cake_slice_fruit",
+		"layer2": "dynamic_cooking:item/cake_slice_filling"
 	}
 }

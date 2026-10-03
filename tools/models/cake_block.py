@@ -14,7 +14,8 @@ again (the filling between the sponge layers). Light grey takes the ingredient c
 - cake_filling_inner: rows 8-15 are the cut face of a bitten cake, as in vanilla cake_inner.
 
 The cake slice item, cut from a placed cake with a sword, is drawn here too: a full-colour wedge (cake_slice, from the art in
-tools/textures/art) and a grey layer on top (cake_slice_fruit) with the cherry, tinted with the slice's first flavour colour.
+tools/textures/art) and a grey layers on top: the cherry (cake_slice_fruit), tinted with the slice's first flavour colour, and the line of filling
+(cake_slice_filling), tinted with its second. CakeCutting gives one-flavour slices the first colour twice.
 
 Pass a folder of vanilla block textures to also write a preview: python3 tools/models/cake_block.py VANILLA_DIR OUT
 """
@@ -119,8 +120,29 @@ SLICE_FRUIT = """
 ................
 """
 
+# The line of filling through the sponge, tinted with the slice's second flavour colour (the first again when it has one).
+SLICE_FILLING = """
+................
+................
+................
+................
+................
+................
+................
+..SM............
+....LM..........
+......LM........
+........M.......
+................
+................
+................
+................
+................
+"""
+
 # Shown on a slice that carries no colour, like one cut from a vanilla cake: the vanilla cake's red berries.
 SLICE_DEFAULT_COLOR = "#C42430"
+SLICE_FILLING_DEFAULT_COLOR = "#F8DE92"
 
 TEXTURES = {
 	"cake_fruit_top": FRUIT_TOP,
@@ -150,10 +172,11 @@ def slice_base():
 	"""The slice art without the pixels the tinted fruit layer draws."""
 	out = Image.open(SLICE_ART).convert("RGBA")
 	fruit = image(SLICE_FRUIT)
+	filling = image(SLICE_FILLING)
 
 	for y in range(16):
 		for x in range(16):
-			if fruit.getpixel((x, y))[3]:
+			if fruit.getpixel((x, y))[3] or filling.getpixel((x, y))[3]:
 				out.putpixel((x, y), (0, 0, 0, 0))
 
 	return out
@@ -247,6 +270,7 @@ def preview(vanilla, out_dir, overlays):
 
 		item = slice_item.copy()
 		item.alpha_composite(tinted(image(SLICE_FRUIT), color))
+		item.alpha_composite(tinted(image(SLICE_FILLING), color))
 		sheet.alpha_composite(item.resize((16 * scale, 16 * scale), Image.NEAREST), (x, y - scale))
 
 	Path(out_dir).mkdir(parents=True, exist_ok=True)
@@ -272,9 +296,11 @@ def main():
 
 	slice_base().save(ASSETS / "textures/item/cake_slice.png")
 	image(SLICE_FRUIT).save(ASSETS / "textures/item/cake_slice_fruit.png")
+	image(SLICE_FILLING).save(ASSETS / "textures/item/cake_slice_filling.png")
 	write_json(ASSETS / "models/item/cake_slice.json", {
 		"parent": "minecraft:item/generated",
-		"textures": {"layer0": f"{NS}:item/cake_slice", "layer1": f"{NS}:item/cake_slice_fruit"},
+		"textures": {"layer0": f"{NS}:item/cake_slice", "layer1": f"{NS}:item/cake_slice_fruit",
+			"layer2": f"{NS}:item/cake_slice_filling"},
 	})
 	write_json(ASSETS / "items/cake_slice.json", {"model": {
 		"type": "minecraft:model",
@@ -282,6 +308,7 @@ def main():
 		"tints": [
 			{"type": "minecraft:constant", "value": -1},
 			{"type": "minecraft:custom_model_data", "index": 0, "default": argb(SLICE_DEFAULT_COLOR)},
+			{"type": "minecraft:custom_model_data", "index": 1, "default": argb(SLICE_FILLING_DEFAULT_COLOR)},
 		],
 	}})
 

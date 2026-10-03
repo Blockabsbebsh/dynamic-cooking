@@ -215,7 +215,7 @@
 			"type": "minecraft:paletted_permutations",
 			"textures": [
 				"dynamic_cooking:item/dish/sandwich_filling",
-				"dynamic_cooking:item/dish/sandwich_greens"
+				"dynamic_cooking:item/dish/sandwich_second"
 			],
 			"palette_key": "dynamic_cooking:dish/key",
 			"permutations": {
