@@ -21,7 +21,7 @@ import io.github.blockabsbebsh.dynamiccooking.DynamicCooking;
 import io.github.blockabsbebsh.dynamiccooking.block.ModBlocks;
 
 /**
- * One item per dish type, plus the cookbook. A stack's name, food value, buff and look come from its components, set when it is cooked;
+ * One item per dish type, plus the cooking guide. A stack's name, food value, buff and look come from its components, set when it is cooked;
  * the defaults here only apply to stacks that were never cooked, such as ones pulled from the creative menu.
  */
 public final class ModItems {
@@ -87,7 +87,7 @@ public final class ModItems {
 
 	private static Item registerCookbook() {
 		ResourceKey<Item> key = ResourceKey.create(Registries.ITEM, DynamicCooking.id("cookbook"));
-		return Registry.register(BuiltInRegistries.ITEM, key, new CookbookItem(new Item.Properties().stacksTo(1).setId(key)));
+		return Registry.register(BuiltInRegistries.ITEM, key, new GuideItem(new Item.Properties().stacksTo(1).setId(key)));
 	}
 
 	private static Item register(String name, Item.Properties properties) {
