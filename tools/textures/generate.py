@@ -18,6 +18,7 @@ from palettes import KEY, PALETTES
 
 NS = "dynamic_cooking"
 ROOT = Path(__file__).resolve().parents[2]
+ART = Path(__file__).resolve().parent / "art"
 ASSETS = ROOT / "src/main/resources/assets"
 DATA = ROOT / "src/main/resources/data" / NS / NS
 OUT = ASSETS / NS
@@ -50,11 +51,16 @@ def split_layers(dish):
 	"""One RGBA image per layer: the base in its real colours, flavour layers in key greys."""
 	images = {name: Image.new("RGBA", (16, 16), (0, 0, 0, 0)) for name in dish["layers"]}
 	images["vanilla"] = vanilla_sprite(dish)
+	if dish.get("art"):
+		images["base"] = Image.open(ART / dish["art"]).convert("RGBA")
 
 	for y, row in enumerate(rows(dish)):
 		for x, ch in enumerate(row):
-			if ch == ".":
+			if ch in ".#":
 				continue
+			if dish.get("art"):
+				# A flavour pixel replaces the art under it.
+				images["base"].putpixel((x, y), (0, 0, 0, 0))
 			if ch.isdigit():
 				images["a"].putpixel((x, y), rgba(KEY[int(ch)]))
 			elif ch in SECOND:

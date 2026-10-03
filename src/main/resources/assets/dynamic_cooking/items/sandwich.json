@@ -284,238 +284,238 @@
 							"when": "apple",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/sandwich_bits_apple"
+								"model": "dynamic_cooking:item/dish/sandwich_greens_apple"
 							}
 						},
 						{
 							"when": "beef",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/sandwich_bits_beef"
+								"model": "dynamic_cooking:item/dish/sandwich_greens_beef"
 							}
 						},
 						{
 							"when": "beetroot",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/sandwich_bits_beetroot"
+								"model": "dynamic_cooking:item/dish/sandwich_greens_beetroot"
 							}
 						},
 						{
 							"when": "carrot",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/sandwich_bits_carrot"
+								"model": "dynamic_cooking:item/dish/sandwich_greens_carrot"
 							}
 						},
 						{
 							"when": "chicken",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/sandwich_bits_chicken"
+								"model": "dynamic_cooking:item/dish/sandwich_greens_chicken"
 							}
 						},
 						{
 							"when": "chocolate",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/sandwich_bits_chocolate"
+								"model": "dynamic_cooking:item/dish/sandwich_greens_chocolate"
 							}
 						},
 						{
 							"when": "chorus_fruit",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/sandwich_bits_chorus_fruit"
+								"model": "dynamic_cooking:item/dish/sandwich_greens_chorus_fruit"
 							}
 						},
 						{
 							"when": "cod",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/sandwich_bits_cod"
+								"model": "dynamic_cooking:item/dish/sandwich_greens_cod"
 							}
 						},
 						{
 							"when": "egg",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/sandwich_bits_egg"
+								"model": "dynamic_cooking:item/dish/sandwich_greens_egg"
 							}
 						},
 						{
 							"when": "glistering_melon",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/sandwich_bits_glistering_melon"
+								"model": "dynamic_cooking:item/dish/sandwich_greens_glistering_melon"
 							}
 						},
 						{
 							"when": "glow_berry",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/sandwich_bits_glow_berry"
+								"model": "dynamic_cooking:item/dish/sandwich_greens_glow_berry"
 							}
 						},
 						{
 							"when": "golden_apple",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/sandwich_bits_golden_apple"
+								"model": "dynamic_cooking:item/dish/sandwich_greens_golden_apple"
 							}
 						},
 						{
 							"when": "golden_carrot",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/sandwich_bits_golden_carrot"
+								"model": "dynamic_cooking:item/dish/sandwich_greens_golden_carrot"
 							}
 						},
 						{
 							"when": "melon",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/sandwich_bits_melon"
+								"model": "dynamic_cooking:item/dish/sandwich_greens_melon"
 							}
 						},
 						{
 							"when": "mushroom",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/sandwich_bits_mushroom"
+								"model": "dynamic_cooking:item/dish/sandwich_greens_mushroom"
 							}
 						},
 						{
 							"when": "mutton",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/sandwich_bits_mutton"
+								"model": "dynamic_cooking:item/dish/sandwich_greens_mutton"
 							}
 						},
 						{
 							"when": "poisonous_potato",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/sandwich_bits_poisonous_potato"
+								"model": "dynamic_cooking:item/dish/sandwich_greens_poisonous_potato"
 							}
 						},
 						{
 							"when": "porkchop",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/sandwich_bits_porkchop"
+								"model": "dynamic_cooking:item/dish/sandwich_greens_porkchop"
 							}
 						},
 						{
 							"when": "potato",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/sandwich_bits_potato"
+								"model": "dynamic_cooking:item/dish/sandwich_greens_potato"
 							}
 						},
 						{
 							"when": "pufferfish",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/sandwich_bits_pufferfish"
+								"model": "dynamic_cooking:item/dish/sandwich_greens_pufferfish"
 							}
 						},
 						{
 							"when": "pumpkin",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/sandwich_bits_pumpkin"
+								"model": "dynamic_cooking:item/dish/sandwich_greens_pumpkin"
 							}
 						},
 						{
 							"when": "rabbit",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/sandwich_bits_rabbit"
+								"model": "dynamic_cooking:item/dish/sandwich_greens_rabbit"
 							}
 						},
 						{
 							"when": "raw_beef",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/sandwich_bits_raw_beef"
+								"model": "dynamic_cooking:item/dish/sandwich_greens_raw_beef"
 							}
 						},
 						{
 							"when": "raw_chicken",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/sandwich_bits_raw_chicken"
+								"model": "dynamic_cooking:item/dish/sandwich_greens_raw_chicken"
 							}
 						},
 						{
 							"when": "raw_cod",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/sandwich_bits_raw_cod"
+								"model": "dynamic_cooking:item/dish/sandwich_greens_raw_cod"
 							}
 						},
 						{
 							"when": "raw_mutton",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/sandwich_bits_raw_mutton"
+								"model": "dynamic_cooking:item/dish/sandwich_greens_raw_mutton"
 							}
 						},
 						{
 							"when": "raw_porkchop",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/sandwich_bits_raw_porkchop"
+								"model": "dynamic_cooking:item/dish/sandwich_greens_raw_porkchop"
 							}
 						},
 						{
 							"when": "raw_potato",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/sandwich_bits_raw_potato"
+								"model": "dynamic_cooking:item/dish/sandwich_greens_raw_potato"
 							}
 						},
 						{
 							"when": "raw_rabbit",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/sandwich_bits_raw_rabbit"
+								"model": "dynamic_cooking:item/dish/sandwich_greens_raw_rabbit"
 							}
 						},
 						{
 							"when": "raw_salmon",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/sandwich_bits_raw_salmon"
+								"model": "dynamic_cooking:item/dish/sandwich_greens_raw_salmon"
 							}
 						},
 						{
 							"when": "rotten_flesh",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/sandwich_bits_rotten_flesh"
+								"model": "dynamic_cooking:item/dish/sandwich_greens_rotten_flesh"
 							}
 						},
 						{
 							"when": "salmon",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/sandwich_bits_salmon"
+								"model": "dynamic_cooking:item/dish/sandwich_greens_salmon"
 							}
 						},
 						{
 							"when": "sweet_berry",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/sandwich_bits_sweet_berry"
+								"model": "dynamic_cooking:item/dish/sandwich_greens_sweet_berry"
 							}
 						},
 						{
 							"when": "tropical_fish",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/sandwich_bits_tropical_fish"
+								"model": "dynamic_cooking:item/dish/sandwich_greens_tropical_fish"
 							}
 						}
 					],
@@ -528,244 +528,244 @@
 								"when": "apple",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/sandwich_bits_apple"
+									"model": "dynamic_cooking:item/dish/sandwich_greens_apple"
 								}
 							},
 							{
 								"when": "beef",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/sandwich_bits_beef"
+									"model": "dynamic_cooking:item/dish/sandwich_greens_beef"
 								}
 							},
 							{
 								"when": "beetroot",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/sandwich_bits_beetroot"
+									"model": "dynamic_cooking:item/dish/sandwich_greens_beetroot"
 								}
 							},
 							{
 								"when": "carrot",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/sandwich_bits_carrot"
+									"model": "dynamic_cooking:item/dish/sandwich_greens_carrot"
 								}
 							},
 							{
 								"when": "chicken",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/sandwich_bits_chicken"
+									"model": "dynamic_cooking:item/dish/sandwich_greens_chicken"
 								}
 							},
 							{
 								"when": "chocolate",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/sandwich_bits_chocolate"
+									"model": "dynamic_cooking:item/dish/sandwich_greens_chocolate"
 								}
 							},
 							{
 								"when": "chorus_fruit",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/sandwich_bits_chorus_fruit"
+									"model": "dynamic_cooking:item/dish/sandwich_greens_chorus_fruit"
 								}
 							},
 							{
 								"when": "cod",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/sandwich_bits_cod"
+									"model": "dynamic_cooking:item/dish/sandwich_greens_cod"
 								}
 							},
 							{
 								"when": "egg",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/sandwich_bits_egg"
+									"model": "dynamic_cooking:item/dish/sandwich_greens_egg"
 								}
 							},
 							{
 								"when": "glistering_melon",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/sandwich_bits_glistering_melon"
+									"model": "dynamic_cooking:item/dish/sandwich_greens_glistering_melon"
 								}
 							},
 							{
 								"when": "glow_berry",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/sandwich_bits_glow_berry"
+									"model": "dynamic_cooking:item/dish/sandwich_greens_glow_berry"
 								}
 							},
 							{
 								"when": "golden_apple",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/sandwich_bits_golden_apple"
+									"model": "dynamic_cooking:item/dish/sandwich_greens_golden_apple"
 								}
 							},
 							{
 								"when": "golden_carrot",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/sandwich_bits_golden_carrot"
+									"model": "dynamic_cooking:item/dish/sandwich_greens_golden_carrot"
 								}
 							},
 							{
 								"when": "melon",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/sandwich_bits_melon"
+									"model": "dynamic_cooking:item/dish/sandwich_greens_melon"
 								}
 							},
 							{
 								"when": "mushroom",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/sandwich_bits_mushroom"
+									"model": "dynamic_cooking:item/dish/sandwich_greens_mushroom"
 								}
 							},
 							{
 								"when": "mutton",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/sandwich_bits_mutton"
+									"model": "dynamic_cooking:item/dish/sandwich_greens_mutton"
 								}
 							},
 							{
 								"when": "poisonous_potato",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/sandwich_bits_poisonous_potato"
+									"model": "dynamic_cooking:item/dish/sandwich_greens_poisonous_potato"
 								}
 							},
 							{
 								"when": "porkchop",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/sandwich_bits_porkchop"
+									"model": "dynamic_cooking:item/dish/sandwich_greens_porkchop"
 								}
 							},
 							{
 								"when": "potato",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/sandwich_bits_potato"
+									"model": "dynamic_cooking:item/dish/sandwich_greens_potato"
 								}
 							},
 							{
 								"when": "pufferfish",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/sandwich_bits_pufferfish"
+									"model": "dynamic_cooking:item/dish/sandwich_greens_pufferfish"
 								}
 							},
 							{
 								"when": "pumpkin",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/sandwich_bits_pumpkin"
+									"model": "dynamic_cooking:item/dish/sandwich_greens_pumpkin"
 								}
 							},
 							{
 								"when": "rabbit",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/sandwich_bits_rabbit"
+									"model": "dynamic_cooking:item/dish/sandwich_greens_rabbit"
 								}
 							},
 							{
 								"when": "raw_beef",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/sandwich_bits_raw_beef"
+									"model": "dynamic_cooking:item/dish/sandwich_greens_raw_beef"
 								}
 							},
 							{
 								"when": "raw_chicken",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/sandwich_bits_raw_chicken"
+									"model": "dynamic_cooking:item/dish/sandwich_greens_raw_chicken"
 								}
 							},
 							{
 								"when": "raw_cod",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/sandwich_bits_raw_cod"
+									"model": "dynamic_cooking:item/dish/sandwich_greens_raw_cod"
 								}
 							},
 							{
 								"when": "raw_mutton",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/sandwich_bits_raw_mutton"
+									"model": "dynamic_cooking:item/dish/sandwich_greens_raw_mutton"
 								}
 							},
 							{
 								"when": "raw_porkchop",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/sandwich_bits_raw_porkchop"
+									"model": "dynamic_cooking:item/dish/sandwich_greens_raw_porkchop"
 								}
 							},
 							{
 								"when": "raw_potato",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/sandwich_bits_raw_potato"
+									"model": "dynamic_cooking:item/dish/sandwich_greens_raw_potato"
 								}
 							},
 							{
 								"when": "raw_rabbit",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/sandwich_bits_raw_rabbit"
+									"model": "dynamic_cooking:item/dish/sandwich_greens_raw_rabbit"
 								}
 							},
 							{
 								"when": "raw_salmon",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/sandwich_bits_raw_salmon"
+									"model": "dynamic_cooking:item/dish/sandwich_greens_raw_salmon"
 								}
 							},
 							{
 								"when": "rotten_flesh",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/sandwich_bits_rotten_flesh"
+									"model": "dynamic_cooking:item/dish/sandwich_greens_rotten_flesh"
 								}
 							},
 							{
 								"when": "salmon",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/sandwich_bits_salmon"
+									"model": "dynamic_cooking:item/dish/sandwich_greens_salmon"
 								}
 							},
 							{
 								"when": "sweet_berry",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/sandwich_bits_sweet_berry"
+									"model": "dynamic_cooking:item/dish/sandwich_greens_sweet_berry"
 								}
 							},
 							{
 								"when": "tropical_fish",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/sandwich_bits_tropical_fish"
+									"model": "dynamic_cooking:item/dish/sandwich_greens_tropical_fish"
 								}
 							}
 						],
 						"fallback": {
 							"type": "minecraft:model",
-							"model": "dynamic_cooking:item/dish/sandwich_bits",
+							"model": "dynamic_cooking:item/dish/sandwich_greens",
 							"tints": [
 								{
 									"type": "minecraft:custom_model_data",
@@ -778,7 +778,7 @@
 				},
 				"on_false": {
 					"type": "minecraft:model",
-					"model": "dynamic_cooking:item/dish/sandwich_bits_porkchop"
+					"model": "dynamic_cooking:item/dish/sandwich_greens_porkchop"
 				}
 			}
 		]
