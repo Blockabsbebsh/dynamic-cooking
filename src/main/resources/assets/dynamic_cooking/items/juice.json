@@ -4,7 +4,7 @@
 		"models": [
 			{
 				"type": "minecraft:model",
-				"model": "dynamic_cooking:item/dish/juice_bottle"
+				"model": "minecraft:item/glass_bottle"
 			},
 			{
 				"type": "minecraft:condition",
@@ -97,6 +97,13 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/juice_liquid_pumpkin"
+							}
+						},
+						{
+							"when": "raw_potato",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/juice_liquid_raw_potato"
 							}
 						},
 						{

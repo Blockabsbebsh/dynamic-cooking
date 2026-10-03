@@ -15,7 +15,8 @@ Slots, in order:
   7 accent         seeds, stems, char: a detail colour
 
 Colours are picked by eye from the vanilla item each flavour comes from (cooked versions for meat and fish),
-so a dish matches the ingredient the player put in.
+so a dish matches the ingredient the player put in. A "raw_" palette, from the raw vanilla item, is used when the
+ingredient went into a dish uncooked, on the dishes marked `raw` in dishes.py.
 """
 
 KEY = ["#F0F0F0", "#D8D8D8", "#C0C0C0", "#A8A8A8", "#909090", "#787878", "#606060", "#484848"]
@@ -36,6 +37,7 @@ PALETTES = {
 	"pumpkin":          ["#FFC66A", "#F0A23C", "#E3901D", "#C8740F", "#A45413", "#7E3F0C", "#5A2C08", "#6E8A2A"],
 	"sweet_berry":      ["#F06A8E", "#DF467E", "#C0102A", "#A50700", "#820B05", "#691F21", "#380E0F", "#286240"],
 	"mushroom":         ["#CC9978", "#B5947D", "#916D55", "#725643", "#6A4E3B", "#5A4434", "#3E3129", "#EDE8CA"],
+	"poisonous_potato": ["#D2E962", "#C4D951", "#B0C83A", "#6B863E", "#49673F", "#315237", "#1F3324", "#D9AA51"],
 	# meat and fish, cooked
 	"beef":             ["#B07458", "#985C43", "#7C4835", "#673728", "#522F1F", "#4E2719", "#2A160D", "#3F2116"],
 	"chicken":          ["#EECAAC", "#E6BEA4", "#DE9D7B", "#CD7D4A", "#AC5D31", "#8B4420", "#5A2C10", "#D28E62"],
@@ -45,4 +47,15 @@ PALETTES = {
 	"pufferfish":       ["#FCE5BC", "#FFC908", "#FBA70C", "#D8951A", "#BF841B", "#915B15", "#83500E", "#429BBA"],
 	"rabbit":           ["#E7BFA2", "#DBA581", "#D28E62", "#A95F32", "#884721", "#7A3D1C", "#592D14", "#4A2410"],
 	"salmon":           ["#F0A080", "#DF7D53", "#D3604A", "#BA4F23", "#9E441F", "#733D20", "#3D2B29", "#5D7764"],
+	"rotten_flesh":     ["#C5956A", "#C5815A", "#C56541", "#B44420", "#8B3418", "#622C10", "#28140A", "#6A5D18"],
+	"tropical_fish":    ["#FBD8C2", "#F58A48", "#F46F20", "#DF590A", "#BB502C", "#A44222", "#692E09", "#EFBDA1"],
+	# meat, fish and potato, raw
+	"raw_beef":         ["#EA8873", "#E2625A", "#E03E35", "#C42A22", "#AD1D17", "#7B1713", "#470A06", "#7B1713"],
+	"raw_chicken":      ["#FFE7DC", "#F2C9BD", "#EFBCAC", "#DFA996", "#C19280", "#B47B65", "#865245", "#F2C9BD"],
+	"raw_cod":          ["#E2D8C4", "#D6C5AD", "#C6A271", "#B18953", "#986D4E", "#6B442B", "#4A2E1C", "#4A2E1C"],
+	"raw_mutton":       ["#E88A82", "#E2625A", "#D12E26", "#AD332E", "#96211B", "#7A1A15", "#470A06", "#E2D3AC"],
+	"raw_porkchop":     ["#FFC6C6", "#FFADAD", "#FF8C8C", "#EF7070", "#A75353", "#853E3E", "#512626", "#FFE0E0"],
+	"raw_potato":       ["#F8D086", "#E9BA62", "#D9AA51", "#C8973A", "#AF8444", "#9A5500", "#6D3701", "#86693E"],
+	"raw_rabbit":       ["#FEE5D2", "#F2C9BD", "#EFBCAC", "#DAA08C", "#B88473", "#B47864", "#865245", "#DAA08C"],
+	"raw_salmon":       ["#BE4644", "#AB3533", "#902928", "#723530", "#58403C", "#3D2B29", "#1B2A26", "#5D7764"],
 }

@@ -4,7 +4,7 @@
 		"models": [
 			{
 				"type": "minecraft:model",
-				"model": "dynamic_cooking:item/dish/pie_crust"
+				"model": "minecraft:item/pumpkin_pie"
 			},
 			{
 				"type": "minecraft:condition",
@@ -170,14 +170,14 @@
 							{
 								"type": "minecraft:custom_model_data",
 								"index": 0,
-								"default": -2287835
+								"default": -1863651
 							}
 						]
 					}
 				},
 				"on_false": {
 					"type": "minecraft:model",
-					"model": "dynamic_cooking:item/dish/pie_filling_apple"
+					"model": "dynamic_cooking:item/dish/pie_filling_pumpkin"
 				}
 			}
 		]
