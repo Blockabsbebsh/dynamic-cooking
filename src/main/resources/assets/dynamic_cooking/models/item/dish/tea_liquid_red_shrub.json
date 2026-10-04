@@ -1,6 +1,6 @@
 {
 	"parent": "minecraft:item/generated",
 	"textures": {
-		"layer0": "dynamic_cooking:item/dish/tea_liquid_rooibos"
+		"layer0": "dynamic_cooking:item/dish/tea_liquid_red_shrub"
 	}
 }

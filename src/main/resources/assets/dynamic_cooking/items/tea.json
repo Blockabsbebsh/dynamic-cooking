@@ -165,10 +165,10 @@
 										}
 									},
 									{
-										"when": "rooibos",
+										"when": "red_shrub",
 										"model": {
 											"type": "minecraft:model",
-											"model": "dynamic_cooking:item/dish/tea_pot_liquid_rooibos"
+											"model": "dynamic_cooking:item/dish/tea_pot_liquid_red_shrub"
 										}
 									},
 									{
@@ -374,10 +374,10 @@
 										}
 									},
 									{
-										"when": "rooibos",
+										"when": "red_shrub",
 										"model": {
 											"type": "minecraft:model",
-											"model": "dynamic_cooking:item/dish/tea_pot_petal_rooibos"
+											"model": "dynamic_cooking:item/dish/tea_pot_petal_red_shrub"
 										}
 									},
 									{
@@ -562,10 +562,10 @@
 											}
 										},
 										{
-											"when": "rooibos",
+											"when": "red_shrub",
 											"model": {
 												"type": "minecraft:model",
-												"model": "dynamic_cooking:item/dish/tea_pot_petal_rooibos"
+												"model": "dynamic_cooking:item/dish/tea_pot_petal_red_shrub"
 											}
 										},
 										{
@@ -790,10 +790,10 @@
 											}
 										},
 										{
-											"when": "rooibos",
+											"when": "red_shrub",
 											"model": {
 												"type": "minecraft:model",
-												"model": "dynamic_cooking:item/dish/tea_in_bowl_liquid_rooibos"
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_liquid_red_shrub"
 											}
 										},
 										{
@@ -999,10 +999,10 @@
 											}
 										},
 										{
-											"when": "rooibos",
+											"when": "red_shrub",
 											"model": {
 												"type": "minecraft:model",
-												"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_rooibos"
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_red_shrub"
 											}
 										},
 										{
@@ -1187,10 +1187,10 @@
 												}
 											},
 											{
-												"when": "rooibos",
+												"when": "red_shrub",
 												"model": {
 													"type": "minecraft:model",
-													"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_rooibos"
+													"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_red_shrub"
 												}
 											},
 											{
@@ -1409,10 +1409,10 @@
 											}
 										},
 										{
-											"when": "rooibos",
+											"when": "red_shrub",
 											"model": {
 												"type": "minecraft:model",
-												"model": "dynamic_cooking:item/dish/tea_liquid_rooibos"
+												"model": "dynamic_cooking:item/dish/tea_liquid_red_shrub"
 											}
 										},
 										{
@@ -1618,10 +1618,10 @@
 											}
 										},
 										{
-											"when": "rooibos",
+											"when": "red_shrub",
 											"model": {
 												"type": "minecraft:model",
-												"model": "dynamic_cooking:item/dish/tea_petal_rooibos"
+												"model": "dynamic_cooking:item/dish/tea_petal_red_shrub"
 											}
 										},
 										{
@@ -1806,10 +1806,10 @@
 												}
 											},
 											{
-												"when": "rooibos",
+												"when": "red_shrub",
 												"model": {
 													"type": "minecraft:model",
-													"model": "dynamic_cooking:item/dish/tea_petal_rooibos"
+													"model": "dynamic_cooking:item/dish/tea_petal_red_shrub"
 												}
 											},
 											{
@@ -2028,10 +2028,10 @@
 											}
 										},
 										{
-											"when": "rooibos",
+											"when": "red_shrub",
 											"model": {
 												"type": "minecraft:model",
-												"model": "dynamic_cooking:item/dish/tea_in_bucket_liquid_rooibos"
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_liquid_red_shrub"
 											}
 										},
 										{
@@ -2237,10 +2237,10 @@
 											}
 										},
 										{
-											"when": "rooibos",
+											"when": "red_shrub",
 											"model": {
 												"type": "minecraft:model",
-												"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_rooibos"
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_red_shrub"
 											}
 										},
 										{
@@ -2425,10 +2425,10 @@
 												}
 											},
 											{
-												"when": "rooibos",
+												"when": "red_shrub",
 												"model": {
 													"type": "minecraft:model",
-													"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_rooibos"
+													"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_red_shrub"
 												}
 											},
 											{
@@ -2646,10 +2646,10 @@
 									}
 								},
 								{
-									"when": "rooibos",
+									"when": "red_shrub",
 									"model": {
 										"type": "minecraft:model",
-										"model": "dynamic_cooking:item/dish/tea_liquid_rooibos"
+										"model": "dynamic_cooking:item/dish/tea_liquid_red_shrub"
 									}
 								},
 								{
@@ -2855,10 +2855,10 @@
 									}
 								},
 								{
-									"when": "rooibos",
+									"when": "red_shrub",
 									"model": {
 										"type": "minecraft:model",
-										"model": "dynamic_cooking:item/dish/tea_petal_rooibos"
+										"model": "dynamic_cooking:item/dish/tea_petal_red_shrub"
 									}
 								},
 								{
@@ -3043,10 +3043,10 @@
 										}
 									},
 									{
-										"when": "rooibos",
+										"when": "red_shrub",
 										"model": {
 											"type": "minecraft:model",
-											"model": "dynamic_cooking:item/dish/tea_petal_rooibos"
+											"model": "dynamic_cooking:item/dish/tea_petal_red_shrub"
 										}
 									},
 									{

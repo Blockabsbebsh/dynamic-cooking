@@ -384,7 +384,7 @@ class ShippedDataTest {
 	@Test
 	void flowersInWaterMakeTea() {
 		assertDish("tea", List.of("poppy"), "water_bucket", "poppy");
-		assertDish("tea", List.of("rooibos"), "water_bucket", "red_shrub");
+		assertDish("tea", List.of("red_shrub"), "water_bucket", "red_shrub");
 		assertDish("tea", List.of("leaf", "honey"), "water_bucket", "cherry_leaves", "honey_bottle");
 		// A flower makes fruit and veg in water a tea; meat, fish or mushrooms keep it a soup.
 		assertEquals("dynamic_cooking:tea", cook("water_bucket", "apple", "poppy").item());
