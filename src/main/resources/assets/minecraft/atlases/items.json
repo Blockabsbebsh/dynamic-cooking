@@ -640,7 +640,7 @@
 			"type": "minecraft:paletted_permutations",
 			"textures": [
 				"dynamic_cooking:item/dish/ice_cream_scoop",
-				"dynamic_cooking:item/dish/ice_cream_sprinkles"
+				"dynamic_cooking:item/dish/ice_cream_second_scoop"
 			],
 			"palette_key": "dynamic_cooking:dish/key",
 			"permutations": {

@@ -221,175 +221,175 @@
 							"when": "apple",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_apple"
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_apple"
 							}
 						},
 						{
 							"when": "bamboo",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_bamboo"
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_bamboo"
 							}
 						},
 						{
 							"when": "beetroot",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_beetroot"
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_beetroot"
 							}
 						},
 						{
 							"when": "cactus",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_cactus"
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_cactus"
 							}
 						},
 						{
 							"when": "carrot",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_carrot"
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_carrot"
 							}
 						},
 						{
 							"when": "chocolate",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_chocolate"
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_chocolate"
 							}
 						},
 						{
 							"when": "chorus_fruit",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_chorus_fruit"
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_chorus_fruit"
 							}
 						},
 						{
 							"when": "fern",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_fern"
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_fern"
 							}
 						},
 						{
 							"when": "glistering_melon",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_glistering_melon"
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_glistering_melon"
 							}
 						},
 						{
 							"when": "glow_berry",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_glow_berry"
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_glow_berry"
 							}
 						},
 						{
 							"when": "golden_apple",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_golden_apple"
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_golden_apple"
 							}
 						},
 						{
 							"when": "golden_carrot",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_golden_carrot"
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_golden_carrot"
 							}
 						},
 						{
 							"when": "honey",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_honey"
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_honey"
 							}
 						},
 						{
 							"when": "kelp",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_kelp"
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_kelp"
 							}
 						},
 						{
 							"when": "lily_pad",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_lily_pad"
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_lily_pad"
 							}
 						},
 						{
 							"when": "melon",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_melon"
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_melon"
 							}
 						},
 						{
 							"when": "nether_wart",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_nether_wart"
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_nether_wart"
 							}
 						},
 						{
 							"when": "poisonous_potato",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_poisonous_potato"
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_poisonous_potato"
 							}
 						},
 						{
 							"when": "potato",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_potato"
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_potato"
 							}
 						},
 						{
 							"when": "pumpkin",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_pumpkin"
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_pumpkin"
 							}
 						},
 						{
 							"when": "sea_pickle",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_sea_pickle"
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_sea_pickle"
 							}
 						},
 						{
 							"when": "seagrass",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_seagrass"
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_seagrass"
 							}
 						},
 						{
 							"when": "snow",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_snow"
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_snow"
 							}
 						},
 						{
 							"when": "sugar_cane",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_sugar_cane"
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_sugar_cane"
 							}
 						},
 						{
 							"when": "sweet_berry",
 							"model": {
 								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_sweet_berry"
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_sweet_berry"
 							}
 						}
 					],
@@ -402,181 +402,181 @@
 								"when": "apple",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_apple"
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_apple"
 								}
 							},
 							{
 								"when": "bamboo",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_bamboo"
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_bamboo"
 								}
 							},
 							{
 								"when": "beetroot",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_beetroot"
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_beetroot"
 								}
 							},
 							{
 								"when": "cactus",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_cactus"
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_cactus"
 								}
 							},
 							{
 								"when": "carrot",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_carrot"
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_carrot"
 								}
 							},
 							{
 								"when": "chocolate",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_chocolate"
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_chocolate"
 								}
 							},
 							{
 								"when": "chorus_fruit",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_chorus_fruit"
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_chorus_fruit"
 								}
 							},
 							{
 								"when": "fern",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_fern"
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_fern"
 								}
 							},
 							{
 								"when": "glistering_melon",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_glistering_melon"
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_glistering_melon"
 								}
 							},
 							{
 								"when": "glow_berry",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_glow_berry"
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_glow_berry"
 								}
 							},
 							{
 								"when": "golden_apple",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_golden_apple"
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_golden_apple"
 								}
 							},
 							{
 								"when": "golden_carrot",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_golden_carrot"
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_golden_carrot"
 								}
 							},
 							{
 								"when": "honey",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_honey"
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_honey"
 								}
 							},
 							{
 								"when": "kelp",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_kelp"
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_kelp"
 								}
 							},
 							{
 								"when": "lily_pad",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_lily_pad"
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_lily_pad"
 								}
 							},
 							{
 								"when": "melon",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_melon"
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_melon"
 								}
 							},
 							{
 								"when": "nether_wart",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_nether_wart"
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_nether_wart"
 								}
 							},
 							{
 								"when": "poisonous_potato",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_poisonous_potato"
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_poisonous_potato"
 								}
 							},
 							{
 								"when": "potato",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_potato"
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_potato"
 								}
 							},
 							{
 								"when": "pumpkin",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_pumpkin"
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_pumpkin"
 								}
 							},
 							{
 								"when": "sea_pickle",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_sea_pickle"
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_sea_pickle"
 								}
 							},
 							{
 								"when": "seagrass",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_seagrass"
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_seagrass"
 								}
 							},
 							{
 								"when": "snow",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_snow"
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_snow"
 								}
 							},
 							{
 								"when": "sugar_cane",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_sugar_cane"
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_sugar_cane"
 								}
 							},
 							{
 								"when": "sweet_berry",
 								"model": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_sweet_berry"
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_sweet_berry"
 								}
 							}
 						],
 						"fallback": {
 							"type": "minecraft:model",
-							"model": "dynamic_cooking:item/dish/ice_cream_sprinkles",
+							"model": "dynamic_cooking:item/dish/ice_cream_second_scoop",
 							"tints": [
 								{
 									"type": "minecraft:custom_model_data",
@@ -589,7 +589,7 @@
 				},
 				"on_false": {
 					"type": "minecraft:model",
-					"model": "dynamic_cooking:item/dish/ice_cream_sprinkles_snow"
+					"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_snow"
 				}
 			}
 		]
