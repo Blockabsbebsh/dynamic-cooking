@@ -12,17 +12,40 @@
 			}
 		],
 		"fallback": {
-			"type": "minecraft:composite",
-			"models": [
+			"type": "minecraft:range_dispatch",
+			"property": "minecraft:custom_model_data",
+			"index": 0,
+			"entries": [
 				{
-					"type": "minecraft:model",
-					"model": "minecraft:item/bowl"
-				},
-				{
-					"type": "minecraft:model",
-					"model": "dynamic_cooking:item/dish/dubious_mush_lump"
+					"threshold": 3,
+					"model": {
+						"type": "minecraft:composite",
+						"models": [
+							{
+								"type": "minecraft:model",
+								"model": "minecraft:item/bucket"
+							},
+							{
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/dubious_mush_in_bucket_lump"
+							}
+						]
+					}
 				}
-			]
+			],
+			"fallback": {
+				"type": "minecraft:composite",
+				"models": [
+					{
+						"type": "minecraft:model",
+						"model": "minecraft:item/bowl"
+					},
+					{
+						"type": "minecraft:model",
+						"model": "dynamic_cooking:item/dish/dubious_mush_lump"
+					}
+				]
+			}
 		}
 	}
 }

@@ -40,6 +40,11 @@ public final class ModItems {
 	public static final Item OMELETTE = dish("omelette", 4, 0.6f, UnaryOperator.identity());
 	public static final Item ROAST = dish("roast", 7, 0.8f, UnaryOperator.identity());
 	public static final Item DUBIOUS_MUSH = dish("dubious_mush", 2, 0.1f, properties -> properties.usingConvertsTo(Items.BOWL));
+	public static final Item PORRIDGE = dish("porridge", 5, 0.6f, properties -> properties.usingConvertsTo(Items.BOWL));
+	public static final Item TEA = drink("tea", 2, 0.3f);
+	public static final Item WARM_MILK = drink("warm_milk", 3, 0.4f);
+	public static final Item JELLY = dish("jelly", 3, 0.3f, UnaryOperator.identity());
+	public static final Item ICE_CREAM = dish("ice_cream", 3, 0.3f, properties -> properties.usingConvertsTo(Items.BOWL));
 
 	/**
 	 * A slice cut from a placed cake with a sword. A slice of a cooked cake carries that cake's name, buff and colors; one cut
@@ -50,7 +55,7 @@ public final class ModItems {
 	public static final Item COOKBOOK = registerCookbook();
 
 	/** Dishes that are drunk rather than eaten. */
-	public static final Set<Item> DRINKS = Set.of(JUICE);
+	public static final Set<Item> DRINKS = Set.of(JUICE, TEA, WARM_MILK);
 
 	private ModItems() {
 	}

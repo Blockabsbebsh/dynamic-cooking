@@ -16,10 +16,17 @@ public final class ModComponents {
 			DataComponentType.<DishContents>builder().persistent(DishContents.CODEC).networkSynchronized(DishContents.STREAM_CODEC).build()
 	);
 
+	public static final DataComponentType<DishVessel> VESSEL = Registry.register(
+			BuiltInRegistries.DATA_COMPONENT_TYPE,
+			DynamicCooking.id("vessel"),
+			DataComponentType.<DishVessel>builder().persistent(DishVessel.CODEC).networkSynchronized(DishVessel.STREAM_CODEC).build()
+	);
+
 	private ModComponents() {
 	}
 
 	public static void initialize() {
 		ItemComponentTooltipProviderRegistry.addAfter(DataComponents.LORE, DISH);
+		ItemComponentTooltipProviderRegistry.addAfter(DISH, VESSEL);
 	}
 }

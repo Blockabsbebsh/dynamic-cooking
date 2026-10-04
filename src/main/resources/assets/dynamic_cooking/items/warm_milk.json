@@ -1,0 +1,876 @@
+{
+	"model": {
+		"type": "minecraft:select",
+		"property": "minecraft:display_context",
+		"cases": [
+			{
+				"when": "none",
+				"model": {
+					"type": "minecraft:composite",
+					"models": [
+						{
+							"type": "minecraft:condition",
+							"property": "minecraft:has_component",
+							"component": "minecraft:custom_model_data",
+							"on_true": {
+								"type": "minecraft:select",
+								"property": "minecraft:custom_model_data",
+								"index": 0,
+								"cases": [
+									{
+										"when": "apple",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/warm_milk_pot_milk_apple"
+										}
+									},
+									{
+										"when": "bamboo",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/warm_milk_pot_milk_bamboo"
+										}
+									},
+									{
+										"when": "beetroot",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/warm_milk_pot_milk_beetroot"
+										}
+									},
+									{
+										"when": "cactus",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/warm_milk_pot_milk_cactus"
+										}
+									},
+									{
+										"when": "carrot",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/warm_milk_pot_milk_carrot"
+										}
+									},
+									{
+										"when": "chocolate",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/warm_milk_pot_milk_chocolate"
+										}
+									},
+									{
+										"when": "chorus_fruit",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/warm_milk_pot_milk_chorus_fruit"
+										}
+									},
+									{
+										"when": "fern",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/warm_milk_pot_milk_fern"
+										}
+									},
+									{
+										"when": "glistering_melon",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/warm_milk_pot_milk_glistering_melon"
+										}
+									},
+									{
+										"when": "glow_berry",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/warm_milk_pot_milk_glow_berry"
+										}
+									},
+									{
+										"when": "golden_apple",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/warm_milk_pot_milk_golden_apple"
+										}
+									},
+									{
+										"when": "golden_carrot",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/warm_milk_pot_milk_golden_carrot"
+										}
+									},
+									{
+										"when": "honey",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/warm_milk_pot_milk_honey"
+										}
+									},
+									{
+										"when": "kelp",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/warm_milk_pot_milk_kelp"
+										}
+									},
+									{
+										"when": "lily_pad",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/warm_milk_pot_milk_lily_pad"
+										}
+									},
+									{
+										"when": "melon",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/warm_milk_pot_milk_melon"
+										}
+									},
+									{
+										"when": "milk",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/warm_milk_pot_milk_milk"
+										}
+									},
+									{
+										"when": "nether_wart",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/warm_milk_pot_milk_nether_wart"
+										}
+									},
+									{
+										"when": "poisonous_potato",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/warm_milk_pot_milk_poisonous_potato"
+										}
+									},
+									{
+										"when": "potato",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/warm_milk_pot_milk_potato"
+										}
+									},
+									{
+										"when": "pumpkin",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/warm_milk_pot_milk_pumpkin"
+										}
+									},
+									{
+										"when": "sea_pickle",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/warm_milk_pot_milk_sea_pickle"
+										}
+									},
+									{
+										"when": "seagrass",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/warm_milk_pot_milk_seagrass"
+										}
+									},
+									{
+										"when": "sugar_cane",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/warm_milk_pot_milk_sugar_cane"
+										}
+									},
+									{
+										"when": "sweet_berry",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/warm_milk_pot_milk_sweet_berry"
+										}
+									}
+								],
+								"fallback": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/warm_milk_pot_milk",
+									"tints": [
+										{
+											"type": "minecraft:custom_model_data",
+											"index": 0,
+											"default": -987934
+										}
+									]
+								}
+							},
+							"on_false": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/warm_milk_pot_milk_milk"
+							}
+						},
+						{
+							"type": "minecraft:model",
+							"model": "dynamic_cooking:item/dish/warm_milk_pot_froth"
+						}
+					]
+				}
+			}
+		],
+		"fallback": {
+			"type": "minecraft:range_dispatch",
+			"property": "minecraft:custom_model_data",
+			"index": 0,
+			"entries": [
+				{
+					"threshold": 1,
+					"model": {
+						"type": "minecraft:composite",
+						"models": [
+							{
+								"type": "minecraft:model",
+								"model": "minecraft:item/bowl"
+							},
+							{
+								"type": "minecraft:condition",
+								"property": "minecraft:has_component",
+								"component": "minecraft:custom_model_data",
+								"on_true": {
+									"type": "minecraft:select",
+									"property": "minecraft:custom_model_data",
+									"index": 0,
+									"cases": [
+										{
+											"when": "apple",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bowl_milk_apple"
+											}
+										},
+										{
+											"when": "bamboo",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bowl_milk_bamboo"
+											}
+										},
+										{
+											"when": "beetroot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bowl_milk_beetroot"
+											}
+										},
+										{
+											"when": "cactus",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bowl_milk_cactus"
+											}
+										},
+										{
+											"when": "carrot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bowl_milk_carrot"
+											}
+										},
+										{
+											"when": "chocolate",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bowl_milk_chocolate"
+											}
+										},
+										{
+											"when": "chorus_fruit",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bowl_milk_chorus_fruit"
+											}
+										},
+										{
+											"when": "fern",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bowl_milk_fern"
+											}
+										},
+										{
+											"when": "glistering_melon",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bowl_milk_glistering_melon"
+											}
+										},
+										{
+											"when": "glow_berry",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bowl_milk_glow_berry"
+											}
+										},
+										{
+											"when": "golden_apple",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bowl_milk_golden_apple"
+											}
+										},
+										{
+											"when": "golden_carrot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bowl_milk_golden_carrot"
+											}
+										},
+										{
+											"when": "honey",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bowl_milk_honey"
+											}
+										},
+										{
+											"when": "kelp",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bowl_milk_kelp"
+											}
+										},
+										{
+											"when": "lily_pad",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bowl_milk_lily_pad"
+											}
+										},
+										{
+											"when": "melon",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bowl_milk_melon"
+											}
+										},
+										{
+											"when": "milk",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bowl_milk_milk"
+											}
+										},
+										{
+											"when": "nether_wart",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bowl_milk_nether_wart"
+											}
+										},
+										{
+											"when": "poisonous_potato",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bowl_milk_poisonous_potato"
+											}
+										},
+										{
+											"when": "potato",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bowl_milk_potato"
+											}
+										},
+										{
+											"when": "pumpkin",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bowl_milk_pumpkin"
+											}
+										},
+										{
+											"when": "sea_pickle",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bowl_milk_sea_pickle"
+											}
+										},
+										{
+											"when": "seagrass",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bowl_milk_seagrass"
+											}
+										},
+										{
+											"when": "sugar_cane",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bowl_milk_sugar_cane"
+											}
+										},
+										{
+											"when": "sweet_berry",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bowl_milk_sweet_berry"
+											}
+										}
+									],
+									"fallback": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/warm_milk_in_bowl_milk",
+										"tints": [
+											{
+												"type": "minecraft:custom_model_data",
+												"index": 0,
+												"default": -987934
+											}
+										]
+									}
+								},
+								"on_false": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/warm_milk_in_bowl_milk_milk"
+								}
+							}
+						]
+					}
+				},
+				{
+					"threshold": 3,
+					"model": {
+						"type": "minecraft:composite",
+						"models": [
+							{
+								"type": "minecraft:model",
+								"model": "minecraft:item/bucket"
+							},
+							{
+								"type": "minecraft:condition",
+								"property": "minecraft:has_component",
+								"component": "minecraft:custom_model_data",
+								"on_true": {
+									"type": "minecraft:select",
+									"property": "minecraft:custom_model_data",
+									"index": 0,
+									"cases": [
+										{
+											"when": "apple",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bucket_milk_apple"
+											}
+										},
+										{
+											"when": "bamboo",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bucket_milk_bamboo"
+											}
+										},
+										{
+											"when": "beetroot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bucket_milk_beetroot"
+											}
+										},
+										{
+											"when": "cactus",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bucket_milk_cactus"
+											}
+										},
+										{
+											"when": "carrot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bucket_milk_carrot"
+											}
+										},
+										{
+											"when": "chocolate",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bucket_milk_chocolate"
+											}
+										},
+										{
+											"when": "chorus_fruit",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bucket_milk_chorus_fruit"
+											}
+										},
+										{
+											"when": "fern",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bucket_milk_fern"
+											}
+										},
+										{
+											"when": "glistering_melon",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bucket_milk_glistering_melon"
+											}
+										},
+										{
+											"when": "glow_berry",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bucket_milk_glow_berry"
+											}
+										},
+										{
+											"when": "golden_apple",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bucket_milk_golden_apple"
+											}
+										},
+										{
+											"when": "golden_carrot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bucket_milk_golden_carrot"
+											}
+										},
+										{
+											"when": "honey",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bucket_milk_honey"
+											}
+										},
+										{
+											"when": "kelp",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bucket_milk_kelp"
+											}
+										},
+										{
+											"when": "lily_pad",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bucket_milk_lily_pad"
+											}
+										},
+										{
+											"when": "melon",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bucket_milk_melon"
+											}
+										},
+										{
+											"when": "milk",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bucket_milk_milk"
+											}
+										},
+										{
+											"when": "nether_wart",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bucket_milk_nether_wart"
+											}
+										},
+										{
+											"when": "poisonous_potato",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bucket_milk_poisonous_potato"
+											}
+										},
+										{
+											"when": "potato",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bucket_milk_potato"
+											}
+										},
+										{
+											"when": "pumpkin",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bucket_milk_pumpkin"
+											}
+										},
+										{
+											"when": "sea_pickle",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bucket_milk_sea_pickle"
+											}
+										},
+										{
+											"when": "seagrass",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bucket_milk_seagrass"
+											}
+										},
+										{
+											"when": "sugar_cane",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bucket_milk_sugar_cane"
+											}
+										},
+										{
+											"when": "sweet_berry",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/warm_milk_in_bucket_milk_sweet_berry"
+											}
+										}
+									],
+									"fallback": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/warm_milk_in_bucket_milk",
+										"tints": [
+											{
+												"type": "minecraft:custom_model_data",
+												"index": 0,
+												"default": -987934
+											}
+										]
+									}
+								},
+								"on_false": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/warm_milk_in_bucket_milk_milk"
+								}
+							},
+							{
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/warm_milk_in_bucket_froth"
+							}
+						]
+					}
+				}
+			],
+			"fallback": {
+				"type": "minecraft:composite",
+				"models": [
+					{
+						"type": "minecraft:model",
+						"model": "minecraft:item/glass_bottle"
+					},
+					{
+						"type": "minecraft:condition",
+						"property": "minecraft:has_component",
+						"component": "minecraft:custom_model_data",
+						"on_true": {
+							"type": "minecraft:select",
+							"property": "minecraft:custom_model_data",
+							"index": 0,
+							"cases": [
+								{
+									"when": "apple",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/warm_milk_milk_apple"
+									}
+								},
+								{
+									"when": "bamboo",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/warm_milk_milk_bamboo"
+									}
+								},
+								{
+									"when": "beetroot",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/warm_milk_milk_beetroot"
+									}
+								},
+								{
+									"when": "cactus",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/warm_milk_milk_cactus"
+									}
+								},
+								{
+									"when": "carrot",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/warm_milk_milk_carrot"
+									}
+								},
+								{
+									"when": "chocolate",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/warm_milk_milk_chocolate"
+									}
+								},
+								{
+									"when": "chorus_fruit",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/warm_milk_milk_chorus_fruit"
+									}
+								},
+								{
+									"when": "fern",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/warm_milk_milk_fern"
+									}
+								},
+								{
+									"when": "glistering_melon",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/warm_milk_milk_glistering_melon"
+									}
+								},
+								{
+									"when": "glow_berry",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/warm_milk_milk_glow_berry"
+									}
+								},
+								{
+									"when": "golden_apple",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/warm_milk_milk_golden_apple"
+									}
+								},
+								{
+									"when": "golden_carrot",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/warm_milk_milk_golden_carrot"
+									}
+								},
+								{
+									"when": "honey",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/warm_milk_milk_honey"
+									}
+								},
+								{
+									"when": "kelp",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/warm_milk_milk_kelp"
+									}
+								},
+								{
+									"when": "lily_pad",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/warm_milk_milk_lily_pad"
+									}
+								},
+								{
+									"when": "melon",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/warm_milk_milk_melon"
+									}
+								},
+								{
+									"when": "milk",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/warm_milk_milk_milk"
+									}
+								},
+								{
+									"when": "nether_wart",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/warm_milk_milk_nether_wart"
+									}
+								},
+								{
+									"when": "poisonous_potato",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/warm_milk_milk_poisonous_potato"
+									}
+								},
+								{
+									"when": "potato",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/warm_milk_milk_potato"
+									}
+								},
+								{
+									"when": "pumpkin",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/warm_milk_milk_pumpkin"
+									}
+								},
+								{
+									"when": "sea_pickle",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/warm_milk_milk_sea_pickle"
+									}
+								},
+								{
+									"when": "seagrass",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/warm_milk_milk_seagrass"
+									}
+								},
+								{
+									"when": "sugar_cane",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/warm_milk_milk_sugar_cane"
+									}
+								},
+								{
+									"when": "sweet_berry",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/warm_milk_milk_sweet_berry"
+									}
+								}
+							],
+							"fallback": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/warm_milk_milk",
+								"tints": [
+									{
+										"type": "minecraft:custom_model_data",
+										"index": 0,
+										"default": -987934
+									}
+								]
+							}
+						},
+						"on_false": {
+							"type": "minecraft:model",
+							"model": "dynamic_cooking:item/dish/warm_milk_milk_milk"
+						}
+					},
+					{
+						"type": "minecraft:model",
+						"model": "dynamic_cooking:item/dish/warm_milk_froth"
+					}
+				]
+			}
+		}
+	}
+}

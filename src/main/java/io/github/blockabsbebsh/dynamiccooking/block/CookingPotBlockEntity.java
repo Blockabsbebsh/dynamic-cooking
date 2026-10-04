@@ -9,16 +9,13 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.Containers;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -33,6 +30,7 @@ import io.github.blockabsbebsh.dynamiccooking.DynamicCooking;
 import io.github.blockabsbebsh.dynamiccooking.cooking.CookingRules;
 import io.github.blockabsbebsh.dynamiccooking.cooking.PotColors;
 import io.github.blockabsbebsh.dynamiccooking.dish.CookingService;
+import io.github.blockabsbebsh.dynamiccooking.dish.Vessel;
 
 /**
  * Holds the ingredients in the order they were added and runs the cooking timer.
@@ -106,13 +104,19 @@ public class CookingPotBlockEntity extends BlockEntity implements RenderDataBloc
 		return serving;
 	}
 
-	/** The item that serves the waiting dish, like a bowl. */
-	public Optional<Item> servedWith() {
-		return servedWith.isEmpty() ? Optional.empty() : BuiltInRegistries.ITEM.getOptional(Identifier.parse(servedWith));
+	/** Whether the waiting dish is taken out in a container: a bowl, bottle or bucket. */
+	public boolean isServedInContainer() {
+		return hasServing() && !servedWith.isEmpty();
 	}
 
-	public boolean isServedWith(ItemStack stack) {
-		return hasServing() && !servedWith.isEmpty() && BuiltInRegistries.ITEM.getKey(stack.getItem()).toString().equals(servedWith);
+	/** The container the waiting dish is usually served in, which leaves the dish as it is. */
+	public Optional<Vessel> usualVessel() {
+		return Vessel.of(servedWith);
+	}
+
+	/** Whether the waiting dish is runny, so it fits in a bottle. */
+	public boolean isRunny() {
+		return getBlockState().getValue(CookingPotBlock.LIQUID);
 	}
 
 	/** Whether the waiting dish is taken out with an empty hand, like a roast. */

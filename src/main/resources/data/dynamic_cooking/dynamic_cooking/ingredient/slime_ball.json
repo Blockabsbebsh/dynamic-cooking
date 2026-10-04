@@ -1,0 +1,11 @@
+{
+	"items": [
+		"minecraft:slime_ball"
+	],
+	"roles": [
+		"gel"
+	],
+	"nutrition": 1,
+	"saturation": 0.4,
+	"color": "#7CC86A"
+}

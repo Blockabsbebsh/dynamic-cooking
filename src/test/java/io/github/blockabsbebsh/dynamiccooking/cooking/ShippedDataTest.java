@@ -379,6 +379,46 @@ class ShippedDataTest {
 		assertEquals(30 * 20, roll.durationTicks());
 	}
 
+	@Test
+	void flowersInWaterMakeTea() {
+		assertDish("tea", List.of("poppy"), "water_bucket", "poppy");
+		assertDish("tea", List.of("leaf", "honey"), "water_bucket", "cherry_leaves", "honey_bottle");
+		// With food in it, it's a soup with a flower in it.
+		assertDish("soup", List.of("carrot"), "water_bucket", "carrot", "poppy");
+		assertTrue(cook("water_bucket", "poppy").liquid());
+	}
+
+	@Test
+	void grainInWaterOrMilkMakesPorridge() {
+		assertDish("porridge", List.of(), "water_bucket", "wheat");
+		assertDish("porridge", List.of("sweet_berry"), "milk_bucket", "wheat", "sweet_berries");
+		assertDish("porridge", List.of("honey"), "milk_bucket", "pumpkin_seeds", "honey_bottle");
+		assertTrue(!cook("water_bucket", "wheat").liquid());
+		assertEquals(Optional.of("minecraft:bowl"), cook("water_bucket", "wheat").servedWith());
+	}
+
+	@Test
+	void sweetenedMilkWarmsIntoADrink() {
+		assertDish("warm_milk", List.of("chocolate"), "milk_bucket", "cocoa_beans");
+		assertDish("warm_milk", List.of("sweet_berry"), "milk_bucket", "sugar", "sweet_berries");
+		assertEquals(Optional.of("minecraft:glass_bottle"), cook("milk_bucket", "honey_bottle").servedWith());
+	}
+
+	@Test
+	void slimeAndFruitSetIntoJelly() {
+		assertCrafted("jelly", List.of("sweet_berry"), "slime_ball", "sweet_berries");
+		assertCrafted("jelly", List.of("honey"), "slime_ball", "honey_bottle");
+		assertTrue(resolver.match(CookingMethod.CRAFTING, inputs("slime_ball", "cooked_beef")).isEmpty());
+	}
+
+	@Test
+	void snowAndSugarInABowlMakeIceCream() {
+		assertCrafted("ice_cream", List.of(), "bowl", "snowball", "sugar");
+		assertCrafted("ice_cream", List.of("chocolate"), "bowl", "snowball", "cocoa_beans");
+		assertCrafted("ice_cream", List.of("sweet_berry"), "bowl", "snowball", "sugar", "sweet_berries");
+		assertCrafted("salad", List.of("apple"), "bowl", "apple");
+	}
+
 	private static void assertDish(String dish, List<String> nameFlavors, String... items) {
 		assertResult(cook(items), dish, nameFlavors, items);
 	}

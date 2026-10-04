@@ -2,6 +2,9 @@
 	"values": [
 		"dynamic_cooking:stew",
 		"dynamic_cooking:soup",
-		"dynamic_cooking:dubious_mush"
+		"dynamic_cooking:dubious_mush",
+		"dynamic_cooking:porridge",
+		"dynamic_cooking:tea",
+		"dynamic_cooking:warm_milk"
 	]
 }

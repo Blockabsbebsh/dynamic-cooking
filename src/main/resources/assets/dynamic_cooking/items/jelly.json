@@ -1,0 +1,22 @@
+{
+	"model": {
+		"type": "minecraft:composite",
+		"models": [
+			{
+				"type": "minecraft:model",
+				"model": "dynamic_cooking:item/dish/jelly_cube",
+				"tints": [
+					{
+						"type": "minecraft:custom_model_data",
+						"index": 0,
+						"default": -8599446
+					}
+				]
+			},
+			{
+				"type": "minecraft:model",
+				"model": "dynamic_cooking:item/dish/jelly_shine"
+			}
+		]
+	}
+}

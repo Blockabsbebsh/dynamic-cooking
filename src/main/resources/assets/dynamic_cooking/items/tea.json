@@ -1,0 +1,636 @@
+{
+	"model": {
+		"type": "minecraft:select",
+		"property": "minecraft:display_context",
+		"cases": [
+			{
+				"when": "none",
+				"model": {
+					"type": "minecraft:composite",
+					"models": [
+						{
+							"type": "minecraft:condition",
+							"property": "minecraft:has_component",
+							"component": "minecraft:custom_model_data",
+							"on_true": {
+								"type": "minecraft:select",
+								"property": "minecraft:custom_model_data",
+								"index": 0,
+								"cases": [
+									{
+										"when": "chocolate",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_liquid_chocolate"
+										}
+									},
+									{
+										"when": "honey",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_liquid_honey"
+										}
+									},
+									{
+										"when": "leaf",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_liquid_leaf"
+										}
+									},
+									{
+										"when": "sugar_cane",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_liquid_sugar_cane"
+										}
+									}
+								],
+								"fallback": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/tea_pot_liquid",
+									"tints": [
+										{
+											"type": "minecraft:custom_model_data",
+											"index": 0,
+											"default": -7688614
+										}
+									]
+								}
+							},
+							"on_false": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/tea_pot_liquid_leaf"
+							}
+						},
+						{
+							"type": "minecraft:condition",
+							"property": "minecraft:has_component",
+							"component": "minecraft:custom_model_data",
+							"on_true": {
+								"type": "minecraft:select",
+								"property": "minecraft:custom_model_data",
+								"index": 1,
+								"cases": [
+									{
+										"when": "chocolate",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_petal_chocolate"
+										}
+									},
+									{
+										"when": "honey",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_petal_honey"
+										}
+									},
+									{
+										"when": "leaf",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_petal_leaf"
+										}
+									},
+									{
+										"when": "sugar_cane",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_petal_sugar_cane"
+										}
+									}
+								],
+								"fallback": {
+									"type": "minecraft:select",
+									"property": "minecraft:custom_model_data",
+									"index": 0,
+									"cases": [
+										{
+											"when": "chocolate",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_pot_petal_chocolate"
+											}
+										},
+										{
+											"when": "honey",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_pot_petal_honey"
+											}
+										},
+										{
+											"when": "leaf",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_pot_petal_leaf"
+											}
+										},
+										{
+											"when": "sugar_cane",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_pot_petal_sugar_cane"
+											}
+										}
+									],
+									"fallback": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_pot_petal",
+										"tints": [
+											{
+												"type": "minecraft:custom_model_data",
+												"index": 0,
+												"default": -7688614
+											}
+										]
+									}
+								}
+							},
+							"on_false": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/tea_pot_petal_leaf"
+							}
+						}
+					]
+				}
+			}
+		],
+		"fallback": {
+			"type": "minecraft:range_dispatch",
+			"property": "minecraft:custom_model_data",
+			"index": 0,
+			"entries": [
+				{
+					"threshold": 1,
+					"model": {
+						"type": "minecraft:composite",
+						"models": [
+							{
+								"type": "minecraft:model",
+								"model": "minecraft:item/bowl"
+							},
+							{
+								"type": "minecraft:condition",
+								"property": "minecraft:has_component",
+								"component": "minecraft:custom_model_data",
+								"on_true": {
+									"type": "minecraft:select",
+									"property": "minecraft:custom_model_data",
+									"index": 0,
+									"cases": [
+										{
+											"when": "chocolate",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_liquid_chocolate"
+											}
+										},
+										{
+											"when": "honey",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_liquid_honey"
+											}
+										},
+										{
+											"when": "leaf",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_liquid_leaf"
+											}
+										},
+										{
+											"when": "sugar_cane",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_liquid_sugar_cane"
+											}
+										}
+									],
+									"fallback": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_in_bowl_liquid",
+										"tints": [
+											{
+												"type": "minecraft:custom_model_data",
+												"index": 0,
+												"default": -7688614
+											}
+										]
+									}
+								},
+								"on_false": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/tea_in_bowl_liquid_leaf"
+								}
+							},
+							{
+								"type": "minecraft:condition",
+								"property": "minecraft:has_component",
+								"component": "minecraft:custom_model_data",
+								"on_true": {
+									"type": "minecraft:select",
+									"property": "minecraft:custom_model_data",
+									"index": 1,
+									"cases": [
+										{
+											"when": "chocolate",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_chocolate"
+											}
+										},
+										{
+											"when": "honey",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_honey"
+											}
+										},
+										{
+											"when": "leaf",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_leaf"
+											}
+										},
+										{
+											"when": "sugar_cane",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_sugar_cane"
+											}
+										}
+									],
+									"fallback": {
+										"type": "minecraft:select",
+										"property": "minecraft:custom_model_data",
+										"index": 0,
+										"cases": [
+											{
+												"when": "chocolate",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_chocolate"
+												}
+											},
+											{
+												"when": "honey",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_honey"
+												}
+											},
+											{
+												"when": "leaf",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_leaf"
+												}
+											},
+											{
+												"when": "sugar_cane",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_sugar_cane"
+												}
+											}
+										],
+										"fallback": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_in_bowl_petal",
+											"tints": [
+												{
+													"type": "minecraft:custom_model_data",
+													"index": 0,
+													"default": -7688614
+												}
+											]
+										}
+									}
+								},
+								"on_false": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_leaf"
+								}
+							}
+						]
+					}
+				},
+				{
+					"threshold": 3,
+					"model": {
+						"type": "minecraft:composite",
+						"models": [
+							{
+								"type": "minecraft:model",
+								"model": "minecraft:item/bucket"
+							},
+							{
+								"type": "minecraft:condition",
+								"property": "minecraft:has_component",
+								"component": "minecraft:custom_model_data",
+								"on_true": {
+									"type": "minecraft:select",
+									"property": "minecraft:custom_model_data",
+									"index": 0,
+									"cases": [
+										{
+											"when": "chocolate",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_liquid_chocolate"
+											}
+										},
+										{
+											"when": "honey",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_liquid_honey"
+											}
+										},
+										{
+											"when": "leaf",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_liquid_leaf"
+											}
+										},
+										{
+											"when": "sugar_cane",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_liquid_sugar_cane"
+											}
+										}
+									],
+									"fallback": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_in_bucket_liquid",
+										"tints": [
+											{
+												"type": "minecraft:custom_model_data",
+												"index": 0,
+												"default": -7688614
+											}
+										]
+									}
+								},
+								"on_false": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/tea_in_bucket_liquid_leaf"
+								}
+							},
+							{
+								"type": "minecraft:condition",
+								"property": "minecraft:has_component",
+								"component": "minecraft:custom_model_data",
+								"on_true": {
+									"type": "minecraft:select",
+									"property": "minecraft:custom_model_data",
+									"index": 1,
+									"cases": [
+										{
+											"when": "chocolate",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_chocolate"
+											}
+										},
+										{
+											"when": "honey",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_honey"
+											}
+										},
+										{
+											"when": "leaf",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_leaf"
+											}
+										},
+										{
+											"when": "sugar_cane",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_sugar_cane"
+											}
+										}
+									],
+									"fallback": {
+										"type": "minecraft:select",
+										"property": "minecraft:custom_model_data",
+										"index": 0,
+										"cases": [
+											{
+												"when": "chocolate",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_chocolate"
+												}
+											},
+											{
+												"when": "honey",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_honey"
+												}
+											},
+											{
+												"when": "leaf",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_leaf"
+												}
+											},
+											{
+												"when": "sugar_cane",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_sugar_cane"
+												}
+											}
+										],
+										"fallback": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_in_bucket_petal",
+											"tints": [
+												{
+													"type": "minecraft:custom_model_data",
+													"index": 0,
+													"default": -7688614
+												}
+											]
+										}
+									}
+								},
+								"on_false": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_leaf"
+								}
+							}
+						]
+					}
+				}
+			],
+			"fallback": {
+				"type": "minecraft:composite",
+				"models": [
+					{
+						"type": "minecraft:model",
+						"model": "minecraft:item/glass_bottle"
+					},
+					{
+						"type": "minecraft:condition",
+						"property": "minecraft:has_component",
+						"component": "minecraft:custom_model_data",
+						"on_true": {
+							"type": "minecraft:select",
+							"property": "minecraft:custom_model_data",
+							"index": 0,
+							"cases": [
+								{
+									"when": "chocolate",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_liquid_chocolate"
+									}
+								},
+								{
+									"when": "honey",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_liquid_honey"
+									}
+								},
+								{
+									"when": "leaf",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_liquid_leaf"
+									}
+								},
+								{
+									"when": "sugar_cane",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_liquid_sugar_cane"
+									}
+								}
+							],
+							"fallback": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/tea_liquid",
+								"tints": [
+									{
+										"type": "minecraft:custom_model_data",
+										"index": 0,
+										"default": -7688614
+									}
+								]
+							}
+						},
+						"on_false": {
+							"type": "minecraft:model",
+							"model": "dynamic_cooking:item/dish/tea_liquid_leaf"
+						}
+					},
+					{
+						"type": "minecraft:condition",
+						"property": "minecraft:has_component",
+						"component": "minecraft:custom_model_data",
+						"on_true": {
+							"type": "minecraft:select",
+							"property": "minecraft:custom_model_data",
+							"index": 1,
+							"cases": [
+								{
+									"when": "chocolate",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_petal_chocolate"
+									}
+								},
+								{
+									"when": "honey",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_petal_honey"
+									}
+								},
+								{
+									"when": "leaf",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_petal_leaf"
+									}
+								},
+								{
+									"when": "sugar_cane",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_petal_sugar_cane"
+									}
+								}
+							],
+							"fallback": {
+								"type": "minecraft:select",
+								"property": "minecraft:custom_model_data",
+								"index": 0,
+								"cases": [
+									{
+										"when": "chocolate",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_petal_chocolate"
+										}
+									},
+									{
+										"when": "honey",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_petal_honey"
+										}
+									},
+									{
+										"when": "leaf",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_petal_leaf"
+										}
+									},
+									{
+										"when": "sugar_cane",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_petal_sugar_cane"
+										}
+									}
+								],
+								"fallback": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/tea_petal",
+									"tints": [
+										{
+											"type": "minecraft:custom_model_data",
+											"index": 0,
+											"default": -7688614
+										}
+									]
+								}
+							}
+						},
+						"on_false": {
+							"type": "minecraft:model",
+							"model": "dynamic_cooking:item/dish/tea_petal_leaf"
+						}
+					}
+				]
+			}
+		}
+	}
+}

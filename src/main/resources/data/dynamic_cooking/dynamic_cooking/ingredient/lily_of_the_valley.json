@@ -5,6 +5,7 @@
 	"roles": [
 		"herb"
 	],
+	"flavor": "lily_of_the_valley",
 	"color": "#F4F4EC",
 	"effects": [
 		{

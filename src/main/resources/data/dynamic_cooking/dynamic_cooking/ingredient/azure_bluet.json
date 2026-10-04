@@ -5,6 +5,7 @@
 	"roles": [
 		"herb"
 	],
+	"flavor": "azure_bluet",
 	"color": "#E2E8EE",
 	"effects": [
 		{

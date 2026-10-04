@@ -8,6 +8,7 @@
 	"roles": [
 		"herb"
 	],
+	"flavor": "tulip",
 	"color": "#E8705A",
 	"effects": [
 		{

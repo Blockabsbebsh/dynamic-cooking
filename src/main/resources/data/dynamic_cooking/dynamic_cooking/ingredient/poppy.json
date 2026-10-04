@@ -5,6 +5,7 @@
 	"roles": [
 		"herb"
 	],
+	"flavor": "poppy",
 	"color": "#D8261E",
 	"effects": [
 		{

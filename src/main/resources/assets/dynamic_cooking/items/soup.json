@@ -809,543 +809,1914 @@
 			}
 		],
 		"fallback": {
-			"type": "minecraft:composite",
-			"models": [
+			"type": "minecraft:range_dispatch",
+			"property": "minecraft:custom_model_data",
+			"index": 0,
+			"entries": [
 				{
-					"type": "minecraft:model",
-					"model": "minecraft:item/bowl"
-				},
-				{
-					"type": "minecraft:condition",
-					"property": "minecraft:has_component",
-					"component": "minecraft:custom_model_data",
-					"on_true": {
-						"type": "minecraft:select",
-						"property": "minecraft:custom_model_data",
-						"index": 0,
-						"cases": [
+					"threshold": 2,
+					"model": {
+						"type": "minecraft:composite",
+						"models": [
 							{
-								"when": "apple",
-								"model": {
+								"type": "minecraft:model",
+								"model": "minecraft:item/glass_bottle"
+							},
+							{
+								"type": "minecraft:condition",
+								"property": "minecraft:has_component",
+								"component": "minecraft:custom_model_data",
+								"on_true": {
+									"type": "minecraft:select",
+									"property": "minecraft:custom_model_data",
+									"index": 0,
+									"cases": [
+										{
+											"when": "apple",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_apple"
+											}
+										},
+										{
+											"when": "bamboo",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_bamboo"
+											}
+										},
+										{
+											"when": "beef",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_beef"
+											}
+										},
+										{
+											"when": "beetroot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_beetroot"
+											}
+										},
+										{
+											"when": "cactus",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_cactus"
+											}
+										},
+										{
+											"when": "carrot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_carrot"
+											}
+										},
+										{
+											"when": "chicken",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_chicken"
+											}
+										},
+										{
+											"when": "chocolate",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_chocolate"
+											}
+										},
+										{
+											"when": "chorus_fruit",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_chorus_fruit"
+											}
+										},
+										{
+											"when": "cod",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_cod"
+											}
+										},
+										{
+											"when": "crimson_fungus",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_crimson_fungus"
+											}
+										},
+										{
+											"when": "fern",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_fern"
+											}
+										},
+										{
+											"when": "glistering_melon",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_glistering_melon"
+											}
+										},
+										{
+											"when": "glow_berry",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_glow_berry"
+											}
+										},
+										{
+											"when": "golden_apple",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_golden_apple"
+											}
+										},
+										{
+											"when": "golden_carrot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_golden_carrot"
+											}
+										},
+										{
+											"when": "kelp",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_kelp"
+											}
+										},
+										{
+											"when": "lily_pad",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_lily_pad"
+											}
+										},
+										{
+											"when": "melon",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_melon"
+											}
+										},
+										{
+											"when": "mushroom",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_mushroom"
+											}
+										},
+										{
+											"when": "mutton",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_mutton"
+											}
+										},
+										{
+											"when": "nether_wart",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_nether_wart"
+											}
+										},
+										{
+											"when": "poisonous_potato",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_poisonous_potato"
+											}
+										},
+										{
+											"when": "porkchop",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_porkchop"
+											}
+										},
+										{
+											"when": "potato",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_potato"
+											}
+										},
+										{
+											"when": "pufferfish",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_pufferfish"
+											}
+										},
+										{
+											"when": "pumpkin",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_pumpkin"
+											}
+										},
+										{
+											"when": "rabbit",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_rabbit"
+											}
+										},
+										{
+											"when": "rotten_flesh",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_rotten_flesh"
+											}
+										},
+										{
+											"when": "salmon",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_salmon"
+											}
+										},
+										{
+											"when": "sea_pickle",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_sea_pickle"
+											}
+										},
+										{
+											"when": "seagrass",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_seagrass"
+											}
+										},
+										{
+											"when": "sweet_berry",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_sweet_berry"
+											}
+										},
+										{
+											"when": "tropical_fish",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_tropical_fish"
+											}
+										},
+										{
+											"when": "warped_fungus",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_warped_fungus"
+											}
+										}
+									],
+									"fallback": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_in_bottle_broth",
+										"tints": [
+											{
+												"type": "minecraft:custom_model_data",
+												"index": 0,
+												"default": -1863651
+											}
+										]
+									}
+								},
+								"on_false": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_broth_apple"
+									"model": "dynamic_cooking:item/dish/soup_in_bottle_broth_pumpkin"
 								}
 							},
 							{
-								"when": "bamboo",
-								"model": {
+								"type": "minecraft:condition",
+								"property": "minecraft:has_component",
+								"component": "minecraft:custom_model_data",
+								"on_true": {
+									"type": "minecraft:select",
+									"property": "minecraft:custom_model_data",
+									"index": 1,
+									"cases": [
+										{
+											"when": "apple",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_apple"
+											}
+										},
+										{
+											"when": "bamboo",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_bamboo"
+											}
+										},
+										{
+											"when": "beef",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_beef"
+											}
+										},
+										{
+											"when": "beetroot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_beetroot"
+											}
+										},
+										{
+											"when": "cactus",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_cactus"
+											}
+										},
+										{
+											"when": "carrot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_carrot"
+											}
+										},
+										{
+											"when": "chicken",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_chicken"
+											}
+										},
+										{
+											"when": "chocolate",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_chocolate"
+											}
+										},
+										{
+											"when": "chorus_fruit",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_chorus_fruit"
+											}
+										},
+										{
+											"when": "cod",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_cod"
+											}
+										},
+										{
+											"when": "crimson_fungus",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_crimson_fungus"
+											}
+										},
+										{
+											"when": "fern",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_fern"
+											}
+										},
+										{
+											"when": "glistering_melon",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_glistering_melon"
+											}
+										},
+										{
+											"when": "glow_berry",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_glow_berry"
+											}
+										},
+										{
+											"when": "golden_apple",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_golden_apple"
+											}
+										},
+										{
+											"when": "golden_carrot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_golden_carrot"
+											}
+										},
+										{
+											"when": "kelp",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_kelp"
+											}
+										},
+										{
+											"when": "lily_pad",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_lily_pad"
+											}
+										},
+										{
+											"when": "melon",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_melon"
+											}
+										},
+										{
+											"when": "mushroom",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_mushroom"
+											}
+										},
+										{
+											"when": "mutton",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_mutton"
+											}
+										},
+										{
+											"when": "nether_wart",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_nether_wart"
+											}
+										},
+										{
+											"when": "poisonous_potato",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_poisonous_potato"
+											}
+										},
+										{
+											"when": "porkchop",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_porkchop"
+											}
+										},
+										{
+											"when": "potato",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_potato"
+											}
+										},
+										{
+											"when": "pufferfish",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_pufferfish"
+											}
+										},
+										{
+											"when": "pumpkin",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_pumpkin"
+											}
+										},
+										{
+											"when": "rabbit",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_rabbit"
+											}
+										},
+										{
+											"when": "rotten_flesh",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_rotten_flesh"
+											}
+										},
+										{
+											"when": "salmon",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_salmon"
+											}
+										},
+										{
+											"when": "sea_pickle",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_sea_pickle"
+											}
+										},
+										{
+											"when": "seagrass",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_seagrass"
+											}
+										},
+										{
+											"when": "sweet_berry",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_sweet_berry"
+											}
+										},
+										{
+											"when": "tropical_fish",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_tropical_fish"
+											}
+										},
+										{
+											"when": "warped_fungus",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_warped_fungus"
+											}
+										}
+									],
+									"fallback": {
+										"type": "minecraft:select",
+										"property": "minecraft:custom_model_data",
+										"index": 0,
+										"cases": [
+											{
+												"when": "apple",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_apple"
+												}
+											},
+											{
+												"when": "bamboo",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_bamboo"
+												}
+											},
+											{
+												"when": "beef",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_beef"
+												}
+											},
+											{
+												"when": "beetroot",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_beetroot"
+												}
+											},
+											{
+												"when": "cactus",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_cactus"
+												}
+											},
+											{
+												"when": "carrot",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_carrot"
+												}
+											},
+											{
+												"when": "chicken",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_chicken"
+												}
+											},
+											{
+												"when": "chocolate",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_chocolate"
+												}
+											},
+											{
+												"when": "chorus_fruit",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_chorus_fruit"
+												}
+											},
+											{
+												"when": "cod",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_cod"
+												}
+											},
+											{
+												"when": "crimson_fungus",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_crimson_fungus"
+												}
+											},
+											{
+												"when": "fern",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_fern"
+												}
+											},
+											{
+												"when": "glistering_melon",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_glistering_melon"
+												}
+											},
+											{
+												"when": "glow_berry",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_glow_berry"
+												}
+											},
+											{
+												"when": "golden_apple",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_golden_apple"
+												}
+											},
+											{
+												"when": "golden_carrot",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_golden_carrot"
+												}
+											},
+											{
+												"when": "kelp",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_kelp"
+												}
+											},
+											{
+												"when": "lily_pad",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_lily_pad"
+												}
+											},
+											{
+												"when": "melon",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_melon"
+												}
+											},
+											{
+												"when": "mushroom",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_mushroom"
+												}
+											},
+											{
+												"when": "mutton",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_mutton"
+												}
+											},
+											{
+												"when": "nether_wart",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_nether_wart"
+												}
+											},
+											{
+												"when": "poisonous_potato",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_poisonous_potato"
+												}
+											},
+											{
+												"when": "porkchop",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_porkchop"
+												}
+											},
+											{
+												"when": "potato",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_potato"
+												}
+											},
+											{
+												"when": "pufferfish",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_pufferfish"
+												}
+											},
+											{
+												"when": "pumpkin",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_pumpkin"
+												}
+											},
+											{
+												"when": "rabbit",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_rabbit"
+												}
+											},
+											{
+												"when": "rotten_flesh",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_rotten_flesh"
+												}
+											},
+											{
+												"when": "salmon",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_salmon"
+												}
+											},
+											{
+												"when": "sea_pickle",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_sea_pickle"
+												}
+											},
+											{
+												"when": "seagrass",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_seagrass"
+												}
+											},
+											{
+												"when": "sweet_berry",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_sweet_berry"
+												}
+											},
+											{
+												"when": "tropical_fish",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_tropical_fish"
+												}
+											},
+											{
+												"when": "warped_fungus",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_warped_fungus"
+												}
+											}
+										],
+										"fallback": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish",
+											"tints": [
+												{
+													"type": "minecraft:custom_model_data",
+													"index": 0,
+													"default": -29175
+												}
+											]
+										}
+									}
+								},
+								"on_false": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_broth_bamboo"
-								}
-							},
-							{
-								"when": "beef",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_broth_beef"
-								}
-							},
-							{
-								"when": "beetroot",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_broth_beetroot"
-								}
-							},
-							{
-								"when": "cactus",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_broth_cactus"
-								}
-							},
-							{
-								"when": "carrot",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_broth_carrot"
-								}
-							},
-							{
-								"when": "chicken",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_broth_chicken"
-								}
-							},
-							{
-								"when": "chocolate",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_broth_chocolate"
-								}
-							},
-							{
-								"when": "chorus_fruit",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_broth_chorus_fruit"
-								}
-							},
-							{
-								"when": "cod",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_broth_cod"
-								}
-							},
-							{
-								"when": "crimson_fungus",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_broth_crimson_fungus"
-								}
-							},
-							{
-								"when": "fern",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_broth_fern"
-								}
-							},
-							{
-								"when": "glistering_melon",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_broth_glistering_melon"
-								}
-							},
-							{
-								"when": "glow_berry",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_broth_glow_berry"
-								}
-							},
-							{
-								"when": "golden_apple",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_broth_golden_apple"
-								}
-							},
-							{
-								"when": "golden_carrot",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_broth_golden_carrot"
-								}
-							},
-							{
-								"when": "kelp",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_broth_kelp"
-								}
-							},
-							{
-								"when": "lily_pad",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_broth_lily_pad"
-								}
-							},
-							{
-								"when": "melon",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_broth_melon"
-								}
-							},
-							{
-								"when": "mushroom",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_broth_mushroom"
-								}
-							},
-							{
-								"when": "mutton",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_broth_mutton"
-								}
-							},
-							{
-								"when": "nether_wart",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_broth_nether_wart"
-								}
-							},
-							{
-								"when": "poisonous_potato",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_broth_poisonous_potato"
-								}
-							},
-							{
-								"when": "porkchop",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_broth_porkchop"
-								}
-							},
-							{
-								"when": "potato",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_broth_potato"
-								}
-							},
-							{
-								"when": "pufferfish",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_broth_pufferfish"
-								}
-							},
-							{
-								"when": "pumpkin",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_broth_pumpkin"
-								}
-							},
-							{
-								"when": "rabbit",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_broth_rabbit"
-								}
-							},
-							{
-								"when": "rotten_flesh",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_broth_rotten_flesh"
-								}
-							},
-							{
-								"when": "salmon",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_broth_salmon"
-								}
-							},
-							{
-								"when": "sea_pickle",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_broth_sea_pickle"
-								}
-							},
-							{
-								"when": "seagrass",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_broth_seagrass"
-								}
-							},
-							{
-								"when": "sweet_berry",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_broth_sweet_berry"
-								}
-							},
-							{
-								"when": "tropical_fish",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_broth_tropical_fish"
-								}
-							},
-							{
-								"when": "warped_fungus",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_broth_warped_fungus"
+									"model": "dynamic_cooking:item/dish/soup_in_bottle_garnish_carrot"
 								}
 							}
-						],
-						"fallback": {
-							"type": "minecraft:model",
-							"model": "dynamic_cooking:item/dish/soup_broth",
-							"tints": [
-								{
-									"type": "minecraft:custom_model_data",
-									"index": 0,
-									"default": -1863651
-								}
-							]
-						}
-					},
-					"on_false": {
-						"type": "minecraft:model",
-						"model": "dynamic_cooking:item/dish/soup_broth_pumpkin"
+						]
 					}
 				},
 				{
-					"type": "minecraft:condition",
-					"property": "minecraft:has_component",
-					"component": "minecraft:custom_model_data",
-					"on_true": {
-						"type": "minecraft:select",
-						"property": "minecraft:custom_model_data",
-						"index": 1,
-						"cases": [
+					"threshold": 3,
+					"model": {
+						"type": "minecraft:composite",
+						"models": [
 							{
-								"when": "apple",
-								"model": {
+								"type": "minecraft:model",
+								"model": "minecraft:item/bucket"
+							},
+							{
+								"type": "minecraft:condition",
+								"property": "minecraft:has_component",
+								"component": "minecraft:custom_model_data",
+								"on_true": {
+									"type": "minecraft:select",
+									"property": "minecraft:custom_model_data",
+									"index": 0,
+									"cases": [
+										{
+											"when": "apple",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_apple"
+											}
+										},
+										{
+											"when": "bamboo",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_bamboo"
+											}
+										},
+										{
+											"when": "beef",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_beef"
+											}
+										},
+										{
+											"when": "beetroot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_beetroot"
+											}
+										},
+										{
+											"when": "cactus",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_cactus"
+											}
+										},
+										{
+											"when": "carrot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_carrot"
+											}
+										},
+										{
+											"when": "chicken",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_chicken"
+											}
+										},
+										{
+											"when": "chocolate",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_chocolate"
+											}
+										},
+										{
+											"when": "chorus_fruit",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_chorus_fruit"
+											}
+										},
+										{
+											"when": "cod",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_cod"
+											}
+										},
+										{
+											"when": "crimson_fungus",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_crimson_fungus"
+											}
+										},
+										{
+											"when": "fern",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_fern"
+											}
+										},
+										{
+											"when": "glistering_melon",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_glistering_melon"
+											}
+										},
+										{
+											"when": "glow_berry",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_glow_berry"
+											}
+										},
+										{
+											"when": "golden_apple",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_golden_apple"
+											}
+										},
+										{
+											"when": "golden_carrot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_golden_carrot"
+											}
+										},
+										{
+											"when": "kelp",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_kelp"
+											}
+										},
+										{
+											"when": "lily_pad",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_lily_pad"
+											}
+										},
+										{
+											"when": "melon",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_melon"
+											}
+										},
+										{
+											"when": "mushroom",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_mushroom"
+											}
+										},
+										{
+											"when": "mutton",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_mutton"
+											}
+										},
+										{
+											"when": "nether_wart",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_nether_wart"
+											}
+										},
+										{
+											"when": "poisonous_potato",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_poisonous_potato"
+											}
+										},
+										{
+											"when": "porkchop",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_porkchop"
+											}
+										},
+										{
+											"when": "potato",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_potato"
+											}
+										},
+										{
+											"when": "pufferfish",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_pufferfish"
+											}
+										},
+										{
+											"when": "pumpkin",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_pumpkin"
+											}
+										},
+										{
+											"when": "rabbit",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_rabbit"
+											}
+										},
+										{
+											"when": "rotten_flesh",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_rotten_flesh"
+											}
+										},
+										{
+											"when": "salmon",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_salmon"
+											}
+										},
+										{
+											"when": "sea_pickle",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_sea_pickle"
+											}
+										},
+										{
+											"when": "seagrass",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_seagrass"
+											}
+										},
+										{
+											"when": "sweet_berry",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_sweet_berry"
+											}
+										},
+										{
+											"when": "tropical_fish",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_tropical_fish"
+											}
+										},
+										{
+											"when": "warped_fungus",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_warped_fungus"
+											}
+										}
+									],
+									"fallback": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_in_bucket_broth",
+										"tints": [
+											{
+												"type": "minecraft:custom_model_data",
+												"index": 0,
+												"default": -1863651
+											}
+										]
+									}
+								},
+								"on_false": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_garnish_apple"
+									"model": "dynamic_cooking:item/dish/soup_in_bucket_broth_pumpkin"
 								}
 							},
 							{
-								"when": "bamboo",
-								"model": {
+								"type": "minecraft:condition",
+								"property": "minecraft:has_component",
+								"component": "minecraft:custom_model_data",
+								"on_true": {
+									"type": "minecraft:select",
+									"property": "minecraft:custom_model_data",
+									"index": 1,
+									"cases": [
+										{
+											"when": "apple",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_apple"
+											}
+										},
+										{
+											"when": "bamboo",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_bamboo"
+											}
+										},
+										{
+											"when": "beef",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_beef"
+											}
+										},
+										{
+											"when": "beetroot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_beetroot"
+											}
+										},
+										{
+											"when": "cactus",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_cactus"
+											}
+										},
+										{
+											"when": "carrot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_carrot"
+											}
+										},
+										{
+											"when": "chicken",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_chicken"
+											}
+										},
+										{
+											"when": "chocolate",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_chocolate"
+											}
+										},
+										{
+											"when": "chorus_fruit",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_chorus_fruit"
+											}
+										},
+										{
+											"when": "cod",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_cod"
+											}
+										},
+										{
+											"when": "crimson_fungus",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_crimson_fungus"
+											}
+										},
+										{
+											"when": "fern",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_fern"
+											}
+										},
+										{
+											"when": "glistering_melon",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_glistering_melon"
+											}
+										},
+										{
+											"when": "glow_berry",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_glow_berry"
+											}
+										},
+										{
+											"when": "golden_apple",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_golden_apple"
+											}
+										},
+										{
+											"when": "golden_carrot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_golden_carrot"
+											}
+										},
+										{
+											"when": "kelp",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_kelp"
+											}
+										},
+										{
+											"when": "lily_pad",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_lily_pad"
+											}
+										},
+										{
+											"when": "melon",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_melon"
+											}
+										},
+										{
+											"when": "mushroom",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_mushroom"
+											}
+										},
+										{
+											"when": "mutton",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_mutton"
+											}
+										},
+										{
+											"when": "nether_wart",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_nether_wart"
+											}
+										},
+										{
+											"when": "poisonous_potato",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_poisonous_potato"
+											}
+										},
+										{
+											"when": "porkchop",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_porkchop"
+											}
+										},
+										{
+											"when": "potato",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_potato"
+											}
+										},
+										{
+											"when": "pufferfish",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_pufferfish"
+											}
+										},
+										{
+											"when": "pumpkin",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_pumpkin"
+											}
+										},
+										{
+											"when": "rabbit",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_rabbit"
+											}
+										},
+										{
+											"when": "rotten_flesh",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_rotten_flesh"
+											}
+										},
+										{
+											"when": "salmon",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_salmon"
+											}
+										},
+										{
+											"when": "sea_pickle",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_sea_pickle"
+											}
+										},
+										{
+											"when": "seagrass",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_seagrass"
+											}
+										},
+										{
+											"when": "sweet_berry",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_sweet_berry"
+											}
+										},
+										{
+											"when": "tropical_fish",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_tropical_fish"
+											}
+										},
+										{
+											"when": "warped_fungus",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_warped_fungus"
+											}
+										}
+									],
+									"fallback": {
+										"type": "minecraft:select",
+										"property": "minecraft:custom_model_data",
+										"index": 0,
+										"cases": [
+											{
+												"when": "apple",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_apple"
+												}
+											},
+											{
+												"when": "bamboo",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_bamboo"
+												}
+											},
+											{
+												"when": "beef",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_beef"
+												}
+											},
+											{
+												"when": "beetroot",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_beetroot"
+												}
+											},
+											{
+												"when": "cactus",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_cactus"
+												}
+											},
+											{
+												"when": "carrot",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_carrot"
+												}
+											},
+											{
+												"when": "chicken",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_chicken"
+												}
+											},
+											{
+												"when": "chocolate",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_chocolate"
+												}
+											},
+											{
+												"when": "chorus_fruit",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_chorus_fruit"
+												}
+											},
+											{
+												"when": "cod",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_cod"
+												}
+											},
+											{
+												"when": "crimson_fungus",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_crimson_fungus"
+												}
+											},
+											{
+												"when": "fern",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_fern"
+												}
+											},
+											{
+												"when": "glistering_melon",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_glistering_melon"
+												}
+											},
+											{
+												"when": "glow_berry",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_glow_berry"
+												}
+											},
+											{
+												"when": "golden_apple",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_golden_apple"
+												}
+											},
+											{
+												"when": "golden_carrot",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_golden_carrot"
+												}
+											},
+											{
+												"when": "kelp",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_kelp"
+												}
+											},
+											{
+												"when": "lily_pad",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_lily_pad"
+												}
+											},
+											{
+												"when": "melon",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_melon"
+												}
+											},
+											{
+												"when": "mushroom",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_mushroom"
+												}
+											},
+											{
+												"when": "mutton",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_mutton"
+												}
+											},
+											{
+												"when": "nether_wart",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_nether_wart"
+												}
+											},
+											{
+												"when": "poisonous_potato",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_poisonous_potato"
+												}
+											},
+											{
+												"when": "porkchop",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_porkchop"
+												}
+											},
+											{
+												"when": "potato",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_potato"
+												}
+											},
+											{
+												"when": "pufferfish",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_pufferfish"
+												}
+											},
+											{
+												"when": "pumpkin",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_pumpkin"
+												}
+											},
+											{
+												"when": "rabbit",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_rabbit"
+												}
+											},
+											{
+												"when": "rotten_flesh",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_rotten_flesh"
+												}
+											},
+											{
+												"when": "salmon",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_salmon"
+												}
+											},
+											{
+												"when": "sea_pickle",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_sea_pickle"
+												}
+											},
+											{
+												"when": "seagrass",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_seagrass"
+												}
+											},
+											{
+												"when": "sweet_berry",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_sweet_berry"
+												}
+											},
+											{
+												"when": "tropical_fish",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_tropical_fish"
+												}
+											},
+											{
+												"when": "warped_fungus",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_warped_fungus"
+												}
+											}
+										],
+										"fallback": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish",
+											"tints": [
+												{
+													"type": "minecraft:custom_model_data",
+													"index": 0,
+													"default": -29175
+												}
+											]
+										}
+									}
+								},
+								"on_false": {
 									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_garnish_bamboo"
-								}
-							},
-							{
-								"when": "beef",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_garnish_beef"
-								}
-							},
-							{
-								"when": "beetroot",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_garnish_beetroot"
-								}
-							},
-							{
-								"when": "cactus",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_garnish_cactus"
-								}
-							},
-							{
-								"when": "carrot",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_garnish_carrot"
-								}
-							},
-							{
-								"when": "chicken",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_garnish_chicken"
-								}
-							},
-							{
-								"when": "chocolate",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_garnish_chocolate"
-								}
-							},
-							{
-								"when": "chorus_fruit",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_garnish_chorus_fruit"
-								}
-							},
-							{
-								"when": "cod",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_garnish_cod"
-								}
-							},
-							{
-								"when": "crimson_fungus",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_garnish_crimson_fungus"
-								}
-							},
-							{
-								"when": "fern",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_garnish_fern"
-								}
-							},
-							{
-								"when": "glistering_melon",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_garnish_glistering_melon"
-								}
-							},
-							{
-								"when": "glow_berry",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_garnish_glow_berry"
-								}
-							},
-							{
-								"when": "golden_apple",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_garnish_golden_apple"
-								}
-							},
-							{
-								"when": "golden_carrot",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_garnish_golden_carrot"
-								}
-							},
-							{
-								"when": "kelp",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_garnish_kelp"
-								}
-							},
-							{
-								"when": "lily_pad",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_garnish_lily_pad"
-								}
-							},
-							{
-								"when": "melon",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_garnish_melon"
-								}
-							},
-							{
-								"when": "mushroom",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_garnish_mushroom"
-								}
-							},
-							{
-								"when": "mutton",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_garnish_mutton"
-								}
-							},
-							{
-								"when": "nether_wart",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_garnish_nether_wart"
-								}
-							},
-							{
-								"when": "poisonous_potato",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_garnish_poisonous_potato"
-								}
-							},
-							{
-								"when": "porkchop",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_garnish_porkchop"
-								}
-							},
-							{
-								"when": "potato",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_garnish_potato"
-								}
-							},
-							{
-								"when": "pufferfish",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_garnish_pufferfish"
-								}
-							},
-							{
-								"when": "pumpkin",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_garnish_pumpkin"
-								}
-							},
-							{
-								"when": "rabbit",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_garnish_rabbit"
-								}
-							},
-							{
-								"when": "rotten_flesh",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_garnish_rotten_flesh"
-								}
-							},
-							{
-								"when": "salmon",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_garnish_salmon"
-								}
-							},
-							{
-								"when": "sea_pickle",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_garnish_sea_pickle"
-								}
-							},
-							{
-								"when": "seagrass",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_garnish_seagrass"
-								}
-							},
-							{
-								"when": "sweet_berry",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_garnish_sweet_berry"
-								}
-							},
-							{
-								"when": "tropical_fish",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_garnish_tropical_fish"
-								}
-							},
-							{
-								"when": "warped_fungus",
-								"model": {
-									"type": "minecraft:model",
-									"model": "dynamic_cooking:item/dish/soup_garnish_warped_fungus"
+									"model": "dynamic_cooking:item/dish/soup_in_bucket_garnish_carrot"
 								}
 							}
-						],
-						"fallback": {
+						]
+					}
+				}
+			],
+			"fallback": {
+				"type": "minecraft:composite",
+				"models": [
+					{
+						"type": "minecraft:model",
+						"model": "minecraft:item/bowl"
+					},
+					{
+						"type": "minecraft:condition",
+						"property": "minecraft:has_component",
+						"component": "minecraft:custom_model_data",
+						"on_true": {
 							"type": "minecraft:select",
 							"property": "minecraft:custom_model_data",
 							"index": 0,
+							"cases": [
+								{
+									"when": "apple",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_broth_apple"
+									}
+								},
+								{
+									"when": "bamboo",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_broth_bamboo"
+									}
+								},
+								{
+									"when": "beef",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_broth_beef"
+									}
+								},
+								{
+									"when": "beetroot",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_broth_beetroot"
+									}
+								},
+								{
+									"when": "cactus",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_broth_cactus"
+									}
+								},
+								{
+									"when": "carrot",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_broth_carrot"
+									}
+								},
+								{
+									"when": "chicken",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_broth_chicken"
+									}
+								},
+								{
+									"when": "chocolate",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_broth_chocolate"
+									}
+								},
+								{
+									"when": "chorus_fruit",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_broth_chorus_fruit"
+									}
+								},
+								{
+									"when": "cod",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_broth_cod"
+									}
+								},
+								{
+									"when": "crimson_fungus",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_broth_crimson_fungus"
+									}
+								},
+								{
+									"when": "fern",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_broth_fern"
+									}
+								},
+								{
+									"when": "glistering_melon",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_broth_glistering_melon"
+									}
+								},
+								{
+									"when": "glow_berry",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_broth_glow_berry"
+									}
+								},
+								{
+									"when": "golden_apple",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_broth_golden_apple"
+									}
+								},
+								{
+									"when": "golden_carrot",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_broth_golden_carrot"
+									}
+								},
+								{
+									"when": "kelp",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_broth_kelp"
+									}
+								},
+								{
+									"when": "lily_pad",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_broth_lily_pad"
+									}
+								},
+								{
+									"when": "melon",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_broth_melon"
+									}
+								},
+								{
+									"when": "mushroom",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_broth_mushroom"
+									}
+								},
+								{
+									"when": "mutton",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_broth_mutton"
+									}
+								},
+								{
+									"when": "nether_wart",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_broth_nether_wart"
+									}
+								},
+								{
+									"when": "poisonous_potato",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_broth_poisonous_potato"
+									}
+								},
+								{
+									"when": "porkchop",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_broth_porkchop"
+									}
+								},
+								{
+									"when": "potato",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_broth_potato"
+									}
+								},
+								{
+									"when": "pufferfish",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_broth_pufferfish"
+									}
+								},
+								{
+									"when": "pumpkin",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_broth_pumpkin"
+									}
+								},
+								{
+									"when": "rabbit",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_broth_rabbit"
+									}
+								},
+								{
+									"when": "rotten_flesh",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_broth_rotten_flesh"
+									}
+								},
+								{
+									"when": "salmon",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_broth_salmon"
+									}
+								},
+								{
+									"when": "sea_pickle",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_broth_sea_pickle"
+									}
+								},
+								{
+									"when": "seagrass",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_broth_seagrass"
+									}
+								},
+								{
+									"when": "sweet_berry",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_broth_sweet_berry"
+									}
+								},
+								{
+									"when": "tropical_fish",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_broth_tropical_fish"
+									}
+								},
+								{
+									"when": "warped_fungus",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_broth_warped_fungus"
+									}
+								}
+							],
+							"fallback": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/soup_broth",
+								"tints": [
+									{
+										"type": "minecraft:custom_model_data",
+										"index": 0,
+										"default": -1863651
+									}
+								]
+							}
+						},
+						"on_false": {
+							"type": "minecraft:model",
+							"model": "dynamic_cooking:item/dish/soup_broth_pumpkin"
+						}
+					},
+					{
+						"type": "minecraft:condition",
+						"property": "minecraft:has_component",
+						"component": "minecraft:custom_model_data",
+						"on_true": {
+							"type": "minecraft:select",
+							"property": "minecraft:custom_model_data",
+							"index": 1,
 							"cases": [
 								{
 									"when": "apple",
@@ -1594,24 +2965,276 @@
 								}
 							],
 							"fallback": {
-								"type": "minecraft:model",
-								"model": "dynamic_cooking:item/dish/soup_garnish",
-								"tints": [
+								"type": "minecraft:select",
+								"property": "minecraft:custom_model_data",
+								"index": 0,
+								"cases": [
 									{
-										"type": "minecraft:custom_model_data",
-										"index": 0,
-										"default": -29175
+										"when": "apple",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_garnish_apple"
+										}
+									},
+									{
+										"when": "bamboo",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_garnish_bamboo"
+										}
+									},
+									{
+										"when": "beef",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_garnish_beef"
+										}
+									},
+									{
+										"when": "beetroot",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_garnish_beetroot"
+										}
+									},
+									{
+										"when": "cactus",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_garnish_cactus"
+										}
+									},
+									{
+										"when": "carrot",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_garnish_carrot"
+										}
+									},
+									{
+										"when": "chicken",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_garnish_chicken"
+										}
+									},
+									{
+										"when": "chocolate",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_garnish_chocolate"
+										}
+									},
+									{
+										"when": "chorus_fruit",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_garnish_chorus_fruit"
+										}
+									},
+									{
+										"when": "cod",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_garnish_cod"
+										}
+									},
+									{
+										"when": "crimson_fungus",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_garnish_crimson_fungus"
+										}
+									},
+									{
+										"when": "fern",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_garnish_fern"
+										}
+									},
+									{
+										"when": "glistering_melon",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_garnish_glistering_melon"
+										}
+									},
+									{
+										"when": "glow_berry",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_garnish_glow_berry"
+										}
+									},
+									{
+										"when": "golden_apple",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_garnish_golden_apple"
+										}
+									},
+									{
+										"when": "golden_carrot",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_garnish_golden_carrot"
+										}
+									},
+									{
+										"when": "kelp",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_garnish_kelp"
+										}
+									},
+									{
+										"when": "lily_pad",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_garnish_lily_pad"
+										}
+									},
+									{
+										"when": "melon",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_garnish_melon"
+										}
+									},
+									{
+										"when": "mushroom",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_garnish_mushroom"
+										}
+									},
+									{
+										"when": "mutton",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_garnish_mutton"
+										}
+									},
+									{
+										"when": "nether_wart",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_garnish_nether_wart"
+										}
+									},
+									{
+										"when": "poisonous_potato",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_garnish_poisonous_potato"
+										}
+									},
+									{
+										"when": "porkchop",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_garnish_porkchop"
+										}
+									},
+									{
+										"when": "potato",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_garnish_potato"
+										}
+									},
+									{
+										"when": "pufferfish",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_garnish_pufferfish"
+										}
+									},
+									{
+										"when": "pumpkin",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_garnish_pumpkin"
+										}
+									},
+									{
+										"when": "rabbit",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_garnish_rabbit"
+										}
+									},
+									{
+										"when": "rotten_flesh",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_garnish_rotten_flesh"
+										}
+									},
+									{
+										"when": "salmon",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_garnish_salmon"
+										}
+									},
+									{
+										"when": "sea_pickle",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_garnish_sea_pickle"
+										}
+									},
+									{
+										"when": "seagrass",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_garnish_seagrass"
+										}
+									},
+									{
+										"when": "sweet_berry",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_garnish_sweet_berry"
+										}
+									},
+									{
+										"when": "tropical_fish",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_garnish_tropical_fish"
+										}
+									},
+									{
+										"when": "warped_fungus",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_garnish_warped_fungus"
+										}
 									}
-								]
+								],
+								"fallback": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/soup_garnish",
+									"tints": [
+										{
+											"type": "minecraft:custom_model_data",
+											"index": 0,
+											"default": -29175
+										}
+									]
+								}
 							}
+						},
+						"on_false": {
+							"type": "minecraft:model",
+							"model": "dynamic_cooking:item/dish/soup_garnish_carrot"
 						}
-					},
-					"on_false": {
-						"type": "minecraft:model",
-						"model": "dynamic_cooking:item/dish/soup_garnish_carrot"
 					}
-				}
-			]
+				]
+			}
 		}
 	}
 }

@@ -1,0 +1,6 @@
+{
+	"parent": "minecraft:item/generated",
+	"textures": {
+		"layer0": "dynamic_cooking:item/dish/stew_in_bucket_chunks_cactus"
+	}
+}

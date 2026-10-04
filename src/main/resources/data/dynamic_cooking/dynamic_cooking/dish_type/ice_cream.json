@@ -1,0 +1,43 @@
+{
+	"item": "dynamic_cooking:ice_cream",
+	"priority": 16,
+	"method": "crafting",
+	"requires": [
+		{
+			"match": {
+				"roles": [
+					"bowl"
+				]
+			}
+		},
+		{
+			"match": {
+				"roles": [
+					"snow"
+				]
+			}
+		},
+		{
+			"match": {
+				"roles": [
+					"sweet"
+				]
+			},
+			"flavor": true
+		}
+	],
+	"flavor_roles": [
+		"produce"
+	],
+	"forbids": [
+		{
+			"roles": [
+				"protein",
+				"mushroom",
+				"flour"
+			]
+		}
+	],
+	"bonus_nutrition": 2,
+	"bonus_saturation": 1.0
+}

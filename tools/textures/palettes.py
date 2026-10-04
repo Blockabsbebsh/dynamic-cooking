@@ -72,4 +72,10 @@ PALETTES = {
 	"nether_wart":      ["#D8504A", "#B83436", "#8A1E22", "#74181C", "#5E1216", "#4A0E10", "#300808", "#F08070"],
 	"crimson_fungus":   ["#F06A4A", "#D44A36", "#A8302A", "#902622", "#761E1A", "#5C1614", "#3A0E0C", "#F0C060"],
 	"warped_fungus":    ["#5AE8C8", "#2EC8A8", "#14A08A", "#108A76", "#0C7262", "#085A4C", "#043A30", "#F08A3A"],
+	# plain looks for dishes with nothing on them, and sweeteners
+	"oat":              ["#FAF0D8", "#F2E6C8", "#E0CFA4", "#C8B486", "#A8946A", "#8E7A52", "#6A5A3A", "#D8C68A"],
+	"milk":             ["#FFFFFF", "#F8F6F0", "#F0ECE2", "#E2DCCE", "#CFC6B4", "#B8AE9A", "#8E8676", "#FFFFFF"],
+	"snow":             ["#FFFFFF", "#F4FAFF", "#E4F0F8", "#CFE0EE", "#B4CAE0", "#9AB2CC", "#7A90AA", "#FFFFFF"],
+	"honey":            ["#FFE08A", "#FBC64A", "#F0A62A", "#D8861C", "#B86A12", "#94500C", "#6A3806", "#FFF0B0"],
+	"leaf":             ["#C8E09A", "#A8C878", "#8AAE5A", "#6E9444", "#567A32", "#406024", "#2A4016", "#E8F0C8"],
 }

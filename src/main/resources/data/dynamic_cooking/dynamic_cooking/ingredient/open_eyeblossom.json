@@ -5,6 +5,7 @@
 	"roles": [
 		"herb"
 	],
+	"flavor": "eyeblossom",
 	"color": "#F08A2A",
 	"effects": [
 		{

@@ -43,6 +43,8 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import io.github.blockabsbebsh.dynamiccooking.DynamicCooking;
 import io.github.blockabsbebsh.dynamiccooking.cooking.CookingRules;
 import io.github.blockabsbebsh.dynamiccooking.dish.CookingService;
+import io.github.blockabsbebsh.dynamiccooking.dish.DishServing;
+import io.github.blockabsbebsh.dynamiccooking.dish.Vessel;
 
 /**
  * A pot that sits on a heat source. Right-click with ingredients to add them, right-click with an empty hand to cook,
@@ -143,18 +145,16 @@ public class CookingPotBlock extends BaseEntityBlock {
 
 		CookingService cooking = CookingService.create(level.registryAccess());
 
-		if (pot.isServedWith(stack)) {
-			if (!level.isClientSide()) {
-				ItemStack dish = pot.serve();
-				exchange(player, hand, stack, dish);
-				level.playSound(null, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0f, 0.8f);
+		if (pot.isServedInContainer()) {
+			Optional<Vessel> vessel = Vessel.of(stack.getItem());
 
-				if (pot.hasServing()) {
-					message(level, player, "served", dish.getHoverName(), pot.servingsLeft());
-				}
+			if (vessel.isPresent()) {
+				return serve(level, pos, player, hand, stack, pot, vessel.get());
 			}
 
-			return InteractionResult.SUCCESS;
+			if (DishServing.isDishBucket(stack)) {
+				return topUp(level, pos, player, hand, stack, pot);
+			}
 		}
 
 		boolean servingItem = cooking.isServingItem(stack);
@@ -333,6 +333,44 @@ public class CookingPotBlock extends BaseEntityBlock {
 		}
 	}
 
+	/** Fills an empty bowl, bottle or bucket with a serving. A bottle only takes runny dishes. */
+	private static InteractionResult serve(Level level, BlockPos pos, Player player, InteractionHand hand, ItemStack stack, CookingPotBlockEntity pot, Vessel vessel) {
+		if (vessel == Vessel.BOTTLE && !pot.isRunny()) {
+			message(level, player, "too_thick");
+			return InteractionResult.SUCCESS;
+		}
+
+		if (!level.isClientSide()) {
+			ItemStack dish = DishServing.fill(pot.serve(), vessel, 1, pot.usualVessel());
+			exchange(player, hand, stack, dish);
+			level.playSound(null, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0f, 0.8f);
+
+			if (pot.hasServing()) {
+				message(level, player, "served", dish.getHoverName(), pot.servingsLeft());
+			}
+		}
+
+		return InteractionResult.SUCCESS;
+	}
+
+	/** Adds a serving to a bucket of the same dish, up to three. */
+	private static InteractionResult topUp(Level level, BlockPos pos, Player player, InteractionHand hand, ItemStack bucket, CookingPotBlockEntity pot) {
+		int servings = DishServing.servings(bucket);
+
+		if (!DishServing.sameDish(bucket, pot.serving())) {
+			message(level, player, "different_dish");
+		} else if (servings >= Vessel.BUCKET_SERVINGS) {
+			message(level, player, "bucket_full", Vessel.BUCKET_SERVINGS);
+		} else if (!level.isClientSide()) {
+			ItemStack filled = DishServing.fill(pot.serve(), Vessel.BUCKET, servings + 1, pot.usualVessel());
+			player.setItemInHand(hand, filled);
+			level.playSound(null, pos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 1.0f, 0.8f);
+			message(level, player, "topped_up", filled.getHoverName(), servings + 1, Vessel.BUCKET_SERVINGS);
+		}
+
+		return InteractionResult.SUCCESS;
+	}
+
 	/** Tells the player a dish is waiting and what serves it. */
 	private static void messageReady(Level level, Player player, CookingPotBlockEntity pot) {
 		if (!level.isClientSide()) {
@@ -346,10 +384,7 @@ public class CookingPotBlock extends BaseEntityBlock {
 			return Component.translatable("message.dynamic_cooking.pot.ready_hand", pot.serving().getHoverName());
 		}
 
-		Component container = pot.servedWith()
-				.map(item -> (Component) Component.translatable(item.getDescriptionId()))
-				.orElseGet(() -> Component.translatable("message.dynamic_cooking.pot.unknown"));
-		return Component.translatable("message.dynamic_cooking.pot.ready", pot.serving().getHoverName(), container);
+		return Component.translatable(pot.isRunny() ? "message.dynamic_cooking.pot.ready" : "message.dynamic_cooking.pot.ready_thick", pot.serving().getHoverName());
 	}
 
 	/** Uses up one of the held stack and hands back what it turned into, in the same hand when the stack ran out. */

@@ -5,6 +5,7 @@
 	"roles": [
 		"herb"
 	],
+	"flavor": "oxeye_daisy",
 	"color": "#F0EEDA",
 	"effects": [
 		{

@@ -9,5 +9,6 @@
 	"roles": [
 		"herb"
 	],
+	"flavor": "flower",
 	"color": "#D88AB0"
 }

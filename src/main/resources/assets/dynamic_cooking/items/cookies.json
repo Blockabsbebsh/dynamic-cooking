@@ -100,6 +100,13 @@
 							}
 						},
 						{
+							"when": "honey",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cookies_chips_honey"
+							}
+						},
+						{
 							"when": "kelp",
 							"model": {
 								"type": "minecraft:model",

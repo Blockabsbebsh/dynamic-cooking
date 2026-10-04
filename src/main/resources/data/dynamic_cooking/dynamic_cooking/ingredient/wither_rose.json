@@ -5,6 +5,7 @@
 	"roles": [
 		"herb"
 	],
+	"flavor": "wither_rose",
 	"color": "#2A2620",
 	"effects": [
 		{

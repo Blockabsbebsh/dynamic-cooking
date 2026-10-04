@@ -5,6 +5,7 @@
 	"roles": [
 		"herb"
 	],
+	"flavor": "allium",
 	"color": "#B76FD8",
 	"effects": [
 		{

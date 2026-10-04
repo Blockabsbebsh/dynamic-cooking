@@ -1,0 +1,28 @@
+{
+	"item": "dynamic_cooking:warm_milk",
+	"priority": 14,
+	"requires": [
+		{
+			"match": {
+				"roles": [
+					"dairy"
+				]
+			}
+		},
+		{
+			"match": {
+				"roles": [
+					"sweet"
+				]
+			},
+			"flavor": true
+		}
+	],
+	"flavor_roles": [
+		"produce"
+	],
+	"bonus_nutrition": 2,
+	"bonus_saturation": 1.5,
+	"liquid": true,
+	"served_with": "minecraft:glass_bottle"
+}

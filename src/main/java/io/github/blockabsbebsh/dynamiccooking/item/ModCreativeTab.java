@@ -2,6 +2,7 @@ package io.github.blockabsbebsh.dynamiccooking.item;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -18,6 +19,8 @@ import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 import io.github.blockabsbebsh.dynamiccooking.DynamicCooking;
 import io.github.blockabsbebsh.dynamiccooking.block.ModBlocks;
 import io.github.blockabsbebsh.dynamiccooking.dish.CookingService;
+import io.github.blockabsbebsh.dynamiccooking.dish.DishServing;
+import io.github.blockabsbebsh.dynamiccooking.dish.Vessel;
 
 /**
  * The mod's creative tab: the pot, the cooking guide, then sample dishes made through the real rules, exactly as the pot or a
@@ -79,6 +82,25 @@ public final class ModCreativeTab {
 			List.of(Items.GLASS_BOTTLE, Items.MELON_SLICE),
 			List.of(Items.GLASS_BOTTLE, Items.APPLE),
 			List.of(Items.GLASS_BOTTLE, Items.GLISTERING_MELON_SLICE),
+			// Porridge
+			List.of(Items.WATER_BUCKET, Items.WHEAT),
+			List.of(Items.MILK_BUCKET, Items.WHEAT, Items.SWEET_BERRIES),
+			List.of(Items.MILK_BUCKET, Items.PUMPKIN_SEEDS, Items.HONEY_BOTTLE),
+			// Teas
+			List.of(Items.WATER_BUCKET, Items.POPPY),
+			List.of(Items.WATER_BUCKET, Items.CHERRY_LEAVES, Items.HONEY_BOTTLE),
+			List.of(Items.WATER_BUCKET, Items.CORNFLOWER),
+			// Warm milk
+			List.of(Items.MILK_BUCKET, Items.COCOA_BEANS),
+			List.of(Items.MILK_BUCKET, Items.HONEY_BOTTLE),
+			// Jellies
+			List.of(Items.SLIME_BALL, Items.SWEET_BERRIES),
+			List.of(Items.SLIME_BALL, Items.MELON_SLICE),
+			List.of(Items.SLIME_BALL, Items.CHORUS_FRUIT),
+			// Ice cream
+			List.of(Items.BOWL, Items.SNOWBALL, Items.SUGAR),
+			List.of(Items.BOWL, Items.SNOWBALL, Items.COCOA_BEANS),
+			List.of(Items.BOWL, Items.SNOWBALL, Items.SUGAR, Items.SWEET_BERRIES),
 			// Dubious Mush
 			List.of(Items.SUGAR, Items.SUGAR)
 	);
@@ -115,6 +137,11 @@ public final class ModCreativeTab {
 							DynamicCooking.LOGGER.warn("Sample dish {} uses an item with no ingredient profile", Arrays.toString(sample.toArray()));
 						}
 					}
+
+					// The same dishes in other containers: soup in a bottle, stew in a bucket.
+					ItemStack soup = cooking.cookPot(List.of(new ItemStack(Items.WATER_BUCKET), new ItemStack(Items.PUMPKIN))).dish();
+					output.accept(DishServing.fill(soup, Vessel.BOTTLE, 1, Optional.of(Vessel.BOWL)));
+					output.accept(DishServing.fill(soup, Vessel.BUCKET, Vessel.BUCKET_SERVINGS, Optional.of(Vessel.BOWL)));
 
 					for (List<Item> sample : STEWS) {
 						List<ItemStack> stacks = sample.stream().map(ItemStack::new).toList();

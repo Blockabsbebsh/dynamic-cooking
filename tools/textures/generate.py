@@ -32,7 +32,9 @@ VANILLA_DIR = None
 
 
 def rgba(hex_color):
-	return tuple(int(hex_color[i:i + 2], 16) for i in (1, 3, 5)) + (255,)
+	"""#RRGGBB, or #RRGGBBAA for a see-through colour."""
+	alpha = int(hex_color[7:9], 16) if len(hex_color) == 9 else 255
+	return tuple(int(hex_color[i:i + 2], 16) for i in (1, 3, 5)) + (alpha,)
 
 
 def argb(hex_color):
@@ -68,6 +70,15 @@ def split_layers(dish):
 			else:
 				assert ch in dish.get("pal", {}), f"{dish['layers']}: no colour for {ch!r}"
 				images["base"].putpixel((x, y), rgba(dish["pal"][ch]))
+
+	# See-through layers, like jelly. Tinting keeps the alpha.
+	for layer, alpha in dish.get("alpha", {}).items():
+		image = images[layer]
+		for x in range(16):
+			for y in range(16):
+				pixel = image.getpixel((x, y))
+				if pixel[3]:
+					image.putpixel((x, y), pixel[:3] + (alpha,))
 
 	return images
 
@@ -185,6 +196,11 @@ def layer_model(name, layer, flavors, defaults):
 	dish = DISHES[name]
 	template = f"{name}_{dish['layers'][layer]}"
 	index = LAYER_INDEX[layer]
+
+	if not flavors:
+		# Tinted only, like jelly: the grey template takes the main ingredient's colour.
+		return ref(template, [{"type": "minecraft:custom_model_data", "index": 0, "default": argb(dish["tint"])}])
+
 	default = defaults[min(index, len(defaults) - 1)]
 	tinted = ref(template, [{"type": "minecraft:custom_model_data", "index": 0, "default": argb(PALETTES[default][2])}])
 
@@ -207,7 +223,8 @@ def dish_model(name, dish, flavors):
 	"""Writes a dish template's sprites and models. Returns its item model and its atlas source."""
 	images = split_layers(dish)
 	defaults = dish.get("defaults", [])
-	assert set(defaults) <= set(flavors), f"{name}: default flavours {defaults} not among {flavors}"
+	# A default can be a look no ingredient has, like plain oats for porridge with nothing on it.
+	flavors = [] if dish.get("tint_only") else sorted(set(flavors) | set(defaults))
 	parts = []
 
 	for layer in dish["order"]:
@@ -230,7 +247,7 @@ def dish_model(name, dish, flavors):
 
 	source = None
 	templates = [f"{NS}:item/dish/{name}_{dish['layers'][layer]}" for layer in dish["order"] if layer in LAYER_INDEX]
-	if templates:
+	if templates and flavors:
 		source = {
 			"type": "minecraft:paletted_permutations",
 			"textures": templates,
@@ -275,6 +292,46 @@ def pot_surfaces():
 			)
 
 
+VANILLA_VESSELS = {"bowl": "bowl", "bottle": "glass_bottle", "bucket": "bucket"}
+# The first item model data float of a dish in another container. Must match dish/Vessel.java.
+VESSEL_CODES = {"bowl": 1, "bottle": 2, "bucket": 3}
+
+
+def vessel_variants():
+	"""Adds a hidden dish template for each other container a dish can be served in, from `vessels` in dishes.py."""
+	for name, dish in list(DISHES.items()):
+		for vessel, grid in dish.get("vessels", {}).items():
+			layers = {layer: texture for layer, texture in dish["layers"].items() if layer != "base" or any(ch.isupper() for ch in grid)}
+			if "b" not in layers:
+				# One flavour layer only: second-layer pixels take the main flavour.
+				grid = "".join(str(SECOND.index(ch)) if ch in SECOND else ch for ch in grid)
+			DISHES[f"{name}_in_{vessel}"] = dict(
+				variant_of=name,
+				vanilla=VANILLA_VESSELS[vessel],
+				layers=layers,
+				order=["vanilla"] + [layer for layer in dish["order"] if layer in layers],
+				defaults=dish.get("defaults", []),
+				pal=dish.get("pal", {}),
+				tint=dish.get("tint"),
+				grid=grid,
+			)
+
+
+def in_vessels(item_model, name, models):
+	"""Draws a dish served in another container, picked by the first item model data float, else its usual look."""
+	entries = [{"threshold": code, "model": models[f"{name}_in_{vessel}"]}
+		for vessel, code in VESSEL_CODES.items() if f"{name}_in_{vessel}" in models]
+	if not entries:
+		return item_model
+	return {
+		"type": "minecraft:range_dispatch",
+		"property": "minecraft:custom_model_data",
+		"index": 0,
+		"entries": entries,
+		"fallback": item_model,
+	}
+
+
 def in_pot(item_model, pot_model):
 	"""The cooking pot draws a dish with a surface with no display context, which shows the surface."""
 	return {
@@ -286,6 +343,7 @@ def in_pot(item_model, pot_model):
 
 
 def main():
+	vessel_variants()
 	pot_surfaces()
 	flavors_by_dish = dish_flavors()
 
@@ -297,7 +355,8 @@ def main():
 		key.putpixel((i, 0), rgba(color))
 	save_png(key, OUT / "textures/palettes/dish/key.png")
 
-	used = sorted({flavor for flavors in flavors_by_dish.values() for flavor in flavors})
+	used = sorted({flavor for flavors in flavors_by_dish.values() for flavor in flavors}
+		| {flavor for dish in DISHES.values() if not dish.get("tint_only") for flavor in dish.get("defaults", [])})
 	for flavor in used:
 		strip = Image.new("RGBA", (8, 1))
 		for i, color in enumerate(PALETTES[flavor]):
@@ -321,6 +380,7 @@ def main():
 		variant = dish.get("variant")
 		if variant:
 			item_model = with_variant(item_model, models[variant["dish"]], variant["flavors"], dish.get("defaults", []))
+		item_model = in_vessels(item_model, name, models)
 		if dish.get("pot"):
 			item_model = in_pot(item_model, models[f"{name}_pot"])
 		write_json(OUT / f"items/{name}.json", {"model": item_model})

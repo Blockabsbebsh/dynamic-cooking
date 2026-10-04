@@ -33,6 +33,7 @@ import io.github.blockabsbebsh.dynamiccooking.cooking.IngredientProfile;
 import io.github.blockabsbebsh.dynamiccooking.cooking.Matcher;
 import io.github.blockabsbebsh.dynamiccooking.cooking.Requirement;
 import io.github.blockabsbebsh.dynamiccooking.dish.CookingService;
+import io.github.blockabsbebsh.dynamiccooking.dish.Vessel;
 import io.github.blockabsbebsh.dynamiccooking.item.ModItems;
 
 /**
@@ -195,8 +196,8 @@ public class GuideScreen extends Screen {
 				Component.translatable("guide.dynamic_cooking.water.text"), Component.translatable("guide.dynamic_cooking.water.tip")));
 		steps.add(step("cook", new Picture(big(pot), Part.ARROW, big(stack(Items.BELL))),
 				Component.translatable("guide.dynamic_cooking.cook.text"), null));
-		steps.add(step("serve", new Picture(small(Items.BOWL), Part.ARROW, big(stack(ModItems.SOUP))),
-				Component.translatable("guide.dynamic_cooking.serve.text"), null));
+		steps.add(step("serve", new Picture(small(Items.BOWL), small(Items.GLASS_BOTTLE), small(Items.BUCKET), Part.ARROW, big(stack(ModItems.SOUP))),
+				Component.translatable("guide.dynamic_cooking.serve.text"), Component.translatable("guide.dynamic_cooking.serve.tip")));
 		steps.add(step("simmer", new Picture(big(stack(ModItems.SOUP)), Part.ARROW, big(stack(ModItems.STEW))),
 				Component.translatable("guide.dynamic_cooking.simmer.text"), Component.translatable("guide.dynamic_cooking.simmer.tip")));
 		steps.add(step("burn", new Picture(big(pot), Part.ARROW, big(stack(ModItems.DUBIOUS_MUSH))),
@@ -280,7 +281,9 @@ public class GuideScreen extends Screen {
 		List<Component> about = new ArrayList<>(List.of(Component.translatable("guide.dynamic_cooking.method." + type.method().id())));
 
 		if (type.method() != CookingMethod.CRAFTING && type.servedWith().isPresent()) {
-			about.add(Component.translatable("guide.dynamic_cooking.served_with", itemStack(type.servedWith().get()).getHoverName()));
+			about.add(Vessel.of(type.servedWith().get()).isPresent()
+					? Component.translatable(type.liquid() ? "guide.dynamic_cooking.served_runny" : "guide.dynamic_cooking.served_thick")
+					: Component.translatable("guide.dynamic_cooking.served_with", itemStack(type.servedWith().get()).getHoverName()));
 		}
 
 		if (type.makes() > 1) {

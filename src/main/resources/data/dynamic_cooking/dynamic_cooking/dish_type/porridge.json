@@ -1,0 +1,29 @@
+{
+	"item": "dynamic_cooking:porridge",
+	"priority": 0,
+	"requires": [
+		{
+			"match": {
+				"roles": [
+					"flour",
+					"seeds"
+				]
+			}
+		},
+		{
+			"match": {
+				"roles": [
+					"water",
+					"dairy"
+				]
+			}
+		}
+	],
+	"flavor_roles": [
+		"produce",
+		"sweet"
+	],
+	"bonus_nutrition": 2,
+	"bonus_saturation": 1.5,
+	"served_with": "minecraft:bowl"
+}

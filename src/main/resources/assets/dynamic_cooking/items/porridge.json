@@ -1,0 +1,1814 @@
+{
+	"model": {
+		"type": "minecraft:select",
+		"property": "minecraft:display_context",
+		"cases": [
+			{
+				"when": "none",
+				"model": {
+					"type": "minecraft:composite",
+					"models": [
+						{
+							"type": "minecraft:model",
+							"model": "dynamic_cooking:item/dish/porridge_pot_oats"
+						},
+						{
+							"type": "minecraft:condition",
+							"property": "minecraft:has_component",
+							"component": "minecraft:custom_model_data",
+							"on_true": {
+								"type": "minecraft:select",
+								"property": "minecraft:custom_model_data",
+								"index": 0,
+								"cases": [
+									{
+										"when": "apple",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_apple"
+										}
+									},
+									{
+										"when": "bamboo",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_bamboo"
+										}
+									},
+									{
+										"when": "beetroot",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_beetroot"
+										}
+									},
+									{
+										"when": "cactus",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_cactus"
+										}
+									},
+									{
+										"when": "carrot",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_carrot"
+										}
+									},
+									{
+										"when": "chocolate",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_chocolate"
+										}
+									},
+									{
+										"when": "chorus_fruit",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_chorus_fruit"
+										}
+									},
+									{
+										"when": "fern",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_fern"
+										}
+									},
+									{
+										"when": "glistering_melon",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_glistering_melon"
+										}
+									},
+									{
+										"when": "glow_berry",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_glow_berry"
+										}
+									},
+									{
+										"when": "golden_apple",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_golden_apple"
+										}
+									},
+									{
+										"when": "golden_carrot",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_golden_carrot"
+										}
+									},
+									{
+										"when": "honey",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_honey"
+										}
+									},
+									{
+										"when": "kelp",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_kelp"
+										}
+									},
+									{
+										"when": "lily_pad",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_lily_pad"
+										}
+									},
+									{
+										"when": "melon",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_melon"
+										}
+									},
+									{
+										"when": "nether_wart",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_nether_wart"
+										}
+									},
+									{
+										"when": "oat",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_oat"
+										}
+									},
+									{
+										"when": "poisonous_potato",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_poisonous_potato"
+										}
+									},
+									{
+										"when": "potato",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_potato"
+										}
+									},
+									{
+										"when": "pumpkin",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_pumpkin"
+										}
+									},
+									{
+										"when": "sea_pickle",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_sea_pickle"
+										}
+									},
+									{
+										"when": "seagrass",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_seagrass"
+										}
+									},
+									{
+										"when": "sugar_cane",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_sugar_cane"
+										}
+									},
+									{
+										"when": "sweet_berry",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_sweet_berry"
+										}
+									}
+								],
+								"fallback": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/porridge_pot_topping",
+									"tints": [
+										{
+											"type": "minecraft:custom_model_data",
+											"index": 0,
+											"default": -2043996
+										}
+									]
+								}
+							},
+							"on_false": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/porridge_pot_topping_oat"
+							}
+						},
+						{
+							"type": "minecraft:condition",
+							"property": "minecraft:has_component",
+							"component": "minecraft:custom_model_data",
+							"on_true": {
+								"type": "minecraft:select",
+								"property": "minecraft:custom_model_data",
+								"index": 1,
+								"cases": [
+									{
+										"when": "apple",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_apple"
+										}
+									},
+									{
+										"when": "bamboo",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_bamboo"
+										}
+									},
+									{
+										"when": "beetroot",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_beetroot"
+										}
+									},
+									{
+										"when": "cactus",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_cactus"
+										}
+									},
+									{
+										"when": "carrot",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_carrot"
+										}
+									},
+									{
+										"when": "chocolate",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_chocolate"
+										}
+									},
+									{
+										"when": "chorus_fruit",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_chorus_fruit"
+										}
+									},
+									{
+										"when": "fern",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_fern"
+										}
+									},
+									{
+										"when": "glistering_melon",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_glistering_melon"
+										}
+									},
+									{
+										"when": "glow_berry",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_glow_berry"
+										}
+									},
+									{
+										"when": "golden_apple",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_golden_apple"
+										}
+									},
+									{
+										"when": "golden_carrot",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_golden_carrot"
+										}
+									},
+									{
+										"when": "honey",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_honey"
+										}
+									},
+									{
+										"when": "kelp",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_kelp"
+										}
+									},
+									{
+										"when": "lily_pad",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_lily_pad"
+										}
+									},
+									{
+										"when": "melon",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_melon"
+										}
+									},
+									{
+										"when": "nether_wart",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_nether_wart"
+										}
+									},
+									{
+										"when": "oat",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_oat"
+										}
+									},
+									{
+										"when": "poisonous_potato",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_poisonous_potato"
+										}
+									},
+									{
+										"when": "potato",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_potato"
+										}
+									},
+									{
+										"when": "pumpkin",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_pumpkin"
+										}
+									},
+									{
+										"when": "sea_pickle",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_sea_pickle"
+										}
+									},
+									{
+										"when": "seagrass",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_seagrass"
+										}
+									},
+									{
+										"when": "sugar_cane",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_sugar_cane"
+										}
+									},
+									{
+										"when": "sweet_berry",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_sweet_berry"
+										}
+									}
+								],
+								"fallback": {
+									"type": "minecraft:select",
+									"property": "minecraft:custom_model_data",
+									"index": 0,
+									"cases": [
+										{
+											"when": "apple",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_apple"
+											}
+										},
+										{
+											"when": "bamboo",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_bamboo"
+											}
+										},
+										{
+											"when": "beetroot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_beetroot"
+											}
+										},
+										{
+											"when": "cactus",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_cactus"
+											}
+										},
+										{
+											"when": "carrot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_carrot"
+											}
+										},
+										{
+											"when": "chocolate",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_chocolate"
+											}
+										},
+										{
+											"when": "chorus_fruit",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_chorus_fruit"
+											}
+										},
+										{
+											"when": "fern",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_fern"
+											}
+										},
+										{
+											"when": "glistering_melon",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_glistering_melon"
+											}
+										},
+										{
+											"when": "glow_berry",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_glow_berry"
+											}
+										},
+										{
+											"when": "golden_apple",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_golden_apple"
+											}
+										},
+										{
+											"when": "golden_carrot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_golden_carrot"
+											}
+										},
+										{
+											"when": "honey",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_honey"
+											}
+										},
+										{
+											"when": "kelp",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_kelp"
+											}
+										},
+										{
+											"when": "lily_pad",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_lily_pad"
+											}
+										},
+										{
+											"when": "melon",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_melon"
+											}
+										},
+										{
+											"when": "nether_wart",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_nether_wart"
+											}
+										},
+										{
+											"when": "oat",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_oat"
+											}
+										},
+										{
+											"when": "poisonous_potato",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_poisonous_potato"
+											}
+										},
+										{
+											"when": "potato",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_potato"
+											}
+										},
+										{
+											"when": "pumpkin",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_pumpkin"
+											}
+										},
+										{
+											"when": "sea_pickle",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_sea_pickle"
+											}
+										},
+										{
+											"when": "seagrass",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_seagrass"
+											}
+										},
+										{
+											"when": "sugar_cane",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_sugar_cane"
+											}
+										},
+										{
+											"when": "sweet_berry",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_sweet_berry"
+											}
+										}
+									],
+									"fallback": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_pot_bits",
+										"tints": [
+											{
+												"type": "minecraft:custom_model_data",
+												"index": 0,
+												"default": -2043996
+											}
+										]
+									}
+								}
+							},
+							"on_false": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/porridge_pot_bits_oat"
+							}
+						}
+					]
+				}
+			}
+		],
+		"fallback": {
+			"type": "minecraft:range_dispatch",
+			"property": "minecraft:custom_model_data",
+			"index": 0,
+			"entries": [
+				{
+					"threshold": 3,
+					"model": {
+						"type": "minecraft:composite",
+						"models": [
+							{
+								"type": "minecraft:model",
+								"model": "minecraft:item/bucket"
+							},
+							{
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/porridge_in_bucket_oats"
+							},
+							{
+								"type": "minecraft:condition",
+								"property": "minecraft:has_component",
+								"component": "minecraft:custom_model_data",
+								"on_true": {
+									"type": "minecraft:select",
+									"property": "minecraft:custom_model_data",
+									"index": 0,
+									"cases": [
+										{
+											"when": "apple",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_apple"
+											}
+										},
+										{
+											"when": "bamboo",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_bamboo"
+											}
+										},
+										{
+											"when": "beetroot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_beetroot"
+											}
+										},
+										{
+											"when": "cactus",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_cactus"
+											}
+										},
+										{
+											"when": "carrot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_carrot"
+											}
+										},
+										{
+											"when": "chocolate",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_chocolate"
+											}
+										},
+										{
+											"when": "chorus_fruit",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_chorus_fruit"
+											}
+										},
+										{
+											"when": "fern",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_fern"
+											}
+										},
+										{
+											"when": "glistering_melon",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_glistering_melon"
+											}
+										},
+										{
+											"when": "glow_berry",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_glow_berry"
+											}
+										},
+										{
+											"when": "golden_apple",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_golden_apple"
+											}
+										},
+										{
+											"when": "golden_carrot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_golden_carrot"
+											}
+										},
+										{
+											"when": "honey",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_honey"
+											}
+										},
+										{
+											"when": "kelp",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_kelp"
+											}
+										},
+										{
+											"when": "lily_pad",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_lily_pad"
+											}
+										},
+										{
+											"when": "melon",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_melon"
+											}
+										},
+										{
+											"when": "nether_wart",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_nether_wart"
+											}
+										},
+										{
+											"when": "oat",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_oat"
+											}
+										},
+										{
+											"when": "poisonous_potato",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_poisonous_potato"
+											}
+										},
+										{
+											"when": "potato",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_potato"
+											}
+										},
+										{
+											"when": "pumpkin",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_pumpkin"
+											}
+										},
+										{
+											"when": "sea_pickle",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_sea_pickle"
+											}
+										},
+										{
+											"when": "seagrass",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_seagrass"
+											}
+										},
+										{
+											"when": "sugar_cane",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_sugar_cane"
+											}
+										},
+										{
+											"when": "sweet_berry",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_sweet_berry"
+											}
+										}
+									],
+									"fallback": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping",
+										"tints": [
+											{
+												"type": "minecraft:custom_model_data",
+												"index": 0,
+												"default": -2043996
+											}
+										]
+									}
+								},
+								"on_false": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_oat"
+								}
+							},
+							{
+								"type": "minecraft:condition",
+								"property": "minecraft:has_component",
+								"component": "minecraft:custom_model_data",
+								"on_true": {
+									"type": "minecraft:select",
+									"property": "minecraft:custom_model_data",
+									"index": 1,
+									"cases": [
+										{
+											"when": "apple",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_apple"
+											}
+										},
+										{
+											"when": "bamboo",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_bamboo"
+											}
+										},
+										{
+											"when": "beetroot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_beetroot"
+											}
+										},
+										{
+											"when": "cactus",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_cactus"
+											}
+										},
+										{
+											"when": "carrot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_carrot"
+											}
+										},
+										{
+											"when": "chocolate",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_chocolate"
+											}
+										},
+										{
+											"when": "chorus_fruit",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_chorus_fruit"
+											}
+										},
+										{
+											"when": "fern",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_fern"
+											}
+										},
+										{
+											"when": "glistering_melon",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_glistering_melon"
+											}
+										},
+										{
+											"when": "glow_berry",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_glow_berry"
+											}
+										},
+										{
+											"when": "golden_apple",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_golden_apple"
+											}
+										},
+										{
+											"when": "golden_carrot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_golden_carrot"
+											}
+										},
+										{
+											"when": "honey",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_honey"
+											}
+										},
+										{
+											"when": "kelp",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_kelp"
+											}
+										},
+										{
+											"when": "lily_pad",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_lily_pad"
+											}
+										},
+										{
+											"when": "melon",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_melon"
+											}
+										},
+										{
+											"when": "nether_wart",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_nether_wart"
+											}
+										},
+										{
+											"when": "oat",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_oat"
+											}
+										},
+										{
+											"when": "poisonous_potato",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_poisonous_potato"
+											}
+										},
+										{
+											"when": "potato",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_potato"
+											}
+										},
+										{
+											"when": "pumpkin",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_pumpkin"
+											}
+										},
+										{
+											"when": "sea_pickle",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_sea_pickle"
+											}
+										},
+										{
+											"when": "seagrass",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_seagrass"
+											}
+										},
+										{
+											"when": "sugar_cane",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_sugar_cane"
+											}
+										},
+										{
+											"when": "sweet_berry",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_sweet_berry"
+											}
+										}
+									],
+									"fallback": {
+										"type": "minecraft:select",
+										"property": "minecraft:custom_model_data",
+										"index": 0,
+										"cases": [
+											{
+												"when": "apple",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_apple"
+												}
+											},
+											{
+												"when": "bamboo",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_bamboo"
+												}
+											},
+											{
+												"when": "beetroot",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_beetroot"
+												}
+											},
+											{
+												"when": "cactus",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_cactus"
+												}
+											},
+											{
+												"when": "carrot",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_carrot"
+												}
+											},
+											{
+												"when": "chocolate",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_chocolate"
+												}
+											},
+											{
+												"when": "chorus_fruit",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_chorus_fruit"
+												}
+											},
+											{
+												"when": "fern",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_fern"
+												}
+											},
+											{
+												"when": "glistering_melon",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_glistering_melon"
+												}
+											},
+											{
+												"when": "glow_berry",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_glow_berry"
+												}
+											},
+											{
+												"when": "golden_apple",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_golden_apple"
+												}
+											},
+											{
+												"when": "golden_carrot",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_golden_carrot"
+												}
+											},
+											{
+												"when": "honey",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_honey"
+												}
+											},
+											{
+												"when": "kelp",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_kelp"
+												}
+											},
+											{
+												"when": "lily_pad",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_lily_pad"
+												}
+											},
+											{
+												"when": "melon",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_melon"
+												}
+											},
+											{
+												"when": "nether_wart",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_nether_wart"
+												}
+											},
+											{
+												"when": "oat",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_oat"
+												}
+											},
+											{
+												"when": "poisonous_potato",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_poisonous_potato"
+												}
+											},
+											{
+												"when": "potato",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_potato"
+												}
+											},
+											{
+												"when": "pumpkin",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_pumpkin"
+												}
+											},
+											{
+												"when": "sea_pickle",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_sea_pickle"
+												}
+											},
+											{
+												"when": "seagrass",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_seagrass"
+												}
+											},
+											{
+												"when": "sugar_cane",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_sugar_cane"
+												}
+											},
+											{
+												"when": "sweet_berry",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_sweet_berry"
+												}
+											}
+										],
+										"fallback": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits",
+											"tints": [
+												{
+													"type": "minecraft:custom_model_data",
+													"index": 0,
+													"default": -2043996
+												}
+											]
+										}
+									}
+								},
+								"on_false": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_oat"
+								}
+							}
+						]
+					}
+				}
+			],
+			"fallback": {
+				"type": "minecraft:composite",
+				"models": [
+					{
+						"type": "minecraft:model",
+						"model": "minecraft:item/bowl"
+					},
+					{
+						"type": "minecraft:model",
+						"model": "dynamic_cooking:item/dish/porridge_oats"
+					},
+					{
+						"type": "minecraft:condition",
+						"property": "minecraft:has_component",
+						"component": "minecraft:custom_model_data",
+						"on_true": {
+							"type": "minecraft:select",
+							"property": "minecraft:custom_model_data",
+							"index": 0,
+							"cases": [
+								{
+									"when": "apple",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_apple"
+									}
+								},
+								{
+									"when": "bamboo",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_bamboo"
+									}
+								},
+								{
+									"when": "beetroot",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_beetroot"
+									}
+								},
+								{
+									"when": "cactus",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_cactus"
+									}
+								},
+								{
+									"when": "carrot",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_carrot"
+									}
+								},
+								{
+									"when": "chocolate",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_chocolate"
+									}
+								},
+								{
+									"when": "chorus_fruit",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_chorus_fruit"
+									}
+								},
+								{
+									"when": "fern",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_fern"
+									}
+								},
+								{
+									"when": "glistering_melon",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_glistering_melon"
+									}
+								},
+								{
+									"when": "glow_berry",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_glow_berry"
+									}
+								},
+								{
+									"when": "golden_apple",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_golden_apple"
+									}
+								},
+								{
+									"when": "golden_carrot",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_golden_carrot"
+									}
+								},
+								{
+									"when": "honey",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_honey"
+									}
+								},
+								{
+									"when": "kelp",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_kelp"
+									}
+								},
+								{
+									"when": "lily_pad",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_lily_pad"
+									}
+								},
+								{
+									"when": "melon",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_melon"
+									}
+								},
+								{
+									"when": "nether_wart",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_nether_wart"
+									}
+								},
+								{
+									"when": "oat",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_oat"
+									}
+								},
+								{
+									"when": "poisonous_potato",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_poisonous_potato"
+									}
+								},
+								{
+									"when": "potato",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_potato"
+									}
+								},
+								{
+									"when": "pumpkin",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_pumpkin"
+									}
+								},
+								{
+									"when": "sea_pickle",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_sea_pickle"
+									}
+								},
+								{
+									"when": "seagrass",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_seagrass"
+									}
+								},
+								{
+									"when": "sugar_cane",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_sugar_cane"
+									}
+								},
+								{
+									"when": "sweet_berry",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_sweet_berry"
+									}
+								}
+							],
+							"fallback": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/porridge_topping",
+								"tints": [
+									{
+										"type": "minecraft:custom_model_data",
+										"index": 0,
+										"default": -2043996
+									}
+								]
+							}
+						},
+						"on_false": {
+							"type": "minecraft:model",
+							"model": "dynamic_cooking:item/dish/porridge_topping_oat"
+						}
+					},
+					{
+						"type": "minecraft:condition",
+						"property": "minecraft:has_component",
+						"component": "minecraft:custom_model_data",
+						"on_true": {
+							"type": "minecraft:select",
+							"property": "minecraft:custom_model_data",
+							"index": 1,
+							"cases": [
+								{
+									"when": "apple",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_apple"
+									}
+								},
+								{
+									"when": "bamboo",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_bamboo"
+									}
+								},
+								{
+									"when": "beetroot",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_beetroot"
+									}
+								},
+								{
+									"when": "cactus",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_cactus"
+									}
+								},
+								{
+									"when": "carrot",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_carrot"
+									}
+								},
+								{
+									"when": "chocolate",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_chocolate"
+									}
+								},
+								{
+									"when": "chorus_fruit",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_chorus_fruit"
+									}
+								},
+								{
+									"when": "fern",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_fern"
+									}
+								},
+								{
+									"when": "glistering_melon",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_glistering_melon"
+									}
+								},
+								{
+									"when": "glow_berry",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_glow_berry"
+									}
+								},
+								{
+									"when": "golden_apple",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_golden_apple"
+									}
+								},
+								{
+									"when": "golden_carrot",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_golden_carrot"
+									}
+								},
+								{
+									"when": "honey",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_honey"
+									}
+								},
+								{
+									"when": "kelp",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_kelp"
+									}
+								},
+								{
+									"when": "lily_pad",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_lily_pad"
+									}
+								},
+								{
+									"when": "melon",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_melon"
+									}
+								},
+								{
+									"when": "nether_wart",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_nether_wart"
+									}
+								},
+								{
+									"when": "oat",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_oat"
+									}
+								},
+								{
+									"when": "poisonous_potato",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_poisonous_potato"
+									}
+								},
+								{
+									"when": "potato",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_potato"
+									}
+								},
+								{
+									"when": "pumpkin",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_pumpkin"
+									}
+								},
+								{
+									"when": "sea_pickle",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_sea_pickle"
+									}
+								},
+								{
+									"when": "seagrass",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_seagrass"
+									}
+								},
+								{
+									"when": "sugar_cane",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_sugar_cane"
+									}
+								},
+								{
+									"when": "sweet_berry",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_sweet_berry"
+									}
+								}
+							],
+							"fallback": {
+								"type": "minecraft:select",
+								"property": "minecraft:custom_model_data",
+								"index": 0,
+								"cases": [
+									{
+										"when": "apple",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_apple"
+										}
+									},
+									{
+										"when": "bamboo",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_bamboo"
+										}
+									},
+									{
+										"when": "beetroot",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_beetroot"
+										}
+									},
+									{
+										"when": "cactus",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_cactus"
+										}
+									},
+									{
+										"when": "carrot",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_carrot"
+										}
+									},
+									{
+										"when": "chocolate",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_chocolate"
+										}
+									},
+									{
+										"when": "chorus_fruit",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_chorus_fruit"
+										}
+									},
+									{
+										"when": "fern",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_fern"
+										}
+									},
+									{
+										"when": "glistering_melon",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_glistering_melon"
+										}
+									},
+									{
+										"when": "glow_berry",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_glow_berry"
+										}
+									},
+									{
+										"when": "golden_apple",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_golden_apple"
+										}
+									},
+									{
+										"when": "golden_carrot",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_golden_carrot"
+										}
+									},
+									{
+										"when": "honey",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_honey"
+										}
+									},
+									{
+										"when": "kelp",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_kelp"
+										}
+									},
+									{
+										"when": "lily_pad",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_lily_pad"
+										}
+									},
+									{
+										"when": "melon",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_melon"
+										}
+									},
+									{
+										"when": "nether_wart",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_nether_wart"
+										}
+									},
+									{
+										"when": "oat",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_oat"
+										}
+									},
+									{
+										"when": "poisonous_potato",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_poisonous_potato"
+										}
+									},
+									{
+										"when": "potato",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_potato"
+										}
+									},
+									{
+										"when": "pumpkin",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_pumpkin"
+										}
+									},
+									{
+										"when": "sea_pickle",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_sea_pickle"
+										}
+									},
+									{
+										"when": "seagrass",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_seagrass"
+										}
+									},
+									{
+										"when": "sugar_cane",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_sugar_cane"
+										}
+									},
+									{
+										"when": "sweet_berry",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_sweet_berry"
+										}
+									}
+								],
+								"fallback": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/porridge_bits",
+									"tints": [
+										{
+											"type": "minecraft:custom_model_data",
+											"index": 0,
+											"default": -2043996
+										}
+									]
+								}
+							}
+						},
+						"on_false": {
+							"type": "minecraft:model",
+							"model": "dynamic_cooking:item/dish/porridge_bits_oat"
+						}
+					}
+				]
+			}
+		}
+	}
+}

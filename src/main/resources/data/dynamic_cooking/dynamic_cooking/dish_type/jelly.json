@@ -1,0 +1,34 @@
+{
+	"item": "dynamic_cooking:jelly",
+	"priority": 15,
+	"method": "crafting",
+	"requires": [
+		{
+			"match": {
+				"roles": [
+					"gel"
+				]
+			}
+		},
+		{
+			"match": {
+				"roles": [
+					"produce",
+					"sweet"
+				]
+			},
+			"flavor": true
+		}
+	],
+	"forbids": [
+		{
+			"roles": [
+				"protein",
+				"mushroom",
+				"flour"
+			]
+		}
+	],
+	"bonus_nutrition": 2,
+	"bonus_saturation": 1.0
+}

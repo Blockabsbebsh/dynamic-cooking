@@ -5,6 +5,7 @@
 	"roles": [
 		"herb"
 	],
+	"flavor": "blue_orchid",
 	"saturation": 1.0,
 	"color": "#2AA8D8"
 }
