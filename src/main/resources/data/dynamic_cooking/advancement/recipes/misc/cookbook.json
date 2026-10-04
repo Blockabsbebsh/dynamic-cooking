@@ -1,0 +1,43 @@
+{
+	"parent": "minecraft:recipes/root",
+	"criteria": {
+		"has_cooking_pot": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": "dynamic_cooking:cooking_pot"
+					}
+				]
+			}
+		},
+		"has_book": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": "minecraft:book"
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "dynamic_cooking:cookbook"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_cooking_pot",
+			"has_book",
+			"has_the_recipe"
+		]
+	],
+	"rewards": {
+		"recipes": [
+			"dynamic_cooking:cookbook"
+		]
+	}
+}
