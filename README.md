@@ -1,17 +1,32 @@
 # Dynamic Cooking
 
-A Fabric mod for Minecraft 26.3 that brings Breath of the Wild style cooking to vanilla ingredients. Put up to five ingredients in a pot, or lay simple dishes out on a crafting table, and get a dish named after what went in: Carrot Cake, Chorus Fruit Cake, Beef and Potato Stew.
+A Fabric mod for Minecraft 26.3 that brings Breath of the Wild style cooking to vanilla ingredients. Put up to five ingredients in a pot, or lay simple dishes out on a crafting table, and get a dish named after what went in: Carrot Cake, Beef and Potato Stew, Poppy Tea, Chocolate Ice Cream. There are no fixed recipes: almost anything edible works, and a mix that fits no dish becomes Dubious Mush.
 
 ## Status
 
-Early development. The cooking pot makes cakes, pies, cookies, stews, soups, omelettes and roasts. Sandwiches, skewers, kelp rolls, salads and juice are crafted on a crafting table, one ingredient per slot in any shape. Sample dishes made through the real rules are in the Dynamic Cooking creative tab.
+1.0. Every vanilla food, plant, flower, egg and seasoning is an ingredient.
+
+- **Cooking pot:** cakes, pies, cookies, soups, stews, omelettes, roasts, porridge, tea and warm milk.
+- **Crafting table:** sandwiches, skewers, kelp rolls, salads, juice, jelly and ice cream, one ingredient per slot in any shape.
+
+Sample dishes made through the real rules are in the Dynamic Cooking creative tab, and the Cooking Guide (a book and a bowl) explains the rest in game.
+
+## Playing
+
+- Put the pot over heat: a lit campfire, furnace, fire, magma or lava. Right-click it with up to five ingredients, then with an empty hand to cook.
+- Look at the pot to see what it is making and how long is left.
+- A finished dish waits in the pot, but keeps cooking while it is on the heat. Soup simmers into stew after 30 seconds, and anything burns into Dubious Mush after a minute (90 seconds for stew). Take the pot off the heat to keep a dish safe.
+- Soups, stews, porridge, tea and warm milk are taken out with a bowl, bottle or bucket. Bottles only take runny dishes ("Too thick!"). A bucket holds three servings of the same dish, topped up one cook at a time and drunk one serving at a time.
+- A raw crafted dish, like a skewer with raw chicken, can be cooked again in the pot or a furnace. Jelly and ice cream melt instead, so make them with cooked meat.
+- Ingredients carry their effects into the dish. Flowers give the effects they give suspicious stew, so lily of the valley soup poisons you.
 
 ## How it fits together
 
 - `cooking/`: the rules engine. Plain Java with no Minecraft imports, covered by unit tests.
 - `registry/`: data pack registries and their JSON formats.
-- `dish/`: turns ingredient stacks into a dish stack (name, food, buff, look).
-- `block/`: the cooking pot.
+- `dish/`: turns ingredient stacks into a dish stack (name, food, buff, look) and puts it in a bowl, bottle or bucket.
+- `block/`: the cooking pot and placed cakes.
+- `client/`: the pot's status panel and dish surfaces, the campfire under a pot, and the Cooking Guide.
 - `recipe/`: the crafting table recipe for crafted dishes.
 - `component/`, `item/`: the `dish` component, the dish items and the creative tab.
 - `src/main/resources/data/dynamic_cooking/dynamic_cooking/`: every ingredient and dish type, as JSON. Data packs can add or override entries.
@@ -34,9 +49,11 @@ Add a file to `data/<namespace>/dynamic_cooking/ingredient/`:
 
 `effects` lists side effects the ingredient always gives, like hunger from rotten flesh: `[{"effect": "minecraft:hunger", "seconds": 30, "chance": 0.8}]`.
 
+Roles any dish takes as an extra are `seasoning`, `seeds`, `dairy` and `herb` (flowers, leaves and other plants). Herbs flavour tea; everywhere else they only add their effects.
+
 `nutrition` and `saturation` follow the vanilla food values. Ingredients that aren't eaten on their own get a value from the vanilla foods they go into, like wheat from bread.
 
-A raw ingredient gets a `raw` block. Its `nutrition` and `saturation` are those of its cooked version. The pot swaps it for its `cooks_into` item, and copies of one raw ingredient on their own just come out cooked, like raw potatoes as baked potatoes. Crafted dishes keep it raw: it is worth `nutrition_penalty` and `saturation_penalty` less (down to the vanilla raw value), and its own `effects` may apply. A raw dish can be put back in the pot on its own to cook it.
+A raw ingredient gets a `raw` block. Its `nutrition` and `saturation` are those of its cooked version. The pot swaps it for its `cooks_into` item, and copies of one raw ingredient on their own just come out cooked, like raw potatoes as baked potatoes. Crafted dishes keep it raw: it is worth `nutrition_penalty` and `saturation_penalty` less (down to the vanilla raw value), and its own `effects` may apply. A raw dish can be put back in the pot on its own, or in a furnace, to cook it, unless its dish type `melts`.
 
 ```json
 "raw": {
@@ -54,6 +71,8 @@ Add a file to `data/<namespace>/dynamic_cooking/dish_type/`. Dish types are trie
 Ingredients left over once the requirements are filled must suit the dish: they need one of the dish's `flavor_roles` (produce, protein and mushroom by default), a role the dish already requires, or a role any dish takes as an extra (seasoning, seeds, flowers and other herbs). That is why a stick next to bread makes neither a skewer nor a sandwich. Milk is also an extra any dish takes. `raw_ok` lists raw ingredients the dish takes without a penalty, like fish in a kelp roll. `makes` is how many items one batch gives, like 4 kelp rolls.
 
 A cooked dish waits in the pot, and keeps cooking while the pot is on the heat. `simmers_into` names the dish it turns into after `simmer_seconds`, keeping its ingredients and flavors, like soup into stew. A dish type with `"method": "simmer"` is only made that way, never straight from ingredients. Anything left on the heat burns into Dubious Mush after `burn_seconds` (60 by default, set in `CookingRules` with the cooking time), darkening and smoking over its last 20 seconds. Off the heat it waits safely. Looking at the pot shows a panel with what is in it and how long is left.
+
+`served_with` is the container a pot dish usually comes out in, like `minecraft:bowl`; without it the dish is taken out by hand. A dish served in a bowl, glass bottle or bucket can be taken out with any of the three, except that a bottle only takes `liquid` dishes. In another container than its usual one the dish is renamed ("Bottle of Pumpkin Soup"), drawn in that container and drunk from it. `"melts": true` keeps a dish out of the pot and furnaces once made, like jelly.
 
 ```json
 {
@@ -75,7 +94,7 @@ A dish's food value is the sum of its ingredients' `nutrition`, plus 1 for every
 
 ### Textures
 
-Each dish is drawn once in `tools/textures/dishes.py` as a fixed base layer (bowl, bottle, stick, bread) plus one or two flavour layers in 8 grey keys. Each flavour has an 8-colour palette in `tools/textures/palettes.py`. At resource load, Minecraft's `paletted_permutations` atlas source recolours every flavour layer once per palette, and the dish's item model picks the sprites from the flavours cooking wrote into `custom_model_data`. A flavour without a palette, for example one from a data pack, shows the grey layer tinted with its ingredient's `color`. Dishes with a `pot` grid, like soup and stew, also get a top-down surface with the same flavours, which the cooking pot draws over its contents once the dish is ready (item model `none` display context, listed in the `dynamic_cooking:pot_surface` item tag).
+Each dish is drawn once in `tools/textures/dishes.py` as a fixed base layer (bowl, bottle, stick, bread) plus one or two flavour layers in 8 grey keys. Each flavour has an 8-colour palette in `tools/textures/palettes.py`. At resource load, Minecraft's `paletted_permutations` atlas source recolours every flavour layer once per palette, and the dish's item model picks the sprites from the flavours cooking wrote into `custom_model_data`. A flavour without a palette, for example one from a data pack, shows the grey layer tinted with its ingredient's `color`. A dish's `vessels` grids draw it in the other containers it can be served in (bowl, bottle, bucket), picked by the first item model data float. `defaults` may name a palette no ingredient has, like plain oats for porridge with nothing on it. A `tint_only` dish, like jelly, always tints its grey layer with the ingredient colour, and `alpha` makes a layer see-through. Dishes with a `pot` grid, like soup and stew, also get a top-down surface with the same flavours, which the cooking pot draws over its contents once the dish is ready (item model `none` display context, listed in the `dynamic_cooking:pot_surface` item tag).
 
 After changing a template, a palette, a dish type or an ingredient, regenerate the textures, atlas, models and item definitions (needs Pillow):
 
@@ -87,7 +106,7 @@ python3 tools/textures/generate.py
 
 ### Pot models
 
-The pot body is drawn by hand in `models/block/cooking_pot.json`. Its legs (short ones down to a campfire's logs, since the pot stays a block up so the flames don't show through its floor), liquid and mash levels, floating ingredient chunks and the blockstate are generated from it:
+The pot body is drawn by hand in `models/block/cooking_pot.json`. On a campfire the pot sinks six pixels into the campfire's block on short legs, and `CampfireUnderPotModel` squashes the campfire's flames so they end at the pot's bottom instead of burning through it. A pot over fire, lava or a gap stands on long legs. The legs, liquid and mash levels, floating ingredient chunks and the blockstate are generated from the body by:
 
 ```
 python3 tools/models/pot_models.py
@@ -103,7 +122,7 @@ python3 tools/models/cake_block.py
 
 ## Building
 
-Needs Java 25. `./gradlew build` builds the mod and runs the tests; `./gradlew runClient` starts a dev client.
+Needs Java 25. `./gradlew build` builds the mod and runs the tests, `./gradlew runGametest` starts a server with the mod to check every data file loads, and `./gradlew runClient` starts a dev client. CI runs both on every push and publishes a dev build.
 
 ## License
 
