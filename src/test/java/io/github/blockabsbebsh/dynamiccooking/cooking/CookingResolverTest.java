@@ -60,7 +60,7 @@ class CookingResolverTest {
 		assertEquals(Optional.of("minecraft:bowl"), stew.servedWith());
 		assertEquals(1, stew.servings());
 		assertTrue(resolver().resolve(inputs("wheat", "sugar", "egg", "carrot")).servedWith().isEmpty());
-		assertTrue(resolver().resolve(inputs("sugar", "sugar")).servedWith().isEmpty());
+		assertEquals(Optional.of("minecraft:bowl"), resolver().resolve(inputs("sugar", "sugar")).servedWith());
 	}
 
 	@Test
