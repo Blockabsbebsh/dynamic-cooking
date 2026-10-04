@@ -281,6 +281,23 @@ class ShippedDataTest {
 	}
 
 	@Test
+	void netherFungiAndWaterPlantsCookLikeTheirKind() {
+		assertDish("soup", List.of("warped_fungus"), "water_bucket", "warped_fungus");
+		assertDish("soup", List.of("kelp"), "water_bucket", "kelp");
+		assertDish("cake", List.of("sugar_cane"), "wheat", "sugar_cane", "egg");
+		assertCrafted("salad", List.of("cactus"), "bowl", "cactus");
+	}
+
+	@Test
+	void flowersGoInAnythingWithTheirSuspiciousStewEffect() {
+		DishResult soup = cook("water_bucket", "carrot", "lily_of_the_valley");
+
+		assertEquals("dynamic_cooking:soup", soup.item());
+		assertEquals("minecraft:poison", soup.sideEffects().getFirst().effect());
+		assertCrafted("salad", List.of("apple"), "bowl", "apple", "cornflower");
+	}
+
+	@Test
 	void everyRawIngredientCooksIntoSomethingThePotKnows() {
 		for (IngredientProfile profile : PROFILES.values()) {
 			profile.raw().flatMap(IngredientProfile.Raw::cooksInto).ifPresent(cooked -> {

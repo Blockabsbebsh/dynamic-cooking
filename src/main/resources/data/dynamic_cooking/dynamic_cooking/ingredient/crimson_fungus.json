@@ -1,0 +1,12 @@
+{
+	"items": [
+		"minecraft:crimson_fungus"
+	],
+	"roles": [
+		"mushroom"
+	],
+	"flavor": "crimson_fungus",
+	"nutrition": 2,
+	"saturation": 1.2,
+	"color": "#A8302A"
+}

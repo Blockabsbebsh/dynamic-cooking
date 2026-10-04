@@ -1,0 +1,15 @@
+{
+	"items": [
+		"minecraft:poppy"
+	],
+	"roles": [
+		"herb"
+	],
+	"color": "#D8261E",
+	"effects": [
+		{
+			"effect": "minecraft:night_vision",
+			"seconds": 5
+		}
+	]
+}

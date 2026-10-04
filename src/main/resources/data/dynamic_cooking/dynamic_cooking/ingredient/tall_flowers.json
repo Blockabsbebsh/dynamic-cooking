@@ -1,0 +1,13 @@
+{
+	"items": [
+		"minecraft:sunflower",
+		"minecraft:lilac",
+		"minecraft:rose_bush",
+		"minecraft:peony",
+		"minecraft:pitcher_plant"
+	],
+	"roles": [
+		"herb"
+	],
+	"color": "#D88AB0"
+}

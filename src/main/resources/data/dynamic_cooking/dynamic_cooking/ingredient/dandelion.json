@@ -1,0 +1,10 @@
+{
+	"items": [
+		"minecraft:dandelion"
+	],
+	"roles": [
+		"herb"
+	],
+	"saturation": 1.0,
+	"color": "#F2D23A"
+}

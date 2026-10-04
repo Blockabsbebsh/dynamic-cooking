@@ -1,0 +1,15 @@
+{
+	"items": [
+		"minecraft:lily_of_the_valley"
+	],
+	"roles": [
+		"herb"
+	],
+	"color": "#F4F4EC",
+	"effects": [
+		{
+			"effect": "minecraft:poison",
+			"seconds": 12
+		}
+	]
+}

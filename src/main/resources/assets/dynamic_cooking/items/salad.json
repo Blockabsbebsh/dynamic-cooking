@@ -30,6 +30,13 @@
 							}
 						},
 						{
+							"when": "cactus",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/salad_pieces_cactus"
+							}
+						},
+						{
 							"when": "carrot",
 							"model": {
 								"type": "minecraft:model",
@@ -41,6 +48,13 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/salad_pieces_chorus_fruit"
+							}
+						},
+						{
+							"when": "fern",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/salad_pieces_fern"
 							}
 						},
 						{
@@ -65,10 +79,31 @@
 							}
 						},
 						{
+							"when": "kelp",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/salad_pieces_kelp"
+							}
+						},
+						{
 							"when": "melon",
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/salad_pieces_melon"
+							}
+						},
+						{
+							"when": "sea_pickle",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/salad_pieces_sea_pickle"
+							}
+						},
+						{
+							"when": "seagrass",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/salad_pieces_seagrass"
 							}
 						},
 						{
@@ -120,6 +155,13 @@
 							}
 						},
 						{
+							"when": "cactus",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/salad_top_cactus"
+							}
+						},
+						{
 							"when": "carrot",
 							"model": {
 								"type": "minecraft:model",
@@ -131,6 +173,13 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/salad_top_chorus_fruit"
+							}
+						},
+						{
+							"when": "fern",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/salad_top_fern"
 							}
 						},
 						{
@@ -155,10 +204,31 @@
 							}
 						},
 						{
+							"when": "kelp",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/salad_top_kelp"
+							}
+						},
+						{
 							"when": "melon",
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/salad_top_melon"
+							}
+						},
+						{
+							"when": "sea_pickle",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/salad_top_sea_pickle"
+							}
+						},
+						{
+							"when": "seagrass",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/salad_top_seagrass"
 							}
 						},
 						{
@@ -189,6 +259,13 @@
 								}
 							},
 							{
+								"when": "cactus",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/salad_top_cactus"
+								}
+							},
+							{
 								"when": "carrot",
 								"model": {
 									"type": "minecraft:model",
@@ -200,6 +277,13 @@
 								"model": {
 									"type": "minecraft:model",
 									"model": "dynamic_cooking:item/dish/salad_top_chorus_fruit"
+								}
+							},
+							{
+								"when": "fern",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/salad_top_fern"
 								}
 							},
 							{
@@ -224,10 +308,31 @@
 								}
 							},
 							{
+								"when": "kelp",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/salad_top_kelp"
+								}
+							},
+							{
 								"when": "melon",
 								"model": {
 									"type": "minecraft:model",
 									"model": "dynamic_cooking:item/dish/salad_top_melon"
+								}
+							},
+							{
+								"when": "sea_pickle",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/salad_top_sea_pickle"
+								}
+							},
+							{
+								"when": "seagrass",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/salad_top_seagrass"
 								}
 							},
 							{

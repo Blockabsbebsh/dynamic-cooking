@@ -1,0 +1,12 @@
+{
+	"items": [
+		"minecraft:bamboo"
+	],
+	"roles": [
+		"produce"
+	],
+	"flavor": "bamboo",
+	"nutrition": 1,
+	"saturation": 0.6,
+	"color": "#8FA83A"
+}

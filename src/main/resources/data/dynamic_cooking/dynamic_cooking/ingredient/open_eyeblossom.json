@@ -1,0 +1,15 @@
+{
+	"items": [
+		"minecraft:open_eyeblossom"
+	],
+	"roles": [
+		"herb"
+	],
+	"color": "#F08A2A",
+	"effects": [
+		{
+			"effect": "minecraft:blindness",
+			"seconds": 11
+		}
+	]
+}

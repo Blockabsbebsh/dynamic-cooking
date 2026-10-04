@@ -1,0 +1,15 @@
+{
+	"items": [
+		"minecraft:glow_ink_sac"
+	],
+	"roles": [
+		"seasoning"
+	],
+	"color": "#2E8A86",
+	"effects": [
+		{
+			"effect": "minecraft:glowing",
+			"seconds": 30
+		}
+	]
+}

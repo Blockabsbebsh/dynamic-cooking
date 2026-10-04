@@ -1,0 +1,15 @@
+{
+	"items": [
+		"minecraft:allium"
+	],
+	"roles": [
+		"herb"
+	],
+	"color": "#B76FD8",
+	"effects": [
+		{
+			"effect": "minecraft:fire_resistance",
+			"seconds": 4
+		}
+	]
+}

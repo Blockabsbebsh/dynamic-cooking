@@ -1,0 +1,13 @@
+{
+	"items": [
+		"minecraft:seagrass"
+	],
+	"roles": [
+		"produce",
+		"fresh"
+	],
+	"flavor": "seagrass",
+	"nutrition": 1,
+	"saturation": 0.4,
+	"color": "#3E8A2A"
+}

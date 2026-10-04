@@ -23,6 +23,13 @@
 							}
 						},
 						{
+							"when": "bamboo",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_bamboo"
+							}
+						},
+						{
 							"when": "beef",
 							"model": {
 								"type": "minecraft:model",
@@ -34,6 +41,13 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/omelette_filling_beetroot"
+							}
+						},
+						{
+							"when": "cactus",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_cactus"
 							}
 						},
 						{
@@ -72,10 +86,24 @@
 							}
 						},
 						{
+							"when": "crimson_fungus",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_crimson_fungus"
+							}
+						},
+						{
 							"when": "egg",
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/omelette_filling_egg"
+							}
+						},
+						{
+							"when": "fern",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_fern"
 							}
 						},
 						{
@@ -107,6 +135,20 @@
 							}
 						},
 						{
+							"when": "kelp",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_kelp"
+							}
+						},
+						{
+							"when": "lily_pad",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_lily_pad"
+							}
+						},
+						{
 							"when": "melon",
 							"model": {
 								"type": "minecraft:model",
@@ -125,6 +167,13 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/omelette_filling_mutton"
+							}
+						},
+						{
+							"when": "nether_wart",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_nether_wart"
 							}
 						},
 						{
@@ -184,6 +233,20 @@
 							}
 						},
 						{
+							"when": "sea_pickle",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_sea_pickle"
+							}
+						},
+						{
+							"when": "seagrass",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_seagrass"
+							}
+						},
+						{
 							"when": "sweet_berry",
 							"model": {
 								"type": "minecraft:model",
@@ -195,6 +258,13 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/omelette_filling_tropical_fish"
+							}
+						},
+						{
+							"when": "warped_fungus",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_filling_warped_fungus"
 							}
 						}
 					],
@@ -232,6 +302,13 @@
 							}
 						},
 						{
+							"when": "bamboo",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_chunks_bamboo"
+							}
+						},
+						{
 							"when": "beef",
 							"model": {
 								"type": "minecraft:model",
@@ -243,6 +320,13 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/omelette_chunks_beetroot"
+							}
+						},
+						{
+							"when": "cactus",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_chunks_cactus"
 							}
 						},
 						{
@@ -281,10 +365,24 @@
 							}
 						},
 						{
+							"when": "crimson_fungus",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_chunks_crimson_fungus"
+							}
+						},
+						{
 							"when": "egg",
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/omelette_chunks_egg"
+							}
+						},
+						{
+							"when": "fern",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_chunks_fern"
 							}
 						},
 						{
@@ -316,6 +414,20 @@
 							}
 						},
 						{
+							"when": "kelp",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_chunks_kelp"
+							}
+						},
+						{
+							"when": "lily_pad",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_chunks_lily_pad"
+							}
+						},
+						{
 							"when": "melon",
 							"model": {
 								"type": "minecraft:model",
@@ -334,6 +446,13 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/omelette_chunks_mutton"
+							}
+						},
+						{
+							"when": "nether_wart",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_chunks_nether_wart"
 							}
 						},
 						{
@@ -393,6 +512,20 @@
 							}
 						},
 						{
+							"when": "sea_pickle",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_chunks_sea_pickle"
+							}
+						},
+						{
+							"when": "seagrass",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_chunks_seagrass"
+							}
+						},
+						{
 							"when": "sweet_berry",
 							"model": {
 								"type": "minecraft:model",
@@ -404,6 +537,13 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/omelette_chunks_tropical_fish"
+							}
+						},
+						{
+							"when": "warped_fungus",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/omelette_chunks_warped_fungus"
 							}
 						}
 					],
@@ -420,6 +560,13 @@
 								}
 							},
 							{
+								"when": "bamboo",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/omelette_chunks_bamboo"
+								}
+							},
+							{
 								"when": "beef",
 								"model": {
 									"type": "minecraft:model",
@@ -431,6 +578,13 @@
 								"model": {
 									"type": "minecraft:model",
 									"model": "dynamic_cooking:item/dish/omelette_chunks_beetroot"
+								}
+							},
+							{
+								"when": "cactus",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/omelette_chunks_cactus"
 								}
 							},
 							{
@@ -469,10 +623,24 @@
 								}
 							},
 							{
+								"when": "crimson_fungus",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/omelette_chunks_crimson_fungus"
+								}
+							},
+							{
 								"when": "egg",
 								"model": {
 									"type": "minecraft:model",
 									"model": "dynamic_cooking:item/dish/omelette_chunks_egg"
+								}
+							},
+							{
+								"when": "fern",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/omelette_chunks_fern"
 								}
 							},
 							{
@@ -504,6 +672,20 @@
 								}
 							},
 							{
+								"when": "kelp",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/omelette_chunks_kelp"
+								}
+							},
+							{
+								"when": "lily_pad",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/omelette_chunks_lily_pad"
+								}
+							},
+							{
 								"when": "melon",
 								"model": {
 									"type": "minecraft:model",
@@ -522,6 +704,13 @@
 								"model": {
 									"type": "minecraft:model",
 									"model": "dynamic_cooking:item/dish/omelette_chunks_mutton"
+								}
+							},
+							{
+								"when": "nether_wart",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/omelette_chunks_nether_wart"
 								}
 							},
 							{
@@ -581,6 +770,20 @@
 								}
 							},
 							{
+								"when": "sea_pickle",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/omelette_chunks_sea_pickle"
+								}
+							},
+							{
+								"when": "seagrass",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/omelette_chunks_seagrass"
+								}
+							},
+							{
 								"when": "sweet_berry",
 								"model": {
 									"type": "minecraft:model",
@@ -592,6 +795,13 @@
 								"model": {
 									"type": "minecraft:model",
 									"model": "dynamic_cooking:item/dish/omelette_chunks_tropical_fish"
+								}
+							},
+							{
+								"when": "warped_fungus",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/omelette_chunks_warped_fungus"
 								}
 							}
 						],

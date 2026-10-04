@@ -23,10 +23,24 @@
 							}
 						},
 						{
+							"when": "bamboo",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cake_fruit_bamboo"
+							}
+						},
+						{
 							"when": "beetroot",
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/cake_fruit_beetroot"
+							}
+						},
+						{
+							"when": "cactus",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cake_fruit_cactus"
 							}
 						},
 						{
@@ -48,6 +62,13 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/cake_fruit_chorus_fruit"
+							}
+						},
+						{
+							"when": "fern",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cake_fruit_fern"
 							}
 						},
 						{
@@ -79,10 +100,31 @@
 							}
 						},
 						{
+							"when": "kelp",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cake_fruit_kelp"
+							}
+						},
+						{
+							"when": "lily_pad",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cake_fruit_lily_pad"
+							}
+						},
+						{
 							"when": "melon",
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/cake_fruit_melon"
+							}
+						},
+						{
+							"when": "nether_wart",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cake_fruit_nether_wart"
 							}
 						},
 						{
@@ -104,6 +146,27 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/cake_fruit_pumpkin"
+							}
+						},
+						{
+							"when": "sea_pickle",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cake_fruit_sea_pickle"
+							}
+						},
+						{
+							"when": "seagrass",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cake_fruit_seagrass"
+							}
+						},
+						{
+							"when": "sugar_cane",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/cake_fruit_sugar_cane"
 							}
 						},
 						{

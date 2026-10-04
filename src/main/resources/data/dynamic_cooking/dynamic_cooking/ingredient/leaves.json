@@ -1,0 +1,11 @@
+{
+	"items": [
+		"minecraft:cherry_leaves",
+		"minecraft:azalea_leaves",
+		"minecraft:flowering_azalea_leaves"
+	],
+	"roles": [
+		"herb"
+	],
+	"color": "#6A8A3A"
+}

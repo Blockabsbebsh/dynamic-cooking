@@ -1,0 +1,12 @@
+{
+	"items": [
+		"minecraft:lily_pad"
+	],
+	"roles": [
+		"produce"
+	],
+	"flavor": "lily_pad",
+	"nutrition": 1,
+	"saturation": 0.6,
+	"color": "#2F7A2A"
+}

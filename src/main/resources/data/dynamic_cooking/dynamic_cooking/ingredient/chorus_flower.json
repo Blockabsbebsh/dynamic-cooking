@@ -1,0 +1,15 @@
+{
+	"items": [
+		"minecraft:chorus_flower"
+	],
+	"roles": [
+		"produce"
+	],
+	"flavor": "chorus_fruit",
+	"nutrition": 2,
+	"saturation": 1.2,
+	"buff": {
+		"effect": "dynamic_cooking:teleport"
+	},
+	"color": "#9B6FA0"
+}

@@ -1,0 +1,15 @@
+{
+	"items": [
+		"minecraft:torchflower"
+	],
+	"roles": [
+		"herb"
+	],
+	"color": "#F0A030",
+	"effects": [
+		{
+			"effect": "minecraft:night_vision",
+			"seconds": 5
+		}
+	]
+}

@@ -49,7 +49,7 @@ public record CookingRules(
 			5, 20, 1, 1, 0.5f, Set.of("water", "bowl", "bottle", "stick"), 2,
 			"dynamic_cooking:dubious_mush", 2, 1.0f, "minecraft:bowl", 10, 60,
 			30 * 20, 30 * 20, 5 * 60 * 20, 4,
-			Set.of("seasoning", "seeds", "dairy")
+			Set.of("seasoning", "seeds", "dairy", "herb")
 	);
 
 	public CookingRules {

@@ -1,0 +1,12 @@
+{
+	"items": [
+		"minecraft:sniffer_egg"
+	],
+	"roles": [
+		"egg"
+	],
+	"flavor": "egg",
+	"nutrition": 6,
+	"saturation": 6.0,
+	"color": "#F2D27A"
+}

@@ -1,0 +1,12 @@
+{
+	"items": [
+		"minecraft:warped_fungus"
+	],
+	"roles": [
+		"mushroom"
+	],
+	"flavor": "warped_fungus",
+	"nutrition": 2,
+	"saturation": 1.2,
+	"color": "#14A08A"
+}

@@ -1,0 +1,15 @@
+{
+	"items": [
+		"minecraft:wither_rose"
+	],
+	"roles": [
+		"herb"
+	],
+	"color": "#2A2620",
+	"effects": [
+		{
+			"effect": "minecraft:wither",
+			"seconds": 8
+		}
+	]
+}

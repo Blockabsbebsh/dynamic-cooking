@@ -1,0 +1,12 @@
+{
+	"items": [
+		"minecraft:sugar_cane"
+	],
+	"roles": [
+		"sweet"
+	],
+	"flavor": "sugar_cane",
+	"nutrition": 1,
+	"saturation": 0.4,
+	"color": "#A8C66A"
+}

@@ -1,0 +1,12 @@
+{
+	"items": [
+		"minecraft:nether_wart"
+	],
+	"roles": [
+		"produce"
+	],
+	"flavor": "nether_wart",
+	"nutrition": 1,
+	"saturation": 0.6,
+	"color": "#8A1E22"
+}

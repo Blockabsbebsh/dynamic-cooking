@@ -23,10 +23,24 @@
 							}
 						},
 						{
+							"when": "bamboo",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/juice_liquid_bamboo"
+							}
+						},
+						{
 							"when": "beetroot",
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/juice_liquid_beetroot"
+							}
+						},
+						{
+							"when": "cactus",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/juice_liquid_cactus"
 							}
 						},
 						{
@@ -48,6 +62,13 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/juice_liquid_chorus_fruit"
+							}
+						},
+						{
+							"when": "fern",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/juice_liquid_fern"
 							}
 						},
 						{
@@ -79,10 +100,31 @@
 							}
 						},
 						{
+							"when": "kelp",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/juice_liquid_kelp"
+							}
+						},
+						{
+							"when": "lily_pad",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/juice_liquid_lily_pad"
+							}
+						},
+						{
 							"when": "melon",
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/juice_liquid_melon"
+							}
+						},
+						{
+							"when": "nether_wart",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/juice_liquid_nether_wart"
 							}
 						},
 						{
@@ -111,6 +153,20 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/juice_liquid_raw_potato"
+							}
+						},
+						{
+							"when": "sea_pickle",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/juice_liquid_sea_pickle"
+							}
+						},
+						{
+							"when": "seagrass",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/juice_liquid_seagrass"
 							}
 						},
 						{

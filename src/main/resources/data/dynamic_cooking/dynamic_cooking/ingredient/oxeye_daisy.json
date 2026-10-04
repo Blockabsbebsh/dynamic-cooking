@@ -1,0 +1,15 @@
+{
+	"items": [
+		"minecraft:oxeye_daisy"
+	],
+	"roles": [
+		"herb"
+	],
+	"color": "#F0EEDA",
+	"effects": [
+		{
+			"effect": "minecraft:regeneration",
+			"seconds": 8
+		}
+	]
+}

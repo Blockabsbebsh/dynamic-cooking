@@ -1,0 +1,13 @@
+{
+	"items": [
+		"minecraft:cactus"
+	],
+	"roles": [
+		"produce",
+		"fresh"
+	],
+	"flavor": "cactus",
+	"nutrition": 2,
+	"saturation": 1.2,
+	"color": "#5E8F2F"
+}

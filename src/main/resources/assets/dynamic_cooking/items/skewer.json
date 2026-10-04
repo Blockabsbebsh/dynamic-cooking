@@ -23,6 +23,13 @@
 							}
 						},
 						{
+							"when": "bamboo",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_chunks_bamboo"
+							}
+						},
+						{
 							"when": "beef",
 							"model": {
 								"type": "minecraft:model",
@@ -34,6 +41,13 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/skewer_chunks_beetroot"
+							}
+						},
+						{
+							"when": "cactus",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_chunks_cactus"
 							}
 						},
 						{
@@ -72,6 +86,20 @@
 							}
 						},
 						{
+							"when": "crimson_fungus",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_chunks_crimson_fungus"
+							}
+						},
+						{
+							"when": "fern",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_chunks_fern"
+							}
+						},
+						{
 							"when": "glistering_melon",
 							"model": {
 								"type": "minecraft:model",
@@ -100,6 +128,20 @@
 							}
 						},
 						{
+							"when": "kelp",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_chunks_kelp"
+							}
+						},
+						{
+							"when": "lily_pad",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_chunks_lily_pad"
+							}
+						},
+						{
 							"when": "melon",
 							"model": {
 								"type": "minecraft:model",
@@ -118,6 +160,13 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/skewer_chunks_mutton"
+							}
+						},
+						{
+							"when": "nether_wart",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_chunks_nether_wart"
 							}
 						},
 						{
@@ -233,6 +282,20 @@
 							}
 						},
 						{
+							"when": "sea_pickle",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_chunks_sea_pickle"
+							}
+						},
+						{
+							"when": "seagrass",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_chunks_seagrass"
+							}
+						},
+						{
 							"when": "sweet_berry",
 							"model": {
 								"type": "minecraft:model",
@@ -244,6 +307,13 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/skewer_chunks_tropical_fish"
+							}
+						},
+						{
+							"when": "warped_fungus",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_chunks_warped_fungus"
 							}
 						}
 					],
@@ -281,6 +351,13 @@
 							}
 						},
 						{
+							"when": "bamboo",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_middle_bamboo"
+							}
+						},
+						{
 							"when": "beef",
 							"model": {
 								"type": "minecraft:model",
@@ -292,6 +369,13 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/skewer_middle_beetroot"
+							}
+						},
+						{
+							"when": "cactus",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_middle_cactus"
 							}
 						},
 						{
@@ -330,6 +414,20 @@
 							}
 						},
 						{
+							"when": "crimson_fungus",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_middle_crimson_fungus"
+							}
+						},
+						{
+							"when": "fern",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_middle_fern"
+							}
+						},
+						{
 							"when": "glistering_melon",
 							"model": {
 								"type": "minecraft:model",
@@ -358,6 +456,20 @@
 							}
 						},
 						{
+							"when": "kelp",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_middle_kelp"
+							}
+						},
+						{
+							"when": "lily_pad",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_middle_lily_pad"
+							}
+						},
+						{
 							"when": "melon",
 							"model": {
 								"type": "minecraft:model",
@@ -376,6 +488,13 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/skewer_middle_mutton"
+							}
+						},
+						{
+							"when": "nether_wart",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_middle_nether_wart"
 							}
 						},
 						{
@@ -491,6 +610,20 @@
 							}
 						},
 						{
+							"when": "sea_pickle",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_middle_sea_pickle"
+							}
+						},
+						{
+							"when": "seagrass",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_middle_seagrass"
+							}
+						},
+						{
 							"when": "sweet_berry",
 							"model": {
 								"type": "minecraft:model",
@@ -502,6 +635,13 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/skewer_middle_tropical_fish"
+							}
+						},
+						{
+							"when": "warped_fungus",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/skewer_middle_warped_fungus"
 							}
 						}
 					],
@@ -518,6 +658,13 @@
 								}
 							},
 							{
+								"when": "bamboo",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/skewer_middle_bamboo"
+								}
+							},
+							{
 								"when": "beef",
 								"model": {
 									"type": "minecraft:model",
@@ -529,6 +676,13 @@
 								"model": {
 									"type": "minecraft:model",
 									"model": "dynamic_cooking:item/dish/skewer_middle_beetroot"
+								}
+							},
+							{
+								"when": "cactus",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/skewer_middle_cactus"
 								}
 							},
 							{
@@ -567,6 +721,20 @@
 								}
 							},
 							{
+								"when": "crimson_fungus",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/skewer_middle_crimson_fungus"
+								}
+							},
+							{
+								"when": "fern",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/skewer_middle_fern"
+								}
+							},
+							{
 								"when": "glistering_melon",
 								"model": {
 									"type": "minecraft:model",
@@ -595,6 +763,20 @@
 								}
 							},
 							{
+								"when": "kelp",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/skewer_middle_kelp"
+								}
+							},
+							{
+								"when": "lily_pad",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/skewer_middle_lily_pad"
+								}
+							},
+							{
 								"when": "melon",
 								"model": {
 									"type": "minecraft:model",
@@ -613,6 +795,13 @@
 								"model": {
 									"type": "minecraft:model",
 									"model": "dynamic_cooking:item/dish/skewer_middle_mutton"
+								}
+							},
+							{
+								"when": "nether_wart",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/skewer_middle_nether_wart"
 								}
 							},
 							{
@@ -728,6 +917,20 @@
 								}
 							},
 							{
+								"when": "sea_pickle",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/skewer_middle_sea_pickle"
+								}
+							},
+							{
+								"when": "seagrass",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/skewer_middle_seagrass"
+								}
+							},
+							{
 								"when": "sweet_berry",
 								"model": {
 									"type": "minecraft:model",
@@ -739,6 +942,13 @@
 								"model": {
 									"type": "minecraft:model",
 									"model": "dynamic_cooking:item/dish/skewer_middle_tropical_fish"
+								}
+							},
+							{
+								"when": "warped_fungus",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/skewer_middle_warped_fungus"
 								}
 							}
 						],

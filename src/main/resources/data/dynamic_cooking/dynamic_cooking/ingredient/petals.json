@@ -1,0 +1,12 @@
+{
+	"items": [
+		"minecraft:pink_petals",
+		"minecraft:wildflowers",
+		"minecraft:cactus_flower",
+		"minecraft:spore_blossom"
+	],
+	"roles": [
+		"herb"
+	],
+	"color": "#F0A8C8"
+}

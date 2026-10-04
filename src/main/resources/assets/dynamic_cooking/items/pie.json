@@ -23,6 +23,13 @@
 							}
 						},
 						{
+							"when": "bamboo",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/pie_filling_bamboo"
+							}
+						},
+						{
 							"when": "beef",
 							"model": {
 								"type": "minecraft:model",
@@ -34,6 +41,13 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/pie_filling_beetroot"
+							}
+						},
+						{
+							"when": "cactus",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/pie_filling_cactus"
 							}
 						},
 						{
@@ -72,6 +86,20 @@
 							}
 						},
 						{
+							"when": "crimson_fungus",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/pie_filling_crimson_fungus"
+							}
+						},
+						{
+							"when": "fern",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/pie_filling_fern"
+							}
+						},
+						{
 							"when": "glistering_melon",
 							"model": {
 								"type": "minecraft:model",
@@ -100,6 +128,20 @@
 							}
 						},
 						{
+							"when": "kelp",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/pie_filling_kelp"
+							}
+						},
+						{
+							"when": "lily_pad",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/pie_filling_lily_pad"
+							}
+						},
+						{
 							"when": "melon",
 							"model": {
 								"type": "minecraft:model",
@@ -118,6 +160,13 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/pie_filling_mutton"
+							}
+						},
+						{
+							"when": "nether_wart",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/pie_filling_nether_wart"
 							}
 						},
 						{
@@ -177,6 +226,20 @@
 							}
 						},
 						{
+							"when": "sea_pickle",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/pie_filling_sea_pickle"
+							}
+						},
+						{
+							"when": "seagrass",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/pie_filling_seagrass"
+							}
+						},
+						{
 							"when": "sweet_berry",
 							"model": {
 								"type": "minecraft:model",
@@ -188,6 +251,13 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/pie_filling_tropical_fish"
+							}
+						},
+						{
+							"when": "warped_fungus",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/pie_filling_warped_fungus"
 							}
 						}
 					],

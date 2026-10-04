@@ -1,0 +1,15 @@
+{
+	"items": [
+		"minecraft:closed_eyeblossom"
+	],
+	"roles": [
+		"herb"
+	],
+	"color": "#8A8A9A",
+	"effects": [
+		{
+			"effect": "minecraft:nausea",
+			"seconds": 7
+		}
+	]
+}

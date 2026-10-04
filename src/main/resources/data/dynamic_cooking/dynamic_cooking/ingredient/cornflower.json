@@ -1,0 +1,15 @@
+{
+	"items": [
+		"minecraft:cornflower"
+	],
+	"roles": [
+		"herb"
+	],
+	"color": "#4A6BD8",
+	"effects": [
+		{
+			"effect": "minecraft:jump_boost",
+			"seconds": 6
+		}
+	]
+}

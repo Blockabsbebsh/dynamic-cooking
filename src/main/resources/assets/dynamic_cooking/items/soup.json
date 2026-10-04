@@ -25,6 +25,13 @@
 										}
 									},
 									{
+										"when": "bamboo",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_pot_broth_bamboo"
+										}
+									},
+									{
 										"when": "beef",
 										"model": {
 											"type": "minecraft:model",
@@ -36,6 +43,13 @@
 										"model": {
 											"type": "minecraft:model",
 											"model": "dynamic_cooking:item/dish/soup_pot_broth_beetroot"
+										}
+									},
+									{
+										"when": "cactus",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_pot_broth_cactus"
 										}
 									},
 									{
@@ -74,6 +88,20 @@
 										}
 									},
 									{
+										"when": "crimson_fungus",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_pot_broth_crimson_fungus"
+										}
+									},
+									{
+										"when": "fern",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_pot_broth_fern"
+										}
+									},
+									{
 										"when": "glistering_melon",
 										"model": {
 											"type": "minecraft:model",
@@ -102,6 +130,20 @@
 										}
 									},
 									{
+										"when": "kelp",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_pot_broth_kelp"
+										}
+									},
+									{
+										"when": "lily_pad",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_pot_broth_lily_pad"
+										}
+									},
+									{
 										"when": "melon",
 										"model": {
 											"type": "minecraft:model",
@@ -120,6 +162,13 @@
 										"model": {
 											"type": "minecraft:model",
 											"model": "dynamic_cooking:item/dish/soup_pot_broth_mutton"
+										}
+									},
+									{
+										"when": "nether_wart",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_pot_broth_nether_wart"
 										}
 									},
 									{
@@ -179,6 +228,20 @@
 										}
 									},
 									{
+										"when": "sea_pickle",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_pot_broth_sea_pickle"
+										}
+									},
+									{
+										"when": "seagrass",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_pot_broth_seagrass"
+										}
+									},
+									{
 										"when": "sweet_berry",
 										"model": {
 											"type": "minecraft:model",
@@ -190,6 +253,13 @@
 										"model": {
 											"type": "minecraft:model",
 											"model": "dynamic_cooking:item/dish/soup_pot_broth_tropical_fish"
+										}
+									},
+									{
+										"when": "warped_fungus",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_pot_broth_warped_fungus"
 										}
 									}
 								],
@@ -227,6 +297,13 @@
 										}
 									},
 									{
+										"when": "bamboo",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_pot_garnish_bamboo"
+										}
+									},
+									{
 										"when": "beef",
 										"model": {
 											"type": "minecraft:model",
@@ -238,6 +315,13 @@
 										"model": {
 											"type": "minecraft:model",
 											"model": "dynamic_cooking:item/dish/soup_pot_garnish_beetroot"
+										}
+									},
+									{
+										"when": "cactus",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_pot_garnish_cactus"
 										}
 									},
 									{
@@ -276,6 +360,20 @@
 										}
 									},
 									{
+										"when": "crimson_fungus",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_pot_garnish_crimson_fungus"
+										}
+									},
+									{
+										"when": "fern",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_pot_garnish_fern"
+										}
+									},
+									{
 										"when": "glistering_melon",
 										"model": {
 											"type": "minecraft:model",
@@ -304,6 +402,20 @@
 										}
 									},
 									{
+										"when": "kelp",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_pot_garnish_kelp"
+										}
+									},
+									{
+										"when": "lily_pad",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_pot_garnish_lily_pad"
+										}
+									},
+									{
 										"when": "melon",
 										"model": {
 											"type": "minecraft:model",
@@ -322,6 +434,13 @@
 										"model": {
 											"type": "minecraft:model",
 											"model": "dynamic_cooking:item/dish/soup_pot_garnish_mutton"
+										}
+									},
+									{
+										"when": "nether_wart",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_pot_garnish_nether_wart"
 										}
 									},
 									{
@@ -381,6 +500,20 @@
 										}
 									},
 									{
+										"when": "sea_pickle",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_pot_garnish_sea_pickle"
+										}
+									},
+									{
+										"when": "seagrass",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_pot_garnish_seagrass"
+										}
+									},
+									{
 										"when": "sweet_berry",
 										"model": {
 											"type": "minecraft:model",
@@ -392,6 +525,13 @@
 										"model": {
 											"type": "minecraft:model",
 											"model": "dynamic_cooking:item/dish/soup_pot_garnish_tropical_fish"
+										}
+									},
+									{
+										"when": "warped_fungus",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/soup_pot_garnish_warped_fungus"
 										}
 									}
 								],
@@ -408,6 +548,13 @@
 											}
 										},
 										{
+											"when": "bamboo",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_pot_garnish_bamboo"
+											}
+										},
+										{
 											"when": "beef",
 											"model": {
 												"type": "minecraft:model",
@@ -419,6 +566,13 @@
 											"model": {
 												"type": "minecraft:model",
 												"model": "dynamic_cooking:item/dish/soup_pot_garnish_beetroot"
+											}
+										},
+										{
+											"when": "cactus",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_pot_garnish_cactus"
 											}
 										},
 										{
@@ -457,6 +611,20 @@
 											}
 										},
 										{
+											"when": "crimson_fungus",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_pot_garnish_crimson_fungus"
+											}
+										},
+										{
+											"when": "fern",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_pot_garnish_fern"
+											}
+										},
+										{
 											"when": "glistering_melon",
 											"model": {
 												"type": "minecraft:model",
@@ -485,6 +653,20 @@
 											}
 										},
 										{
+											"when": "kelp",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_pot_garnish_kelp"
+											}
+										},
+										{
+											"when": "lily_pad",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_pot_garnish_lily_pad"
+											}
+										},
+										{
 											"when": "melon",
 											"model": {
 												"type": "minecraft:model",
@@ -503,6 +685,13 @@
 											"model": {
 												"type": "minecraft:model",
 												"model": "dynamic_cooking:item/dish/soup_pot_garnish_mutton"
+											}
+										},
+										{
+											"when": "nether_wart",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_pot_garnish_nether_wart"
 											}
 										},
 										{
@@ -562,6 +751,20 @@
 											}
 										},
 										{
+											"when": "sea_pickle",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_pot_garnish_sea_pickle"
+											}
+										},
+										{
+											"when": "seagrass",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_pot_garnish_seagrass"
+											}
+										},
+										{
 											"when": "sweet_berry",
 											"model": {
 												"type": "minecraft:model",
@@ -573,6 +776,13 @@
 											"model": {
 												"type": "minecraft:model",
 												"model": "dynamic_cooking:item/dish/soup_pot_garnish_tropical_fish"
+											}
+										},
+										{
+											"when": "warped_fungus",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/soup_pot_garnish_warped_fungus"
 											}
 										}
 									],
@@ -622,6 +832,13 @@
 								}
 							},
 							{
+								"when": "bamboo",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/soup_broth_bamboo"
+								}
+							},
+							{
 								"when": "beef",
 								"model": {
 									"type": "minecraft:model",
@@ -633,6 +850,13 @@
 								"model": {
 									"type": "minecraft:model",
 									"model": "dynamic_cooking:item/dish/soup_broth_beetroot"
+								}
+							},
+							{
+								"when": "cactus",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/soup_broth_cactus"
 								}
 							},
 							{
@@ -671,6 +895,20 @@
 								}
 							},
 							{
+								"when": "crimson_fungus",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/soup_broth_crimson_fungus"
+								}
+							},
+							{
+								"when": "fern",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/soup_broth_fern"
+								}
+							},
+							{
 								"when": "glistering_melon",
 								"model": {
 									"type": "minecraft:model",
@@ -699,6 +937,20 @@
 								}
 							},
 							{
+								"when": "kelp",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/soup_broth_kelp"
+								}
+							},
+							{
+								"when": "lily_pad",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/soup_broth_lily_pad"
+								}
+							},
+							{
 								"when": "melon",
 								"model": {
 									"type": "minecraft:model",
@@ -717,6 +969,13 @@
 								"model": {
 									"type": "minecraft:model",
 									"model": "dynamic_cooking:item/dish/soup_broth_mutton"
+								}
+							},
+							{
+								"when": "nether_wart",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/soup_broth_nether_wart"
 								}
 							},
 							{
@@ -776,6 +1035,20 @@
 								}
 							},
 							{
+								"when": "sea_pickle",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/soup_broth_sea_pickle"
+								}
+							},
+							{
+								"when": "seagrass",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/soup_broth_seagrass"
+								}
+							},
+							{
 								"when": "sweet_berry",
 								"model": {
 									"type": "minecraft:model",
@@ -787,6 +1060,13 @@
 								"model": {
 									"type": "minecraft:model",
 									"model": "dynamic_cooking:item/dish/soup_broth_tropical_fish"
+								}
+							},
+							{
+								"when": "warped_fungus",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/soup_broth_warped_fungus"
 								}
 							}
 						],
@@ -824,6 +1104,13 @@
 								}
 							},
 							{
+								"when": "bamboo",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/soup_garnish_bamboo"
+								}
+							},
+							{
 								"when": "beef",
 								"model": {
 									"type": "minecraft:model",
@@ -835,6 +1122,13 @@
 								"model": {
 									"type": "minecraft:model",
 									"model": "dynamic_cooking:item/dish/soup_garnish_beetroot"
+								}
+							},
+							{
+								"when": "cactus",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/soup_garnish_cactus"
 								}
 							},
 							{
@@ -873,6 +1167,20 @@
 								}
 							},
 							{
+								"when": "crimson_fungus",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/soup_garnish_crimson_fungus"
+								}
+							},
+							{
+								"when": "fern",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/soup_garnish_fern"
+								}
+							},
+							{
 								"when": "glistering_melon",
 								"model": {
 									"type": "minecraft:model",
@@ -901,6 +1209,20 @@
 								}
 							},
 							{
+								"when": "kelp",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/soup_garnish_kelp"
+								}
+							},
+							{
+								"when": "lily_pad",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/soup_garnish_lily_pad"
+								}
+							},
+							{
 								"when": "melon",
 								"model": {
 									"type": "minecraft:model",
@@ -919,6 +1241,13 @@
 								"model": {
 									"type": "minecraft:model",
 									"model": "dynamic_cooking:item/dish/soup_garnish_mutton"
+								}
+							},
+							{
+								"when": "nether_wart",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/soup_garnish_nether_wart"
 								}
 							},
 							{
@@ -978,6 +1307,20 @@
 								}
 							},
 							{
+								"when": "sea_pickle",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/soup_garnish_sea_pickle"
+								}
+							},
+							{
+								"when": "seagrass",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/soup_garnish_seagrass"
+								}
+							},
+							{
 								"when": "sweet_berry",
 								"model": {
 									"type": "minecraft:model",
@@ -989,6 +1332,13 @@
 								"model": {
 									"type": "minecraft:model",
 									"model": "dynamic_cooking:item/dish/soup_garnish_tropical_fish"
+								}
+							},
+							{
+								"when": "warped_fungus",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/soup_garnish_warped_fungus"
 								}
 							}
 						],
@@ -1005,6 +1355,13 @@
 									}
 								},
 								{
+									"when": "bamboo",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_garnish_bamboo"
+									}
+								},
+								{
 									"when": "beef",
 									"model": {
 										"type": "minecraft:model",
@@ -1016,6 +1373,13 @@
 									"model": {
 										"type": "minecraft:model",
 										"model": "dynamic_cooking:item/dish/soup_garnish_beetroot"
+									}
+								},
+								{
+									"when": "cactus",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_garnish_cactus"
 									}
 								},
 								{
@@ -1054,6 +1418,20 @@
 									}
 								},
 								{
+									"when": "crimson_fungus",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_garnish_crimson_fungus"
+									}
+								},
+								{
+									"when": "fern",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_garnish_fern"
+									}
+								},
+								{
 									"when": "glistering_melon",
 									"model": {
 										"type": "minecraft:model",
@@ -1082,6 +1460,20 @@
 									}
 								},
 								{
+									"when": "kelp",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_garnish_kelp"
+									}
+								},
+								{
+									"when": "lily_pad",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_garnish_lily_pad"
+									}
+								},
+								{
 									"when": "melon",
 									"model": {
 										"type": "minecraft:model",
@@ -1100,6 +1492,13 @@
 									"model": {
 										"type": "minecraft:model",
 										"model": "dynamic_cooking:item/dish/soup_garnish_mutton"
+									}
+								},
+								{
+									"when": "nether_wart",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_garnish_nether_wart"
 									}
 								},
 								{
@@ -1159,6 +1558,20 @@
 									}
 								},
 								{
+									"when": "sea_pickle",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_garnish_sea_pickle"
+									}
+								},
+								{
+									"when": "seagrass",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_garnish_seagrass"
+									}
+								},
+								{
 									"when": "sweet_berry",
 									"model": {
 										"type": "minecraft:model",
@@ -1170,6 +1583,13 @@
 									"model": {
 										"type": "minecraft:model",
 										"model": "dynamic_cooking:item/dish/soup_garnish_tropical_fish"
+									}
+								},
+								{
+									"when": "warped_fungus",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/soup_garnish_warped_fungus"
 									}
 								}
 							],

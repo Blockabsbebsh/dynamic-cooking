@@ -1,0 +1,15 @@
+{
+	"items": [
+		"minecraft:azure_bluet"
+	],
+	"roles": [
+		"herb"
+	],
+	"color": "#E2E8EE",
+	"effects": [
+		{
+			"effect": "minecraft:blindness",
+			"seconds": 8
+		}
+	]
+}

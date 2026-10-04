@@ -1,0 +1,13 @@
+{
+	"items": [
+		"minecraft:sea_pickle"
+	],
+	"roles": [
+		"produce",
+		"fresh"
+	],
+	"flavor": "sea_pickle",
+	"nutrition": 1,
+	"saturation": 0.6,
+	"color": "#6B7A2E"
+}
