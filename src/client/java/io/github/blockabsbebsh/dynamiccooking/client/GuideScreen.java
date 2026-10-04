@@ -1,12 +1,14 @@
 package io.github.blockabsbebsh.dynamiccooking.client;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.TreeSet;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
@@ -65,7 +67,11 @@ public class GuideScreen extends Screen {
 	private static final int HIGHLIGHT = 0x40FFFFFF;
 
 	private final List<List<Row>> pages = new ArrayList<>();
+	/** The page each dish starts on, by item id. */
+	private final Map<String, Integer> dishPages = new HashMap<>();
 	private final List<LinkButton> links = new ArrayList<>();
+	/** Lines of text to show under the mouse this frame, for things that aren't items. */
+	private List<Component> textTooltip;
 	/** The left page of the open spread; always even. */
 	private int page;
 	private PageArrow back;
@@ -149,6 +155,7 @@ public class GuideScreen extends Screen {
 		graphics.blit(RenderPipelines.GUI_TEXTURED, BOOK, left + PAGE_WIDTH, top, PAGE_U, PAGE_V, PAGE_WIDTH, PAGE_HEIGHT, 256, 256);
 
 		ItemStack hovered = ItemStack.EMPTY;
+		textTooltip = null;
 
 		for (int index = page; index < page + 2 && index < pages.size(); index++) {
 			int x = textX(index);
@@ -166,7 +173,9 @@ public class GuideScreen extends Screen {
 
 		super.extractRenderState(graphics, mouseX, mouseY, partialTick);
 
-		if (!hovered.isEmpty()) {
+		if (textTooltip != null) {
+			graphics.setTooltipForNextFrame(font, textTooltip, Optional.empty(), mouseX, mouseY);
+		} else if (!hovered.isEmpty()) {
 			graphics.setTooltipForNextFrame(font, hovered, mouseX, mouseY);
 		}
 	}
@@ -198,34 +207,45 @@ public class GuideScreen extends Screen {
 		steps.add(step("effects", new Picture(small(Items.GOLDEN_APPLE), Part.PLUS, small(Items.GOLDEN_CARROT), Part.ARROW, big(stack(ModItems.PIE))),
 				Component.translatable("guide.dynamic_cooking.effects.text"), null));
 
-		// Page numbers: the title page and contents, then the steps, then one page per dish.
+		// The title page and contents come first, then the steps, then the dishes.
 		int firstStep = 2;
-		List<Link.Target> dishes = new ArrayList<>();
+		int craftedPage = firstStep;
 
-		for (int i = 0; i < dishTypes.size(); i++) {
-			dishes.add(new Link.Target(itemStack(dishTypes.get(i).item()), firstStep + steps.size() + i));
+		for (int i = 0; i < crafted; i++) {
+			craftedPage += split(steps.get(i)).size();
 		}
 
+		List<String> dishIds = dishTypes.stream().map(DishType::item).toList();
 		pages.add(List.of(new Cover(pot, stack(Items.CAMPFIRE))));
 		pages.add(List.of(
 				new Title(Component.translatable("guide.dynamic_cooking.contents")),
 				new Entry(pot, Component.translatable("guide.dynamic_cooking.contents.basics"), firstStep),
-				new Entry(stack(Items.CRAFTING_TABLE), Component.translatable("guide.dynamic_cooking.contents.crafted"), firstStep + crafted),
+				new Entry(stack(Items.CRAFTING_TABLE), Component.translatable("guide.dynamic_cooking.contents.crafted"), craftedPage),
 				new Heading(Component.translatable("guide.dynamic_cooking.contents.dishes")),
-				new DishGrid(dishes),
+				new DishGrid(dishIds),
 				new Caption(Component.translatable("guide.dynamic_cooking.contents.hint"), INK_LIGHT)));
-		steps.forEach(this::addPage);
-		cooking.ifPresent(service -> dishTypes.forEach(type -> addPage(dishPage(service, type))));
+		steps.forEach(rows -> pages.addAll(split(rows)));
+
+		cooking.ifPresent(service -> {
+			Map<String, ItemStack> examples = DishRelations.examples(service, GuideScreen::itemStack);
+
+			for (DishType type : dishTypes) {
+				DishRelations relations = DishRelations.of(service, type, examples, matcher -> items(service, matcher), GuideScreen::matcherText);
+				dishPages.put(type.item(), pages.size());
+				pages.addAll(split(dishPage(service, type, relations)));
+			}
+		});
 	}
 
-	/** Adds a page, or several when a data pack dish has more rows than fit on one. */
-	private void addPage(List<Row> rows) {
+	/** Lays rows out on one page, or several when a data pack dish has more rows than fit on one. */
+	private List<List<Row>> split(List<Row> rows) {
+		List<List<Row>> out = new ArrayList<>();
 		List<Row> current = new ArrayList<>();
 		int used = 0;
 
 		for (Row row : rows) {
 			if (!current.isEmpty() && used + row.height(this) > TEXT_HEIGHT) {
-				pages.add(current);
+				out.add(current);
 				current = new ArrayList<>();
 				used = 0;
 			}
@@ -234,7 +254,8 @@ public class GuideScreen extends Screen {
 			used += row.height(this);
 		}
 
-		pages.add(current);
+		out.add(current);
+		return out;
 	}
 
 	private static List<Row> step(String key, Picture picture, Component text, Component tip) {
@@ -248,7 +269,7 @@ public class GuideScreen extends Screen {
 		return rows;
 	}
 
-	private List<Row> dishPage(CookingService cooking, DishType type) {
+	private List<Row> dishPage(CookingService cooking, DishType type, DishRelations relations) {
 		List<Row> rows = new ArrayList<>();
 		ItemStack dish = itemStack(type.item());
 		List<Component> about = new ArrayList<>(List.of(Component.translatable("guide.dynamic_cooking.method." + type.method().id())));
@@ -285,10 +306,20 @@ public class GuideScreen extends Screen {
 			rows.add(new Need(items(cooking, matcher), Component.translatable("guide.dynamic_cooking.extras", matcherText(matcher)), INK_LIGHT));
 		}
 
-		if (!type.forbids().isEmpty()) {
-			List<Component> refused = type.forbids().stream().map(GuideScreen::matcherText).toList();
-			List<ItemStack> refusedItems = type.forbids().stream().flatMap(matcher -> items(cooking, matcher).stream()).toList();
-			rows.add(new Need(refusedItems, Component.translatable("guide.dynamic_cooking.forbids", join(refused, ", ")), INK_RED));
+		if (!relations.related().isEmpty()) {
+			rows.add(new Related(relations.related()));
+		}
+
+		// Only what spoils the dish: a refused ingredient that turns it into another dish is shown as related instead.
+		Set<String> spoiling = new TreeSet<>(forbidden);
+
+		if (relations.probed()) {
+			spoiling.retainAll(relations.spoils());
+		}
+
+		if (!spoiling.isEmpty()) {
+			Matcher matcher = new Matcher(Set.of(), spoiling);
+			rows.add(new Need(items(cooking, matcher), Component.translatable("guide.dynamic_cooking.forbids", matcherText(matcher)), INK_RED));
 		}
 
 		return rows;
@@ -314,7 +345,7 @@ public class GuideScreen extends Screen {
 		return joinOr(options);
 	}
 
-	private static Component joinOr(List<Component> options) {
+	static Component joinOr(List<Component> options) {
 		if (options.size() == 1) {
 			return options.getFirst();
 		}
@@ -336,12 +367,12 @@ public class GuideScreen extends Screen {
 		return out;
 	}
 
-	private static Component roleName(String role) {
+	static Component roleName(String role) {
 		String fallback = role.isEmpty() ? role : Character.toUpperCase(role.charAt(0)) + role.substring(1).replace('_', ' ');
 		return Component.translatableWithFallback("role.dynamic_cooking." + role, fallback);
 	}
 
-	private static ItemStack itemStack(String id) {
+	static ItemStack itemStack(String id) {
 		Identifier key = Identifier.tryParse(id);
 		return key == null ? ItemStack.EMPTY : BuiltInRegistries.ITEM.getOptional(key).map(ItemStack::new).orElse(ItemStack.EMPTY);
 	}
@@ -403,7 +434,7 @@ public class GuideScreen extends Screen {
 		graphics.fill(middle - 1, y - 1, middle + 1, y + 2, RULE);
 	}
 
-	private sealed interface Row permits Cover, Title, Heading, Picture, Caption, Gap, Entry, DishGrid, DishHeader, Need {
+	private sealed interface Row permits Cover, Title, Heading, Picture, Caption, Gap, Entry, DishGrid, DishHeader, Need, Related {
 		int height(GuideScreen screen);
 
 		/** Draws the row and returns the item under the mouse, or an empty stack. */
@@ -647,7 +678,7 @@ public class GuideScreen extends Screen {
 	}
 
 	/** Every dish as a slot to click, six to a row. */
-	private record DishGrid(List<Link.Target> dishes) implements Row {
+	private record DishGrid(List<String> dishes) implements Row {
 		private static final int COLUMNS = 6;
 
 		@Override
@@ -660,7 +691,7 @@ public class GuideScreen extends Screen {
 			ItemStack hovered = ItemStack.EMPTY;
 
 			for (int i = 0; i < dishes.size(); i++) {
-				ItemStack hit = drawSlot(graphics, List.of(dishes.get(i).icon()), slotX(x, i), slotY(y, i), mouseX, mouseY);
+				ItemStack hit = drawSlot(graphics, List.of(itemStack(dishes.get(i))), slotX(x, i), slotY(y, i), mouseX, mouseY);
 				hovered = hit.isEmpty() ? hovered : hit;
 			}
 
@@ -672,8 +703,8 @@ public class GuideScreen extends Screen {
 			List<Link> out = new ArrayList<>();
 
 			for (int i = 0; i < dishes.size(); i++) {
-				Link.Target dish = dishes.get(i);
-				out.add(new Link(slotX(x, i) + 1, slotY(y, i) + 1, 16, 16, dish.page(), dish.icon().getHoverName()));
+				String dish = dishes.get(i);
+				out.add(new Link(slotX(x, i) + 1, slotY(y, i) + 1, 16, 16, screen.dishPages.getOrDefault(dish, 1), itemStack(dish).getHoverName()));
 			}
 
 			return out;
@@ -780,8 +811,58 @@ public class GuideScreen extends Screen {
 
 	/** A clickable area on a page that turns to another page. */
 	private record Link(int x, int y, int width, int height, int target, Component name) {
-		/** Something the contents point at: its icon and its page. */
-		record Target(ItemStack icon, int page) {
+	}
+
+	/**
+	 * The dishes a change to this one makes, as small slots to click. Hovering one says how, like "Fruit/Veg or
+	 * Mushroom instead of Meat/Fish" under Soup.
+	 */
+	private record Related(Map<String, List<Component>> dishes) implements Row {
+		private static final int MAX = 4;
+
+		private int slotX(GuideScreen screen, int x, int i) {
+			return x + screen.font.width(Component.translatable("guide.dynamic_cooking.related")) + 4 + i * 18;
+		}
+
+		private List<String> shown() {
+			return dishes.keySet().stream().limit(MAX).toList();
+		}
+
+		@Override
+		public int height(GuideScreen screen) {
+			return 19;
+		}
+
+		@Override
+		public ItemStack draw(GuideScreen screen, GuiGraphicsExtractor graphics, int x, int y, int mouseX, int mouseY) {
+			graphics.text(screen.font, Component.translatable("guide.dynamic_cooking.related"), x, y + 5, INK_LIGHT, false);
+			List<String> shown = shown();
+
+			for (int i = 0; i < shown.size(); i++) {
+				String dish = shown.get(i);
+				ItemStack icon = itemStack(dish);
+
+				if (!drawSlot(graphics, List.of(icon), slotX(screen, x, i), y, mouseX, mouseY).isEmpty()) {
+					List<Component> lines = new ArrayList<>(List.of(icon.getHoverName()));
+					dishes.get(dish).forEach(way -> lines.add(way.copy().withStyle(ChatFormatting.GRAY)));
+					screen.textTooltip = lines;
+				}
+			}
+
+			return ItemStack.EMPTY;
+		}
+
+		@Override
+		public List<Link> links(GuideScreen screen, int x, int y) {
+			List<Link> out = new ArrayList<>();
+			List<String> shown = shown();
+
+			for (int i = 0; i < shown.size(); i++) {
+				String dish = shown.get(i);
+				out.add(new Link(slotX(screen, x, i) + 1, y + 1, 16, 16, screen.dishPages.getOrDefault(dish, 1), itemStack(dish).getHoverName()));
+			}
+
+			return out;
 		}
 	}
 
