@@ -289,6 +289,10 @@ public class GuideScreen extends Screen {
 			about.add(Component.translatable("guide.dynamic_cooking.makes", type.makes()));
 		}
 
+		if (type.melts()) {
+			about.add(Component.translatable("guide.dynamic_cooking.melts"));
+		}
+
 		rows.add(new DishHeader(dish, dish.getHoverName(), about));
 
 		for (Requirement requirement : type.requires()) {

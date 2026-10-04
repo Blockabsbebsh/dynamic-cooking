@@ -25,6 +25,8 @@ import java.util.Set;
  * @param simmerSeconds     how long that takes, from when the dish is ready
  * @param burnSeconds       how long the dish can wait on the heat before it burns into the fallback dish; 0 for the
  *                          default in {@link CookingRules}
+ * @param melts             whether the dish melts when cooked again, like jelly: the pot and furnaces won't take it, so
+ *                          raw ingredients in it stay raw
  */
 public record DishType(
 		String item,
@@ -42,7 +44,8 @@ public record DishType(
 		int makes,
 		Optional<String> simmersInto,
 		int simmerSeconds,
-		int burnSeconds
+		int burnSeconds,
+		boolean melts
 ) {
 	public static final Set<String> DEFAULT_FLAVOR_ROLES = Set.of("produce", "protein", "mushroom");
 
@@ -63,6 +66,19 @@ public record DishType(
 		if (simmersInto.isPresent() && simmerSeconds < 1) {
 			throw new IllegalArgumentException("a dish that simmers into another needs simmer_seconds");
 		}
+	}
+
+	/** A dish type that doesn't melt. */
+	public DishType(String item, int priority, CookingMethod method, List<Requirement> requires, List<Matcher> forbids, Set<String> flavorRoles,
+			int bonusNutrition, float bonusSaturation, boolean liquid, Optional<String> servedWith, int servings, List<Matcher> rawOk, int makes,
+			Optional<String> simmersInto, int simmerSeconds, int burnSeconds) {
+		this(item, priority, method, requires, forbids, flavorRoles, bonusNutrition, bonusSaturation, liquid, servedWith, servings, rawOk, makes,
+				simmersInto, simmerSeconds, burnSeconds, false);
+	}
+
+	public DishType withMelts(boolean melts) {
+		return new DishType(item, priority, method, requires, forbids, flavorRoles, bonusNutrition, bonusSaturation, liquid, servedWith, servings,
+				rawOk, makes, simmersInto, simmerSeconds, burnSeconds, melts);
 	}
 
 	/** A dish type that doesn't simmer into anything and burns after the default time. */

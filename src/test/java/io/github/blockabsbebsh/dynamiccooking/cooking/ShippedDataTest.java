@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -87,7 +88,8 @@ class ShippedDataTest {
 					json.has("makes") ? json.get("makes").getAsInt() : 1,
 					json.has("simmers_into") ? Optional.of(json.get("simmers_into").getAsString()) : Optional.empty(),
 					json.has("simmer_seconds") ? json.get("simmer_seconds").getAsInt() : 0,
-					json.has("burn_seconds") ? json.get("burn_seconds").getAsInt() : 0
+					json.has("burn_seconds") ? json.get("burn_seconds").getAsInt() : 0,
+					json.has("melts") && json.get("melts").getAsBoolean()
 			));
 		}
 
@@ -413,6 +415,12 @@ class ShippedDataTest {
 		assertCrafted("jelly", List.of("honey"), "slime_ball", "honey_bottle");
 		assertCrafted("jelly", List.of("beef"), "slime_ball", "cooked_beef");
 		assertTrue(resolver.match(CookingMethod.CRAFTING, inputs("slime_ball", "wheat")).isEmpty());
+	}
+
+	@Test
+	void jellyAndIceCreamMeltRatherThanCookAgain() {
+		Set<String> melting = resolver.dishTypes().stream().filter(DishType::melts).map(DishType::item).collect(Collectors.toSet());
+		assertEquals(Set.of("dynamic_cooking:jelly", "dynamic_cooking:ice_cream"), melting);
 	}
 
 	@Test

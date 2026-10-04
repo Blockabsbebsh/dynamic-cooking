@@ -5,6 +5,7 @@ import java.util.Set;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 import net.minecraft.resources.Identifier;
@@ -71,7 +72,8 @@ public final class CookingCodecs {
 			SIDE_EFFECT.listOf().optionalFieldOf("effects", List.of()).forGetter(IngredientProfile::effects)
 	).apply(instance, IngredientProfile::new));
 
-	public static final Codec<DishType> DISH_TYPE = RecordCodecBuilder.create(instance -> instance.group(
+	// A record codec takes at most 16 fields, so the rest are read around these.
+	private static final MapCodec<DishType> DISH_TYPE_FIELDS = RecordCodecBuilder.mapCodec(instance -> instance.group(
 			ID.fieldOf("item").forGetter(DishType::item),
 			Codec.INT.fieldOf("priority").forGetter(DishType::priority),
 			METHOD.optionalFieldOf("method", CookingMethod.POT).forGetter(DishType::method),
@@ -89,6 +91,11 @@ public final class CookingCodecs {
 			Codec.intRange(0, 3600).optionalFieldOf("simmer_seconds", 0).forGetter(DishType::simmerSeconds),
 			Codec.intRange(0, 3600).optionalFieldOf("burn_seconds", 0).forGetter(DishType::burnSeconds)
 	).apply(instance, DishType::new));
+
+	public static final Codec<DishType> DISH_TYPE = RecordCodecBuilder.create(instance -> instance.group(
+			DISH_TYPE_FIELDS.forGetter(type -> type),
+			Codec.BOOL.optionalFieldOf("melts", false).forGetter(DishType::melts)
+	).apply(instance, DishType::withMelts));
 
 	private CookingCodecs() {
 	}

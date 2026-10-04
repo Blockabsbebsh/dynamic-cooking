@@ -107,7 +107,12 @@ public final class CookingService {
 	 * The pot takes such dishes on their own and gives them back cooked.
 	 */
 	public boolean isRecookable(ItemStack stack) {
-		return dishInputs(stack).filter(resolver::canRecook).isPresent();
+		return !melts(stack) && dishInputs(stack).filter(resolver::canRecook).isPresent();
+	}
+
+	/** Whether this is a dish that would melt if cooked again, like jelly or ice cream. */
+	public boolean melts(ItemStack stack) {
+		return stack.has(ModComponents.DISH) && dishType(BuiltInRegistries.ITEM.getKey(stack.getItem()).toString()).filter(DishType::melts).isPresent();
 	}
 
 	/** The dish cooked again so its raw ingredients are cooked, or the same dish if nothing in it can be cooked. */

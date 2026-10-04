@@ -157,6 +157,11 @@ public class CookingPotBlock extends BaseEntityBlock {
 			}
 		}
 
+		if (cooking.melts(stack)) {
+			message(level, player, "melts");
+			return InteractionResult.SUCCESS;
+		}
+
 		boolean servingItem = cooking.isServingItem(stack);
 		boolean rawDish = cooking.isRecookable(stack);
 
