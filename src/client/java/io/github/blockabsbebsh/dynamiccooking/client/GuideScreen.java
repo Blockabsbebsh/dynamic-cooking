@@ -210,7 +210,7 @@ public class GuideScreen extends Screen {
 		steps.add(step("mix", new Picture(small(Items.SUGAR), Part.PLUS, small(Items.STICK), Part.ARROW, big(stack(ModItems.DUBIOUS_MUSH))),
 				Component.translatable("guide.dynamic_cooking.mix.text"), Component.translatable("guide.dynamic_cooking.mix.tip")));
 		steps.add(step("effects", new Picture(small(Items.GOLDEN_APPLE), Part.PLUS, small(Items.GOLDEN_CARROT), Part.ARROW, big(stack(ModItems.PIE))),
-				Component.translatable("guide.dynamic_cooking.effects.text"), null));
+				Component.translatable("guide.dynamic_cooking.effects.text"), Component.translatable("guide.dynamic_cooking.effects.tip")));
 
 		// The title page and contents come first, then the steps, then the dishes.
 		int firstStep = 2;
@@ -227,8 +227,7 @@ public class GuideScreen extends Screen {
 				new Entry(pot, Component.translatable("guide.dynamic_cooking.contents.basics"), firstStep),
 				new Entry(stack(Items.CRAFTING_TABLE), Component.translatable("guide.dynamic_cooking.contents.crafted"), craftedPage),
 				new Heading(Component.translatable("guide.dynamic_cooking.contents.dishes")),
-				new DishGrid(dishIds),
-				new Caption(Component.translatable("guide.dynamic_cooking.contents.hint"), INK_LIGHT)));
+				new DishGrid(dishIds)));
 		steps.forEach(rows -> pages.addAll(split(rows)));
 
 		cooking.ifPresent(service -> {
