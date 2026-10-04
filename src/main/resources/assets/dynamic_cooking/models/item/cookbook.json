@@ -1,7 +1,7 @@
 {
 	"parent": "minecraft:item/generated",
 	"textures": {
-		"layer0": "minecraft:item/knowledge_book",
+		"layer0": "minecraft:item/book",
 		"layer1": "dynamic_cooking:item/cookbook_overlay"
 	}
 }
