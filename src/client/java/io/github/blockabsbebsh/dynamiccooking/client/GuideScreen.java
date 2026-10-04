@@ -383,15 +383,26 @@ public class GuideScreen extends Screen {
 
 	/** A dish's icon and name at the top of its page. */
 	private record Heading(ItemStack icon, Component name) implements Row {
+		/** The name wraps beside the icon's slot. */
+		private static final int NAME_WIDTH = TEXT_WIDTH - 22;
+
 		@Override
 		public int height(GuideScreen screen) {
-			return 18;
+			return Math.max(18, screen.font.split(name, NAME_WIDTH).size() * screen.font.lineHeight + 1);
 		}
 
 		@Override
 		public ItemStack draw(GuideScreen screen, GuiGraphicsExtractor graphics, int x, int y, int mouseX, int mouseY) {
 			graphics.blitSprite(RenderPipelines.GUI_TEXTURED, SLOT, x, y, 18, 18);
-			graphics.text(screen.font, name, x + 22, y + 5, INK, false);
+			List<FormattedCharSequence> lines = screen.font.split(name, NAME_WIDTH);
+			// Centred on the slot when it fits beside it, otherwise from the top down.
+			int lineY = y + 1 + Math.max(0, (18 - lines.size() * screen.font.lineHeight) / 2);
+
+			for (FormattedCharSequence line : lines) {
+				graphics.text(screen.font, line, x + 22, lineY, INK, false);
+				lineY += screen.font.lineHeight;
+			}
+
 			return drawItem(graphics, icon, x + 1, y + 1, mouseX, mouseY);
 		}
 	}
