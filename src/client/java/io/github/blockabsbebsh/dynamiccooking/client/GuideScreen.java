@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
@@ -33,9 +34,11 @@ import io.github.blockabsbebsh.dynamiccooking.dish.CookingService;
 import io.github.blockabsbebsh.dynamiccooking.item.ModItems;
 
 /**
- * The cooking guide: a few pages of steps with item pictures, then one page per dish built from the loaded data,
- * so data packs that add dishes show up too. It opens as two pages of the game's own written book, the left one
- * mirrored so the stitching meets in the middle, so it follows resource packs. Pictures are drawn from item icons.
+ * The cooking guide, drawn on two pages of the game's own written book so it follows resource packs.
+ *
+ * <p>Every page holds one topic: a title page and contents, one page per cooking step with a picture and a short
+ * caption, then one page per dish built from the loaded data, so data packs that add dishes show up too. The contents
+ * link to the steps and to every dish, and a page number links back to the contents.
  */
 public class GuideScreen extends Screen {
 	private static final Identifier BOOK = Identifier.parse("minecraft:textures/gui/book.png");
@@ -47,20 +50,22 @@ public class GuideScreen extends Screen {
 	private static final int PAGE_HEIGHT = 180;
 	/** The writing area of a page: inside the paper, clear of the stitching and the page arrows. */
 	private static final int TEXT_TOP = 14;
-	private static final int TEXT_HEIGHT = 138;
+	private static final int TEXT_HEIGHT = 140;
 	private static final int TEXT_WIDTH = 112;
 	/** Distance from a page's outer edge to its text, which sits away from the stitching. */
 	private static final int TEXT_LEFT = 18;
 	private static final int TEXT_RIGHT_PAGE = 16;
-	/** Requirement rows show this many item icons at once and cycle through the rest. */
-	private static final int ICONS_PER_ROW = 5;
+	private static final int NUMBER_Y = 159;
+	private static final int LINE = 10;
 
-	private static final int PICTURE_BAND = 0xFFE9DFC4;
 	private static final int INK = 0xFF000000;
-	private static final int INK_LIGHT = 0xFF5A5A5A;
+	private static final int INK_LIGHT = 0xFF6B6157;
 	private static final int INK_RED = 0xFF9A2A20;
+	private static final int RULE = 0xFFB8A888;
+	private static final int HIGHLIGHT = 0x40FFFFFF;
 
 	private final List<List<Row>> pages = new ArrayList<>();
+	private final List<LinkButton> links = new ArrayList<>();
 	/** The left page of the open spread; always even. */
 	private int page;
 	private PageArrow back;
@@ -77,8 +82,33 @@ public class GuideScreen extends Screen {
 		}
 
 		// The arrows sit where the written book has them, mirrored on the left page.
-		back = addRenderableWidget(new PageArrow(left() + PAGE_WIDTH - 96 - PageArrow.WIDTH, top() + 156, false, () -> turn(-2)));
-		forward = addRenderableWidget(new PageArrow(left() + PAGE_WIDTH + 96, top() + 156, true, () -> turn(2)));
+		back = addRenderableWidget(new PageArrow(left() + PAGE_WIDTH - 96 - PageArrow.WIDTH, top() + 156, false, () -> turnTo(page - 2)));
+		forward = addRenderableWidget(new PageArrow(left() + PAGE_WIDTH + 96, top() + 156, true, () -> turnTo(page + 2)));
+
+		// Links are laid out once, where their rows will draw them, and only shown while their page is open.
+		links.clear();
+
+		for (int index = 0; index < pages.size(); index++) {
+			int x = textX(index);
+			int y = top() + TEXT_TOP;
+
+			for (Row row : pages.get(index)) {
+				for (Link link : row.links(this, x, y)) {
+					links.add(addRenderableWidget(new LinkButton(index, link, () -> turnTo(link.target()))));
+				}
+
+				y += row.height(this);
+			}
+
+			if (index > 1) {
+				String number = String.valueOf(index + 1);
+				int numberX = x + (TEXT_WIDTH - font.width(number)) / 2;
+				Link home = new Link(numberX - 2, top() + NUMBER_Y - 2, font.width(number) + 4, LINE + 2, 1,
+						Component.translatable("guide.dynamic_cooking.back"));
+				links.add(addRenderableWidget(new LinkButton(index, home, () -> turnTo(1))));
+			}
+		}
+
 		updateButtons();
 	}
 
@@ -90,14 +120,23 @@ public class GuideScreen extends Screen {
 		return Math.max(2, (height - PAGE_HEIGHT) / 2);
 	}
 
-	private void turn(int by) {
-		page = Math.clamp(page + by, 0, (pages.size() - 1) & ~1);
+	/** Where the text of a page starts: pages alternate left and right. */
+	private int textX(int index) {
+		return index % 2 == 0 ? left() + TEXT_LEFT : left() + PAGE_WIDTH + TEXT_RIGHT_PAGE;
+	}
+
+	private void turnTo(int target) {
+		page = Math.clamp(target, 0, pages.size() - 1) & ~1;
 		updateButtons();
 	}
 
 	private void updateButtons() {
 		back.visible = page > 0;
 		forward.visible = page + 2 < pages.size();
+
+		for (LinkButton link : links) {
+			link.visible = (link.page & ~1) == page;
+		}
 	}
 
 	@Override
@@ -111,18 +150,18 @@ public class GuideScreen extends Screen {
 
 		ItemStack hovered = ItemStack.EMPTY;
 
-		for (int side = 0; side < 2 && page + side < pages.size(); side++) {
-			int x = side == 0 ? left + TEXT_LEFT : left + PAGE_WIDTH + TEXT_RIGHT_PAGE;
+		for (int index = page; index < page + 2 && index < pages.size(); index++) {
+			int x = textX(index);
 			int y = top + TEXT_TOP;
 
-			for (Row row : pages.get(page + side)) {
+			for (Row row : pages.get(index)) {
 				ItemStack hit = row.draw(this, graphics, x, y, mouseX, mouseY);
 				hovered = hit.isEmpty() ? hovered : hit;
-				y += row.height(this) + 4;
+				y += row.height(this);
 			}
 
-			String number = String.valueOf(page + side + 1);
-			graphics.text(font, number, x + (TEXT_WIDTH - font.width(number)) / 2, top + 159, INK_LIGHT, false);
+			String number = String.valueOf(index + 1);
+			graphics.text(font, number, x + (TEXT_WIDTH - font.width(number)) / 2, top + NUMBER_Y, INK_LIGHT, false);
 		}
 
 		super.extractRenderState(graphics, mouseX, mouseY, partialTick);
@@ -135,106 +174,94 @@ public class GuideScreen extends Screen {
 	private void buildPages() {
 		Optional<CookingService> cooking = Optional.ofNullable(minecraft.level).map(level -> CookingService.create(level.registryAccess()));
 		int maxIngredients = cooking.map(CookingService::maxIngredients).orElse(5);
-		ItemStack pot = new ItemStack(ModBlocks.COOKING_POT);
-		List<Component> crafted = cooking.map(service -> service.dishTypes().stream()
-				.filter(type -> type.method() == CookingMethod.CRAFTING)
-				.map(type -> itemStack(type.item()).getHoverName())
-				.toList()).orElse(List.of());
+		List<DishType> dishTypes = cooking.map(CookingService::dishTypes).orElse(List.of());
+		ItemStack pot = stack(ModBlocks.COOKING_POT.asItem());
 
 		List<List<Row>> steps = new ArrayList<>();
-		steps.add(step("pot", new Picture(List.of(pot, "+", stack(Items.CAMPFIRE), stack(Items.FURNACE), stack(Items.MAGMA_BLOCK))),
-				Component.translatable("guide.dynamic_cooking.pot.text")));
-		steps.add(step("add", new Picture(List.of(stack(Items.CARROT), stack(Items.POTATO), stack(Items.BEEF), "→", pot)),
-				Component.translatable("guide.dynamic_cooking.add.text", maxIngredients)));
-		steps.add(step("water", new Picture(List.of(stack(Items.WATER_BUCKET), "→", pot)),
-				Component.translatable("guide.dynamic_cooking.water.text")));
-		steps.add(step("cook", new Picture(List.of(pot, "→", stack(Items.BELL))),
-				Component.translatable("guide.dynamic_cooking.cook.text")));
-		steps.add(step("serve", new Picture(List.of(pot, "+", stack(Items.BOWL), "→", stack(ModItems.STEW))),
-				Component.translatable("guide.dynamic_cooking.serve.text")));
+		steps.add(step("pot", new Picture(new Pile(pot, stack(Items.CAMPFIRE)), Part.OR, small(Items.FURNACE), small(Items.MAGMA_BLOCK)),
+				Component.translatable("guide.dynamic_cooking.pot.text"), null));
+		steps.add(step("add", new Picture(small(Items.CARROT), small(Items.POTATO), small(Items.BEEF), Part.ARROW, big(pot)),
+				Component.translatable("guide.dynamic_cooking.add.text", maxIngredients), Component.translatable("guide.dynamic_cooking.add.tip")));
+		steps.add(step("water", new Picture(big(stack(Items.WATER_BUCKET)), Part.ARROW, big(pot)),
+				Component.translatable("guide.dynamic_cooking.water.text"), Component.translatable("guide.dynamic_cooking.water.tip")));
+		steps.add(step("cook", new Picture(big(pot), Part.ARROW, big(stack(Items.BELL))),
+				Component.translatable("guide.dynamic_cooking.cook.text"), null));
+		steps.add(step("serve", new Picture(small(Items.BOWL), Part.ARROW, big(stack(ModItems.STEW))),
+				Component.translatable("guide.dynamic_cooking.serve.text"), null));
+		int crafted = steps.size();
+		steps.add(step("craft", new Picture(new Grid(Map.of(0, stack(Items.BREAD), 4, stack(Items.COOKED_BEEF), 8, stack(Items.BREAD))), Part.ARROW, big(stack(ModItems.SANDWICH))),
+				Component.translatable("guide.dynamic_cooking.craft.text"), null));
+		steps.add(step("raw", new Picture(small(ModItems.SKEWER), Part.ARROW, small(Items.FURNACE), small(Items.SMOKER), small(Items.CAMPFIRE)),
+				Component.translatable("guide.dynamic_cooking.raw.text"), Component.translatable("guide.dynamic_cooking.raw.tip")));
+		steps.add(step("mix", new Picture(small(Items.SUGAR), Part.PLUS, small(Items.STICK), Part.ARROW, big(stack(ModItems.DUBIOUS_MUSH))),
+				Component.translatable("guide.dynamic_cooking.mix.text"), Component.translatable("guide.dynamic_cooking.mix.tip")));
+		steps.add(step("effects", new Picture(small(Items.GOLDEN_APPLE), Part.PLUS, small(Items.GOLDEN_CARROT), Part.ARROW, big(stack(ModItems.PIE))),
+				Component.translatable("guide.dynamic_cooking.effects.text"), null));
 
-		if (!crafted.isEmpty()) {
-			steps.add(step("craft", new Picture(List.of(stack(Items.BREAD), stack(Items.COOKED_BEEF), stack(Items.BREAD), "→",
-					stack(Items.CRAFTING_TABLE), "→", stack(ModItems.SANDWICH))),
-					Component.translatable("guide.dynamic_cooking.craft.text", join(crafted, ", "))));
+		// Page numbers: the title page and contents, then the steps, then one page per dish.
+		int firstStep = 2;
+		List<Link.Target> dishes = new ArrayList<>();
+
+		for (int i = 0; i < dishTypes.size(); i++) {
+			dishes.add(new Link.Target(itemStack(dishTypes.get(i).item()), firstStep + steps.size() + i));
 		}
 
-		steps.add(step("raw", new Picture(List.of(stack(ModItems.SKEWER), "→", stack(Items.FURNACE), stack(Items.SMOKER), stack(Items.CAMPFIRE), pot)),
-				Component.translatable("guide.dynamic_cooking.raw.text")));
-		steps.add(step("mix", new Picture(List.of(stack(Items.ENCHANTED_GOLDEN_APPLE), "→", stack(ModItems.PIE))),
-				Component.translatable("guide.dynamic_cooking.mix.text")));
-		steps.add(List.of(text(Component.translatable("guide.dynamic_cooking.dishes").withStyle(ChatFormatting.ITALIC))));
-		pack(steps);
-
-		cooking.ifPresent(service -> {
-			for (DishType type : service.dishTypes()) {
-				pack(List.of(dishPage(service, type)));
-			}
-		});
+		pages.add(List.of(new Cover(pot, stack(Items.CAMPFIRE))));
+		pages.add(List.of(
+				new Title(Component.translatable("guide.dynamic_cooking.contents")),
+				new Entry(pot, Component.translatable("guide.dynamic_cooking.contents.basics"), firstStep),
+				new Entry(stack(Items.CRAFTING_TABLE), Component.translatable("guide.dynamic_cooking.contents.crafted"), firstStep + crafted),
+				new Heading(Component.translatable("guide.dynamic_cooking.contents.dishes")),
+				new DishGrid(dishes),
+				new Caption(Component.translatable("guide.dynamic_cooking.contents.hint"), INK_LIGHT)));
+		steps.forEach(this::addPage);
+		cooking.ifPresent(service -> dishTypes.forEach(type -> addPage(dishPage(service, type))));
 	}
 
-	private static List<Row> step(String key, Picture picture, Component text) {
-		return List.of(heading("guide.dynamic_cooking." + key + ".title"), picture, text(text));
-	}
-
-	/**
-	 * Lays blocks of rows out on pages, starting a new page whenever the next block doesn't fit. A block taller than a page
-	 * is split between rows.
-	 */
-	private void pack(List<List<Row>> blocks) {
-		int available = TEXT_HEIGHT;
-		List<Row> page = new ArrayList<>();
+	/** Adds a page, or several when a data pack dish has more rows than fit on one. */
+	private void addPage(List<Row> rows) {
+		List<Row> current = new ArrayList<>();
 		int used = 0;
 
-		for (List<Row> block : blocks) {
-			int height = block.stream().mapToInt(row -> row.height(this) + 4).sum();
-			int gap = Spacer.INSTANCE.height(this) + 4;
-
-			if (!page.isEmpty() && used + gap + height > available) {
-				pages.add(page);
-				page = new ArrayList<>();
+		for (Row row : rows) {
+			if (!current.isEmpty() && used + row.height(this) > TEXT_HEIGHT) {
+				pages.add(current);
+				current = new ArrayList<>();
 				used = 0;
-			} else if (!page.isEmpty()) {
-				page.add(Spacer.INSTANCE);
-				used += gap;
 			}
 
-			for (Row row : block) {
-				int rowHeight = row.height(this) + 4;
-
-				if (!page.isEmpty() && used + rowHeight > available) {
-					pages.add(page);
-					page = new ArrayList<>();
-					used = 0;
-				}
-
-				page.add(row);
-				used += rowHeight;
-			}
+			current.add(row);
+			used += row.height(this);
 		}
 
-		if (!page.isEmpty()) {
-			pages.add(page);
+		pages.add(current);
+	}
+
+	private static List<Row> step(String key, Picture picture, Component text, Component tip) {
+		List<Row> rows = new ArrayList<>(List.of(new Title(Component.translatable("guide.dynamic_cooking." + key + ".title")), picture, new Caption(text, INK)));
+
+		if (tip != null) {
+			rows.add(new Gap(4));
+			rows.add(new Caption(tip, INK_LIGHT));
 		}
+
+		return rows;
 	}
 
 	private List<Row> dishPage(CookingService cooking, DishType type) {
 		List<Row> rows = new ArrayList<>();
 		ItemStack dish = itemStack(type.item());
-		rows.add(new Heading(dish, dish.getHoverName().copy().withStyle(ChatFormatting.BOLD)));
-
-		MutableComponent method = Component.translatable("guide.dynamic_cooking.method." + type.method().id());
+		List<Component> about = new ArrayList<>(List.of(Component.translatable("guide.dynamic_cooking.method." + type.method().id())));
 
 		if (type.method() == CookingMethod.POT && type.servedWith().isPresent()) {
-			method.append(" · ").append(Component.translatable("guide.dynamic_cooking.served_with", itemStack(type.servedWith().get()).getHoverName()));
+			about.add(Component.translatable("guide.dynamic_cooking.served_with", itemStack(type.servedWith().get()).getHoverName()));
 		}
 
 		if (type.makes() > 1) {
-			method.append(" · ").append(Component.translatable("guide.dynamic_cooking.makes", type.makes()));
+			about.add(Component.translatable("guide.dynamic_cooking.makes", type.makes()));
 		}
 
-		rows.add(new Text(method, INK_LIGHT));
-		rows.add(heading("guide.dynamic_cooking.needs"));
+		rows.add(new DishHeader(dish, dish.getHoverName(), about));
 
 		for (Requirement requirement : type.requires()) {
 			Component label = matcherText(requirement.matcher());
@@ -243,7 +270,7 @@ public class GuideScreen extends Screen {
 				label = Component.translatable("guide.dynamic_cooking.count", requirement.count(), label);
 			}
 
-			rows.add(new Icons(label, items(cooking, requirement.matcher())));
+			rows.add(new Need(items(cooking, requirement.matcher()), label, INK));
 		}
 
 		// Extras: flavors the dish takes on top of what it needs, minus anything it refuses.
@@ -255,13 +282,13 @@ public class GuideScreen extends Screen {
 
 		if (!extras.isEmpty()) {
 			Matcher matcher = new Matcher(Set.of(), Set.copyOf(extras));
-			rows.add(heading("guide.dynamic_cooking.extras"));
-			rows.add(new Icons(matcherText(matcher), items(cooking, matcher)));
+			rows.add(new Need(items(cooking, matcher), Component.translatable("guide.dynamic_cooking.extras", matcherText(matcher)), INK_LIGHT));
 		}
 
 		if (!type.forbids().isEmpty()) {
 			List<Component> refused = type.forbids().stream().map(GuideScreen::matcherText).toList();
-			rows.add(new Text(Component.translatable("guide.dynamic_cooking.forbids", join(refused, ", ")), INK_RED));
+			List<ItemStack> refusedItems = type.forbids().stream().flatMap(matcher -> items(cooking, matcher).stream()).toList();
+			rows.add(new Need(refusedItems, Component.translatable("guide.dynamic_cooking.forbids", join(refused, ", ")), INK_RED));
 		}
 
 		return rows;
@@ -323,149 +350,467 @@ public class GuideScreen extends Screen {
 		return new ItemStack(item);
 	}
 
-	private static Row heading(String key) {
-		return new Text(Component.translatable(key).withStyle(ChatFormatting.BOLD), INK);
+	private static Part small(Item item) {
+		return new Icon(stack(item), 1);
 	}
 
-	private static Row text(Component text) {
-		return new Text(text, INK);
+	private static Part big(ItemStack stack) {
+		return new Icon(stack, 2);
 	}
 
-	private List<FormattedCharSequence> lines(Component text) {
-		return font.split(text, TEXT_WIDTH);
+	private List<FormattedCharSequence> lines(Component text, int width) {
+		return font.split(text, width);
 	}
 
-	/** Draws an item icon and returns it if the mouse is over it. */
-	private static ItemStack drawItem(GuiGraphicsExtractor graphics, ItemStack stack, int x, int y, int mouseX, int mouseY) {
-		graphics.item(stack, x, y);
-		boolean over = mouseX >= x && mouseX < x + 16 && mouseY >= y && mouseY < y + 16;
+	/** Draws an item icon, scaled up for pictures, and returns it if the mouse is over it. */
+	private static ItemStack drawItem(GuiGraphicsExtractor graphics, ItemStack stack, int x, int y, int scale, int mouseX, int mouseY) {
+		if (scale == 1) {
+			graphics.item(stack, x, y);
+		} else {
+			graphics.pose().pushMatrix();
+			graphics.pose().translate(x, y);
+			graphics.pose().scale(scale);
+			graphics.item(stack, 0, 0);
+			graphics.pose().popMatrix();
+		}
+
+		int size = 16 * scale;
+		boolean over = mouseX >= x && mouseX < x + size && mouseY >= y && mouseY < y + size;
 		return over ? stack : ItemStack.EMPTY;
 	}
 
-	private sealed interface Row permits Text, Heading, Picture, Icons, Spacer {
+	/** A slot with one item in it; lists of items take turns, a second each. */
+	private static ItemStack drawSlot(GuiGraphicsExtractor graphics, List<ItemStack> items, int x, int y, int mouseX, int mouseY) {
+		graphics.blitSprite(RenderPipelines.GUI_TEXTURED, SLOT, x, y, 18, 18);
+
+		if (items.isEmpty()) {
+			return ItemStack.EMPTY;
+		}
+
+		ItemStack shown = items.get((int) (System.currentTimeMillis() / 1000 % items.size()));
+		return drawItem(graphics, shown, x + 1, y + 1, 1, mouseX, mouseY);
+	}
+
+	private void centered(GuiGraphicsExtractor graphics, FormattedCharSequence line, int x, int y, int color) {
+		graphics.text(font, line, x + (TEXT_WIDTH - font.width(line)) / 2, y, color, false);
+	}
+
+	/** A small ornament under a title: a line either side of a dot. */
+	private static void rule(GuiGraphicsExtractor graphics, int x, int y) {
+		int middle = x + TEXT_WIDTH / 2;
+		graphics.fill(middle - 22, y, middle - 3, y + 1, RULE);
+		graphics.fill(middle + 3, y, middle + 22, y + 1, RULE);
+		graphics.fill(middle - 1, y - 1, middle + 1, y + 2, RULE);
+	}
+
+	private sealed interface Row permits Cover, Title, Heading, Picture, Caption, Gap, Entry, DishGrid, DishHeader, Need {
 		int height(GuideScreen screen);
 
 		/** Draws the row and returns the item under the mouse, or an empty stack. */
 		ItemStack draw(GuideScreen screen, GuiGraphicsExtractor graphics, int x, int y, int mouseX, int mouseY);
+
+		/** The clickable parts of the row when drawn at x, y. */
+		default List<Link> links(GuideScreen screen, int x, int y) {
+			return List.of();
+		}
 	}
 
-	private record Text(Component text, int color) implements Row {
+	/** The first page: the guide's name over a pot on a campfire, drawn large. */
+	private record Cover(ItemStack pot, ItemStack fire) implements Row {
 		@Override
 		public int height(GuideScreen screen) {
-			return screen.lines(text).size() * screen.font.lineHeight;
+			return TEXT_HEIGHT;
 		}
 
 		@Override
 		public ItemStack draw(GuideScreen screen, GuiGraphicsExtractor graphics, int x, int y, int mouseX, int mouseY) {
-			for (FormattedCharSequence line : screen.lines(text)) {
-				graphics.text(screen.font, line, x, y, color, false);
-				y += screen.font.lineHeight;
-			}
+			Component title = Component.translatable("guide.dynamic_cooking.title").withStyle(ChatFormatting.BOLD);
+			screen.centered(graphics, title.getVisualOrderText(), x, y + 6, INK);
+			rule(graphics, x, y + 19);
 
-			return ItemStack.EMPTY;
-		}
-	}
+			int pictureX = x + TEXT_WIDTH / 2 - 24;
+			ItemStack hovered = drawItem(graphics, fire, pictureX, y + 54, 3, mouseX, mouseY);
+			ItemStack hit = drawItem(graphics, pot, pictureX, y + 24, 3, mouseX, mouseY);
+			hovered = hit.isEmpty() ? hovered : hit;
 
-	/** A little extra room between steps that share a page. */
-	private record Spacer() implements Row {
-		static final Spacer INSTANCE = new Spacer();
+			int lineY = y + 110;
 
-		@Override
-		public int height(GuideScreen screen) {
-			return 4;
-		}
-
-		@Override
-		public ItemStack draw(GuideScreen screen, GuiGraphicsExtractor graphics, int x, int y, int mouseX, int mouseY) {
-			return ItemStack.EMPTY;
-		}
-	}
-
-	/** A dish's icon and name at the top of its page. */
-	private record Heading(ItemStack icon, Component name) implements Row {
-		/** The name wraps beside the icon's slot. */
-		private static final int NAME_WIDTH = TEXT_WIDTH - 22;
-
-		@Override
-		public int height(GuideScreen screen) {
-			return Math.max(18, screen.font.split(name, NAME_WIDTH).size() * screen.font.lineHeight + 1);
-		}
-
-		@Override
-		public ItemStack draw(GuideScreen screen, GuiGraphicsExtractor graphics, int x, int y, int mouseX, int mouseY) {
-			graphics.blitSprite(RenderPipelines.GUI_TEXTURED, SLOT, x, y, 18, 18);
-			List<FormattedCharSequence> lines = screen.font.split(name, NAME_WIDTH);
-			// Centred on the slot when it fits beside it, otherwise from the top down.
-			int lineY = y + 1 + Math.max(0, (18 - lines.size() * screen.font.lineHeight) / 2);
-
-			for (FormattedCharSequence line : lines) {
-				graphics.text(screen.font, line, x + 22, lineY, INK, false);
-				lineY += screen.font.lineHeight;
-			}
-
-			return drawItem(graphics, icon, x + 1, y + 1, mouseX, mouseY);
-		}
-	}
-
-	/** A step drawn as item icons with arrows and plus signs between them, centered on a darker band of paper. */
-	private record Picture(List<Object> parts) implements Row {
-		@Override
-		public int height(GuideScreen screen) {
-			return 22;
-		}
-
-		@Override
-		public ItemStack draw(GuideScreen screen, GuiGraphicsExtractor graphics, int x, int y, int mouseX, int mouseY) {
-			graphics.fill(x, y, x + TEXT_WIDTH, y + 22, PICTURE_BAND);
-
-			int total = parts.stream().mapToInt(part -> width(screen, part)).sum();
-			int partX = x + (TEXT_WIDTH - total) / 2;
-			ItemStack hovered = ItemStack.EMPTY;
-
-			for (Object part : parts) {
-				if (part instanceof ItemStack stack) {
-					ItemStack hit = drawItem(graphics, stack, partX + 1, y + 3, mouseX, mouseY);
-					hovered = hit.isEmpty() ? hovered : hit;
-				} else {
-					graphics.text(screen.font, part.toString(), partX + 3, y + 7, INK, false);
-				}
-
-				partX += width(screen, part);
+			for (FormattedCharSequence line : screen.lines(Component.translatable("guide.dynamic_cooking.tagline"), TEXT_WIDTH - 8)) {
+				screen.centered(graphics, line, x, lineY, INK_LIGHT);
+				lineY += LINE;
 			}
 
 			return hovered;
 		}
-
-		private static int width(GuideScreen screen, Object part) {
-			return part instanceof ItemStack ? 18 : screen.font.width(part.toString()) + 6;
-		}
 	}
 
-	/** One thing a dish needs: its name, then every item that counts, cycling when there are too many to fit. */
-	private record Icons(Component label, List<ItemStack> items) implements Row {
+	/** A page title, centred, with an ornament under it. */
+	private record Title(Component text) implements Row {
 		@Override
 		public int height(GuideScreen screen) {
-			return screen.lines(label).size() * screen.font.lineHeight + (items.isEmpty() ? 0 : 20);
+			return 20;
 		}
 
 		@Override
 		public ItemStack draw(GuideScreen screen, GuiGraphicsExtractor graphics, int x, int y, int mouseX, int mouseY) {
-			for (FormattedCharSequence line : screen.lines(Component.literal("• ").append(label))) {
-				graphics.text(screen.font, line, x, y, INK, false);
-				y += screen.font.lineHeight;
+			screen.centered(graphics, text.copy().withStyle(ChatFormatting.BOLD).getVisualOrderText(), x, y, INK);
+			rule(graphics, x, y + 12);
+			return ItemStack.EMPTY;
+		}
+	}
+
+	/** A bold heading inside a page. */
+	private record Heading(Component text) implements Row {
+		@Override
+		public int height(GuideScreen screen) {
+			return 14;
+		}
+
+		@Override
+		public ItemStack draw(GuideScreen screen, GuiGraphicsExtractor graphics, int x, int y, int mouseX, int mouseY) {
+			graphics.text(screen.font, text.copy().withStyle(ChatFormatting.BOLD), x, y + 3, INK, false);
+			return ItemStack.EMPTY;
+		}
+	}
+
+	/** Centred lines of text. */
+	private record Caption(Component text, int color) implements Row {
+		@Override
+		public int height(GuideScreen screen) {
+			return screen.lines(text, TEXT_WIDTH).size() * LINE;
+		}
+
+		@Override
+		public ItemStack draw(GuideScreen screen, GuiGraphicsExtractor graphics, int x, int y, int mouseX, int mouseY) {
+			for (FormattedCharSequence line : screen.lines(text, TEXT_WIDTH)) {
+				screen.centered(graphics, line, x, y, color);
+				y += LINE;
 			}
 
-			int shown = Math.min(ICONS_PER_ROW, items.size());
-			int start = items.size() > ICONS_PER_ROW ? (int) (System.currentTimeMillis() / 1000 % items.size()) : 0;
+			return ItemStack.EMPTY;
+		}
+	}
+
+	private record Gap(int size) implements Row {
+		@Override
+		public int height(GuideScreen screen) {
+			return size;
+		}
+
+		@Override
+		public ItemStack draw(GuideScreen screen, GuiGraphicsExtractor graphics, int x, int y, int mouseX, int mouseY) {
+			return ItemStack.EMPTY;
+		}
+	}
+
+	/** One piece of a picture. */
+	private sealed interface Part permits Icon, Pile, Grid, Sign {
+		Part ARROW = new Sign("→");
+		Part PLUS = new Sign("+");
+		Part OR = new Sign("or");
+
+		int width(GuideScreen screen);
+
+		/** Draws the part, vertically centred on middle, and returns the item under the mouse. */
+		ItemStack draw(GuideScreen screen, GuiGraphicsExtractor graphics, int x, int middle, int mouseX, int mouseY);
+	}
+
+	private record Icon(ItemStack stack, int scale) implements Part {
+		@Override
+		public int width(GuideScreen screen) {
+			return 16 * scale;
+		}
+
+		@Override
+		public ItemStack draw(GuideScreen screen, GuiGraphicsExtractor graphics, int x, int middle, int mouseX, int mouseY) {
+			return drawItem(graphics, stack, x, middle - 8 * scale, scale, mouseX, mouseY);
+		}
+	}
+
+	/** One item sitting on another, both large: the pot on its fire. */
+	private record Pile(ItemStack top, ItemStack bottom) implements Part {
+		@Override
+		public int width(GuideScreen screen) {
+			return 32;
+		}
+
+		@Override
+		public ItemStack draw(GuideScreen screen, GuiGraphicsExtractor graphics, int x, int middle, int mouseX, int mouseY) {
+			ItemStack below = drawItem(graphics, bottom, x, middle - 3, 2, mouseX, mouseY);
+			ItemStack above = drawItem(graphics, top, x, middle - 27, 2, mouseX, mouseY);
+			return above.isEmpty() ? below : above;
+		}
+	}
+
+	/** A crafting grid with items in some of its nine slots, numbered left to right, top to bottom. */
+	private record Grid(Map<Integer, ItemStack> slots) implements Part {
+		@Override
+		public int width(GuideScreen screen) {
+			return 54;
+		}
+
+		@Override
+		public ItemStack draw(GuideScreen screen, GuiGraphicsExtractor graphics, int x, int middle, int mouseX, int mouseY) {
 			ItemStack hovered = ItemStack.EMPTY;
 
-			for (int i = 0; i < shown; i++) {
-				graphics.blitSprite(RenderPipelines.GUI_TEXTURED, SLOT, x + 4 + i * 18, y + 1, 18, 18);
-				ItemStack hit = drawItem(graphics, items.get((start + i) % items.size()), x + 5 + i * 18, y + 2, mouseX, mouseY);
+			for (int i = 0; i < 9; i++) {
+				ItemStack item = slots.get(i);
+				ItemStack hit = drawSlot(graphics, item == null ? List.of() : List.of(item), x + i % 3 * 18, middle - 27 + i / 3 * 18, mouseX, mouseY);
 				hovered = hit.isEmpty() ? hovered : hit;
 			}
 
 			return hovered;
+		}
+	}
+
+	/** An arrow, plus sign or word between items. The arrow is drawn rather than typed, to match the pixel art. */
+	private record Sign(String text) implements Part {
+		private boolean isArrow() {
+			return text.equals("→");
+		}
+
+		@Override
+		public int width(GuideScreen screen) {
+			return isArrow() ? 10 : screen.font.width(text);
+		}
+
+		@Override
+		public ItemStack draw(GuideScreen screen, GuiGraphicsExtractor graphics, int x, int middle, int mouseX, int mouseY) {
+			if (isArrow()) {
+				graphics.fill(x, middle - 1, x + 7, middle, INK_LIGHT);
+
+				for (int i = 0; i < 4; i++) {
+					graphics.fill(x + 6 + i, middle - 4 + i, x + 7 + i, middle + 3 - i, INK_LIGHT);
+				}
+			} else {
+				graphics.text(screen.font, text, x, middle - 4, INK_LIGHT, false);
+			}
+
+			return ItemStack.EMPTY;
+		}
+	}
+
+	/** A step's illustration: items and signs in a row, centred in a band under the title. */
+	private record Picture(List<Part> parts) implements Row {
+		private static final int GAP = 4;
+
+		Picture(Part... parts) {
+			this(List.of(parts));
+		}
+
+		@Override
+		public int height(GuideScreen screen) {
+			return 58;
+		}
+
+		@Override
+		public ItemStack draw(GuideScreen screen, GuiGraphicsExtractor graphics, int x, int y, int mouseX, int mouseY) {
+			int total = parts.stream().mapToInt(part -> part.width(screen)).sum() + GAP * (parts.size() - 1);
+			int partX = x + (TEXT_WIDTH - total) / 2;
+			ItemStack hovered = ItemStack.EMPTY;
+
+			for (Part part : parts) {
+				ItemStack hit = part.draw(screen, graphics, partX, y + 28, mouseX, mouseY);
+				hovered = hit.isEmpty() ? hovered : hit;
+				partX += part.width(screen) + GAP;
+			}
+
+			return hovered;
+		}
+	}
+
+	/** A contents line: icon, name, dotted leader and page number. The whole line is a link. */
+	private record Entry(ItemStack icon, Component name, int target) implements Row {
+		@Override
+		public int height(GuideScreen screen) {
+			return 19;
+		}
+
+		@Override
+		public ItemStack draw(GuideScreen screen, GuiGraphicsExtractor graphics, int x, int y, int mouseX, int mouseY) {
+			graphics.text(screen.font, name, x + 20, y + 4, INK, false);
+			String number = String.valueOf(target + 1);
+			int numberX = x + TEXT_WIDTH - screen.font.width(number);
+			graphics.text(screen.font, number, numberX, y + 4, INK_LIGHT, false);
+
+			for (int dotX = x + 22 + screen.font.width(name); dotX < numberX - 3; dotX += 3) {
+				graphics.fill(dotX, y + 11, dotX + 1, y + 12, RULE);
+			}
+
+			return drawItem(graphics, icon, x, y, 1, mouseX, mouseY);
+		}
+
+		@Override
+		public List<Link> links(GuideScreen screen, int x, int y) {
+			return List.of(new Link(x - 1, y - 1, TEXT_WIDTH + 2, 18, target, name));
+		}
+	}
+
+	/** Every dish as a slot to click, six to a row. */
+	private record DishGrid(List<Link.Target> dishes) implements Row {
+		private static final int COLUMNS = 6;
+
+		@Override
+		public int height(GuideScreen screen) {
+			return (dishes.size() + COLUMNS - 1) / COLUMNS * 18 + 6;
+		}
+
+		@Override
+		public ItemStack draw(GuideScreen screen, GuiGraphicsExtractor graphics, int x, int y, int mouseX, int mouseY) {
+			ItemStack hovered = ItemStack.EMPTY;
+
+			for (int i = 0; i < dishes.size(); i++) {
+				ItemStack hit = drawSlot(graphics, List.of(dishes.get(i).icon()), slotX(x, i), slotY(y, i), mouseX, mouseY);
+				hovered = hit.isEmpty() ? hovered : hit;
+			}
+
+			return hovered;
+		}
+
+		@Override
+		public List<Link> links(GuideScreen screen, int x, int y) {
+			List<Link> out = new ArrayList<>();
+
+			for (int i = 0; i < dishes.size(); i++) {
+				Link.Target dish = dishes.get(i);
+				out.add(new Link(slotX(x, i) + 1, slotY(y, i) + 1, 16, 16, dish.page(), dish.icon().getHoverName()));
+			}
+
+			return out;
+		}
+
+		private static int slotX(int x, int i) {
+			return x + (TEXT_WIDTH - COLUMNS * 18) / 2 + i % COLUMNS * 18;
+		}
+
+		private static int slotY(int y, int i) {
+			return y + i / COLUMNS * 18;
+		}
+	}
+
+	/** The top of a dish page: the dish drawn large, its name in bold and how it is made, then a rule. */
+	private record DishHeader(ItemStack dish, Component name, List<Component> about) implements Row {
+		private static final int TEXT_X = 37;
+
+		private List<FormattedCharSequence> titleLines(GuideScreen screen) {
+			return screen.lines(name.copy().withStyle(ChatFormatting.BOLD), TEXT_WIDTH - TEXT_X);
+		}
+
+		private List<FormattedCharSequence> lines(GuideScreen screen) {
+			List<FormattedCharSequence> out = new ArrayList<>(titleLines(screen));
+			about.forEach(line -> out.addAll(screen.lines(line, TEXT_WIDTH - TEXT_X)));
+			return out;
+		}
+
+		@Override
+		public int height(GuideScreen screen) {
+			return Math.max(32, lines(screen).size() * LINE) + 8;
+		}
+
+		@Override
+		public ItemStack draw(GuideScreen screen, GuiGraphicsExtractor graphics, int x, int y, int mouseX, int mouseY) {
+			List<FormattedCharSequence> lines = lines(screen);
+			int titleLines = titleLines(screen).size();
+			int lineY = y + Math.max(0, (32 - lines.size() * LINE) / 2) + 1;
+
+			for (int i = 0; i < lines.size(); i++) {
+				graphics.text(screen.font, lines.get(i), x + TEXT_X, lineY, i < titleLines ? INK : INK_LIGHT, false);
+				lineY += LINE;
+			}
+
+			int ruleY = y + height(screen) - 5;
+			graphics.fill(x, ruleY, x + TEXT_WIDTH, ruleY + 1, RULE);
+			return drawItem(graphics, dish, x, y, 2, mouseX, mouseY);
+		}
+	}
+
+	/** One line of a recipe: a slot showing what counts, in turn, and what it is. Long labels stop after three lines. */
+	private record Need(List<ItemStack> items, Component label, int color) implements Row {
+		private static final int TEXT_X = 23;
+		private static final int MAX_LINES = 3;
+
+		private List<FormattedCharSequence> lines(GuideScreen screen) {
+			List<FormattedCharSequence> lines = screen.lines(label, TEXT_WIDTH - TEXT_X);
+
+			if (lines.size() <= MAX_LINES) {
+				return lines;
+			}
+
+			// Cut the last shown line short and end it with an ellipsis; the slot still shows every item.
+			String last = plain(lines.get(MAX_LINES - 1));
+			int room = TEXT_WIDTH - TEXT_X - screen.font.width("…");
+
+			while (!last.isEmpty() && screen.font.width(last) > room) {
+				last = last.substring(0, last.length() - 1);
+			}
+
+			List<FormattedCharSequence> out = new ArrayList<>(lines.subList(0, MAX_LINES - 1));
+			out.add(Component.literal(last.stripTrailing() + "…").getVisualOrderText());
+			return out;
+		}
+
+		private static String plain(FormattedCharSequence sequence) {
+			StringBuilder out = new StringBuilder();
+			sequence.accept((index, style, codePoint) -> {
+				out.appendCodePoint(codePoint);
+				return true;
+			});
+			return out.toString();
+		}
+
+		@Override
+		public int height(GuideScreen screen) {
+			return Math.max(19, lines(screen).size() * LINE + 1);
+		}
+
+		@Override
+		public ItemStack draw(GuideScreen screen, GuiGraphicsExtractor graphics, int x, int y, int mouseX, int mouseY) {
+			List<FormattedCharSequence> lines = lines(screen);
+			// Centred beside the slot when one line, from the slot's top when more.
+			int lineY = y + (height(screen) - lines.size() * LINE) / 2 + 1;
+
+			for (FormattedCharSequence line : lines) {
+				graphics.text(screen.font, line, x + TEXT_X, lineY, color, false);
+				lineY += LINE;
+			}
+
+			return drawSlot(graphics, items, x, y, mouseX, mouseY);
+		}
+	}
+
+	/** A clickable area on a page that turns to another page. */
+	private record Link(int x, int y, int width, int height, int target, Component name) {
+		/** Something the contents point at: its icon and its page. */
+		record Target(ItemStack icon, int page) {
+		}
+	}
+
+	/** An invisible button over a link, lit up under the mouse. */
+	private static final class LinkButton extends AbstractButton {
+		final int page;
+		private final Runnable open;
+
+		LinkButton(int page, Link link, Runnable open) {
+			super(link.x(), link.y(), link.width(), link.height(), link.name());
+			this.page = page;
+			this.open = open;
+		}
+
+		@Override
+		protected void extractContents(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float delta) {
+			if (isHoveredOrFocused()) {
+				graphics.fill(getX(), getY(), getX() + width, getY() + height, HIGHLIGHT);
+			}
+		}
+
+		@Override
+		public void onPress(InputWithModifiers input) {
+			open.run();
+		}
+
+		@Override
+		protected void updateWidgetNarration(NarrationElementOutput output) {
+			defaultButtonNarrationText(output);
 		}
 	}
 
