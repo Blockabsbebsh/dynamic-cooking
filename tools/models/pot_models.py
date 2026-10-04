@@ -5,11 +5,11 @@ Run from the repository root after changing the pot model, its fill levels or th
 	python3 tools/models/pot_models.py
 
 The pot body, models/block/cooking_pot.json, is drawn by hand and read from disk. Everything else is generated from it:
-- cooking_pot_campfire.json: the pot sunk CAMPFIRE_DROP pixels into a campfire, with its floor raised as far, so the
-  campfire's flames, which reach a pixel above their block, stop at the floor and never show inside the pot
+- cooking_pot_campfire.json: the pot sunk CAMPFIRE_DROP pixels into a campfire. The campfire's flames would burn
+  through it, so client/CampfireUnderPotModel squashes them down to end at the pot's bottom.
 - legs for a campfire (short) and for fire, lava or a gap (long)
 - liquid and mash surfaces for each fill level, and one floating chunk per ingredient tinted with its color, each with
-  a campfire copy that fills the shallower campfire pot
+  a sunk campfire copy
 """
 
 import copy
@@ -22,7 +22,7 @@ MODELS = ASSETS / "models/block"
 NS = "dynamic_cooking"
 
 # Must match CookingPotBlock.CAMPFIRE_DROP and CookingPotBlock.FILL.
-CAMPFIRE_DROP = 4
+CAMPFIRE_DROP = 6
 MAX_FILL = 5
 # Campfire logs are 7 pixels tall, so legs on a campfire reach down to 9 pixels below the pot's block.
 CAMPFIRE_LOGS = -9
@@ -43,9 +43,9 @@ CHUNK_TEXTURE = "minecraft:block/white_concrete_powder"
 FLOOR, FULL = 1, 7
 
 
-def surface_height(fill, floor=FLOOR):
+def surface_height(fill):
 	"""Must match CookingPotBlock.surfaceY."""
-	return round(floor + fill * (FULL - floor) / MAX_FILL, 1)
+	return round(FLOOR + fill * (FULL - FLOOR) / MAX_FILL, 1)
 
 
 def write(name, model):
@@ -64,30 +64,22 @@ def sunk(model, pixels):
 	return out
 
 
-def campfire_pot(pot):
-	"""The pot with a false floor at the height the campfire's flames reach once it is sunk, then sunk."""
-	out = copy.deepcopy(pot)
-	up = {"texture": "#inside", "uv": [INNER_MIN, INNER_MIN + 3, INNER_MAX, INNER_MAX + 3]}
-	out["elements"].append(box(INNER_MIN, FLOOR, INNER_MIN, INNER_MAX, FLOOR + CAMPFIRE_DROP, INNER_MAX, {"up": up}))
-	return sunk(out, CAMPFIRE_DROP)
-
-
 def box(x1, y1, z1, x2, y2, z2, faces):
 	return {"from": [x1, y1, z1], "to": [x2, y2, z2], "faces": faces}
 
 
-def surface(kind, fill, floor=FLOOR):
+def surface(kind, fill):
 	texture = SURFACES[kind]
 	face = {"texture": f"#{kind}", "uv": [INNER_MIN, INNER_MIN, INNER_MAX, INNER_MAX], "tintindex": 0}
 	return {
 		"textures": {"particle": texture, kind: texture},
-		"elements": [box(INNER_MIN, floor, INNER_MIN, INNER_MAX, surface_height(fill, floor), INNER_MAX, {"up": face})],
+		"elements": [box(INNER_MIN, FLOOR, INNER_MIN, INNER_MAX, surface_height(fill), INNER_MAX, {"up": face})],
 	}
 
 
-def chunks(fill, floor=FLOOR):
+def chunks(fill):
 	"""The chunks of the first `fill` ingredients, half under the surface. Tint index 1 is the first ingredient."""
-	top = surface_height(fill, floor)
+	top = surface_height(fill)
 	elements = []
 
 	for slot, (x, z, width, depth) in enumerate(CHUNKS[:fill], start=1):
@@ -132,7 +124,7 @@ def part(model, **when):
 
 def main():
 	pot = json.loads((MODELS / "cooking_pot.json").read_text())
-	write("cooking_pot_campfire", campfire_pot(pot))
+	write("cooking_pot_campfire", sunk(pot, CAMPFIRE_DROP))
 	write("cooking_pot_legs_short", legs(CAMPFIRE_LOGS, -CAMPFIRE_DROP))
 	write("cooking_pot_legs_long", legs(-16, 0))
 
@@ -145,13 +137,12 @@ def main():
 	]
 
 	for fill in range(1, MAX_FILL + 1):
-		campfire_floor = FLOOR + CAMPFIRE_DROP
-		models = {f"{kind}_{fill}": (surface(kind, fill), surface(kind, fill, campfire_floor)) for kind in SURFACES}
-		models[f"chunks_{fill}"] = (chunks(fill), chunks(fill, campfire_floor))
+		models = {f"{kind}_{fill}": surface(kind, fill) for kind in SURFACES}
+		models[f"chunks_{fill}"] = chunks(fill)
 
-		for name, (model, on_campfire) in models.items():
+		for name, model in models.items():
 			write(f"cooking_pot_{name}", model)
-			write(f"cooking_pot_{name}_campfire", sunk(on_campfire, CAMPFIRE_DROP))
+			write(f"cooking_pot_{name}_campfire", sunk(model, CAMPFIRE_DROP))
 
 		for name, extra in ((f"liquid_{fill}", {"liquid": "true"}), (f"mash_{fill}", {"liquid": "false"}), (f"chunks_{fill}", {})):
 			parts.append(part(f"cooking_pot_{name}", fill=str(fill), legs=off_campfire, **extra))

@@ -64,10 +64,10 @@ public class CookingPotBlock extends BaseEntityBlock {
 	public static final TagKey<Block> HEAT_SOURCES = TagKey.create(Registries.BLOCK, DynamicCooking.id("heat_sources"));
 
 	/**
-	 * How far the pot sinks into a campfire, in pixels. Its floor is raised as far, to where the campfire's flames end,
-	 * so they never show inside the pot.
+	 * How far the pot sinks into a campfire, in pixels. The campfire's flames are squashed on the client to end at the
+	 * pot's bottom, so they never show through it.
 	 */
-	public static final int CAMPFIRE_DROP = 4;
+	public static final int CAMPFIRE_DROP = 6;
 
 	private static final VoxelShape SHAPE = Block.box(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
 	private static final VoxelShape SHAPE_ON_CAMPFIRE = Block.box(3.0, -CAMPFIRE_DROP, 3.0, 13.0, 8.0 - CAMPFIRE_DROP, 13.0);
@@ -87,13 +87,10 @@ public class CookingPotBlock extends BaseEntityBlock {
 		builder.add(COOKING, FILL, LIQUID, LEGS, READY);
 	}
 
-	/**
-	 * Height of the contents' surface above the pot's block, in blocks. The floor's top is a pixel up either way; a full
-	 * pot reaches a pixel below the rim, which is lower in a campfire.
-	 */
+	/** Height of the contents' surface above the pot's block, in blocks; lower when the pot sits in a campfire. */
 	public static double surfaceY(BlockState state) {
-		double full = 7.0 - (state.getValue(LEGS) == Legs.SHORT ? CAMPFIRE_DROP : 0);
-		return (1.0 + state.getValue(FILL) * (full - 1.0) / CookingRules.DEFAULT.maxIngredients()) / 16.0;
+		double drop = state.getValue(LEGS) == Legs.SHORT ? CAMPFIRE_DROP : 0;
+		return (1.0 + state.getValue(FILL) * 1.2 - drop) / 16.0;
 	}
 
 	@Override
