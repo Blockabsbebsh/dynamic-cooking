@@ -1,0 +1,12 @@
+{
+	"items": [
+		"minecraft:popped_chorus_fruit"
+	],
+	"roles": [
+		"produce"
+	],
+	"flavor": "chorus_fruit",
+	"nutrition": 2,
+	"saturation": 1.2,
+	"color": "#B88AB8"
+}

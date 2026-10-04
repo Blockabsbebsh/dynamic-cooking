@@ -17,6 +17,22 @@
 			"index": 0,
 			"entries": [
 				{
+					"threshold": 1,
+					"model": {
+						"type": "minecraft:composite",
+						"models": [
+							{
+								"type": "minecraft:model",
+								"model": "minecraft:item/bowl"
+							},
+							{
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/dubious_mush_lump"
+							}
+						]
+					}
+				},
+				{
 					"threshold": 3,
 					"model": {
 						"type": "minecraft:composite",

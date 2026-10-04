@@ -1,0 +1,13 @@
+{
+	"items": [
+		"minecraft:moss_block",
+		"minecraft:moss_carpet",
+		"minecraft:pale_moss_block",
+		"minecraft:pale_moss_carpet"
+	],
+	"roles": [
+		"herb"
+	],
+	"flavor": "moss",
+	"color": "#5A7A2E"
+}

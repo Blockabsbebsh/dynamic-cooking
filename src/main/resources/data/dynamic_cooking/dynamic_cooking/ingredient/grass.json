@@ -1,0 +1,11 @@
+{
+	"items": [
+		"minecraft:short_grass",
+		"minecraft:tall_grass"
+	],
+	"roles": [
+		"herb"
+	],
+	"flavor": "grass",
+	"color": "#6EA83A"
+}

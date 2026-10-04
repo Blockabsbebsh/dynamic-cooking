@@ -1,0 +1,11 @@
+{
+	"items": [
+		"minecraft:ghast_tear"
+	],
+	"roles": [
+		"seasoning"
+	],
+	"buff": {
+		"effect": "minecraft:regeneration"
+	}
+}

@@ -1,0 +1,14 @@
+{
+	"items": [
+		"minecraft:fermented_spider_eye"
+	],
+	"roles": [
+		"seasoning"
+	],
+	"effects": [
+		{
+			"effect": "minecraft:weakness",
+			"seconds": 30
+		}
+	]
+}

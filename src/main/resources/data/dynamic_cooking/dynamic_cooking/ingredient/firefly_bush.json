@@ -1,0 +1,16 @@
+{
+	"items": [
+		"minecraft:firefly_bush"
+	],
+	"roles": [
+		"herb"
+	],
+	"flavor": "firefly",
+	"color": "#8AA83A",
+	"effects": [
+		{
+			"effect": "minecraft:glowing",
+			"seconds": 30
+		}
+	]
+}

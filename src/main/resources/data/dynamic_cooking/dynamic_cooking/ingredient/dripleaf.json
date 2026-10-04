@@ -1,0 +1,11 @@
+{
+	"items": [
+		"minecraft:big_dripleaf",
+		"minecraft:small_dripleaf"
+	],
+	"roles": [
+		"herb"
+	],
+	"flavor": "dripleaf",
+	"color": "#5E9A3A"
+}

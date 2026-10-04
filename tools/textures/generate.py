@@ -319,9 +319,15 @@ def vessel_variants():
 
 def in_vessels(item_model, name, models):
 	"""Draws a dish served in another container, picked by the first item model data float, else its usual look."""
-	entries = [{"threshold": code, "model": models[f"{name}_in_{vessel}"]}
-		for vessel, code in VESSEL_CODES.items() if f"{name}_in_{vessel}" in models]
-	if not entries:
+	usual = {vanilla: vessel for vessel, vanilla in VANILLA_VESSELS.items()}.get(DISHES[name].get("vanilla"))
+	entries = []
+	for vessel, code in VESSEL_CODES.items():
+		if f"{name}_in_{vessel}" in models:
+			entries.append({"threshold": code, "model": models[f"{name}_in_{vessel}"]})
+		elif vessel == usual:
+			# Its own container, in case a stack says so: drawn as usual.
+			entries.append({"threshold": code, "model": item_model})
+	if not any(f"{name}_in_{vessel}" in models for vessel in VESSEL_CODES):
 		return item_model
 	return {
 		"type": "minecraft:range_dispatch",

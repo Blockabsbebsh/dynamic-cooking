@@ -1,0 +1,10 @@
+{
+	"items": [
+		"minecraft:dead_bush"
+	],
+	"roles": [
+		"herb"
+	],
+	"flavor": "dead_bush",
+	"color": "#8A6A3A"
+}

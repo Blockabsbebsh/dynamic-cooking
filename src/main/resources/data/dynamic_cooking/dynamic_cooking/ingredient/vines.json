@@ -1,0 +1,12 @@
+{
+	"items": [
+		"minecraft:vine",
+		"minecraft:weeping_vines",
+		"minecraft:twisting_vines"
+	],
+	"roles": [
+		"herb"
+	],
+	"flavor": "vine",
+	"color": "#4A7A2A"
+}

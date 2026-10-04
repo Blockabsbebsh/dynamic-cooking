@@ -346,7 +346,9 @@ public class CookingPotBlock extends BaseEntityBlock {
 		}
 
 		if (!level.isClientSide()) {
-			ItemStack dish = DishServing.fill(pot.serve(), vessel, 1, pot.usualVessel());
+			// Read before serving: the last serving empties the pot and forgets its container.
+			Optional<Vessel> usual = pot.usualVessel();
+			ItemStack dish = DishServing.fill(pot.serve(), vessel, 1, usual);
 			exchange(player, hand, stack, dish);
 			level.playSound(null, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1.0f, 0.8f);
 
@@ -367,7 +369,8 @@ public class CookingPotBlock extends BaseEntityBlock {
 		} else if (servings >= Vessel.BUCKET_SERVINGS) {
 			message(level, player, "bucket_full", Vessel.BUCKET_SERVINGS);
 		} else if (!level.isClientSide()) {
-			ItemStack filled = DishServing.fill(pot.serve(), Vessel.BUCKET, servings + 1, pot.usualVessel());
+			Optional<Vessel> usual = pot.usualVessel();
+			ItemStack filled = DishServing.fill(pot.serve(), Vessel.BUCKET, servings + 1, usual);
 			player.setItemInHand(hand, filled);
 			level.playSound(null, pos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 1.0f, 0.8f);
 			message(level, player, "topped_up", filled.getHoverName(), servings + 1, Vessel.BUCKET_SERVINGS);

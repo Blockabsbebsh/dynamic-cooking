@@ -1,0 +1,16 @@
+{
+	"items": [
+		"minecraft:glow_lichen"
+	],
+	"roles": [
+		"herb"
+	],
+	"flavor": "lichen",
+	"color": "#7A9A8A",
+	"effects": [
+		{
+			"effect": "minecraft:glowing",
+			"seconds": 30
+		}
+	]
+}

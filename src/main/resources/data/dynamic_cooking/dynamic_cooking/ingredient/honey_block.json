@@ -1,0 +1,12 @@
+{
+	"items": [
+		"minecraft:honey_block"
+	],
+	"roles": [
+		"sweet"
+	],
+	"flavor": "honey",
+	"nutrition": 12,
+	"saturation": 2.4,
+	"color": "#E8A23A"
+}

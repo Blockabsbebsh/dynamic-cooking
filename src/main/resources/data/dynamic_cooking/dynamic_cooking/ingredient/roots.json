@@ -1,0 +1,13 @@
+{
+	"items": [
+		"minecraft:hanging_roots",
+		"minecraft:crimson_roots",
+		"minecraft:warped_roots",
+		"minecraft:nether_sprouts"
+	],
+	"roles": [
+		"herb"
+	],
+	"flavor": "root",
+	"color": "#8A5A3A"
+}

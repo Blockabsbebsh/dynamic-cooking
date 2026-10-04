@@ -1,0 +1,11 @@
+{
+	"items": [
+		"minecraft:short_dry_grass",
+		"minecraft:tall_dry_grass"
+	],
+	"roles": [
+		"herb"
+	],
+	"flavor": "hay",
+	"color": "#C8A85A"
+}
