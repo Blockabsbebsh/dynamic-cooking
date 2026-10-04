@@ -260,7 +260,33 @@ def with_variant(base, variant, variant_flavors, defaults):
 	}
 
 
+def pot_surfaces():
+	"""Adds a hidden dish template for each `pot` grid, sharing its dish's layers, palette and flavours."""
+	for name, dish in list(DISHES.items()):
+		if dish.get("pot"):
+			layers = dish["layers"]
+			DISHES[f"{name}_pot"] = dict(
+				variant_of=name,
+				layers=layers,
+				order=[layer for layer in dish["order"] if layer in layers],
+				defaults=dish.get("defaults", []),
+				pal=dish.get("pal", {}),
+				grid=dish["pot"],
+			)
+
+
+def in_pot(item_model, pot_model):
+	"""The cooking pot draws a dish with a surface with no display context, which shows the surface."""
+	return {
+		"type": "minecraft:select",
+		"property": "minecraft:display_context",
+		"cases": [{"when": "none", "model": pot_model}],
+		"fallback": item_model,
+	}
+
+
 def main():
+	pot_surfaces()
 	flavors_by_dish = dish_flavors()
 
 	for generated in (OUT / "textures/item/dish", OUT / "textures/palettes/dish", OUT / "models/item/dish"):
@@ -295,7 +321,12 @@ def main():
 		variant = dish.get("variant")
 		if variant:
 			item_model = with_variant(item_model, models[variant["dish"]], variant["flavors"], dish.get("defaults", []))
+		if dish.get("pot"):
+			item_model = in_pot(item_model, models[f"{name}_pot"])
 		write_json(OUT / f"items/{name}.json", {"model": item_model})
+
+	# Tells the pot which dishes to draw with their surface.
+	write_json(DATA.parent / "tags/item/pot_surface.json", {"values": [f"{NS}:{name}" for name, dish in DISHES.items() if dish.get("pot")]})
 
 	# Atlas files are merged across packs, so this only adds the dish sprites to the vanilla items atlas.
 	write_json(ASSETS / "minecraft/atlases/items.json", {"sources": sources})

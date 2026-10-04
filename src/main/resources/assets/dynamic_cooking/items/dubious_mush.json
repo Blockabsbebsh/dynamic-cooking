@@ -1,15 +1,28 @@
 {
 	"model": {
-		"type": "minecraft:composite",
-		"models": [
+		"type": "minecraft:select",
+		"property": "minecraft:display_context",
+		"cases": [
 			{
-				"type": "minecraft:model",
-				"model": "minecraft:item/bowl"
-			},
-			{
-				"type": "minecraft:model",
-				"model": "dynamic_cooking:item/dish/dubious_mush_lump"
+				"when": "none",
+				"model": {
+					"type": "minecraft:model",
+					"model": "dynamic_cooking:item/dish/dubious_mush_pot_lump"
+				}
 			}
-		]
+		],
+		"fallback": {
+			"type": "minecraft:composite",
+			"models": [
+				{
+					"type": "minecraft:model",
+					"model": "minecraft:item/bowl"
+				},
+				{
+					"type": "minecraft:model",
+					"model": "dynamic_cooking:item/dish/dubious_mush_lump"
+				}
+			]
+		}
 	}
 }

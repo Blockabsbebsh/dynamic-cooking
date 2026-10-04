@@ -75,7 +75,7 @@ A dish's food value is the sum of its ingredients' `nutrition`, plus 1 for every
 
 ### Textures
 
-Each dish is drawn once in `tools/textures/dishes.py` as a fixed base layer (bowl, bottle, stick, bread) plus one or two flavour layers in 8 grey keys. Each flavour has an 8-colour palette in `tools/textures/palettes.py`. At resource load, Minecraft's `paletted_permutations` atlas source recolours every flavour layer once per palette, and the dish's item model picks the sprites from the flavours cooking wrote into `custom_model_data`. A flavour without a palette, for example one from a data pack, shows the grey layer tinted with its ingredient's `color`.
+Each dish is drawn once in `tools/textures/dishes.py` as a fixed base layer (bowl, bottle, stick, bread) plus one or two flavour layers in 8 grey keys. Each flavour has an 8-colour palette in `tools/textures/palettes.py`. At resource load, Minecraft's `paletted_permutations` atlas source recolours every flavour layer once per palette, and the dish's item model picks the sprites from the flavours cooking wrote into `custom_model_data`. A flavour without a palette, for example one from a data pack, shows the grey layer tinted with its ingredient's `color`. Dishes with a `pot` grid, like soup and stew, also get a top-down surface with the same flavours, which the cooking pot draws over its contents once the dish is ready (item model `none` display context, listed in the `dynamic_cooking:pot_surface` item tag).
 
 After changing a template, a palette, a dish type or an ingredient, regenerate the textures, atlas, models and item definitions (needs Pillow):
 

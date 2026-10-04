@@ -20,28 +20,32 @@ import net.minecraft.client.renderer.item.ItemModelResolver;
 import net.minecraft.client.renderer.item.ItemStackRenderState;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.LightCoordsUtil;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
+import io.github.blockabsbebsh.dynamiccooking.DynamicCooking;
 import io.github.blockabsbebsh.dynamiccooking.block.CookingPotBlock;
 import io.github.blockabsbebsh.dynamiccooking.block.CookingPotBlockEntity;
 import io.github.blockabsbebsh.dynamiccooking.block.CookingPotBlockEntity.Timeline;
 
 /**
- * Draws what the block model can't: a finished solid dish lying in the pot, like a cake or a roast, and, while the
- * player looks at the pot, a status panel floating above it. The panel shows what is in the pot and a bar for the
+ * Draws what the block model can't: a finished solid dish lying in the pot, like a cake or a roast, the surface of a
+ * finished soup or stew, and, while the player looks at the pot, a status panel floating above it. The panel shows what is in the pot and a bar for the
  * cooking time, or for a finished dish how long until it simmers into another and until it burns.
  */
 public class CookingPotRenderer implements BlockEntityRenderer<CookingPotBlockEntity, CookingPotRenderer.State> {
 	/** Size of one panel pixel, in blocks: half a name tag's, so the panel stays small over the pot. */
 	private static final float PIXEL = 0.0125f;
-	/** Where cooked food floats in a finished soup or stew, in pot pixels, clear of each other and the rim. */
-	private static final float[][] FLOAT_SPOTS = {{6.0f, 6.2f}, {9.8f, 6.6f}, {7.4f, 9.8f}, {10.2f, 10.0f}};
+	/** Dishes drawn in the pot as their surface, from their item model with no display context. */
+	private static final TagKey<Item> POT_SURFACE = TagKey.create(Registries.ITEM, DynamicCooking.id("pot_surface"));
 	private static final int BAR_HALF_WIDTH = 30;
 	private static final int ICON = 8;
 
@@ -69,8 +73,8 @@ public class CookingPotRenderer implements BlockEntityRenderer<CookingPotBlockEn
 	public static class State extends BlockEntityRenderState {
 		/** A finished solid dish to draw lying in the pot, or empty. */
 		final ItemStackRenderState dish = new ItemStackRenderState();
-		/** Cooked food floating in a finished soup or stew. */
-		final List<ItemStackRenderState> floating = new ArrayList<>();
+		/** A finished soup or stew seen from above, covering the pot's contents, or empty. */
+		final ItemStackRenderState surface = new ItemStackRenderState();
 		float surfaceY;
 		/** The status panel, when the player is looking at the pot. */
 		boolean panel;
@@ -103,13 +107,11 @@ public class CookingPotRenderer implements BlockEntityRenderer<CookingPotBlockEn
 			items.updateForTopItem(state.dish, pot.serving(), ItemDisplayContext.FIXED, pot.getLevel(), null, (int) pot.getBlockPos().asLong());
 		}
 
-		// A soup or stew shows its cooked ingredients floating in it, so it looks cooked too.
-		state.floating.clear();
+		// A soup or stew covers what it was cooked from, so it looks like the dish in its bowl.
+		state.surface.clear();
 
-		for (ItemStack food : pot.floating()) {
-			ItemStackRenderState floating = new ItemStackRenderState();
-			items.updateForTopItem(floating, food, ItemDisplayContext.FIXED, pot.getLevel(), null, 0);
-			state.floating.add(floating);
+		if (pot.hasServing() && pot.serving().is(POT_SURFACE)) {
+			items.updateForTopItem(state.surface, pot.serving(), ItemDisplayContext.NONE, pot.getLevel(), null, 0);
 		}
 
 		state.panel = isLookedAt(pot) && (pot.hasServing() || !pot.isEmpty());
@@ -235,14 +237,13 @@ public class CookingPotRenderer implements BlockEntityRenderer<CookingPotBlockEn
 			pose.popPose();
 		}
 
-		for (int i = 0; i < state.floating.size(); i++) {
-			float[] spot = FLOAT_SPOTS[i];
+		if (!state.surface.isEmpty()) {
+			// A flat sprite a pixel thick, filling the pot's inside at full size, pixel for pixel. Its top sits just
+			// above the floating chunks, which reach half a pixel over the contents.
 			pose.pushPose();
-			pose.translate(spot[0] / 16f, state.surfaceY + 0.015f, spot[1] / 16f);
-			pose.rotateDegrees(Axis.YP, 70 * i + 20);
-			pose.rotateDegrees(Axis.XP, 90);
-			pose.scale(0.2f, 0.2f, 0.2f);
-			state.floating.get(i).submit(pose, collector, state.lightCoords, OverlayTexture.NO_OVERLAY, 0);
+			pose.translate(0.5f, state.surfaceY + 0.1f / 16, 0.5f);
+			pose.rotateDegrees(Axis.XP, -90);
+			state.surface.submit(pose, collector, state.lightCoords, OverlayTexture.NO_OVERLAY, 0);
 			pose.popPose();
 		}
 

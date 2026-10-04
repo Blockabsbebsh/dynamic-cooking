@@ -30,9 +30,6 @@ import net.minecraft.world.level.storage.ValueOutput;
 import net.fabricmc.fabric.api.blockgetter.v2.RenderDataBlockEntity;
 
 import io.github.blockabsbebsh.dynamiccooking.DynamicCooking;
-import io.github.blockabsbebsh.dynamiccooking.component.DishContents;
-import io.github.blockabsbebsh.dynamiccooking.component.ModComponents;
-import io.github.blockabsbebsh.dynamiccooking.item.ModItems;
 import io.github.blockabsbebsh.dynamiccooking.cooking.CookingRules;
 import io.github.blockabsbebsh.dynamiccooking.cooking.PotColors;
 import io.github.blockabsbebsh.dynamiccooking.dish.CookingService;
@@ -68,8 +65,6 @@ public class CookingPotBlockEntity extends BlockEntity implements RenderDataBloc
 	private long syncTime;
 	/** On clients, what the ingredients would make, worked out once per change. */
 	private ItemStack preview;
-	/** On clients, the cooked ingredients floating in a finished soup or stew, worked out once per change. */
-	private List<ItemStack> floating;
 	private int liquidColor = PotColors.WATER;
 	/** One color per ingredient slot, for the chunk drawn floating in the pot. */
 	private List<Integer> chunkColors = List.of();
@@ -403,30 +398,6 @@ public class CookingPotBlockEntity extends BlockEntity implements RenderDataBloc
 		public enum Stage { IDLE, COOKING, WAITING }
 	}
 
-	/**
-	 * On clients, the cooked food to draw floating in a finished runny dish, like cooked beef and a baked potato in a
-	 * soup: its ingredients without the water or the bowl, each once. Empty for solid dishes, which are drawn whole,
-	 * and for burnt ones.
-	 */
-	public List<ItemStack> floating() {
-		if (floating == null) {
-			floating = List.of();
-			DishContents dish = serving.get(ModComponents.DISH);
-
-			if (level != null && hasServing() && !isServedByHand() && !serving.is(ModItems.DUBIOUS_MUSH) && dish != null) {
-				CookingService cooking = CookingService.create(level.registryAccess());
-				floating = dish.ingredients().stream()
-						.distinct()
-						.map(id -> BuiltInRegistries.ITEM.getOptional(Identifier.parse(id)).map(ItemStack::new).orElse(ItemStack.EMPTY))
-						.filter(stack -> !stack.isEmpty() && !cooking.isContainer(stack.getItem()))
-						.limit(4)
-						.toList();
-			}
-		}
-
-		return floating;
-	}
-
 	/** On clients, what the ingredients in the pot would make, for the status bar. Empty if nothing works out. */
 	public ItemStack preview() {
 		if (preview == null) {
@@ -550,7 +521,6 @@ public class CookingPotBlockEntity extends BlockEntity implements RenderDataBloc
 		heated = input.getBooleanOr("heated", false);
 		syncTime = input.getLongOr("sync_time", 0L);
 		preview = null;
-		floating = null;
 
 		if (level != null && level.isClientSide()) {
 			// Redraw the pot so the liquid picks up the new color.
