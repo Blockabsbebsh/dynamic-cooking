@@ -38,8 +38,10 @@ import io.github.blockabsbebsh.dynamiccooking.block.CookingPotBlockEntity.Timeli
  * cooking time, or for a finished dish how long until it simmers into another and until it burns.
  */
 public class CookingPotRenderer implements BlockEntityRenderer<CookingPotBlockEntity, CookingPotRenderer.State> {
-	/** Size of one panel pixel, in blocks, like a name tag's. */
-	private static final float PIXEL = 0.025f;
+	/** Size of one panel pixel, in blocks: half a name tag's, so the panel stays small over the pot. */
+	private static final float PIXEL = 0.0125f;
+	/** Where cooked food floats in a finished soup or stew, in pot pixels, clear of each other and the rim. */
+	private static final float[][] FLOAT_SPOTS = {{6.0f, 6.2f}, {9.8f, 6.6f}, {7.4f, 9.8f}, {10.2f, 10.0f}};
 	private static final int BAR_HALF_WIDTH = 30;
 	private static final int ICON = 8;
 
@@ -67,6 +69,8 @@ public class CookingPotRenderer implements BlockEntityRenderer<CookingPotBlockEn
 	public static class State extends BlockEntityRenderState {
 		/** A finished solid dish to draw lying in the pot, or empty. */
 		final ItemStackRenderState dish = new ItemStackRenderState();
+		/** Cooked food floating in a finished soup or stew. */
+		final List<ItemStackRenderState> floating = new ArrayList<>();
 		float surfaceY;
 		/** The status panel, when the player is looking at the pot. */
 		boolean panel;
@@ -97,6 +101,15 @@ public class CookingPotRenderer implements BlockEntityRenderer<CookingPotBlockEn
 		// Dishes taken out by hand are solid ones, like a cake or a roast: draw the real dish in the pot.
 		if (pot.isServedByHand()) {
 			items.updateForTopItem(state.dish, pot.serving(), ItemDisplayContext.FIXED, pot.getLevel(), null, (int) pot.getBlockPos().asLong());
+		}
+
+		// A soup or stew shows its cooked ingredients floating in it, so it looks cooked too.
+		state.floating.clear();
+
+		for (ItemStack food : pot.floating()) {
+			ItemStackRenderState floating = new ItemStackRenderState();
+			items.updateForTopItem(floating, food, ItemDisplayContext.FIXED, pot.getLevel(), null, 0);
+			state.floating.add(floating);
 		}
 
 		state.panel = isLookedAt(pot) && (pot.hasServing() || !pot.isEmpty());
@@ -222,6 +235,17 @@ public class CookingPotRenderer implements BlockEntityRenderer<CookingPotBlockEn
 			pose.popPose();
 		}
 
+		for (int i = 0; i < state.floating.size(); i++) {
+			float[] spot = FLOAT_SPOTS[i];
+			pose.pushPose();
+			pose.translate(spot[0] / 16f, state.surfaceY + 0.015f, spot[1] / 16f);
+			pose.rotateDegrees(Axis.YP, 70 * i + 20);
+			pose.rotateDegrees(Axis.XP, 90);
+			pose.scale(0.2f, 0.2f, 0.2f);
+			state.floating.get(i).submit(pose, collector, state.lightCoords, OverlayTexture.NO_OVERLAY, 0);
+			pose.popPose();
+		}
+
 		if (state.panel) {
 			submitPanel(state, pose, collector, camera);
 		}
@@ -233,7 +257,7 @@ public class CookingPotRenderer implements BlockEntityRenderer<CookingPotBlockEn
 		boolean hasBar = !state.bar.isEmpty();
 
 		pose.pushPose();
-		pose.translate(0.5f, state.surfaceY + 0.95f, 0.5f);
+		pose.translate(0.5f, state.surfaceY + 0.7f, 0.5f);
 		pose.mulPose(new Matrix4f().rotation(camera.orientation));
 		pose.scale(PIXEL, -PIXEL, PIXEL);
 

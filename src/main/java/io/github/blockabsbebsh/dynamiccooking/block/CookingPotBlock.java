@@ -284,11 +284,9 @@ public class CookingPotBlock extends BaseEntityBlock {
 		double z = pos.getZ() + 0.3 + random.nextDouble() * 0.4;
 
 		if (state.getValue(READY)) {
-			// A finished dish keeps steaming until it is taken out, so it is easy to spot from across the kitchen.
-			level.addParticle(ParticleTypes.WHITE_SMOKE, x, y + 0.1, z, 0.0, 0.04, 0.0);
-
-			if (random.nextInt(2) == 0) {
-				level.addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE, x, y + 0.2, z, 0.0, 0.02, 0.0);
+			// A finished dish steams lightly until it is taken out, so it is easy to spot without hiding the pot.
+			if (random.nextInt(3) == 0) {
+				level.addParticle(ParticleTypes.WHITE_SMOKE, x, y + 0.1, z, 0.0, 0.03, 0.0);
 			}
 
 			if (level.getBlockEntity(pos) instanceof CookingPotBlockEntity pot && pot.timeline(level.getGameTime()).heated()) {
@@ -311,8 +309,8 @@ public class CookingPotBlock extends BaseEntityBlock {
 		} else if (state.getValue(COOKING)) {
 			level.addParticle(ParticleTypes.BUBBLE_POP, x, y, z, 0.0, 0.02, 0.0);
 
-			if (random.nextInt(3) == 0) {
-				level.addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE, x, y + 0.1, z, 0.0, 0.03, 0.0);
+			if (random.nextInt(4) == 0) {
+				level.addParticle(ParticleTypes.WHITE_SMOKE, x, y + 0.1, z, 0.0, 0.03, 0.0);
 			}
 		} else if (fill > 0 && random.nextInt(4) == 0 && hasHeat(level, pos)) {
 			// A warm pot steams gently while it waits to be cooked.

@@ -23,6 +23,13 @@
 							}
 						},
 						{
+							"when": "beef",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/soup_broth_beef"
+							}
+						},
+						{
 							"when": "beetroot",
 							"model": {
 								"type": "minecraft:model",
@@ -37,6 +44,13 @@
 							}
 						},
 						{
+							"when": "chicken",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/soup_broth_chicken"
+							}
+						},
+						{
 							"when": "chocolate",
 							"model": {
 								"type": "minecraft:model",
@@ -48,6 +62,13 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/soup_broth_chorus_fruit"
+							}
+						},
+						{
+							"when": "cod",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/soup_broth_cod"
 							}
 						},
 						{
@@ -93,10 +114,24 @@
 							}
 						},
 						{
+							"when": "mutton",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/soup_broth_mutton"
+							}
+						},
+						{
 							"when": "poisonous_potato",
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/soup_broth_poisonous_potato"
+							}
+						},
+						{
+							"when": "porkchop",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/soup_broth_porkchop"
 							}
 						},
 						{
@@ -107,6 +142,13 @@
 							}
 						},
 						{
+							"when": "pufferfish",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/soup_broth_pufferfish"
+							}
+						},
+						{
 							"when": "pumpkin",
 							"model": {
 								"type": "minecraft:model",
@@ -114,10 +156,38 @@
 							}
 						},
 						{
+							"when": "rabbit",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/soup_broth_rabbit"
+							}
+						},
+						{
+							"when": "rotten_flesh",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/soup_broth_rotten_flesh"
+							}
+						},
+						{
+							"when": "salmon",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/soup_broth_salmon"
+							}
+						},
+						{
 							"when": "sweet_berry",
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/soup_broth_sweet_berry"
+							}
+						},
+						{
+							"when": "tropical_fish",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/soup_broth_tropical_fish"
 							}
 						}
 					],
@@ -155,6 +225,13 @@
 							}
 						},
 						{
+							"when": "beef",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/soup_garnish_beef"
+							}
+						},
+						{
 							"when": "beetroot",
 							"model": {
 								"type": "minecraft:model",
@@ -169,6 +246,13 @@
 							}
 						},
 						{
+							"when": "chicken",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/soup_garnish_chicken"
+							}
+						},
+						{
 							"when": "chocolate",
 							"model": {
 								"type": "minecraft:model",
@@ -180,6 +264,13 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/soup_garnish_chorus_fruit"
+							}
+						},
+						{
+							"when": "cod",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/soup_garnish_cod"
 							}
 						},
 						{
@@ -225,10 +316,24 @@
 							}
 						},
 						{
+							"when": "mutton",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/soup_garnish_mutton"
+							}
+						},
+						{
 							"when": "poisonous_potato",
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/soup_garnish_poisonous_potato"
+							}
+						},
+						{
+							"when": "porkchop",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/soup_garnish_porkchop"
 							}
 						},
 						{
@@ -239,6 +344,13 @@
 							}
 						},
 						{
+							"when": "pufferfish",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/soup_garnish_pufferfish"
+							}
+						},
+						{
 							"when": "pumpkin",
 							"model": {
 								"type": "minecraft:model",
@@ -246,10 +358,38 @@
 							}
 						},
 						{
+							"when": "rabbit",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/soup_garnish_rabbit"
+							}
+						},
+						{
+							"when": "rotten_flesh",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/soup_garnish_rotten_flesh"
+							}
+						},
+						{
+							"when": "salmon",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/soup_garnish_salmon"
+							}
+						},
+						{
 							"when": "sweet_berry",
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/soup_garnish_sweet_berry"
+							}
+						},
+						{
+							"when": "tropical_fish",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/soup_garnish_tropical_fish"
 							}
 						}
 					],
@@ -263,6 +403,13 @@
 								"model": {
 									"type": "minecraft:model",
 									"model": "dynamic_cooking:item/dish/soup_garnish_apple"
+								}
+							},
+							{
+								"when": "beef",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/soup_garnish_beef"
 								}
 							},
 							{
@@ -280,6 +427,13 @@
 								}
 							},
 							{
+								"when": "chicken",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/soup_garnish_chicken"
+								}
+							},
+							{
 								"when": "chocolate",
 								"model": {
 									"type": "minecraft:model",
@@ -291,6 +445,13 @@
 								"model": {
 									"type": "minecraft:model",
 									"model": "dynamic_cooking:item/dish/soup_garnish_chorus_fruit"
+								}
+							},
+							{
+								"when": "cod",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/soup_garnish_cod"
 								}
 							},
 							{
@@ -336,10 +497,24 @@
 								}
 							},
 							{
+								"when": "mutton",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/soup_garnish_mutton"
+								}
+							},
+							{
 								"when": "poisonous_potato",
 								"model": {
 									"type": "minecraft:model",
 									"model": "dynamic_cooking:item/dish/soup_garnish_poisonous_potato"
+								}
+							},
+							{
+								"when": "porkchop",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/soup_garnish_porkchop"
 								}
 							},
 							{
@@ -350,6 +525,13 @@
 								}
 							},
 							{
+								"when": "pufferfish",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/soup_garnish_pufferfish"
+								}
+							},
+							{
 								"when": "pumpkin",
 								"model": {
 									"type": "minecraft:model",
@@ -357,10 +539,38 @@
 								}
 							},
 							{
+								"when": "rabbit",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/soup_garnish_rabbit"
+								}
+							},
+							{
+								"when": "rotten_flesh",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/soup_garnish_rotten_flesh"
+								}
+							},
+							{
+								"when": "salmon",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/soup_garnish_salmon"
+								}
+							},
+							{
 								"when": "sweet_berry",
 								"model": {
 									"type": "minecraft:model",
 									"model": "dynamic_cooking:item/dish/soup_garnish_sweet_berry"
+								}
+							},
+							{
+								"when": "tropical_fish",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/soup_garnish_tropical_fish"
 								}
 							}
 						],

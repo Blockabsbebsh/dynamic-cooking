@@ -1,0 +1,11 @@
+{
+	"required": true,
+	"package": "io.github.blockabsbebsh.dynamiccooking.mixin.client",
+	"compatibilityLevel": "JAVA_21",
+	"client": [
+		"CampfireBlockEntityMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

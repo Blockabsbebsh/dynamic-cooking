@@ -120,6 +120,11 @@ public final class CookingService {
 				.orElseGet(() -> dish.copyWithCount(1));
 	}
 
+	/** Whether an ingredient only holds the dish, like a water bucket or a bowl, rather than being food in it. */
+	public boolean isContainer(Item item) {
+		return profile(item).filter(found -> found.roles().stream().anyMatch(resolver.rules().containerRoles()::contains)).isPresent();
+	}
+
 	/** The item that serves the fallback dish out of the pot, like a bowl. */
 	public String fallbackServedWith() {
 		return resolver.rules().fallbackServedWith();

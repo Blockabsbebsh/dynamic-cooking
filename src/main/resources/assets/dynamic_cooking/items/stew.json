@@ -16,10 +16,31 @@
 					"index": 0,
 					"cases": [
 						{
+							"when": "apple",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_broth_apple"
+							}
+						},
+						{
 							"when": "beef",
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/stew_broth_beef"
+							}
+						},
+						{
+							"when": "beetroot",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_broth_beetroot"
+							}
+						},
+						{
+							"when": "carrot",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_broth_carrot"
 							}
 						},
 						{
@@ -30,10 +51,66 @@
 							}
 						},
 						{
+							"when": "chocolate",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_broth_chocolate"
+							}
+						},
+						{
+							"when": "chorus_fruit",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_broth_chorus_fruit"
+							}
+						},
+						{
 							"when": "cod",
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/stew_broth_cod"
+							}
+						},
+						{
+							"when": "glistering_melon",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_broth_glistering_melon"
+							}
+						},
+						{
+							"when": "glow_berry",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_broth_glow_berry"
+							}
+						},
+						{
+							"when": "golden_apple",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_broth_golden_apple"
+							}
+						},
+						{
+							"when": "golden_carrot",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_broth_golden_carrot"
+							}
+						},
+						{
+							"when": "melon",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_broth_melon"
+							}
+						},
+						{
+							"when": "mushroom",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_broth_mushroom"
 							}
 						},
 						{
@@ -44,6 +121,13 @@
 							}
 						},
 						{
+							"when": "poisonous_potato",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_broth_poisonous_potato"
+							}
+						},
+						{
 							"when": "porkchop",
 							"model": {
 								"type": "minecraft:model",
@@ -51,10 +135,24 @@
 							}
 						},
 						{
+							"when": "potato",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_broth_potato"
+							}
+						},
+						{
 							"when": "pufferfish",
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/stew_broth_pufferfish"
+							}
+						},
+						{
+							"when": "pumpkin",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_broth_pumpkin"
 							}
 						},
 						{
@@ -76,6 +174,13 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/stew_broth_salmon"
+							}
+						},
+						{
+							"when": "sweet_berry",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_broth_sweet_berry"
 							}
 						},
 						{
@@ -113,10 +218,31 @@
 					"index": 1,
 					"cases": [
 						{
+							"when": "apple",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_chunks_apple"
+							}
+						},
+						{
 							"when": "beef",
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/stew_chunks_beef"
+							}
+						},
+						{
+							"when": "beetroot",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_chunks_beetroot"
+							}
+						},
+						{
+							"when": "carrot",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_chunks_carrot"
 							}
 						},
 						{
@@ -127,10 +253,66 @@
 							}
 						},
 						{
+							"when": "chocolate",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_chunks_chocolate"
+							}
+						},
+						{
+							"when": "chorus_fruit",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_chunks_chorus_fruit"
+							}
+						},
+						{
 							"when": "cod",
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/stew_chunks_cod"
+							}
+						},
+						{
+							"when": "glistering_melon",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_chunks_glistering_melon"
+							}
+						},
+						{
+							"when": "glow_berry",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_chunks_glow_berry"
+							}
+						},
+						{
+							"when": "golden_apple",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_chunks_golden_apple"
+							}
+						},
+						{
+							"when": "golden_carrot",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_chunks_golden_carrot"
+							}
+						},
+						{
+							"when": "melon",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_chunks_melon"
+							}
+						},
+						{
+							"when": "mushroom",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_chunks_mushroom"
 							}
 						},
 						{
@@ -141,6 +323,13 @@
 							}
 						},
 						{
+							"when": "poisonous_potato",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_chunks_poisonous_potato"
+							}
+						},
+						{
 							"when": "porkchop",
 							"model": {
 								"type": "minecraft:model",
@@ -148,10 +337,24 @@
 							}
 						},
 						{
+							"when": "potato",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_chunks_potato"
+							}
+						},
+						{
 							"when": "pufferfish",
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/stew_chunks_pufferfish"
+							}
+						},
+						{
+							"when": "pumpkin",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_chunks_pumpkin"
 							}
 						},
 						{
@@ -176,6 +379,13 @@
 							}
 						},
 						{
+							"when": "sweet_berry",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/stew_chunks_sweet_berry"
+							}
+						},
+						{
 							"when": "tropical_fish",
 							"model": {
 								"type": "minecraft:model",
@@ -189,10 +399,31 @@
 						"index": 0,
 						"cases": [
 							{
+								"when": "apple",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/stew_chunks_apple"
+								}
+							},
+							{
 								"when": "beef",
 								"model": {
 									"type": "minecraft:model",
 									"model": "dynamic_cooking:item/dish/stew_chunks_beef"
+								}
+							},
+							{
+								"when": "beetroot",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/stew_chunks_beetroot"
+								}
+							},
+							{
+								"when": "carrot",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/stew_chunks_carrot"
 								}
 							},
 							{
@@ -203,10 +434,66 @@
 								}
 							},
 							{
+								"when": "chocolate",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/stew_chunks_chocolate"
+								}
+							},
+							{
+								"when": "chorus_fruit",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/stew_chunks_chorus_fruit"
+								}
+							},
+							{
 								"when": "cod",
 								"model": {
 									"type": "minecraft:model",
 									"model": "dynamic_cooking:item/dish/stew_chunks_cod"
+								}
+							},
+							{
+								"when": "glistering_melon",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/stew_chunks_glistering_melon"
+								}
+							},
+							{
+								"when": "glow_berry",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/stew_chunks_glow_berry"
+								}
+							},
+							{
+								"when": "golden_apple",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/stew_chunks_golden_apple"
+								}
+							},
+							{
+								"when": "golden_carrot",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/stew_chunks_golden_carrot"
+								}
+							},
+							{
+								"when": "melon",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/stew_chunks_melon"
+								}
+							},
+							{
+								"when": "mushroom",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/stew_chunks_mushroom"
 								}
 							},
 							{
@@ -217,6 +504,13 @@
 								}
 							},
 							{
+								"when": "poisonous_potato",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/stew_chunks_poisonous_potato"
+								}
+							},
+							{
 								"when": "porkchop",
 								"model": {
 									"type": "minecraft:model",
@@ -224,10 +518,24 @@
 								}
 							},
 							{
+								"when": "potato",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/stew_chunks_potato"
+								}
+							},
+							{
 								"when": "pufferfish",
 								"model": {
 									"type": "minecraft:model",
 									"model": "dynamic_cooking:item/dish/stew_chunks_pufferfish"
+								}
+							},
+							{
+								"when": "pumpkin",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/stew_chunks_pumpkin"
 								}
 							},
 							{
@@ -249,6 +557,13 @@
 								"model": {
 									"type": "minecraft:model",
 									"model": "dynamic_cooking:item/dish/stew_chunks_salmon"
+								}
+							},
+							{
+								"when": "sweet_berry",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/stew_chunks_sweet_berry"
 								}
 							},
 							{
