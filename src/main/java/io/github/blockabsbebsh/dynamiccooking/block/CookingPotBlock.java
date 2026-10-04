@@ -63,7 +63,14 @@ public class CookingPotBlock extends BaseEntityBlock {
 	/** Blocks that can heat the pot when directly underneath it. Ones that can be lit, like campfires and furnaces, must be lit. */
 	public static final TagKey<Block> HEAT_SOURCES = TagKey.create(Registries.BLOCK, DynamicCooking.id("heat_sources"));
 
+	/**
+	 * How far the pot sinks into a campfire, in pixels. Its floor is raised as far, to where the campfire's flames end,
+	 * so they never show inside the pot.
+	 */
+	public static final int CAMPFIRE_DROP = 4;
+
 	private static final VoxelShape SHAPE = Block.box(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
+	private static final VoxelShape SHAPE_ON_CAMPFIRE = Block.box(3.0, -CAMPFIRE_DROP, 3.0, 13.0, 8.0 - CAMPFIRE_DROP, 13.0);
 
 	public CookingPotBlock(Properties properties) {
 		super(properties);
@@ -80,9 +87,13 @@ public class CookingPotBlock extends BaseEntityBlock {
 		builder.add(COOKING, FILL, LIQUID, LEGS, READY);
 	}
 
-	/** Height of the contents' surface above the pot's block, in blocks. */
+	/**
+	 * Height of the contents' surface above the pot's block, in blocks. The floor's top is a pixel up either way; a full
+	 * pot reaches a pixel below the rim, which is lower in a campfire.
+	 */
 	public static double surfaceY(BlockState state) {
-		return (1.0 + state.getValue(FILL) * 1.2) / 16.0;
+		double full = 7.0 - (state.getValue(LEGS) == Legs.SHORT ? CAMPFIRE_DROP : 0);
+		return (1.0 + state.getValue(FILL) * (full - 1.0) / CookingRules.DEFAULT.maxIngredients()) / 16.0;
 	}
 
 	@Override
@@ -102,7 +113,7 @@ public class CookingPotBlock extends BaseEntityBlock {
 
 	@Override
 	protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-		return SHAPE;
+		return state.getValue(LEGS) == Legs.SHORT ? SHAPE_ON_CAMPFIRE : SHAPE;
 	}
 
 	@Nullable
