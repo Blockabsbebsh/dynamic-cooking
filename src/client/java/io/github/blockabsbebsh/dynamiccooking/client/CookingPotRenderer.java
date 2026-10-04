@@ -6,6 +6,7 @@ import java.util.List;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import org.jetbrains.annotations.Nullable;
+import org.joml.Matrix4f;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
@@ -215,7 +216,7 @@ public class CookingPotRenderer implements BlockEntityRenderer<CookingPotBlockEn
 			// Lying flat on the contents, like food on a campfire.
 			pose.pushPose();
 			pose.translate(0.5f, state.surfaceY + 0.02f, 0.5f);
-			pose.mulPose(Axis.XP.rotationDegrees(90));
+			pose.rotateDegrees(Axis.XP, 90);
 			pose.scale(0.42f, 0.42f, 0.42f);
 			state.dish.submit(pose, collector, state.lightCoords, OverlayTexture.NO_OVERLAY, 0);
 			pose.popPose();
@@ -233,7 +234,7 @@ public class CookingPotRenderer implements BlockEntityRenderer<CookingPotBlockEn
 
 		pose.pushPose();
 		pose.translate(0.5f, state.surfaceY + 0.95f, 0.5f);
-		pose.mulPose(camera.orientation);
+		pose.mulPose(new Matrix4f().rotation(camera.orientation));
 		pose.scale(PIXEL, -PIXEL, PIXEL);
 
 		// Rows from the top: title, icons, bar, status.
