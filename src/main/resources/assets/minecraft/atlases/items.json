@@ -563,6 +563,54 @@
 			"permutations": {
 				"apple": "dynamic_cooking:dish/apple",
 				"bamboo": "dynamic_cooking:dish/bamboo",
+				"beef": "dynamic_cooking:dish/beef",
+				"beetroot": "dynamic_cooking:dish/beetroot",
+				"cactus": "dynamic_cooking:dish/cactus",
+				"carrot": "dynamic_cooking:dish/carrot",
+				"chicken": "dynamic_cooking:dish/chicken",
+				"chocolate": "dynamic_cooking:dish/chocolate",
+				"chorus_fruit": "dynamic_cooking:dish/chorus_fruit",
+				"cod": "dynamic_cooking:dish/cod",
+				"crimson_fungus": "dynamic_cooking:dish/crimson_fungus",
+				"fern": "dynamic_cooking:dish/fern",
+				"glistering_melon": "dynamic_cooking:dish/glistering_melon",
+				"glow_berry": "dynamic_cooking:dish/glow_berry",
+				"golden_apple": "dynamic_cooking:dish/golden_apple",
+				"golden_carrot": "dynamic_cooking:dish/golden_carrot",
+				"honey": "dynamic_cooking:dish/honey",
+				"kelp": "dynamic_cooking:dish/kelp",
+				"lily_pad": "dynamic_cooking:dish/lily_pad",
+				"melon": "dynamic_cooking:dish/melon",
+				"mushroom": "dynamic_cooking:dish/mushroom",
+				"mutton": "dynamic_cooking:dish/mutton",
+				"nether_wart": "dynamic_cooking:dish/nether_wart",
+				"oat": "dynamic_cooking:dish/oat",
+				"poisonous_potato": "dynamic_cooking:dish/poisonous_potato",
+				"porkchop": "dynamic_cooking:dish/porkchop",
+				"potato": "dynamic_cooking:dish/potato",
+				"pufferfish": "dynamic_cooking:dish/pufferfish",
+				"pumpkin": "dynamic_cooking:dish/pumpkin",
+				"rabbit": "dynamic_cooking:dish/rabbit",
+				"rotten_flesh": "dynamic_cooking:dish/rotten_flesh",
+				"salmon": "dynamic_cooking:dish/salmon",
+				"sea_pickle": "dynamic_cooking:dish/sea_pickle",
+				"seagrass": "dynamic_cooking:dish/seagrass",
+				"sugar_cane": "dynamic_cooking:dish/sugar_cane",
+				"sweet_berry": "dynamic_cooking:dish/sweet_berry",
+				"tropical_fish": "dynamic_cooking:dish/tropical_fish",
+				"warped_fungus": "dynamic_cooking:dish/warped_fungus"
+			}
+		},
+		{
+			"type": "minecraft:paletted_permutations",
+			"textures": [
+				"dynamic_cooking:item/dish/tea_liquid",
+				"dynamic_cooking:item/dish/tea_petal"
+			],
+			"palette_key": "dynamic_cooking:dish/key",
+			"permutations": {
+				"apple": "dynamic_cooking:dish/apple",
+				"bamboo": "dynamic_cooking:dish/bamboo",
 				"beetroot": "dynamic_cooking:dish/beetroot",
 				"cactus": "dynamic_cooking:dish/cactus",
 				"carrot": "dynamic_cooking:dish/carrot",
@@ -575,10 +623,10 @@
 				"golden_carrot": "dynamic_cooking:dish/golden_carrot",
 				"honey": "dynamic_cooking:dish/honey",
 				"kelp": "dynamic_cooking:dish/kelp",
+				"leaf": "dynamic_cooking:dish/leaf",
 				"lily_pad": "dynamic_cooking:dish/lily_pad",
 				"melon": "dynamic_cooking:dish/melon",
 				"nether_wart": "dynamic_cooking:dish/nether_wart",
-				"oat": "dynamic_cooking:dish/oat",
 				"poisonous_potato": "dynamic_cooking:dish/poisonous_potato",
 				"potato": "dynamic_cooking:dish/potato",
 				"pumpkin": "dynamic_cooking:dish/pumpkin",
@@ -586,20 +634,6 @@
 				"seagrass": "dynamic_cooking:dish/seagrass",
 				"sugar_cane": "dynamic_cooking:dish/sugar_cane",
 				"sweet_berry": "dynamic_cooking:dish/sweet_berry"
-			}
-		},
-		{
-			"type": "minecraft:paletted_permutations",
-			"textures": [
-				"dynamic_cooking:item/dish/tea_liquid",
-				"dynamic_cooking:item/dish/tea_petal"
-			],
-			"palette_key": "dynamic_cooking:dish/key",
-			"permutations": {
-				"chocolate": "dynamic_cooking:dish/chocolate",
-				"honey": "dynamic_cooking:dish/honey",
-				"leaf": "dynamic_cooking:dish/leaf",
-				"sugar_cane": "dynamic_cooking:dish/sugar_cane"
 			}
 		},
 		{
@@ -646,11 +680,15 @@
 			"permutations": {
 				"apple": "dynamic_cooking:dish/apple",
 				"bamboo": "dynamic_cooking:dish/bamboo",
+				"beef": "dynamic_cooking:dish/beef",
 				"beetroot": "dynamic_cooking:dish/beetroot",
 				"cactus": "dynamic_cooking:dish/cactus",
 				"carrot": "dynamic_cooking:dish/carrot",
+				"chicken": "dynamic_cooking:dish/chicken",
 				"chocolate": "dynamic_cooking:dish/chocolate",
 				"chorus_fruit": "dynamic_cooking:dish/chorus_fruit",
+				"cod": "dynamic_cooking:dish/cod",
+				"crimson_fungus": "dynamic_cooking:dish/crimson_fungus",
 				"fern": "dynamic_cooking:dish/fern",
 				"glistering_melon": "dynamic_cooking:dish/glistering_melon",
 				"glow_berry": "dynamic_cooking:dish/glow_berry",
@@ -660,15 +698,24 @@
 				"kelp": "dynamic_cooking:dish/kelp",
 				"lily_pad": "dynamic_cooking:dish/lily_pad",
 				"melon": "dynamic_cooking:dish/melon",
+				"mushroom": "dynamic_cooking:dish/mushroom",
+				"mutton": "dynamic_cooking:dish/mutton",
 				"nether_wart": "dynamic_cooking:dish/nether_wart",
 				"poisonous_potato": "dynamic_cooking:dish/poisonous_potato",
+				"porkchop": "dynamic_cooking:dish/porkchop",
 				"potato": "dynamic_cooking:dish/potato",
+				"pufferfish": "dynamic_cooking:dish/pufferfish",
 				"pumpkin": "dynamic_cooking:dish/pumpkin",
+				"rabbit": "dynamic_cooking:dish/rabbit",
+				"rotten_flesh": "dynamic_cooking:dish/rotten_flesh",
+				"salmon": "dynamic_cooking:dish/salmon",
 				"sea_pickle": "dynamic_cooking:dish/sea_pickle",
 				"seagrass": "dynamic_cooking:dish/seagrass",
 				"snow": "dynamic_cooking:dish/snow",
 				"sugar_cane": "dynamic_cooking:dish/sugar_cane",
-				"sweet_berry": "dynamic_cooking:dish/sweet_berry"
+				"sweet_berry": "dynamic_cooking:dish/sweet_berry",
+				"tropical_fish": "dynamic_cooking:dish/tropical_fish",
+				"warped_fungus": "dynamic_cooking:dish/warped_fungus"
 			}
 		},
 		{
@@ -816,6 +863,54 @@
 			"permutations": {
 				"apple": "dynamic_cooking:dish/apple",
 				"bamboo": "dynamic_cooking:dish/bamboo",
+				"beef": "dynamic_cooking:dish/beef",
+				"beetroot": "dynamic_cooking:dish/beetroot",
+				"cactus": "dynamic_cooking:dish/cactus",
+				"carrot": "dynamic_cooking:dish/carrot",
+				"chicken": "dynamic_cooking:dish/chicken",
+				"chocolate": "dynamic_cooking:dish/chocolate",
+				"chorus_fruit": "dynamic_cooking:dish/chorus_fruit",
+				"cod": "dynamic_cooking:dish/cod",
+				"crimson_fungus": "dynamic_cooking:dish/crimson_fungus",
+				"fern": "dynamic_cooking:dish/fern",
+				"glistering_melon": "dynamic_cooking:dish/glistering_melon",
+				"glow_berry": "dynamic_cooking:dish/glow_berry",
+				"golden_apple": "dynamic_cooking:dish/golden_apple",
+				"golden_carrot": "dynamic_cooking:dish/golden_carrot",
+				"honey": "dynamic_cooking:dish/honey",
+				"kelp": "dynamic_cooking:dish/kelp",
+				"lily_pad": "dynamic_cooking:dish/lily_pad",
+				"melon": "dynamic_cooking:dish/melon",
+				"mushroom": "dynamic_cooking:dish/mushroom",
+				"mutton": "dynamic_cooking:dish/mutton",
+				"nether_wart": "dynamic_cooking:dish/nether_wart",
+				"oat": "dynamic_cooking:dish/oat",
+				"poisonous_potato": "dynamic_cooking:dish/poisonous_potato",
+				"porkchop": "dynamic_cooking:dish/porkchop",
+				"potato": "dynamic_cooking:dish/potato",
+				"pufferfish": "dynamic_cooking:dish/pufferfish",
+				"pumpkin": "dynamic_cooking:dish/pumpkin",
+				"rabbit": "dynamic_cooking:dish/rabbit",
+				"rotten_flesh": "dynamic_cooking:dish/rotten_flesh",
+				"salmon": "dynamic_cooking:dish/salmon",
+				"sea_pickle": "dynamic_cooking:dish/sea_pickle",
+				"seagrass": "dynamic_cooking:dish/seagrass",
+				"sugar_cane": "dynamic_cooking:dish/sugar_cane",
+				"sweet_berry": "dynamic_cooking:dish/sweet_berry",
+				"tropical_fish": "dynamic_cooking:dish/tropical_fish",
+				"warped_fungus": "dynamic_cooking:dish/warped_fungus"
+			}
+		},
+		{
+			"type": "minecraft:paletted_permutations",
+			"textures": [
+				"dynamic_cooking:item/dish/tea_in_bowl_liquid",
+				"dynamic_cooking:item/dish/tea_in_bowl_petal"
+			],
+			"palette_key": "dynamic_cooking:dish/key",
+			"permutations": {
+				"apple": "dynamic_cooking:dish/apple",
+				"bamboo": "dynamic_cooking:dish/bamboo",
 				"beetroot": "dynamic_cooking:dish/beetroot",
 				"cactus": "dynamic_cooking:dish/cactus",
 				"carrot": "dynamic_cooking:dish/carrot",
@@ -828,10 +923,10 @@
 				"golden_carrot": "dynamic_cooking:dish/golden_carrot",
 				"honey": "dynamic_cooking:dish/honey",
 				"kelp": "dynamic_cooking:dish/kelp",
+				"leaf": "dynamic_cooking:dish/leaf",
 				"lily_pad": "dynamic_cooking:dish/lily_pad",
 				"melon": "dynamic_cooking:dish/melon",
 				"nether_wart": "dynamic_cooking:dish/nether_wart",
-				"oat": "dynamic_cooking:dish/oat",
 				"poisonous_potato": "dynamic_cooking:dish/poisonous_potato",
 				"potato": "dynamic_cooking:dish/potato",
 				"pumpkin": "dynamic_cooking:dish/pumpkin",
@@ -844,29 +939,36 @@
 		{
 			"type": "minecraft:paletted_permutations",
 			"textures": [
-				"dynamic_cooking:item/dish/tea_in_bowl_liquid",
-				"dynamic_cooking:item/dish/tea_in_bowl_petal"
-			],
-			"palette_key": "dynamic_cooking:dish/key",
-			"permutations": {
-				"chocolate": "dynamic_cooking:dish/chocolate",
-				"honey": "dynamic_cooking:dish/honey",
-				"leaf": "dynamic_cooking:dish/leaf",
-				"sugar_cane": "dynamic_cooking:dish/sugar_cane"
-			}
-		},
-		{
-			"type": "minecraft:paletted_permutations",
-			"textures": [
 				"dynamic_cooking:item/dish/tea_in_bucket_liquid",
 				"dynamic_cooking:item/dish/tea_in_bucket_petal"
 			],
 			"palette_key": "dynamic_cooking:dish/key",
 			"permutations": {
+				"apple": "dynamic_cooking:dish/apple",
+				"bamboo": "dynamic_cooking:dish/bamboo",
+				"beetroot": "dynamic_cooking:dish/beetroot",
+				"cactus": "dynamic_cooking:dish/cactus",
+				"carrot": "dynamic_cooking:dish/carrot",
 				"chocolate": "dynamic_cooking:dish/chocolate",
+				"chorus_fruit": "dynamic_cooking:dish/chorus_fruit",
+				"fern": "dynamic_cooking:dish/fern",
+				"glistering_melon": "dynamic_cooking:dish/glistering_melon",
+				"glow_berry": "dynamic_cooking:dish/glow_berry",
+				"golden_apple": "dynamic_cooking:dish/golden_apple",
+				"golden_carrot": "dynamic_cooking:dish/golden_carrot",
 				"honey": "dynamic_cooking:dish/honey",
+				"kelp": "dynamic_cooking:dish/kelp",
 				"leaf": "dynamic_cooking:dish/leaf",
-				"sugar_cane": "dynamic_cooking:dish/sugar_cane"
+				"lily_pad": "dynamic_cooking:dish/lily_pad",
+				"melon": "dynamic_cooking:dish/melon",
+				"nether_wart": "dynamic_cooking:dish/nether_wart",
+				"poisonous_potato": "dynamic_cooking:dish/poisonous_potato",
+				"potato": "dynamic_cooking:dish/potato",
+				"pumpkin": "dynamic_cooking:dish/pumpkin",
+				"sea_pickle": "dynamic_cooking:dish/sea_pickle",
+				"seagrass": "dynamic_cooking:dish/seagrass",
+				"sugar_cane": "dynamic_cooking:dish/sugar_cane",
+				"sweet_berry": "dynamic_cooking:dish/sweet_berry"
 			}
 		},
 		{
@@ -1037,6 +1139,54 @@
 			"permutations": {
 				"apple": "dynamic_cooking:dish/apple",
 				"bamboo": "dynamic_cooking:dish/bamboo",
+				"beef": "dynamic_cooking:dish/beef",
+				"beetroot": "dynamic_cooking:dish/beetroot",
+				"cactus": "dynamic_cooking:dish/cactus",
+				"carrot": "dynamic_cooking:dish/carrot",
+				"chicken": "dynamic_cooking:dish/chicken",
+				"chocolate": "dynamic_cooking:dish/chocolate",
+				"chorus_fruit": "dynamic_cooking:dish/chorus_fruit",
+				"cod": "dynamic_cooking:dish/cod",
+				"crimson_fungus": "dynamic_cooking:dish/crimson_fungus",
+				"fern": "dynamic_cooking:dish/fern",
+				"glistering_melon": "dynamic_cooking:dish/glistering_melon",
+				"glow_berry": "dynamic_cooking:dish/glow_berry",
+				"golden_apple": "dynamic_cooking:dish/golden_apple",
+				"golden_carrot": "dynamic_cooking:dish/golden_carrot",
+				"honey": "dynamic_cooking:dish/honey",
+				"kelp": "dynamic_cooking:dish/kelp",
+				"lily_pad": "dynamic_cooking:dish/lily_pad",
+				"melon": "dynamic_cooking:dish/melon",
+				"mushroom": "dynamic_cooking:dish/mushroom",
+				"mutton": "dynamic_cooking:dish/mutton",
+				"nether_wart": "dynamic_cooking:dish/nether_wart",
+				"oat": "dynamic_cooking:dish/oat",
+				"poisonous_potato": "dynamic_cooking:dish/poisonous_potato",
+				"porkchop": "dynamic_cooking:dish/porkchop",
+				"potato": "dynamic_cooking:dish/potato",
+				"pufferfish": "dynamic_cooking:dish/pufferfish",
+				"pumpkin": "dynamic_cooking:dish/pumpkin",
+				"rabbit": "dynamic_cooking:dish/rabbit",
+				"rotten_flesh": "dynamic_cooking:dish/rotten_flesh",
+				"salmon": "dynamic_cooking:dish/salmon",
+				"sea_pickle": "dynamic_cooking:dish/sea_pickle",
+				"seagrass": "dynamic_cooking:dish/seagrass",
+				"sugar_cane": "dynamic_cooking:dish/sugar_cane",
+				"sweet_berry": "dynamic_cooking:dish/sweet_berry",
+				"tropical_fish": "dynamic_cooking:dish/tropical_fish",
+				"warped_fungus": "dynamic_cooking:dish/warped_fungus"
+			}
+		},
+		{
+			"type": "minecraft:paletted_permutations",
+			"textures": [
+				"dynamic_cooking:item/dish/tea_pot_liquid",
+				"dynamic_cooking:item/dish/tea_pot_petal"
+			],
+			"palette_key": "dynamic_cooking:dish/key",
+			"permutations": {
+				"apple": "dynamic_cooking:dish/apple",
+				"bamboo": "dynamic_cooking:dish/bamboo",
 				"beetroot": "dynamic_cooking:dish/beetroot",
 				"cactus": "dynamic_cooking:dish/cactus",
 				"carrot": "dynamic_cooking:dish/carrot",
@@ -1049,10 +1199,10 @@
 				"golden_carrot": "dynamic_cooking:dish/golden_carrot",
 				"honey": "dynamic_cooking:dish/honey",
 				"kelp": "dynamic_cooking:dish/kelp",
+				"leaf": "dynamic_cooking:dish/leaf",
 				"lily_pad": "dynamic_cooking:dish/lily_pad",
 				"melon": "dynamic_cooking:dish/melon",
 				"nether_wart": "dynamic_cooking:dish/nether_wart",
-				"oat": "dynamic_cooking:dish/oat",
 				"poisonous_potato": "dynamic_cooking:dish/poisonous_potato",
 				"potato": "dynamic_cooking:dish/potato",
 				"pumpkin": "dynamic_cooking:dish/pumpkin",
@@ -1060,20 +1210,6 @@
 				"seagrass": "dynamic_cooking:dish/seagrass",
 				"sugar_cane": "dynamic_cooking:dish/sugar_cane",
 				"sweet_berry": "dynamic_cooking:dish/sweet_berry"
-			}
-		},
-		{
-			"type": "minecraft:paletted_permutations",
-			"textures": [
-				"dynamic_cooking:item/dish/tea_pot_liquid",
-				"dynamic_cooking:item/dish/tea_pot_petal"
-			],
-			"palette_key": "dynamic_cooking:dish/key",
-			"permutations": {
-				"chocolate": "dynamic_cooking:dish/chocolate",
-				"honey": "dynamic_cooking:dish/honey",
-				"leaf": "dynamic_cooking:dish/leaf",
-				"sugar_cane": "dynamic_cooking:dish/sugar_cane"
 			}
 		},
 		{

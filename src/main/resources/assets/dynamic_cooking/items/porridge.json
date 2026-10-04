@@ -36,6 +36,13 @@
 										}
 									},
 									{
+										"when": "beef",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_beef"
+										}
+									},
+									{
 										"when": "beetroot",
 										"model": {
 											"type": "minecraft:model",
@@ -57,6 +64,13 @@
 										}
 									},
 									{
+										"when": "chicken",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_chicken"
+										}
+									},
+									{
 										"when": "chocolate",
 										"model": {
 											"type": "minecraft:model",
@@ -68,6 +82,20 @@
 										"model": {
 											"type": "minecraft:model",
 											"model": "dynamic_cooking:item/dish/porridge_pot_topping_chorus_fruit"
+										}
+									},
+									{
+										"when": "cod",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_cod"
+										}
+									},
+									{
+										"when": "crimson_fungus",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_crimson_fungus"
 										}
 									},
 									{
@@ -134,6 +162,20 @@
 										}
 									},
 									{
+										"when": "mushroom",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_mushroom"
+										}
+									},
+									{
+										"when": "mutton",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_mutton"
+										}
+									},
+									{
 										"when": "nether_wart",
 										"model": {
 											"type": "minecraft:model",
@@ -155,6 +197,13 @@
 										}
 									},
 									{
+										"when": "porkchop",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_porkchop"
+										}
+									},
+									{
 										"when": "potato",
 										"model": {
 											"type": "minecraft:model",
@@ -162,10 +211,38 @@
 										}
 									},
 									{
+										"when": "pufferfish",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_pufferfish"
+										}
+									},
+									{
 										"when": "pumpkin",
 										"model": {
 											"type": "minecraft:model",
 											"model": "dynamic_cooking:item/dish/porridge_pot_topping_pumpkin"
+										}
+									},
+									{
+										"when": "rabbit",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_rabbit"
+										}
+									},
+									{
+										"when": "rotten_flesh",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_rotten_flesh"
+										}
+									},
+									{
+										"when": "salmon",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_salmon"
 										}
 									},
 									{
@@ -194,6 +271,20 @@
 										"model": {
 											"type": "minecraft:model",
 											"model": "dynamic_cooking:item/dish/porridge_pot_topping_sweet_berry"
+										}
+									},
+									{
+										"when": "tropical_fish",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_tropical_fish"
+										}
+									},
+									{
+										"when": "warped_fungus",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_topping_warped_fungus"
 										}
 									}
 								],
@@ -238,6 +329,13 @@
 										}
 									},
 									{
+										"when": "beef",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_beef"
+										}
+									},
+									{
 										"when": "beetroot",
 										"model": {
 											"type": "minecraft:model",
@@ -259,6 +357,13 @@
 										}
 									},
 									{
+										"when": "chicken",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_chicken"
+										}
+									},
+									{
 										"when": "chocolate",
 										"model": {
 											"type": "minecraft:model",
@@ -270,6 +375,20 @@
 										"model": {
 											"type": "minecraft:model",
 											"model": "dynamic_cooking:item/dish/porridge_pot_bits_chorus_fruit"
+										}
+									},
+									{
+										"when": "cod",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_cod"
+										}
+									},
+									{
+										"when": "crimson_fungus",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_crimson_fungus"
 										}
 									},
 									{
@@ -336,6 +455,20 @@
 										}
 									},
 									{
+										"when": "mushroom",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_mushroom"
+										}
+									},
+									{
+										"when": "mutton",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_mutton"
+										}
+									},
+									{
 										"when": "nether_wart",
 										"model": {
 											"type": "minecraft:model",
@@ -357,6 +490,13 @@
 										}
 									},
 									{
+										"when": "porkchop",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_porkchop"
+										}
+									},
+									{
 										"when": "potato",
 										"model": {
 											"type": "minecraft:model",
@@ -364,10 +504,38 @@
 										}
 									},
 									{
+										"when": "pufferfish",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_pufferfish"
+										}
+									},
+									{
 										"when": "pumpkin",
 										"model": {
 											"type": "minecraft:model",
 											"model": "dynamic_cooking:item/dish/porridge_pot_bits_pumpkin"
+										}
+									},
+									{
+										"when": "rabbit",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_rabbit"
+										}
+									},
+									{
+										"when": "rotten_flesh",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_rotten_flesh"
+										}
+									},
+									{
+										"when": "salmon",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_salmon"
 										}
 									},
 									{
@@ -397,6 +565,20 @@
 											"type": "minecraft:model",
 											"model": "dynamic_cooking:item/dish/porridge_pot_bits_sweet_berry"
 										}
+									},
+									{
+										"when": "tropical_fish",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_tropical_fish"
+										}
+									},
+									{
+										"when": "warped_fungus",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_pot_bits_warped_fungus"
+										}
 									}
 								],
 								"fallback": {
@@ -416,6 +598,13 @@
 											"model": {
 												"type": "minecraft:model",
 												"model": "dynamic_cooking:item/dish/porridge_pot_bits_bamboo"
+											}
+										},
+										{
+											"when": "beef",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_beef"
 											}
 										},
 										{
@@ -440,6 +629,13 @@
 											}
 										},
 										{
+											"when": "chicken",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_chicken"
+											}
+										},
+										{
 											"when": "chocolate",
 											"model": {
 												"type": "minecraft:model",
@@ -451,6 +647,20 @@
 											"model": {
 												"type": "minecraft:model",
 												"model": "dynamic_cooking:item/dish/porridge_pot_bits_chorus_fruit"
+											}
+										},
+										{
+											"when": "cod",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_cod"
+											}
+										},
+										{
+											"when": "crimson_fungus",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_crimson_fungus"
 											}
 										},
 										{
@@ -517,6 +727,20 @@
 											}
 										},
 										{
+											"when": "mushroom",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_mushroom"
+											}
+										},
+										{
+											"when": "mutton",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_mutton"
+											}
+										},
+										{
 											"when": "nether_wart",
 											"model": {
 												"type": "minecraft:model",
@@ -538,6 +762,13 @@
 											}
 										},
 										{
+											"when": "porkchop",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_porkchop"
+											}
+										},
+										{
 											"when": "potato",
 											"model": {
 												"type": "minecraft:model",
@@ -545,10 +776,38 @@
 											}
 										},
 										{
+											"when": "pufferfish",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_pufferfish"
+											}
+										},
+										{
 											"when": "pumpkin",
 											"model": {
 												"type": "minecraft:model",
 												"model": "dynamic_cooking:item/dish/porridge_pot_bits_pumpkin"
+											}
+										},
+										{
+											"when": "rabbit",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_rabbit"
+											}
+										},
+										{
+											"when": "rotten_flesh",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_rotten_flesh"
+											}
+										},
+										{
+											"when": "salmon",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_salmon"
 											}
 										},
 										{
@@ -577,6 +836,20 @@
 											"model": {
 												"type": "minecraft:model",
 												"model": "dynamic_cooking:item/dish/porridge_pot_bits_sweet_berry"
+											}
+										},
+										{
+											"when": "tropical_fish",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_tropical_fish"
+											}
+										},
+										{
+											"when": "warped_fungus",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_pot_bits_warped_fungus"
 											}
 										}
 									],
@@ -644,6 +917,13 @@
 											}
 										},
 										{
+											"when": "beef",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_beef"
+											}
+										},
+										{
 											"when": "beetroot",
 											"model": {
 												"type": "minecraft:model",
@@ -665,6 +945,13 @@
 											}
 										},
 										{
+											"when": "chicken",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_chicken"
+											}
+										},
+										{
 											"when": "chocolate",
 											"model": {
 												"type": "minecraft:model",
@@ -676,6 +963,20 @@
 											"model": {
 												"type": "minecraft:model",
 												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_chorus_fruit"
+											}
+										},
+										{
+											"when": "cod",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_cod"
+											}
+										},
+										{
+											"when": "crimson_fungus",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_crimson_fungus"
 											}
 										},
 										{
@@ -742,6 +1043,20 @@
 											}
 										},
 										{
+											"when": "mushroom",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_mushroom"
+											}
+										},
+										{
+											"when": "mutton",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_mutton"
+											}
+										},
+										{
 											"when": "nether_wart",
 											"model": {
 												"type": "minecraft:model",
@@ -763,6 +1078,13 @@
 											}
 										},
 										{
+											"when": "porkchop",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_porkchop"
+											}
+										},
+										{
 											"when": "potato",
 											"model": {
 												"type": "minecraft:model",
@@ -770,10 +1092,38 @@
 											}
 										},
 										{
+											"when": "pufferfish",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_pufferfish"
+											}
+										},
+										{
 											"when": "pumpkin",
 											"model": {
 												"type": "minecraft:model",
 												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_pumpkin"
+											}
+										},
+										{
+											"when": "rabbit",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_rabbit"
+											}
+										},
+										{
+											"when": "rotten_flesh",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_rotten_flesh"
+											}
+										},
+										{
+											"when": "salmon",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_salmon"
 											}
 										},
 										{
@@ -802,6 +1152,20 @@
 											"model": {
 												"type": "minecraft:model",
 												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_sweet_berry"
+											}
+										},
+										{
+											"when": "tropical_fish",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_tropical_fish"
+											}
+										},
+										{
+											"when": "warped_fungus",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_topping_warped_fungus"
 											}
 										}
 									],
@@ -846,6 +1210,13 @@
 											}
 										},
 										{
+											"when": "beef",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_beef"
+											}
+										},
+										{
 											"when": "beetroot",
 											"model": {
 												"type": "minecraft:model",
@@ -867,6 +1238,13 @@
 											}
 										},
 										{
+											"when": "chicken",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_chicken"
+											}
+										},
+										{
 											"when": "chocolate",
 											"model": {
 												"type": "minecraft:model",
@@ -878,6 +1256,20 @@
 											"model": {
 												"type": "minecraft:model",
 												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_chorus_fruit"
+											}
+										},
+										{
+											"when": "cod",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_cod"
+											}
+										},
+										{
+											"when": "crimson_fungus",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_crimson_fungus"
 											}
 										},
 										{
@@ -944,6 +1336,20 @@
 											}
 										},
 										{
+											"when": "mushroom",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_mushroom"
+											}
+										},
+										{
+											"when": "mutton",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_mutton"
+											}
+										},
+										{
 											"when": "nether_wart",
 											"model": {
 												"type": "minecraft:model",
@@ -965,6 +1371,13 @@
 											}
 										},
 										{
+											"when": "porkchop",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_porkchop"
+											}
+										},
+										{
 											"when": "potato",
 											"model": {
 												"type": "minecraft:model",
@@ -972,10 +1385,38 @@
 											}
 										},
 										{
+											"when": "pufferfish",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_pufferfish"
+											}
+										},
+										{
 											"when": "pumpkin",
 											"model": {
 												"type": "minecraft:model",
 												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_pumpkin"
+											}
+										},
+										{
+											"when": "rabbit",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_rabbit"
+											}
+										},
+										{
+											"when": "rotten_flesh",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_rotten_flesh"
+											}
+										},
+										{
+											"when": "salmon",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_salmon"
 											}
 										},
 										{
@@ -1005,6 +1446,20 @@
 												"type": "minecraft:model",
 												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_sweet_berry"
 											}
+										},
+										{
+											"when": "tropical_fish",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_tropical_fish"
+											}
+										},
+										{
+											"when": "warped_fungus",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_warped_fungus"
+											}
 										}
 									],
 									"fallback": {
@@ -1024,6 +1479,13 @@
 												"model": {
 													"type": "minecraft:model",
 													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_bamboo"
+												}
+											},
+											{
+												"when": "beef",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_beef"
 												}
 											},
 											{
@@ -1048,6 +1510,13 @@
 												}
 											},
 											{
+												"when": "chicken",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_chicken"
+												}
+											},
+											{
 												"when": "chocolate",
 												"model": {
 													"type": "minecraft:model",
@@ -1059,6 +1528,20 @@
 												"model": {
 													"type": "minecraft:model",
 													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_chorus_fruit"
+												}
+											},
+											{
+												"when": "cod",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_cod"
+												}
+											},
+											{
+												"when": "crimson_fungus",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_crimson_fungus"
 												}
 											},
 											{
@@ -1125,6 +1608,20 @@
 												}
 											},
 											{
+												"when": "mushroom",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_mushroom"
+												}
+											},
+											{
+												"when": "mutton",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_mutton"
+												}
+											},
+											{
 												"when": "nether_wart",
 												"model": {
 													"type": "minecraft:model",
@@ -1146,6 +1643,13 @@
 												}
 											},
 											{
+												"when": "porkchop",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_porkchop"
+												}
+											},
+											{
 												"when": "potato",
 												"model": {
 													"type": "minecraft:model",
@@ -1153,10 +1657,38 @@
 												}
 											},
 											{
+												"when": "pufferfish",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_pufferfish"
+												}
+											},
+											{
 												"when": "pumpkin",
 												"model": {
 													"type": "minecraft:model",
 													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_pumpkin"
+												}
+											},
+											{
+												"when": "rabbit",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_rabbit"
+												}
+											},
+											{
+												"when": "rotten_flesh",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_rotten_flesh"
+												}
+											},
+											{
+												"when": "salmon",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_salmon"
 												}
 											},
 											{
@@ -1185,6 +1717,20 @@
 												"model": {
 													"type": "minecraft:model",
 													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_sweet_berry"
+												}
+											},
+											{
+												"when": "tropical_fish",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_tropical_fish"
+												}
+											},
+											{
+												"when": "warped_fungus",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/porridge_in_bucket_bits_warped_fungus"
 												}
 											}
 										],
@@ -1245,6 +1791,13 @@
 									}
 								},
 								{
+									"when": "beef",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_beef"
+									}
+								},
+								{
 									"when": "beetroot",
 									"model": {
 										"type": "minecraft:model",
@@ -1266,6 +1819,13 @@
 									}
 								},
 								{
+									"when": "chicken",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_chicken"
+									}
+								},
+								{
 									"when": "chocolate",
 									"model": {
 										"type": "minecraft:model",
@@ -1277,6 +1837,20 @@
 									"model": {
 										"type": "minecraft:model",
 										"model": "dynamic_cooking:item/dish/porridge_topping_chorus_fruit"
+									}
+								},
+								{
+									"when": "cod",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_cod"
+									}
+								},
+								{
+									"when": "crimson_fungus",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_crimson_fungus"
 									}
 								},
 								{
@@ -1343,6 +1917,20 @@
 									}
 								},
 								{
+									"when": "mushroom",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_mushroom"
+									}
+								},
+								{
+									"when": "mutton",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_mutton"
+									}
+								},
+								{
 									"when": "nether_wart",
 									"model": {
 										"type": "minecraft:model",
@@ -1364,6 +1952,13 @@
 									}
 								},
 								{
+									"when": "porkchop",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_porkchop"
+									}
+								},
+								{
 									"when": "potato",
 									"model": {
 										"type": "minecraft:model",
@@ -1371,10 +1966,38 @@
 									}
 								},
 								{
+									"when": "pufferfish",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_pufferfish"
+									}
+								},
+								{
 									"when": "pumpkin",
 									"model": {
 										"type": "minecraft:model",
 										"model": "dynamic_cooking:item/dish/porridge_topping_pumpkin"
+									}
+								},
+								{
+									"when": "rabbit",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_rabbit"
+									}
+								},
+								{
+									"when": "rotten_flesh",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_rotten_flesh"
+									}
+								},
+								{
+									"when": "salmon",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_salmon"
 									}
 								},
 								{
@@ -1403,6 +2026,20 @@
 									"model": {
 										"type": "minecraft:model",
 										"model": "dynamic_cooking:item/dish/porridge_topping_sweet_berry"
+									}
+								},
+								{
+									"when": "tropical_fish",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_tropical_fish"
+									}
+								},
+								{
+									"when": "warped_fungus",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_topping_warped_fungus"
 									}
 								}
 							],
@@ -1447,6 +2084,13 @@
 									}
 								},
 								{
+									"when": "beef",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_beef"
+									}
+								},
+								{
 									"when": "beetroot",
 									"model": {
 										"type": "minecraft:model",
@@ -1468,6 +2112,13 @@
 									}
 								},
 								{
+									"when": "chicken",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_chicken"
+									}
+								},
+								{
 									"when": "chocolate",
 									"model": {
 										"type": "minecraft:model",
@@ -1479,6 +2130,20 @@
 									"model": {
 										"type": "minecraft:model",
 										"model": "dynamic_cooking:item/dish/porridge_bits_chorus_fruit"
+									}
+								},
+								{
+									"when": "cod",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_cod"
+									}
+								},
+								{
+									"when": "crimson_fungus",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_crimson_fungus"
 									}
 								},
 								{
@@ -1545,6 +2210,20 @@
 									}
 								},
 								{
+									"when": "mushroom",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_mushroom"
+									}
+								},
+								{
+									"when": "mutton",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_mutton"
+									}
+								},
+								{
 									"when": "nether_wart",
 									"model": {
 										"type": "minecraft:model",
@@ -1566,6 +2245,13 @@
 									}
 								},
 								{
+									"when": "porkchop",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_porkchop"
+									}
+								},
+								{
 									"when": "potato",
 									"model": {
 										"type": "minecraft:model",
@@ -1573,10 +2259,38 @@
 									}
 								},
 								{
+									"when": "pufferfish",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_pufferfish"
+									}
+								},
+								{
 									"when": "pumpkin",
 									"model": {
 										"type": "minecraft:model",
 										"model": "dynamic_cooking:item/dish/porridge_bits_pumpkin"
+									}
+								},
+								{
+									"when": "rabbit",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_rabbit"
+									}
+								},
+								{
+									"when": "rotten_flesh",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_rotten_flesh"
+									}
+								},
+								{
+									"when": "salmon",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_salmon"
 									}
 								},
 								{
@@ -1606,6 +2320,20 @@
 										"type": "minecraft:model",
 										"model": "dynamic_cooking:item/dish/porridge_bits_sweet_berry"
 									}
+								},
+								{
+									"when": "tropical_fish",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_tropical_fish"
+									}
+								},
+								{
+									"when": "warped_fungus",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/porridge_bits_warped_fungus"
+									}
 								}
 							],
 							"fallback": {
@@ -1625,6 +2353,13 @@
 										"model": {
 											"type": "minecraft:model",
 											"model": "dynamic_cooking:item/dish/porridge_bits_bamboo"
+										}
+									},
+									{
+										"when": "beef",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_beef"
 										}
 									},
 									{
@@ -1649,6 +2384,13 @@
 										}
 									},
 									{
+										"when": "chicken",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_chicken"
+										}
+									},
+									{
 										"when": "chocolate",
 										"model": {
 											"type": "minecraft:model",
@@ -1660,6 +2402,20 @@
 										"model": {
 											"type": "minecraft:model",
 											"model": "dynamic_cooking:item/dish/porridge_bits_chorus_fruit"
+										}
+									},
+									{
+										"when": "cod",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_cod"
+										}
+									},
+									{
+										"when": "crimson_fungus",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_crimson_fungus"
 										}
 									},
 									{
@@ -1726,6 +2482,20 @@
 										}
 									},
 									{
+										"when": "mushroom",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_mushroom"
+										}
+									},
+									{
+										"when": "mutton",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_mutton"
+										}
+									},
+									{
 										"when": "nether_wart",
 										"model": {
 											"type": "minecraft:model",
@@ -1747,6 +2517,13 @@
 										}
 									},
 									{
+										"when": "porkchop",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_porkchop"
+										}
+									},
+									{
 										"when": "potato",
 										"model": {
 											"type": "minecraft:model",
@@ -1754,10 +2531,38 @@
 										}
 									},
 									{
+										"when": "pufferfish",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_pufferfish"
+										}
+									},
+									{
 										"when": "pumpkin",
 										"model": {
 											"type": "minecraft:model",
 											"model": "dynamic_cooking:item/dish/porridge_bits_pumpkin"
+										}
+									},
+									{
+										"when": "rabbit",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_rabbit"
+										}
+									},
+									{
+										"when": "rotten_flesh",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_rotten_flesh"
+										}
+									},
+									{
+										"when": "salmon",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_salmon"
 										}
 									},
 									{
@@ -1786,6 +2591,20 @@
 										"model": {
 											"type": "minecraft:model",
 											"model": "dynamic_cooking:item/dish/porridge_bits_sweet_berry"
+										}
+									},
+									{
+										"when": "tropical_fish",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_tropical_fish"
+										}
+									},
+									{
+										"when": "warped_fungus",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/porridge_bits_warped_fungus"
 										}
 									}
 								],

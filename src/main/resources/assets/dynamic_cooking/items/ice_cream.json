@@ -30,6 +30,13 @@
 							}
 						},
 						{
+							"when": "beef",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/ice_cream_scoop_beef"
+							}
+						},
+						{
 							"when": "beetroot",
 							"model": {
 								"type": "minecraft:model",
@@ -51,6 +58,13 @@
 							}
 						},
 						{
+							"when": "chicken",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/ice_cream_scoop_chicken"
+							}
+						},
+						{
 							"when": "chocolate",
 							"model": {
 								"type": "minecraft:model",
@@ -62,6 +76,20 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/ice_cream_scoop_chorus_fruit"
+							}
+						},
+						{
+							"when": "cod",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/ice_cream_scoop_cod"
+							}
+						},
+						{
+							"when": "crimson_fungus",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/ice_cream_scoop_crimson_fungus"
 							}
 						},
 						{
@@ -128,6 +156,20 @@
 							}
 						},
 						{
+							"when": "mushroom",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/ice_cream_scoop_mushroom"
+							}
+						},
+						{
+							"when": "mutton",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/ice_cream_scoop_mutton"
+							}
+						},
+						{
 							"when": "nether_wart",
 							"model": {
 								"type": "minecraft:model",
@@ -142,6 +184,13 @@
 							}
 						},
 						{
+							"when": "porkchop",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/ice_cream_scoop_porkchop"
+							}
+						},
+						{
 							"when": "potato",
 							"model": {
 								"type": "minecraft:model",
@@ -149,10 +198,38 @@
 							}
 						},
 						{
+							"when": "pufferfish",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/ice_cream_scoop_pufferfish"
+							}
+						},
+						{
 							"when": "pumpkin",
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/ice_cream_scoop_pumpkin"
+							}
+						},
+						{
+							"when": "rabbit",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/ice_cream_scoop_rabbit"
+							}
+						},
+						{
+							"when": "rotten_flesh",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/ice_cream_scoop_rotten_flesh"
+							}
+						},
+						{
+							"when": "salmon",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/ice_cream_scoop_salmon"
 							}
 						},
 						{
@@ -188,6 +265,20 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/ice_cream_scoop_sweet_berry"
+							}
+						},
+						{
+							"when": "tropical_fish",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/ice_cream_scoop_tropical_fish"
+							}
+						},
+						{
+							"when": "warped_fungus",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/ice_cream_scoop_warped_fungus"
 							}
 						}
 					],
@@ -232,6 +323,13 @@
 							}
 						},
 						{
+							"when": "beef",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_beef"
+							}
+						},
+						{
 							"when": "beetroot",
 							"model": {
 								"type": "minecraft:model",
@@ -253,6 +351,13 @@
 							}
 						},
 						{
+							"when": "chicken",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_chicken"
+							}
+						},
+						{
 							"when": "chocolate",
 							"model": {
 								"type": "minecraft:model",
@@ -264,6 +369,20 @@
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_chorus_fruit"
+							}
+						},
+						{
+							"when": "cod",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_cod"
+							}
+						},
+						{
+							"when": "crimson_fungus",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_crimson_fungus"
 							}
 						},
 						{
@@ -330,6 +449,20 @@
 							}
 						},
 						{
+							"when": "mushroom",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_mushroom"
+							}
+						},
+						{
+							"when": "mutton",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_mutton"
+							}
+						},
+						{
 							"when": "nether_wart",
 							"model": {
 								"type": "minecraft:model",
@@ -344,6 +477,13 @@
 							}
 						},
 						{
+							"when": "porkchop",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_porkchop"
+							}
+						},
+						{
 							"when": "potato",
 							"model": {
 								"type": "minecraft:model",
@@ -351,10 +491,38 @@
 							}
 						},
 						{
+							"when": "pufferfish",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_pufferfish"
+							}
+						},
+						{
 							"when": "pumpkin",
 							"model": {
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_pumpkin"
+							}
+						},
+						{
+							"when": "rabbit",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_rabbit"
+							}
+						},
+						{
+							"when": "rotten_flesh",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_rotten_flesh"
+							}
+						},
+						{
+							"when": "salmon",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_salmon"
 							}
 						},
 						{
@@ -391,6 +559,20 @@
 								"type": "minecraft:model",
 								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_sweet_berry"
 							}
+						},
+						{
+							"when": "tropical_fish",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_tropical_fish"
+							}
+						},
+						{
+							"when": "warped_fungus",
+							"model": {
+								"type": "minecraft:model",
+								"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_warped_fungus"
+							}
 						}
 					],
 					"fallback": {
@@ -410,6 +592,13 @@
 								"model": {
 									"type": "minecraft:model",
 									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_bamboo"
+								}
+							},
+							{
+								"when": "beef",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_beef"
 								}
 							},
 							{
@@ -434,6 +623,13 @@
 								}
 							},
 							{
+								"when": "chicken",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_chicken"
+								}
+							},
+							{
 								"when": "chocolate",
 								"model": {
 									"type": "minecraft:model",
@@ -445,6 +641,20 @@
 								"model": {
 									"type": "minecraft:model",
 									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_chorus_fruit"
+								}
+							},
+							{
+								"when": "cod",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_cod"
+								}
+							},
+							{
+								"when": "crimson_fungus",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_crimson_fungus"
 								}
 							},
 							{
@@ -511,6 +721,20 @@
 								}
 							},
 							{
+								"when": "mushroom",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_mushroom"
+								}
+							},
+							{
+								"when": "mutton",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_mutton"
+								}
+							},
+							{
 								"when": "nether_wart",
 								"model": {
 									"type": "minecraft:model",
@@ -525,6 +749,13 @@
 								}
 							},
 							{
+								"when": "porkchop",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_porkchop"
+								}
+							},
+							{
 								"when": "potato",
 								"model": {
 									"type": "minecraft:model",
@@ -532,10 +763,38 @@
 								}
 							},
 							{
+								"when": "pufferfish",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_pufferfish"
+								}
+							},
+							{
 								"when": "pumpkin",
 								"model": {
 									"type": "minecraft:model",
 									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_pumpkin"
+								}
+							},
+							{
+								"when": "rabbit",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_rabbit"
+								}
+							},
+							{
+								"when": "rotten_flesh",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_rotten_flesh"
+								}
+							},
+							{
+								"when": "salmon",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_salmon"
 								}
 							},
 							{
@@ -571,6 +830,20 @@
 								"model": {
 									"type": "minecraft:model",
 									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_sweet_berry"
+								}
+							},
+							{
+								"when": "tropical_fish",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_tropical_fish"
+								}
+							},
+							{
+								"when": "warped_fungus",
+								"model": {
+									"type": "minecraft:model",
+									"model": "dynamic_cooking:item/dish/ice_cream_second_scoop_warped_fungus"
 								}
 							}
 						],

@@ -290,7 +290,7 @@ class ShippedDataTest {
 
 	@Test
 	void flowersGoInAnythingWithTheirSuspiciousStewEffect() {
-		DishResult soup = cook("water_bucket", "carrot", "lily_of_the_valley");
+		DishResult soup = cook("water_bucket", "cooked_beef", "lily_of_the_valley");
 
 		assertEquals("dynamic_cooking:soup", soup.item());
 		assertEquals("minecraft:poison", soup.sideEffects().getFirst().effect());
@@ -383,8 +383,10 @@ class ShippedDataTest {
 	void flowersInWaterMakeTea() {
 		assertDish("tea", List.of("poppy"), "water_bucket", "poppy");
 		assertDish("tea", List.of("leaf", "honey"), "water_bucket", "cherry_leaves", "honey_bottle");
-		// With food in it, it's a soup with a flower in it.
-		assertDish("soup", List.of("carrot"), "water_bucket", "carrot", "poppy");
+		// A flower makes fruit and veg in water a tea; meat, fish or mushrooms keep it a soup.
+		assertEquals("dynamic_cooking:tea", cook("water_bucket", "apple", "poppy").item());
+		assertDish("soup", List.of("apple"), "water_bucket", "apple");
+		assertDish("soup", List.of("beef"), "water_bucket", "cooked_beef", "poppy");
 		assertTrue(cook("water_bucket", "poppy").liquid());
 	}
 
@@ -393,6 +395,7 @@ class ShippedDataTest {
 		assertDish("porridge", List.of(), "water_bucket", "wheat");
 		assertDish("porridge", List.of("sweet_berry"), "milk_bucket", "wheat", "sweet_berries");
 		assertDish("porridge", List.of("honey"), "milk_bucket", "pumpkin_seeds", "honey_bottle");
+		assertDish("porridge", List.of("salmon"), "water_bucket", "wheat", "cooked_salmon");
 		assertTrue(!cook("water_bucket", "wheat").liquid());
 		assertEquals(Optional.of("minecraft:bowl"), cook("water_bucket", "wheat").servedWith());
 	}
@@ -408,7 +411,8 @@ class ShippedDataTest {
 	void slimeAndFruitSetIntoJelly() {
 		assertCrafted("jelly", List.of("sweet_berry"), "slime_ball", "sweet_berries");
 		assertCrafted("jelly", List.of("honey"), "slime_ball", "honey_bottle");
-		assertTrue(resolver.match(CookingMethod.CRAFTING, inputs("slime_ball", "cooked_beef")).isEmpty());
+		assertCrafted("jelly", List.of("beef"), "slime_ball", "cooked_beef");
+		assertTrue(resolver.match(CookingMethod.CRAFTING, inputs("slime_ball", "wheat")).isEmpty());
 	}
 
 	@Test
@@ -417,6 +421,7 @@ class ShippedDataTest {
 		assertCrafted("ice_cream", List.of("chocolate"), "bowl", "snowball", "cocoa_beans");
 		assertCrafted("ice_cream", List.of("sweet_berry"), "bowl", "snowball", "sugar", "sweet_berries");
 		assertCrafted("salad", List.of("apple"), "bowl", "apple");
+		assertCrafted("ice_cream", List.of("porkchop"), "bowl", "snowball", "sugar", "cooked_porkchop");
 	}
 
 	private static void assertDish(String dish, List<String> nameFlavors, String... items) {

@@ -18,10 +18,87 @@
 								"index": 0,
 								"cases": [
 									{
+										"when": "apple",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_liquid_apple"
+										}
+									},
+									{
+										"when": "bamboo",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_liquid_bamboo"
+										}
+									},
+									{
+										"when": "beetroot",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_liquid_beetroot"
+										}
+									},
+									{
+										"when": "cactus",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_liquid_cactus"
+										}
+									},
+									{
+										"when": "carrot",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_liquid_carrot"
+										}
+									},
+									{
 										"when": "chocolate",
 										"model": {
 											"type": "minecraft:model",
 											"model": "dynamic_cooking:item/dish/tea_pot_liquid_chocolate"
+										}
+									},
+									{
+										"when": "chorus_fruit",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_liquid_chorus_fruit"
+										}
+									},
+									{
+										"when": "fern",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_liquid_fern"
+										}
+									},
+									{
+										"when": "glistering_melon",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_liquid_glistering_melon"
+										}
+									},
+									{
+										"when": "glow_berry",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_liquid_glow_berry"
+										}
+									},
+									{
+										"when": "golden_apple",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_liquid_golden_apple"
+										}
+									},
+									{
+										"when": "golden_carrot",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_liquid_golden_carrot"
 										}
 									},
 									{
@@ -32,6 +109,13 @@
 										}
 									},
 									{
+										"when": "kelp",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_liquid_kelp"
+										}
+									},
+									{
 										"when": "leaf",
 										"model": {
 											"type": "minecraft:model",
@@ -39,10 +123,73 @@
 										}
 									},
 									{
+										"when": "lily_pad",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_liquid_lily_pad"
+										}
+									},
+									{
+										"when": "melon",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_liquid_melon"
+										}
+									},
+									{
+										"when": "nether_wart",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_liquid_nether_wart"
+										}
+									},
+									{
+										"when": "poisonous_potato",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_liquid_poisonous_potato"
+										}
+									},
+									{
+										"when": "potato",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_liquid_potato"
+										}
+									},
+									{
+										"when": "pumpkin",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_liquid_pumpkin"
+										}
+									},
+									{
+										"when": "sea_pickle",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_liquid_sea_pickle"
+										}
+									},
+									{
+										"when": "seagrass",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_liquid_seagrass"
+										}
+									},
+									{
 										"when": "sugar_cane",
 										"model": {
 											"type": "minecraft:model",
 											"model": "dynamic_cooking:item/dish/tea_pot_liquid_sugar_cane"
+										}
+									},
+									{
+										"when": "sweet_berry",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_liquid_sweet_berry"
 										}
 									}
 								],
@@ -73,10 +220,87 @@
 								"index": 1,
 								"cases": [
 									{
+										"when": "apple",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_petal_apple"
+										}
+									},
+									{
+										"when": "bamboo",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_petal_bamboo"
+										}
+									},
+									{
+										"when": "beetroot",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_petal_beetroot"
+										}
+									},
+									{
+										"when": "cactus",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_petal_cactus"
+										}
+									},
+									{
+										"when": "carrot",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_petal_carrot"
+										}
+									},
+									{
 										"when": "chocolate",
 										"model": {
 											"type": "minecraft:model",
 											"model": "dynamic_cooking:item/dish/tea_pot_petal_chocolate"
+										}
+									},
+									{
+										"when": "chorus_fruit",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_petal_chorus_fruit"
+										}
+									},
+									{
+										"when": "fern",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_petal_fern"
+										}
+									},
+									{
+										"when": "glistering_melon",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_petal_glistering_melon"
+										}
+									},
+									{
+										"when": "glow_berry",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_petal_glow_berry"
+										}
+									},
+									{
+										"when": "golden_apple",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_petal_golden_apple"
+										}
+									},
+									{
+										"when": "golden_carrot",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_petal_golden_carrot"
 										}
 									},
 									{
@@ -87,6 +311,13 @@
 										}
 									},
 									{
+										"when": "kelp",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_petal_kelp"
+										}
+									},
+									{
 										"when": "leaf",
 										"model": {
 											"type": "minecraft:model",
@@ -94,10 +325,73 @@
 										}
 									},
 									{
+										"when": "lily_pad",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_petal_lily_pad"
+										}
+									},
+									{
+										"when": "melon",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_petal_melon"
+										}
+									},
+									{
+										"when": "nether_wart",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_petal_nether_wart"
+										}
+									},
+									{
+										"when": "poisonous_potato",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_petal_poisonous_potato"
+										}
+									},
+									{
+										"when": "potato",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_petal_potato"
+										}
+									},
+									{
+										"when": "pumpkin",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_petal_pumpkin"
+										}
+									},
+									{
+										"when": "sea_pickle",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_petal_sea_pickle"
+										}
+									},
+									{
+										"when": "seagrass",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_petal_seagrass"
+										}
+									},
+									{
 										"when": "sugar_cane",
 										"model": {
 											"type": "minecraft:model",
 											"model": "dynamic_cooking:item/dish/tea_pot_petal_sugar_cane"
+										}
+									},
+									{
+										"when": "sweet_berry",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_pot_petal_sweet_berry"
 										}
 									}
 								],
@@ -107,10 +401,87 @@
 									"index": 0,
 									"cases": [
 										{
+											"when": "apple",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_pot_petal_apple"
+											}
+										},
+										{
+											"when": "bamboo",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_pot_petal_bamboo"
+											}
+										},
+										{
+											"when": "beetroot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_pot_petal_beetroot"
+											}
+										},
+										{
+											"when": "cactus",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_pot_petal_cactus"
+											}
+										},
+										{
+											"when": "carrot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_pot_petal_carrot"
+											}
+										},
+										{
 											"when": "chocolate",
 											"model": {
 												"type": "minecraft:model",
 												"model": "dynamic_cooking:item/dish/tea_pot_petal_chocolate"
+											}
+										},
+										{
+											"when": "chorus_fruit",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_pot_petal_chorus_fruit"
+											}
+										},
+										{
+											"when": "fern",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_pot_petal_fern"
+											}
+										},
+										{
+											"when": "glistering_melon",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_pot_petal_glistering_melon"
+											}
+										},
+										{
+											"when": "glow_berry",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_pot_petal_glow_berry"
+											}
+										},
+										{
+											"when": "golden_apple",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_pot_petal_golden_apple"
+											}
+										},
+										{
+											"when": "golden_carrot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_pot_petal_golden_carrot"
 											}
 										},
 										{
@@ -121,6 +492,13 @@
 											}
 										},
 										{
+											"when": "kelp",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_pot_petal_kelp"
+											}
+										},
+										{
 											"when": "leaf",
 											"model": {
 												"type": "minecraft:model",
@@ -128,10 +506,73 @@
 											}
 										},
 										{
+											"when": "lily_pad",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_pot_petal_lily_pad"
+											}
+										},
+										{
+											"when": "melon",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_pot_petal_melon"
+											}
+										},
+										{
+											"when": "nether_wart",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_pot_petal_nether_wart"
+											}
+										},
+										{
+											"when": "poisonous_potato",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_pot_petal_poisonous_potato"
+											}
+										},
+										{
+											"when": "potato",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_pot_petal_potato"
+											}
+										},
+										{
+											"when": "pumpkin",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_pot_petal_pumpkin"
+											}
+										},
+										{
+											"when": "sea_pickle",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_pot_petal_sea_pickle"
+											}
+										},
+										{
+											"when": "seagrass",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_pot_petal_seagrass"
+											}
+										},
+										{
 											"when": "sugar_cane",
 											"model": {
 												"type": "minecraft:model",
 												"model": "dynamic_cooking:item/dish/tea_pot_petal_sugar_cane"
+											}
+										},
+										{
+											"when": "sweet_berry",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_pot_petal_sweet_berry"
 											}
 										}
 									],
@@ -181,10 +622,87 @@
 									"index": 0,
 									"cases": [
 										{
+											"when": "apple",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_liquid_apple"
+											}
+										},
+										{
+											"when": "bamboo",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_liquid_bamboo"
+											}
+										},
+										{
+											"when": "beetroot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_liquid_beetroot"
+											}
+										},
+										{
+											"when": "cactus",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_liquid_cactus"
+											}
+										},
+										{
+											"when": "carrot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_liquid_carrot"
+											}
+										},
+										{
 											"when": "chocolate",
 											"model": {
 												"type": "minecraft:model",
 												"model": "dynamic_cooking:item/dish/tea_in_bowl_liquid_chocolate"
+											}
+										},
+										{
+											"when": "chorus_fruit",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_liquid_chorus_fruit"
+											}
+										},
+										{
+											"when": "fern",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_liquid_fern"
+											}
+										},
+										{
+											"when": "glistering_melon",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_liquid_glistering_melon"
+											}
+										},
+										{
+											"when": "glow_berry",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_liquid_glow_berry"
+											}
+										},
+										{
+											"when": "golden_apple",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_liquid_golden_apple"
+											}
+										},
+										{
+											"when": "golden_carrot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_liquid_golden_carrot"
 											}
 										},
 										{
@@ -195,6 +713,13 @@
 											}
 										},
 										{
+											"when": "kelp",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_liquid_kelp"
+											}
+										},
+										{
 											"when": "leaf",
 											"model": {
 												"type": "minecraft:model",
@@ -202,10 +727,73 @@
 											}
 										},
 										{
+											"when": "lily_pad",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_liquid_lily_pad"
+											}
+										},
+										{
+											"when": "melon",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_liquid_melon"
+											}
+										},
+										{
+											"when": "nether_wart",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_liquid_nether_wart"
+											}
+										},
+										{
+											"when": "poisonous_potato",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_liquid_poisonous_potato"
+											}
+										},
+										{
+											"when": "potato",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_liquid_potato"
+											}
+										},
+										{
+											"when": "pumpkin",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_liquid_pumpkin"
+											}
+										},
+										{
+											"when": "sea_pickle",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_liquid_sea_pickle"
+											}
+										},
+										{
+											"when": "seagrass",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_liquid_seagrass"
+											}
+										},
+										{
 											"when": "sugar_cane",
 											"model": {
 												"type": "minecraft:model",
 												"model": "dynamic_cooking:item/dish/tea_in_bowl_liquid_sugar_cane"
+											}
+										},
+										{
+											"when": "sweet_berry",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_liquid_sweet_berry"
 											}
 										}
 									],
@@ -236,10 +824,87 @@
 									"index": 1,
 									"cases": [
 										{
+											"when": "apple",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_apple"
+											}
+										},
+										{
+											"when": "bamboo",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_bamboo"
+											}
+										},
+										{
+											"when": "beetroot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_beetroot"
+											}
+										},
+										{
+											"when": "cactus",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_cactus"
+											}
+										},
+										{
+											"when": "carrot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_carrot"
+											}
+										},
+										{
 											"when": "chocolate",
 											"model": {
 												"type": "minecraft:model",
 												"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_chocolate"
+											}
+										},
+										{
+											"when": "chorus_fruit",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_chorus_fruit"
+											}
+										},
+										{
+											"when": "fern",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_fern"
+											}
+										},
+										{
+											"when": "glistering_melon",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_glistering_melon"
+											}
+										},
+										{
+											"when": "glow_berry",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_glow_berry"
+											}
+										},
+										{
+											"when": "golden_apple",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_golden_apple"
+											}
+										},
+										{
+											"when": "golden_carrot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_golden_carrot"
 											}
 										},
 										{
@@ -250,6 +915,13 @@
 											}
 										},
 										{
+											"when": "kelp",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_kelp"
+											}
+										},
+										{
 											"when": "leaf",
 											"model": {
 												"type": "minecraft:model",
@@ -257,10 +929,73 @@
 											}
 										},
 										{
+											"when": "lily_pad",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_lily_pad"
+											}
+										},
+										{
+											"when": "melon",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_melon"
+											}
+										},
+										{
+											"when": "nether_wart",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_nether_wart"
+											}
+										},
+										{
+											"when": "poisonous_potato",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_poisonous_potato"
+											}
+										},
+										{
+											"when": "potato",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_potato"
+											}
+										},
+										{
+											"when": "pumpkin",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_pumpkin"
+											}
+										},
+										{
+											"when": "sea_pickle",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_sea_pickle"
+											}
+										},
+										{
+											"when": "seagrass",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_seagrass"
+											}
+										},
+										{
 											"when": "sugar_cane",
 											"model": {
 												"type": "minecraft:model",
 												"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_sugar_cane"
+											}
+										},
+										{
+											"when": "sweet_berry",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_sweet_berry"
 											}
 										}
 									],
@@ -270,10 +1005,87 @@
 										"index": 0,
 										"cases": [
 											{
+												"when": "apple",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_apple"
+												}
+											},
+											{
+												"when": "bamboo",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_bamboo"
+												}
+											},
+											{
+												"when": "beetroot",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_beetroot"
+												}
+											},
+											{
+												"when": "cactus",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_cactus"
+												}
+											},
+											{
+												"when": "carrot",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_carrot"
+												}
+											},
+											{
 												"when": "chocolate",
 												"model": {
 													"type": "minecraft:model",
 													"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_chocolate"
+												}
+											},
+											{
+												"when": "chorus_fruit",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_chorus_fruit"
+												}
+											},
+											{
+												"when": "fern",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_fern"
+												}
+											},
+											{
+												"when": "glistering_melon",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_glistering_melon"
+												}
+											},
+											{
+												"when": "glow_berry",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_glow_berry"
+												}
+											},
+											{
+												"when": "golden_apple",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_golden_apple"
+												}
+											},
+											{
+												"when": "golden_carrot",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_golden_carrot"
 												}
 											},
 											{
@@ -284,6 +1096,13 @@
 												}
 											},
 											{
+												"when": "kelp",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_kelp"
+												}
+											},
+											{
 												"when": "leaf",
 												"model": {
 													"type": "minecraft:model",
@@ -291,10 +1110,73 @@
 												}
 											},
 											{
+												"when": "lily_pad",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_lily_pad"
+												}
+											},
+											{
+												"when": "melon",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_melon"
+												}
+											},
+											{
+												"when": "nether_wart",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_nether_wart"
+												}
+											},
+											{
+												"when": "poisonous_potato",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_poisonous_potato"
+												}
+											},
+											{
+												"when": "potato",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_potato"
+												}
+											},
+											{
+												"when": "pumpkin",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_pumpkin"
+												}
+											},
+											{
+												"when": "sea_pickle",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_sea_pickle"
+												}
+											},
+											{
+												"when": "seagrass",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_seagrass"
+												}
+											},
+											{
 												"when": "sugar_cane",
 												"model": {
 													"type": "minecraft:model",
 													"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_sugar_cane"
+												}
+											},
+											{
+												"when": "sweet_berry",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bowl_petal_sweet_berry"
 												}
 											}
 										],
@@ -338,10 +1220,87 @@
 									"index": 0,
 									"cases": [
 										{
+											"when": "apple",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_liquid_apple"
+											}
+										},
+										{
+											"when": "bamboo",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_liquid_bamboo"
+											}
+										},
+										{
+											"when": "beetroot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_liquid_beetroot"
+											}
+										},
+										{
+											"when": "cactus",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_liquid_cactus"
+											}
+										},
+										{
+											"when": "carrot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_liquid_carrot"
+											}
+										},
+										{
 											"when": "chocolate",
 											"model": {
 												"type": "minecraft:model",
 												"model": "dynamic_cooking:item/dish/tea_in_bucket_liquid_chocolate"
+											}
+										},
+										{
+											"when": "chorus_fruit",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_liquid_chorus_fruit"
+											}
+										},
+										{
+											"when": "fern",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_liquid_fern"
+											}
+										},
+										{
+											"when": "glistering_melon",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_liquid_glistering_melon"
+											}
+										},
+										{
+											"when": "glow_berry",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_liquid_glow_berry"
+											}
+										},
+										{
+											"when": "golden_apple",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_liquid_golden_apple"
+											}
+										},
+										{
+											"when": "golden_carrot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_liquid_golden_carrot"
 											}
 										},
 										{
@@ -352,6 +1311,13 @@
 											}
 										},
 										{
+											"when": "kelp",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_liquid_kelp"
+											}
+										},
+										{
 											"when": "leaf",
 											"model": {
 												"type": "minecraft:model",
@@ -359,10 +1325,73 @@
 											}
 										},
 										{
+											"when": "lily_pad",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_liquid_lily_pad"
+											}
+										},
+										{
+											"when": "melon",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_liquid_melon"
+											}
+										},
+										{
+											"when": "nether_wart",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_liquid_nether_wart"
+											}
+										},
+										{
+											"when": "poisonous_potato",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_liquid_poisonous_potato"
+											}
+										},
+										{
+											"when": "potato",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_liquid_potato"
+											}
+										},
+										{
+											"when": "pumpkin",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_liquid_pumpkin"
+											}
+										},
+										{
+											"when": "sea_pickle",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_liquid_sea_pickle"
+											}
+										},
+										{
+											"when": "seagrass",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_liquid_seagrass"
+											}
+										},
+										{
 											"when": "sugar_cane",
 											"model": {
 												"type": "minecraft:model",
 												"model": "dynamic_cooking:item/dish/tea_in_bucket_liquid_sugar_cane"
+											}
+										},
+										{
+											"when": "sweet_berry",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_liquid_sweet_berry"
 											}
 										}
 									],
@@ -393,10 +1422,87 @@
 									"index": 1,
 									"cases": [
 										{
+											"when": "apple",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_apple"
+											}
+										},
+										{
+											"when": "bamboo",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_bamboo"
+											}
+										},
+										{
+											"when": "beetroot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_beetroot"
+											}
+										},
+										{
+											"when": "cactus",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_cactus"
+											}
+										},
+										{
+											"when": "carrot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_carrot"
+											}
+										},
+										{
 											"when": "chocolate",
 											"model": {
 												"type": "minecraft:model",
 												"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_chocolate"
+											}
+										},
+										{
+											"when": "chorus_fruit",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_chorus_fruit"
+											}
+										},
+										{
+											"when": "fern",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_fern"
+											}
+										},
+										{
+											"when": "glistering_melon",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_glistering_melon"
+											}
+										},
+										{
+											"when": "glow_berry",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_glow_berry"
+											}
+										},
+										{
+											"when": "golden_apple",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_golden_apple"
+											}
+										},
+										{
+											"when": "golden_carrot",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_golden_carrot"
 											}
 										},
 										{
@@ -407,6 +1513,13 @@
 											}
 										},
 										{
+											"when": "kelp",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_kelp"
+											}
+										},
+										{
 											"when": "leaf",
 											"model": {
 												"type": "minecraft:model",
@@ -414,10 +1527,73 @@
 											}
 										},
 										{
+											"when": "lily_pad",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_lily_pad"
+											}
+										},
+										{
+											"when": "melon",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_melon"
+											}
+										},
+										{
+											"when": "nether_wart",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_nether_wart"
+											}
+										},
+										{
+											"when": "poisonous_potato",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_poisonous_potato"
+											}
+										},
+										{
+											"when": "potato",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_potato"
+											}
+										},
+										{
+											"when": "pumpkin",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_pumpkin"
+											}
+										},
+										{
+											"when": "sea_pickle",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_sea_pickle"
+											}
+										},
+										{
+											"when": "seagrass",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_seagrass"
+											}
+										},
+										{
 											"when": "sugar_cane",
 											"model": {
 												"type": "minecraft:model",
 												"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_sugar_cane"
+											}
+										},
+										{
+											"when": "sweet_berry",
+											"model": {
+												"type": "minecraft:model",
+												"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_sweet_berry"
 											}
 										}
 									],
@@ -427,10 +1603,87 @@
 										"index": 0,
 										"cases": [
 											{
+												"when": "apple",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_apple"
+												}
+											},
+											{
+												"when": "bamboo",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_bamboo"
+												}
+											},
+											{
+												"when": "beetroot",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_beetroot"
+												}
+											},
+											{
+												"when": "cactus",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_cactus"
+												}
+											},
+											{
+												"when": "carrot",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_carrot"
+												}
+											},
+											{
 												"when": "chocolate",
 												"model": {
 													"type": "minecraft:model",
 													"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_chocolate"
+												}
+											},
+											{
+												"when": "chorus_fruit",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_chorus_fruit"
+												}
+											},
+											{
+												"when": "fern",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_fern"
+												}
+											},
+											{
+												"when": "glistering_melon",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_glistering_melon"
+												}
+											},
+											{
+												"when": "glow_berry",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_glow_berry"
+												}
+											},
+											{
+												"when": "golden_apple",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_golden_apple"
+												}
+											},
+											{
+												"when": "golden_carrot",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_golden_carrot"
 												}
 											},
 											{
@@ -441,6 +1694,13 @@
 												}
 											},
 											{
+												"when": "kelp",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_kelp"
+												}
+											},
+											{
 												"when": "leaf",
 												"model": {
 													"type": "minecraft:model",
@@ -448,10 +1708,73 @@
 												}
 											},
 											{
+												"when": "lily_pad",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_lily_pad"
+												}
+											},
+											{
+												"when": "melon",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_melon"
+												}
+											},
+											{
+												"when": "nether_wart",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_nether_wart"
+												}
+											},
+											{
+												"when": "poisonous_potato",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_poisonous_potato"
+												}
+											},
+											{
+												"when": "potato",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_potato"
+												}
+											},
+											{
+												"when": "pumpkin",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_pumpkin"
+												}
+											},
+											{
+												"when": "sea_pickle",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_sea_pickle"
+												}
+											},
+											{
+												"when": "seagrass",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_seagrass"
+												}
+											},
+											{
 												"when": "sugar_cane",
 												"model": {
 													"type": "minecraft:model",
 													"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_sugar_cane"
+												}
+											},
+											{
+												"when": "sweet_berry",
+												"model": {
+													"type": "minecraft:model",
+													"model": "dynamic_cooking:item/dish/tea_in_bucket_petal_sweet_berry"
 												}
 											}
 										],
@@ -494,10 +1817,87 @@
 							"index": 0,
 							"cases": [
 								{
+									"when": "apple",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_liquid_apple"
+									}
+								},
+								{
+									"when": "bamboo",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_liquid_bamboo"
+									}
+								},
+								{
+									"when": "beetroot",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_liquid_beetroot"
+									}
+								},
+								{
+									"when": "cactus",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_liquid_cactus"
+									}
+								},
+								{
+									"when": "carrot",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_liquid_carrot"
+									}
+								},
+								{
 									"when": "chocolate",
 									"model": {
 										"type": "minecraft:model",
 										"model": "dynamic_cooking:item/dish/tea_liquid_chocolate"
+									}
+								},
+								{
+									"when": "chorus_fruit",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_liquid_chorus_fruit"
+									}
+								},
+								{
+									"when": "fern",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_liquid_fern"
+									}
+								},
+								{
+									"when": "glistering_melon",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_liquid_glistering_melon"
+									}
+								},
+								{
+									"when": "glow_berry",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_liquid_glow_berry"
+									}
+								},
+								{
+									"when": "golden_apple",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_liquid_golden_apple"
+									}
+								},
+								{
+									"when": "golden_carrot",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_liquid_golden_carrot"
 									}
 								},
 								{
@@ -508,6 +1908,13 @@
 									}
 								},
 								{
+									"when": "kelp",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_liquid_kelp"
+									}
+								},
+								{
 									"when": "leaf",
 									"model": {
 										"type": "minecraft:model",
@@ -515,10 +1922,73 @@
 									}
 								},
 								{
+									"when": "lily_pad",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_liquid_lily_pad"
+									}
+								},
+								{
+									"when": "melon",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_liquid_melon"
+									}
+								},
+								{
+									"when": "nether_wart",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_liquid_nether_wart"
+									}
+								},
+								{
+									"when": "poisonous_potato",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_liquid_poisonous_potato"
+									}
+								},
+								{
+									"when": "potato",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_liquid_potato"
+									}
+								},
+								{
+									"when": "pumpkin",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_liquid_pumpkin"
+									}
+								},
+								{
+									"when": "sea_pickle",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_liquid_sea_pickle"
+									}
+								},
+								{
+									"when": "seagrass",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_liquid_seagrass"
+									}
+								},
+								{
 									"when": "sugar_cane",
 									"model": {
 										"type": "minecraft:model",
 										"model": "dynamic_cooking:item/dish/tea_liquid_sugar_cane"
+									}
+								},
+								{
+									"when": "sweet_berry",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_liquid_sweet_berry"
 									}
 								}
 							],
@@ -549,10 +2019,87 @@
 							"index": 1,
 							"cases": [
 								{
+									"when": "apple",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_petal_apple"
+									}
+								},
+								{
+									"when": "bamboo",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_petal_bamboo"
+									}
+								},
+								{
+									"when": "beetroot",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_petal_beetroot"
+									}
+								},
+								{
+									"when": "cactus",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_petal_cactus"
+									}
+								},
+								{
+									"when": "carrot",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_petal_carrot"
+									}
+								},
+								{
 									"when": "chocolate",
 									"model": {
 										"type": "minecraft:model",
 										"model": "dynamic_cooking:item/dish/tea_petal_chocolate"
+									}
+								},
+								{
+									"when": "chorus_fruit",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_petal_chorus_fruit"
+									}
+								},
+								{
+									"when": "fern",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_petal_fern"
+									}
+								},
+								{
+									"when": "glistering_melon",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_petal_glistering_melon"
+									}
+								},
+								{
+									"when": "glow_berry",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_petal_glow_berry"
+									}
+								},
+								{
+									"when": "golden_apple",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_petal_golden_apple"
+									}
+								},
+								{
+									"when": "golden_carrot",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_petal_golden_carrot"
 									}
 								},
 								{
@@ -563,6 +2110,13 @@
 									}
 								},
 								{
+									"when": "kelp",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_petal_kelp"
+									}
+								},
+								{
 									"when": "leaf",
 									"model": {
 										"type": "minecraft:model",
@@ -570,10 +2124,73 @@
 									}
 								},
 								{
+									"when": "lily_pad",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_petal_lily_pad"
+									}
+								},
+								{
+									"when": "melon",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_petal_melon"
+									}
+								},
+								{
+									"when": "nether_wart",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_petal_nether_wart"
+									}
+								},
+								{
+									"when": "poisonous_potato",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_petal_poisonous_potato"
+									}
+								},
+								{
+									"when": "potato",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_petal_potato"
+									}
+								},
+								{
+									"when": "pumpkin",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_petal_pumpkin"
+									}
+								},
+								{
+									"when": "sea_pickle",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_petal_sea_pickle"
+									}
+								},
+								{
+									"when": "seagrass",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_petal_seagrass"
+									}
+								},
+								{
 									"when": "sugar_cane",
 									"model": {
 										"type": "minecraft:model",
 										"model": "dynamic_cooking:item/dish/tea_petal_sugar_cane"
+									}
+								},
+								{
+									"when": "sweet_berry",
+									"model": {
+										"type": "minecraft:model",
+										"model": "dynamic_cooking:item/dish/tea_petal_sweet_berry"
 									}
 								}
 							],
@@ -583,10 +2200,87 @@
 								"index": 0,
 								"cases": [
 									{
+										"when": "apple",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_petal_apple"
+										}
+									},
+									{
+										"when": "bamboo",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_petal_bamboo"
+										}
+									},
+									{
+										"when": "beetroot",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_petal_beetroot"
+										}
+									},
+									{
+										"when": "cactus",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_petal_cactus"
+										}
+									},
+									{
+										"when": "carrot",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_petal_carrot"
+										}
+									},
+									{
 										"when": "chocolate",
 										"model": {
 											"type": "minecraft:model",
 											"model": "dynamic_cooking:item/dish/tea_petal_chocolate"
+										}
+									},
+									{
+										"when": "chorus_fruit",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_petal_chorus_fruit"
+										}
+									},
+									{
+										"when": "fern",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_petal_fern"
+										}
+									},
+									{
+										"when": "glistering_melon",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_petal_glistering_melon"
+										}
+									},
+									{
+										"when": "glow_berry",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_petal_glow_berry"
+										}
+									},
+									{
+										"when": "golden_apple",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_petal_golden_apple"
+										}
+									},
+									{
+										"when": "golden_carrot",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_petal_golden_carrot"
 										}
 									},
 									{
@@ -597,6 +2291,13 @@
 										}
 									},
 									{
+										"when": "kelp",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_petal_kelp"
+										}
+									},
+									{
 										"when": "leaf",
 										"model": {
 											"type": "minecraft:model",
@@ -604,10 +2305,73 @@
 										}
 									},
 									{
+										"when": "lily_pad",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_petal_lily_pad"
+										}
+									},
+									{
+										"when": "melon",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_petal_melon"
+										}
+									},
+									{
+										"when": "nether_wart",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_petal_nether_wart"
+										}
+									},
+									{
+										"when": "poisonous_potato",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_petal_poisonous_potato"
+										}
+									},
+									{
+										"when": "potato",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_petal_potato"
+										}
+									},
+									{
+										"when": "pumpkin",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_petal_pumpkin"
+										}
+									},
+									{
+										"when": "sea_pickle",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_petal_sea_pickle"
+										}
+									},
+									{
+										"when": "seagrass",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_petal_seagrass"
+										}
+									},
+									{
 										"when": "sugar_cane",
 										"model": {
 											"type": "minecraft:model",
 											"model": "dynamic_cooking:item/dish/tea_petal_sugar_cane"
+										}
+									},
+									{
+										"when": "sweet_berry",
+										"model": {
+											"type": "minecraft:model",
+											"model": "dynamic_cooking:item/dish/tea_petal_sweet_berry"
 										}
 									}
 								],

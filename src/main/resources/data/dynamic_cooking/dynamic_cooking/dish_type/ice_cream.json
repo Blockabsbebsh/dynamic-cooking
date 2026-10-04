@@ -27,13 +27,13 @@
 		}
 	],
 	"flavor_roles": [
-		"produce"
+		"produce",
+		"protein",
+		"mushroom"
 	],
 	"forbids": [
 		{
 			"roles": [
-				"protein",
-				"mushroom",
 				"flour"
 			]
 		}
