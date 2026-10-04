@@ -13,7 +13,6 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponentGetter;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.Identifier;
@@ -52,24 +51,18 @@ public record DishContents(List<String> ingredients, List<String> flavors) imple
 			return;
 		}
 
-		// Repeats are grouped, so two carrots read "Carrot x2".
+		// One line each, like a shulker box's contents, so long recipes stay readable. Repeats are grouped: "Carrot x2".
 		Map<String, Integer> counts = new LinkedHashMap<>();
 		ingredients.forEach(id -> counts.merge(id, 1, Integer::sum));
 
-		MutableComponent list = Component.empty();
-		boolean first = true;
+		tooltip.accept(Component.translatable("tooltip.dynamic_cooking.made_with").withStyle(ChatFormatting.GRAY));
 
-		for (Map.Entry<String, Integer> entry : counts.entrySet()) {
-			if (!first) {
-				list.append(", ");
-			}
-
-			Component name = ingredientName(entry.getKey());
-			list.append(entry.getValue() > 1 ? Component.translatable("tooltip.dynamic_cooking.ingredient_count", name, entry.getValue()) : name);
-			first = false;
-		}
-
-		tooltip.accept(Component.translatable("tooltip.dynamic_cooking.made_with", list).withStyle(ChatFormatting.GRAY));
+		counts.forEach((id, count) -> {
+			Component name = ingredientName(id);
+			tooltip.accept(Component.translatable("tooltip.dynamic_cooking.ingredient", count > 1
+					? Component.translatable("tooltip.dynamic_cooking.ingredient_count", name, count)
+					: name).withStyle(ChatFormatting.GRAY));
+		});
 	}
 
 	private static Component ingredientName(String id) {
