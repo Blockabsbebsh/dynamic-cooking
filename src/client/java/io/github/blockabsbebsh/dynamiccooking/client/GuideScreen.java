@@ -9,8 +9,11 @@ import java.util.Set;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.AbstractButton;
+import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.input.InputWithModifiers;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -31,27 +34,37 @@ import io.github.blockabsbebsh.dynamiccooking.item.ModItems;
 
 /**
  * The cooking guide: a few pages of steps with item pictures, then one page per dish built from the loaded data,
- * so data packs that add dishes show up too. Pictures are drawn from item icons, so the guide needs no textures of its own.
+ * so data packs that add dishes show up too. It opens as two pages of the game's own written book, the left one
+ * mirrored so the stitching meets in the middle, so it follows resource packs. Pictures are drawn from item icons.
  */
 public class GuideScreen extends Screen {
-	private static final int PAGE_WIDTH = 180;
-	private static final int PAGE_HEIGHT = 200;
-	private static final int PADDING = 10;
-	private static final int TEXT_WIDTH = PAGE_WIDTH - 2 * PADDING;
+	private static final Identifier BOOK = Identifier.parse("minecraft:textures/gui/book.png");
+	private static final Identifier SLOT = Identifier.parse("minecraft:container/slot");
+	/** Where one page sits in the book texture. */
+	private static final int PAGE_U = 20;
+	private static final int PAGE_V = 1;
+	private static final int PAGE_WIDTH = 146;
+	private static final int PAGE_HEIGHT = 180;
+	/** The writing area of a page: inside the paper, clear of the stitching and the page arrows. */
+	private static final int TEXT_TOP = 14;
+	private static final int TEXT_HEIGHT = 138;
+	private static final int TEXT_WIDTH = 112;
+	/** Distance from a page's outer edge to its text, which sits away from the stitching. */
+	private static final int TEXT_LEFT = 18;
+	private static final int TEXT_RIGHT_PAGE = 16;
 	/** Requirement rows show this many item icons at once and cycle through the rest. */
-	private static final int ICONS_PER_ROW = 8;
+	private static final int ICONS_PER_ROW = 5;
 
-	private static final int PAPER = 0xFFF4EAD2;
-	private static final int PAPER_DARK = 0xFFE6D6B0;
-	private static final int BORDER = 0xFF7A5630;
-	private static final int INK = 0xFF3B2A18;
-	private static final int INK_LIGHT = 0xFF7A6A55;
+	private static final int PICTURE_BAND = 0xFFE9DFC4;
+	private static final int INK = 0xFF000000;
+	private static final int INK_LIGHT = 0xFF5A5A5A;
 	private static final int INK_RED = 0xFF9A2A20;
 
 	private final List<List<Row>> pages = new ArrayList<>();
+	/** The left page of the open spread; always even. */
 	private int page;
-	private Button back;
-	private Button forward;
+	private PageArrow back;
+	private PageArrow forward;
 
 	public GuideScreen() {
 		super(Component.translatable("guide.dynamic_cooking.title"));
@@ -63,46 +76,54 @@ public class GuideScreen extends Screen {
 			buildPages();
 		}
 
-		int left = (width - PAGE_WIDTH) / 2;
-		int buttonsY = top() + PAGE_HEIGHT + 4;
-		back = addRenderableWidget(Button.builder(Component.literal("<"), button -> turn(-1)).bounds(left, buttonsY, 20, 20).build());
-		forward = addRenderableWidget(Button.builder(Component.literal(">"), button -> turn(1)).bounds(left + PAGE_WIDTH - 20, buttonsY, 20, 20).build());
+		// The arrows sit where the written book has them, mirrored on the left page.
+		back = addRenderableWidget(new PageArrow(left() + PAGE_WIDTH - 96 - PageArrow.WIDTH, top() + 156, false, () -> turn(-2)));
+		forward = addRenderableWidget(new PageArrow(left() + PAGE_WIDTH + 96, top() + 156, true, () -> turn(2)));
 		updateButtons();
 	}
 
+	private int left() {
+		return (width - 2 * PAGE_WIDTH) / 2;
+	}
+
 	private int top() {
-		return Math.max(4, (height - PAGE_HEIGHT - 24) / 2);
+		return Math.max(2, (height - PAGE_HEIGHT) / 2);
 	}
 
 	private void turn(int by) {
-		page = Math.clamp(page + by, 0, pages.size() - 1);
+		page = Math.clamp(page + by, 0, (pages.size() - 1) & ~1);
 		updateButtons();
 	}
 
 	private void updateButtons() {
-		back.active = page > 0;
-		forward.active = page < pages.size() - 1;
+		back.visible = page > 0;
+		forward.visible = page + 2 < pages.size();
 	}
 
 	@Override
 	public void extractRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTick) {
-		int left = (width - PAGE_WIDTH) / 2;
+		int left = left();
 		int top = top();
 
-		graphics.fill(left - 2, top - 2, left + PAGE_WIDTH + 2, top + PAGE_HEIGHT + 2, BORDER);
-		graphics.fill(left, top, left + PAGE_WIDTH, top + PAGE_HEIGHT, PAPER);
+		// The left page is the book page flipped, by drawing it with its texture coordinates running backwards.
+		graphics.blit(RenderPipelines.GUI_TEXTURED, BOOK, left, top, PAGE_U + PAGE_WIDTH, PAGE_V, PAGE_WIDTH, PAGE_HEIGHT, -PAGE_WIDTH, PAGE_HEIGHT, 256, 256);
+		graphics.blit(RenderPipelines.GUI_TEXTURED, BOOK, left + PAGE_WIDTH, top, PAGE_U, PAGE_V, PAGE_WIDTH, PAGE_HEIGHT, 256, 256);
 
 		ItemStack hovered = ItemStack.EMPTY;
-		int y = top + PADDING;
 
-		for (Row row : pages.get(page)) {
-			ItemStack hit = row.draw(this, graphics, left + PADDING, y, mouseX, mouseY);
-			hovered = hit.isEmpty() ? hovered : hit;
-			y += row.height(this) + 4;
+		for (int side = 0; side < 2 && page + side < pages.size(); side++) {
+			int x = side == 0 ? left + TEXT_LEFT : left + PAGE_WIDTH + TEXT_RIGHT_PAGE;
+			int y = top + TEXT_TOP;
+
+			for (Row row : pages.get(page + side)) {
+				ItemStack hit = row.draw(this, graphics, x, y, mouseX, mouseY);
+				hovered = hit.isEmpty() ? hovered : hit;
+				y += row.height(this) + 4;
+			}
+
+			String number = String.valueOf(page + side + 1);
+			graphics.text(font, number, x + (TEXT_WIDTH - font.width(number)) / 2, top + 159, INK_LIGHT, false);
 		}
-
-		Component number = Component.translatable("guide.dynamic_cooking.page", page + 1, pages.size());
-		graphics.centeredText(font, number, width / 2, top + PAGE_HEIGHT + 10, 0xFFFFFFFF);
 
 		super.extractRenderState(graphics, mouseX, mouseY, partialTick);
 
@@ -161,7 +182,7 @@ public class GuideScreen extends Screen {
 	 * is split between rows.
 	 */
 	private void pack(List<List<Row>> blocks) {
-		int available = PAGE_HEIGHT - 2 * PADDING;
+		int available = TEXT_HEIGHT;
 		List<Row> page = new ArrayList<>();
 		int used = 0;
 
@@ -213,6 +234,7 @@ public class GuideScreen extends Screen {
 		}
 
 		rows.add(new Text(method, INK_LIGHT));
+		rows.add(heading("guide.dynamic_cooking.needs"));
 
 		for (Requirement requirement : type.requires()) {
 			Component label = matcherText(requirement.matcher());
@@ -233,7 +255,8 @@ public class GuideScreen extends Screen {
 
 		if (!extras.isEmpty()) {
 			Matcher matcher = new Matcher(Set.of(), Set.copyOf(extras));
-			rows.add(new Icons(Component.translatable("guide.dynamic_cooking.extras", matcherText(matcher)), items(cooking, matcher)));
+			rows.add(heading("guide.dynamic_cooking.extras"));
+			rows.add(new Icons(matcherText(matcher), items(cooking, matcher)));
 		}
 
 		if (!type.forbids().isEmpty()) {
@@ -362,17 +385,18 @@ public class GuideScreen extends Screen {
 	private record Heading(ItemStack icon, Component name) implements Row {
 		@Override
 		public int height(GuideScreen screen) {
-			return 16;
+			return 18;
 		}
 
 		@Override
 		public ItemStack draw(GuideScreen screen, GuiGraphicsExtractor graphics, int x, int y, int mouseX, int mouseY) {
-			graphics.text(screen.font, name, x + 20, y + 4, INK, false);
-			return drawItem(graphics, icon, x, y, mouseX, mouseY);
+			graphics.blitSprite(RenderPipelines.GUI_TEXTURED, SLOT, x, y, 18, 18);
+			graphics.text(screen.font, name, x + 22, y + 5, INK, false);
+			return drawItem(graphics, icon, x + 1, y + 1, mouseX, mouseY);
 		}
 	}
 
-	/** A step drawn as item icons with arrows and plus signs between them, centered on a darker band. */
+	/** A step drawn as item icons with arrows and plus signs between them, centered on a darker band of paper. */
 	private record Picture(List<Object> parts) implements Row {
 		@Override
 		public int height(GuideScreen screen) {
@@ -381,7 +405,7 @@ public class GuideScreen extends Screen {
 
 		@Override
 		public ItemStack draw(GuideScreen screen, GuiGraphicsExtractor graphics, int x, int y, int mouseX, int mouseY) {
-			graphics.fill(x, y, x + TEXT_WIDTH, y + 22, PAPER_DARK);
+			graphics.fill(x, y, x + TEXT_WIDTH, y + 22, PICTURE_BAND);
 
 			int total = parts.stream().mapToInt(part -> width(screen, part)).sum();
 			int partX = x + (TEXT_WIDTH - total) / 2;
@@ -410,7 +434,7 @@ public class GuideScreen extends Screen {
 	private record Icons(Component label, List<ItemStack> items) implements Row {
 		@Override
 		public int height(GuideScreen screen) {
-			return screen.lines(label).size() * screen.font.lineHeight + (items.isEmpty() ? 0 : 18);
+			return screen.lines(label).size() * screen.font.lineHeight + (items.isEmpty() ? 0 : 20);
 		}
 
 		@Override
@@ -425,11 +449,43 @@ public class GuideScreen extends Screen {
 			ItemStack hovered = ItemStack.EMPTY;
 
 			for (int i = 0; i < shown; i++) {
-				ItemStack hit = drawItem(graphics, items.get((start + i) % items.size()), x + 6 + i * 18, y + 1, mouseX, mouseY);
+				graphics.blitSprite(RenderPipelines.GUI_TEXTURED, SLOT, x + 4 + i * 18, y + 1, 18, 18);
+				ItemStack hit = drawItem(graphics, items.get((start + i) % items.size()), x + 5 + i * 18, y + 2, mouseX, mouseY);
 				hovered = hit.isEmpty() ? hovered : hit;
 			}
 
 			return hovered;
+		}
+	}
+
+	/** The written book's page arrow, highlighted under the mouse. */
+	private static final class PageArrow extends AbstractButton {
+		static final int WIDTH = 23;
+		static final int HEIGHT = 13;
+
+		private final boolean forward;
+		private final Runnable turn;
+
+		PageArrow(int x, int y, boolean forward, Runnable turn) {
+			super(x, y, WIDTH, HEIGHT, Component.translatable(forward ? "guide.dynamic_cooking.next" : "guide.dynamic_cooking.previous"));
+			this.forward = forward;
+			this.turn = turn;
+		}
+
+		@Override
+		protected void extractContents(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float delta) {
+			String sprite = "minecraft:widget/page_" + (forward ? "forward" : "backward") + (isHoveredOrFocused() ? "_highlighted" : "");
+			graphics.blitSprite(RenderPipelines.GUI_TEXTURED, Identifier.parse(sprite), getX(), getY(), WIDTH, HEIGHT);
+		}
+
+		@Override
+		public void onPress(InputWithModifiers input) {
+			turn.run();
+		}
+
+		@Override
+		protected void updateWidgetNarration(NarrationElementOutput output) {
+			defaultButtonNarrationText(output);
 		}
 	}
 }
