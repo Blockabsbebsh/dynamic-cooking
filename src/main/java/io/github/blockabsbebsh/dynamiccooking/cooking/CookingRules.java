@@ -16,6 +16,7 @@ import java.util.Set;
  * @param fallbackItem         item id made when nothing matches
  * @param fallbackNutrition    food points of the fallback dish
  * @param fallbackSaturation   saturation of the fallback dish
+ * @param fallbackServedWith   item id that takes the fallback dish out of the pot, like a bowl
  * @param buffBaseTicks        buff duration from one unit of potency
  * @param buffTicksPerPotency  extra duration per further unit of potency
  * @param buffMaxTicks         cap on buff duration
@@ -33,6 +34,7 @@ public record CookingRules(
 		String fallbackItem,
 		int fallbackNutrition,
 		float fallbackSaturation,
+		String fallbackServedWith,
 		int buffBaseTicks,
 		int buffTicksPerPotency,
 		int buffMaxTicks,
@@ -41,7 +43,7 @@ public record CookingRules(
 ) {
 	public static final CookingRules DEFAULT = new CookingRules(
 			5, 20, 1, 1, 0.5f, Set.of("water", "bowl", "bottle", "stick"), 2,
-			"dynamic_cooking:dubious_mush", 2, 1.0f,
+			"dynamic_cooking:dubious_mush", 2, 1.0f, "minecraft:bowl",
 			30 * 20, 30 * 20, 5 * 60 * 20, 4,
 			Set.of("seasoning", "seeds", "dairy")
 	);

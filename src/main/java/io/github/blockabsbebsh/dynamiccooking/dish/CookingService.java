@@ -66,12 +66,12 @@ public final class CookingService {
 
 	/**
 	 * Whether this item serves runny dishes out of the pot, like a bowl. Such items never go into the pot as an
-	 * ingredient, so a bowl clicked on the pot too early doesn't end up cooked.
+	 * ingredient, so a bowl clicked on the pot too early doesn't end up cooked. Dubious Mush is served with one too.
 	 */
 	public boolean isServingItem(ItemStack stack) {
 		String id = BuiltInRegistries.ITEM.getKey(stack.getItem()).toString();
 
-		return resolver.dishTypes().stream()
+		return id.equals(resolver.rules().fallbackServedWith()) || resolver.dishTypes().stream()
 				.anyMatch(type -> type.method() == CookingMethod.POT && type.servedWith().filter(id::equals).isPresent());
 	}
 
