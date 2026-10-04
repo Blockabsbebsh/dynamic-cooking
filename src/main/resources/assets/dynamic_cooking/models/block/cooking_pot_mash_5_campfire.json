@@ -1,0 +1,32 @@
+{
+	"textures": {
+		"particle": "minecraft:block/white_concrete_powder",
+		"mash": "minecraft:block/white_concrete_powder"
+	},
+	"elements": [
+		{
+			"from": [
+				4,
+				1,
+				4
+			],
+			"to": [
+				12,
+				3.0,
+				12
+			],
+			"faces": {
+				"up": {
+					"texture": "#mash",
+					"uv": [
+						4,
+						4,
+						12,
+						12
+					],
+					"tintindex": 0
+				}
+			}
+		}
+	]
+}
