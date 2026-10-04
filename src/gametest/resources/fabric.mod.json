@@ -1,0 +1,15 @@
+{
+	"schemaVersion": 1,
+	"id": "dynamic_cooking_gametest",
+	"version": "1.0.0",
+	"name": "Dynamic Cooking Game Tests",
+	"environment": "*",
+	"entrypoints": {
+		"fabric-gametest": [
+			"io.github.blockabsbebsh.dynamiccooking.gametest.DynamicCookingGameTests"
+		]
+	},
+	"depends": {
+		"dynamic_cooking": "*"
+	}
+}

@@ -17,10 +17,16 @@ jobs:
         with:
           java-version: '25'
           distribution: 'microsoft'
+      # Caches Gradle, its downloads and Loom's Minecraft jars between runs.
+      - name: setup gradle
+        uses: gradle/actions/setup-gradle@v6
       - name: make gradle wrapper executable
         run: chmod +x ./gradlew
       - name: build
         run: ./gradlew build
+      # Starts a server with the mod: it fails if any data pack file doesn't load, as a world would.
+      - name: game tests
+        run: ./gradlew runGametest
       - name: capture mod jar
         uses: actions/upload-artifact@v7
         with:
