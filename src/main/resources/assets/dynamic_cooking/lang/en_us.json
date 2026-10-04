@@ -96,7 +96,7 @@
 	"guide.dynamic_cooking.cook.title": "4. Cook",
 	"guide.dynamic_cooking.cook.text": "Right-click the pot with an empty hand to start cooking. A bell rings when the dish is ready.",
 	"guide.dynamic_cooking.serve.title": "5. Serve",
-	"guide.dynamic_cooking.serve.text": "Scoop a stew or soup out with a Bowl. Take any other dish out with an empty hand. The pot takes new ingredients once it is empty.",
+	"guide.dynamic_cooking.serve.text": "Scoop a stew, soup or Dubious Mush out with a Bowl. Take any other dish out with an empty hand. The pot takes new ingredients once it is empty.",
 	"guide.dynamic_cooking.craft.title": "Crafted dishes",
 	"guide.dynamic_cooking.craft.text": "These are made on a crafting table instead: %s. Put the ingredients anywhere in the grid.",
 	"guide.dynamic_cooking.raw.title": "Raw dishes",

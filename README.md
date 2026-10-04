@@ -49,7 +49,7 @@ A raw ingredient gets a `raw` block. Its `nutrition` and `saturation` are those 
 
 ### Adding a dish type
 
-Add a file to `data/<namespace>/dynamic_cooking/dish_type/`. Dish types are tried from the lowest `priority` up and the first one whose `requires` can all be filled wins. Requirements marked `flavor` name and color the dish. `method` is `pot` (the default) or `crafting`; only dish types with the matching method are tried. Anything the pot can't place becomes Dubious Mush, while a crafting grid that fits no dish just doesn't craft.
+Add a file to `data/<namespace>/dynamic_cooking/dish_type/`. Dish types are tried from the lowest `priority` up and the first one whose `requires` can all be filled wins. Requirements marked `flavor` name and color the dish. `method` is `pot` (the default) or `crafting`; only dish types with the matching method are tried. Anything the pot can't place becomes Dubious Mush, served with a bowl, while a crafting grid that fits no dish just doesn't craft.
 
 Ingredients left over once the requirements are filled must suit the dish: they need one of the dish's `flavor_roles` (produce, protein and mushroom by default), a role the dish already requires, or a role any dish takes as an extra (seasoning, seeds). That is why a stick next to bread makes neither a skewer nor a sandwich. Milk is also an extra any dish takes. `raw_ok` lists raw ingredients the dish takes without a penalty, like fish in a kelp roll. `makes` is how many items one batch gives, like 4 kelp rolls.
 

@@ -188,6 +188,7 @@ class ShippedDataTest {
 		assertEquals(Optional.of("minecraft:bowl"), cook("water_bucket", "beef", "potato").servedWith());
 		assertEquals(Optional.of("minecraft:bowl"), cook("water_bucket", "pumpkin").servedWith());
 		assertTrue(cook("carrot", "potato").servedWith().isEmpty());
+		assertEquals(Optional.of("minecraft:bowl"), cook("sugar", "sugar").servedWith());
 		assertTrue(cook("wheat", "sugar", "egg", "carrot").servedWith().isEmpty());
 	}
 

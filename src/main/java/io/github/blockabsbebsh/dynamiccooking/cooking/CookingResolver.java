@@ -357,7 +357,7 @@ public final class CookingResolver {
 				false,
 				true,
 				false,
-				Optional.empty(),
+				Optional.of(rules.fallbackServedWith()),
 				1,
 				1
 		);
