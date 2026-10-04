@@ -121,6 +121,22 @@ public final class CookingResolver {
 	}
 
 	/**
+	 * Rebuilds a dish's ingredients as the dish it simmers into, like soup as stew, with the same flavors. Empty if that
+	 * dish type is unknown or doesn't take these ingredients.
+	 */
+	public Optional<DishResult> simmer(String into, List<CookingInput> inputs) {
+		return dishTypes.stream()
+				.filter(type -> type.item().equals(into))
+				.findFirst()
+				.flatMap(type -> tryCook(type, CookingMethod.POT, cooked(inputs)));
+	}
+
+	/** What a dish left too long on the heat turns into: the fallback dish, keeping its ingredients' side effects. */
+	public DishResult burn(List<CookingInput> inputs) {
+		return fallback(cooked(inputs));
+	}
+
+	/**
 	 * Finds the dish these ingredients make with the given method, or nothing if no dish type fits.
 	 */
 	public Optional<DishResult> match(CookingMethod method, List<CookingInput> inputs) {

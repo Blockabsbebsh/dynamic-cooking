@@ -37,10 +37,8 @@ public final class ModCreativeTab {
 			List.of(Items.RABBIT, Items.CARROT),
 			List.of(Items.CARROT, Items.POTATO),
 			List.of(Items.SHELF_MUSHROOM, Items.BEETROOT),
-			// Stews and soups
+			// Soups
 			List.of(Items.WATER_BUCKET, Items.BEEF, Items.POTATO),
-			List.of(Items.WATER_BUCKET, Items.RABBIT, Items.CARROT, Items.SHELF_MUSHROOM),
-			List.of(Items.WATER_BUCKET, Items.COD, Items.CARROT),
 			List.of(Items.WATER_BUCKET, Items.PUMPKIN),
 			List.of(Items.WATER_BUCKET, Items.BROWN_MUSHROOM, Items.RED_MUSHROOM),
 			List.of(Items.WATER_BUCKET, Items.BEETROOT),
@@ -85,6 +83,14 @@ public final class ModCreativeTab {
 			List.of(Items.SUGAR, Items.SUGAR)
 	);
 
+	/** Soups shown simmered into stews, the way a pot left on the heat makes them. */
+	private static final List<List<Item>> STEWS = List.of(
+			List.of(Items.WATER_BUCKET, Items.BEEF, Items.POTATO),
+			List.of(Items.WATER_BUCKET, Items.RABBIT, Items.CARROT, Items.SHELF_MUSHROOM),
+			List.of(Items.WATER_BUCKET, Items.COD, Items.CARROT),
+			List.of(Items.WATER_BUCKET, Items.CARROT, Items.POTATO, Items.BROWN_MUSHROOM)
+	);
+
 	private ModCreativeTab() {
 	}
 
@@ -107,6 +113,14 @@ public final class ModCreativeTab {
 							output.accept(cooking.craft(stacks).orElseGet(() -> cooking.cookPot(stacks).dish()).copyWithCount(1));
 						} else {
 							DynamicCooking.LOGGER.warn("Sample dish {} uses an item with no ingredient profile", Arrays.toString(sample.toArray()));
+						}
+					}
+
+					for (List<Item> sample : STEWS) {
+						List<ItemStack> stacks = sample.stream().map(ItemStack::new).toList();
+
+						if (stacks.stream().allMatch(cooking::isIngredient)) {
+							cooking.simmer(cooking.cookPot(stacks).dish()).ifPresent(output::accept);
 						}
 					}
 				})

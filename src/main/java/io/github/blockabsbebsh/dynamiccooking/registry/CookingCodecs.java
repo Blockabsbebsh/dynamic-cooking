@@ -84,7 +84,10 @@ public final class CookingCodecs {
 			ID.optionalFieldOf("served_with").forGetter(DishType::servedWith),
 			Codec.intRange(1, 64).optionalFieldOf("servings", 1).forGetter(DishType::servings),
 			MATCHER.listOf().optionalFieldOf("raw_ok", List.of()).forGetter(DishType::rawOk),
-			Codec.intRange(1, 64).optionalFieldOf("makes", 1).forGetter(DishType::makes)
+			Codec.intRange(1, 64).optionalFieldOf("makes", 1).forGetter(DishType::makes),
+			ID.optionalFieldOf("simmers_into").forGetter(DishType::simmersInto),
+			Codec.intRange(0, 3600).optionalFieldOf("simmer_seconds", 0).forGetter(DishType::simmerSeconds),
+			Codec.intRange(0, 3600).optionalFieldOf("burn_seconds", 0).forGetter(DishType::burnSeconds)
 	).apply(instance, DishType::new));
 
 	private CookingCodecs() {

@@ -195,8 +195,12 @@ public class GuideScreen extends Screen {
 				Component.translatable("guide.dynamic_cooking.water.text"), Component.translatable("guide.dynamic_cooking.water.tip")));
 		steps.add(step("cook", new Picture(big(pot), Part.ARROW, big(stack(Items.BELL))),
 				Component.translatable("guide.dynamic_cooking.cook.text"), null));
-		steps.add(step("serve", new Picture(small(Items.BOWL), Part.ARROW, big(stack(ModItems.STEW))),
+		steps.add(step("serve", new Picture(small(Items.BOWL), Part.ARROW, big(stack(ModItems.SOUP))),
 				Component.translatable("guide.dynamic_cooking.serve.text"), null));
+		steps.add(step("simmer", new Picture(big(stack(ModItems.SOUP)), Part.ARROW, big(stack(ModItems.STEW))),
+				Component.translatable("guide.dynamic_cooking.simmer.text"), Component.translatable("guide.dynamic_cooking.simmer.tip")));
+		steps.add(step("burn", new Picture(big(pot), Part.ARROW, big(stack(ModItems.DUBIOUS_MUSH))),
+				Component.translatable("guide.dynamic_cooking.burn.text"), Component.translatable("guide.dynamic_cooking.burn.tip")));
 		int crafted = steps.size();
 		steps.add(step("craft", new Picture(new Grid(Map.of(0, stack(Items.BREAD), 4, stack(Items.COOKED_BEEF), 8, stack(Items.BREAD))), Part.ARROW, big(stack(ModItems.SANDWICH))),
 				Component.translatable("guide.dynamic_cooking.craft.text"), null));
@@ -230,7 +234,8 @@ public class GuideScreen extends Screen {
 			Map<String, ItemStack> examples = DishRelations.examples(service, GuideScreen::itemStack);
 
 			for (DishType type : dishTypes) {
-				DishRelations relations = DishRelations.of(service, type, examples, matcher -> items(service, matcher), GuideScreen::matcherText);
+				DishRelations relations = DishRelations.of(service, type, examples, matcher -> items(service, matcher), GuideScreen::matcherText)
+						.withSimmering(type, dishTypes);
 				dishPages.put(type.item(), pages.size());
 				pages.addAll(split(dishPage(service, type, relations)));
 			}
@@ -274,7 +279,7 @@ public class GuideScreen extends Screen {
 		ItemStack dish = itemStack(type.item());
 		List<Component> about = new ArrayList<>(List.of(Component.translatable("guide.dynamic_cooking.method." + type.method().id())));
 
-		if (type.method() == CookingMethod.POT && type.servedWith().isPresent()) {
+		if (type.method() != CookingMethod.CRAFTING && type.servedWith().isPresent()) {
 			about.add(Component.translatable("guide.dynamic_cooking.served_with", itemStack(type.servedWith().get()).getHoverName()));
 		}
 

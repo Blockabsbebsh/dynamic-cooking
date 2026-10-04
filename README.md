@@ -53,6 +53,8 @@ Add a file to `data/<namespace>/dynamic_cooking/dish_type/`. Dish types are trie
 
 Ingredients left over once the requirements are filled must suit the dish: they need one of the dish's `flavor_roles` (produce, protein and mushroom by default), a role the dish already requires, or a role any dish takes as an extra (seasoning, seeds). That is why a stick next to bread makes neither a skewer nor a sandwich. Milk is also an extra any dish takes. `raw_ok` lists raw ingredients the dish takes without a penalty, like fish in a kelp roll. `makes` is how many items one batch gives, like 4 kelp rolls.
 
+A cooked dish waits in the pot, and keeps cooking while the pot is on the heat. `simmers_into` names the dish it turns into after `simmer_seconds`, keeping its ingredients and flavors, like soup into stew. A dish type with `"method": "simmer"` is only made that way, never straight from ingredients. Anything left on the heat burns into Dubious Mush after `burn_seconds` (60 by default, set in `CookingRules` with the cooking time), darkening and smoking over its last 20 seconds. Off the heat it waits safely. Looking at the pot shows a panel with what is in it and how long is left.
+
 ```json
 {
 	"item": "dynamic_cooking:cake",

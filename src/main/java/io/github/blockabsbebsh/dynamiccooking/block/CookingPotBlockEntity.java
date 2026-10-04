@@ -36,16 +36,35 @@ import io.github.blockabsbebsh.dynamiccooking.dish.CookingService;
 
 /**
  * Holds the ingredients in the order they were added and runs the cooking timer.
- * Cooked dishes stay in the pot until they are taken out: runny ones with their serving item, like stew with a bowl,
+ * Cooked dishes stay in the pot until they are taken out: runny ones with their serving item, like soup with a bowl,
  * the rest with an empty hand. The pot can also hold copies of one raw dish, like a raw chicken skewer, to cook it again.
- * The liquid color and one color per floating chunk are synced to clients, which tint the pot with them.
+ *
+ * <p>A finished dish keeps cooking while it waits on the heat: soup simmers into stew, and anything left long enough
+ * starts to scorch, darkening and smoking, then burns into Dubious Mush. Off the heat it waits safely.
+ *
+ * <p>The liquid color and one color per floating chunk are synced to clients, which tint the pot with them. So are the
+ * timers, but only when something changes: clients run them on from the game time, so the status bar moves smoothly.
  */
 public class CookingPotBlockEntity extends BlockEntity implements RenderDataBlockEntity {
-	/** How long cooking takes, in ticks. */
-	public static final int COOK_TICKS = 3 * 20;
+	/** How long before burning a dish starts to scorch, in ticks, and in how many steps it darkens. */
+	public static final int SCORCH_TICKS = 20 * 20;
+	public static final int SCORCH_STEPS = 3;
+	/** The color of burnt contents. */
+	private static final int BURNT = 0x2E2219;
 
 	private final NonNullList<ItemStack> items = NonNullList.withSize(CookingRules.DEFAULT.maxIngredients(), ItemStack.EMPTY);
 	private int cookTicksLeft;
+	private int cookTicks;
+	/** Ticks the waiting dish has spent on the heat, and when it simmers or burns; 0 for never. */
+	private int heatTicks;
+	private int simmerTicks;
+	private int burnTicks;
+	/** Whether the pot had heat under it at the last tick, so clients know whether the timers run. */
+	private boolean heated;
+	/** The game time when the timers above were last sent, which clients count on from. */
+	private long syncTime;
+	/** On clients, what the ingredients would make, worked out once per change. */
+	private ItemStack preview;
 	private int liquidColor = PotColors.WATER;
 	/** One color per ingredient slot, for the chunk drawn floating in the pot. */
 	private List<Integer> chunkColors = List.of();
@@ -145,18 +164,40 @@ public class CookingPotBlockEntity extends BlockEntity implements RenderDataBloc
 		serving = ItemStack.EMPTY;
 		servedWith = "";
 		servingsLeft = 0;
+		heatTicks = 0;
+		simmerTicks = 0;
+		burnTicks = 0;
 	}
 
-	/** The pot's colors as the client tint reads them: the liquid first, then one per chunk. */
+	/** The pot's colors as the client tint reads them: the liquid first, then one per chunk, darker as it scorches. */
 	private int[] tints() {
 		int[] tints = new int[1 + capacity()];
-		tints[0] = liquidColor;
+		tints[0] = scorched(liquidColor);
 
 		for (int i = 0; i < capacity(); i++) {
-			tints[i + 1] = i < chunkColors.size() ? chunkColors.get(i) : liquidColor;
+			tints[i + 1] = scorched(i < chunkColors.size() ? chunkColors.get(i) : liquidColor);
 		}
 
 		return tints;
+	}
+
+	/** A color mixed towards burnt brown, a step at a time. */
+	private int scorched(int color) {
+		int step = scorch();
+
+		if (step == 0) {
+			return color;
+		}
+
+		float mix = 0.22f * step;
+		int red = mix(color >> 16 & 0xFF, BURNT >> 16 & 0xFF, mix);
+		int green = mix(color >> 8 & 0xFF, BURNT >> 8 & 0xFF, mix);
+		int blue = mix(color & 0xFF, BURNT & 0xFF, mix);
+		return red << 16 | green << 8 | blue;
+	}
+
+	private static int mix(int from, int to, float amount) {
+		return Math.round(from + (to - from) * amount);
 	}
 
 	public List<ItemStack> contents() {
@@ -182,18 +223,34 @@ public class CookingPotBlockEntity extends BlockEntity implements RenderDataBloc
 	}
 
 	public void startCooking() {
-		cookTicksLeft = COOK_TICKS;
+		cookTicks = CookingService.create(level.registryAccess()).cookTicks();
+		cookTicksLeft = cookTicks;
 		setCookingState(true);
 		setChanged();
 	}
 
 	public static void serverTick(Level level, BlockPos pos, BlockState state, CookingPotBlockEntity pot) {
+		boolean heat = CookingPotBlock.hasHeat(level, pos);
+
+		if (heat != pot.heated) {
+			pot.heated = heat;
+			pot.setChanged();
+		}
+
+		if (pot.hasServing()) {
+			if (heat) {
+				pot.keepCooking(level, pos);
+			}
+
+			return;
+		}
+
 		if (!pot.isCooking()) {
 			return;
 		}
 
 		// Taking the heat away stops cooking but keeps the ingredients.
-		if (!CookingPotBlock.hasHeat(level, pos)) {
+		if (!heat) {
 			pot.cookTicksLeft = 0;
 			pot.setCookingState(false);
 			pot.setChanged();
@@ -227,10 +284,135 @@ public class CookingPotBlockEntity extends BlockEntity implements RenderDataBloc
 		pot.servingsLeft = result.servings();
 		pot.liquidColor = result.liquidColor();
 		pot.chunkColors = result.colors();
+		pot.startWaiting(CookingService.create(level.registryAccess()));
 		level.setBlock(pos, pot.getBlockState().setValue(CookingPotBlock.READY, true), Block.UPDATE_ALL);
 		pot.setChanged();
 
 		announceReady(level, pos, pot);
+	}
+
+	/** Starts the waiting dish's timers over, for a dish that just finished or just changed into another. */
+	private void startWaiting(CookingService cooking) {
+		CookingService.DishTimes times = cooking.times(serving);
+		heatTicks = 0;
+		simmerTicks = times.simmerTicks();
+		burnTicks = times.burnTicks();
+	}
+
+	/** One tick of a finished dish on the heat: it simmers, scorches and in the end burns. */
+	private void keepCooking(Level level, BlockPos pos) {
+		int scorchBefore = scorch();
+		heatTicks++;
+
+		if (simmerTicks > 0 && heatTicks >= simmerTicks) {
+			simmer(level, pos);
+		} else if (burnTicks > 0 && heatTicks >= burnTicks) {
+			burn(level, pos);
+		} else if (scorch() != scorchBefore) {
+			// A darker shade each step, so the pot shows it is about to burn.
+			setChanged();
+			level.sendBlockUpdated(pos, getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
+		}
+	}
+
+	private void simmer(Level level, BlockPos pos) {
+		CookingService cooking = CookingService.create(level.registryAccess());
+		Optional<ItemStack> simmered = cooking.simmer(serving);
+
+		if (simmered.isEmpty()) {
+			// The dish it simmers into doesn't take these ingredients: it just keeps waiting until it burns.
+			simmerTicks = 0;
+			setChanged();
+			return;
+		}
+
+		serving = simmered.get();
+		startWaiting(cooking);
+		// Stew is thick: the pot shows a mash instead of liquid.
+		level.setBlock(pos, getBlockState().setValue(CookingPotBlock.LIQUID, false), Block.UPDATE_ALL);
+		setChanged();
+
+		level.playSound(null, pos, SoundEvents.NOTE_BLOCK_BELL.value(), SoundSource.BLOCKS, 0.8f, 0.8f);
+
+		if (level instanceof ServerLevel serverLevel) {
+			double y = pos.getY() + CookingPotBlock.surfaceY(getBlockState());
+			serverLevel.sendParticles(ParticleTypes.CLOUD, pos.getX() + 0.5, y + 0.1, pos.getZ() + 0.5, 6, 0.15, 0.05, 0.15, 0.01);
+		}
+	}
+
+	private void burn(Level level, BlockPos pos) {
+		serving = CookingService.create(level.registryAccess()).burn(serving);
+		servedWith = CookingService.create(level.registryAccess()).fallbackServedWith();
+		simmerTicks = 0;
+		burnTicks = 0;
+		heatTicks = 0;
+		liquidColor = BURNT;
+		chunkColors = chunkColors.stream().map(color -> BURNT).toList();
+		level.setBlock(pos, getBlockState().setValue(CookingPotBlock.LIQUID, false), Block.UPDATE_ALL);
+		setChanged();
+
+		level.playSound(null, pos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.7f, 0.8f);
+
+		if (level instanceof ServerLevel serverLevel) {
+			double y = pos.getY() + CookingPotBlock.surfaceY(getBlockState());
+			serverLevel.sendParticles(ParticleTypes.LARGE_SMOKE, pos.getX() + 0.5, y + 0.1, pos.getZ() + 0.5, 10, 0.15, 0.05, 0.15, 0.02);
+		}
+	}
+
+	/** How far a waiting dish has scorched, from 0 (not at all) to {@link #SCORCH_STEPS}, as of the last sync. */
+	public int scorch() {
+		if (burnTicks <= 0 || heatTicks < burnTicks - SCORCH_TICKS) {
+			return 0;
+		}
+
+		int into = heatTicks - (burnTicks - SCORCH_TICKS);
+		return Math.min(SCORCH_STEPS, 1 + into * SCORCH_STEPS / SCORCH_TICKS);
+	}
+
+	/** The status bar's view of the pot, run on from the last sync to the given game time. */
+	public Timeline timeline(long gameTime) {
+		long since = Math.max(0, gameTime - syncTime);
+
+		if (isCooking()) {
+			return new Timeline(Timeline.Stage.COOKING, cookTicks - Math.max(0, cookTicksLeft - since), cookTicks, 0, 0, heated);
+		}
+
+		if (hasServing()) {
+			long ticks = heated ? heatTicks + since : heatTicks;
+			return new Timeline(Timeline.Stage.WAITING, ticks, 0, simmerTicks, burnTicks, heated);
+		}
+
+		return new Timeline(Timeline.Stage.IDLE, 0, 0, 0, 0, heated);
+	}
+
+	/**
+	 * Where the pot is on its way, for the status bar.
+	 *
+	 * @param ticks       ticks done: cooking so far, or the waiting dish's time on the heat
+	 * @param cookTicks   how long cooking takes in all
+	 * @param simmerTicks when the waiting dish simmers into another, or 0
+	 * @param burnTicks   when the waiting dish burns, or 0
+	 * @param heated      whether there is heat under the pot, so the clock runs
+	 */
+	public record Timeline(Stage stage, long ticks, int cookTicks, int simmerTicks, int burnTicks, boolean heated) {
+		public enum Stage { IDLE, COOKING, WAITING }
+	}
+
+	/** On clients, what the ingredients in the pot would make, for the status bar. Empty if nothing works out. */
+	public ItemStack preview() {
+		if (preview == null) {
+			preview = ItemStack.EMPTY;
+
+			if (level != null && !isEmpty()) {
+				try {
+					preview = CookingService.create(level.registryAccess()).cookPot(contents()).dish();
+				} catch (IllegalArgumentException e) {
+					// Not ingredients any more, after a data pack change: nothing to show.
+				}
+			}
+		}
+
+		return preview;
 	}
 
 	/** A bell and a puff of steam, so nobody has to watch the pot. */
@@ -286,8 +468,9 @@ public class CookingPotBlockEntity extends BlockEntity implements RenderDataBloc
 	public void setChanged() {
 		super.setChanged();
 
-		// Sends the new liquid color to players nearby.
+		// Sends the new colors and timers to players nearby.
 		if (level instanceof ServerLevel serverLevel) {
+			syncTime = level.getGameTime();
 			serverLevel.getChunkSource().blockChanged(worldPosition);
 		}
 	}
@@ -331,6 +514,13 @@ public class CookingPotBlockEntity extends BlockEntity implements RenderDataBloc
 		serving = input.read("serving", ItemStack.CODEC).orElse(ItemStack.EMPTY);
 		servedWith = input.getStringOr("served_with", "");
 		servingsLeft = input.getIntOr("servings_left", 0);
+		cookTicks = input.getIntOr("cook_ticks", cookTicksLeft);
+		heatTicks = input.getIntOr("heat_ticks", 0);
+		simmerTicks = input.getIntOr("simmer_ticks", 0);
+		burnTicks = input.getIntOr("burn_ticks", 0);
+		heated = input.getBooleanOr("heated", false);
+		syncTime = input.getLongOr("sync_time", 0L);
+		preview = null;
 
 		if (level != null && level.isClientSide()) {
 			// Redraw the pot so the liquid picks up the new color.
@@ -342,6 +532,12 @@ public class CookingPotBlockEntity extends BlockEntity implements RenderDataBloc
 	protected void saveAdditional(ValueOutput output) {
 		ContainerHelper.saveAllItems(output, items);
 		output.putInt("cook_ticks_left", cookTicksLeft);
+		output.putInt("cook_ticks", cookTicks);
+		output.putInt("heat_ticks", heatTicks);
+		output.putInt("simmer_ticks", simmerTicks);
+		output.putInt("burn_ticks", burnTicks);
+		output.putBoolean("heated", heated);
+		output.putLong("sync_time", level != null ? level.getGameTime() : syncTime);
 		output.putInt("liquid_color", liquidColor);
 		output.store("chunk_colors", Codec.INT.listOf(), chunkColors);
 

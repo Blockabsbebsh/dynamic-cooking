@@ -84,7 +84,10 @@ class ShippedDataTest {
 					json.has("served_with") ? Optional.of(json.get("served_with").getAsString()) : Optional.empty(),
 					json.has("servings") ? json.get("servings").getAsInt() : 1,
 					matchers(json, "raw_ok"),
-					json.has("makes") ? json.get("makes").getAsInt() : 1
+					json.has("makes") ? json.get("makes").getAsInt() : 1,
+					json.has("simmers_into") ? Optional.of(json.get("simmers_into").getAsString()) : Optional.empty(),
+					json.has("simmer_seconds") ? json.get("simmer_seconds").getAsInt() : 0,
+					json.has("burn_seconds") ? json.get("burn_seconds").getAsInt() : 0
 			));
 		}
 
@@ -108,7 +111,7 @@ class ShippedDataTest {
 		assertDish("pie", List.of("mutton"), "wheat", "egg", "cooked_mutton");
 		assertDish("cookies", List.of("sweet_berry"), "wheat", "sugar", "sweet_berries");
 		assertCrafted("juice", List.of("melon"), "glass_bottle", "melon_slice");
-		assertDish("stew", List.of("beef", "potato"), "water_bucket", "beef", "potato");
+		assertDish("soup", List.of("beef", "potato"), "water_bucket", "beef", "potato");
 		assertCrafted("salad", List.of("apple", "sweet_berry"), "bowl", "apple", "sweet_berries");
 		assertDish("soup", List.of("pumpkin"), "water_bucket", "pumpkin");
 		assertDish("soup", List.of("mushroom"), "water_bucket", "red_mushroom", "brown_mushroom");
@@ -123,10 +126,10 @@ class ShippedDataTest {
 	}
 
 	@Test
-	void waterMakesStewsAndSoupsNotRoasts() {
-		assertDish("stew", List.of("cod", "carrot"), "water_bucket", "cod", "carrot");
+	void waterMakesSoupsNotRoasts() {
+		assertDish("soup", List.of("cod", "carrot"), "water_bucket", "cod", "carrot");
 		assertDish("soup", List.of("carrot", "potato"), "water_bucket", "carrot", "potato");
-		assertDish("stew", List.of("beef"), "water_bucket", "beef");
+		assertDish("soup", List.of("beef"), "water_bucket", "beef");
 	}
 
 	@Test
@@ -162,6 +165,33 @@ class ShippedDataTest {
 		assertFalse(beef.raw());
 		assertEquals(List.of("minecraft:bread", "minecraft:cooked_beef"), beef.ingredients());
 		assertEquals(List.of("minecraft:bread", "minecraft:baked_potato"), potato.ingredients());
+	}
+
+	@Test
+	void soupSimmersIntoStewWithTheSameIngredients() {
+		DishResult soup = cook("water_bucket", "carrot", "potato");
+		DishResult stew = resolver.simmer("dynamic_cooking:stew", inputs("water_bucket", "carrot", "potato")).orElseThrow();
+
+		assertEquals("dynamic_cooking:stew", stew.item());
+		assertEquals(soup.nameFlavors(), stew.nameFlavors());
+		assertEquals(soup.nutrition(), stew.nutrition());
+		assertEquals(Optional.of("minecraft:bowl"), stew.servedWith());
+		assertFalse(stew.liquid());
+	}
+
+	@Test
+	void stewIsOnlyEverSimmered() {
+		for (String food : List.of("beef", "carrot", "brown_mushroom")) {
+			assertFalse(cook("water_bucket", food).item().equals("dynamic_cooking:stew"), food);
+		}
+	}
+
+	@Test
+	void burntDishesBecomeMushButKeepTheirSideEffects() {
+		DishResult burnt = resolver.burn(inputs("water_bucket", "rotten_flesh", "carrot"));
+
+		assertTrue(burnt.dubious());
+		assertEquals("minecraft:hunger", burnt.sideEffects().getFirst().effect());
 	}
 
 	@Test

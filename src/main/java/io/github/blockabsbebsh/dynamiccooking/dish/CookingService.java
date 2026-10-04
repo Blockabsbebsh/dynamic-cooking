@@ -120,6 +120,56 @@ public final class CookingService {
 				.orElseGet(() -> dish.copyWithCount(1));
 	}
 
+	/** The item that serves the fallback dish out of the pot, like a bowl. */
+	public String fallbackServedWith() {
+		return resolver.rules().fallbackServedWith();
+	}
+
+	/** How long cooking takes, in ticks. */
+	public int cookTicks() {
+		return resolver.rules().cookSeconds() * 20;
+	}
+
+	/**
+	 * What a finished dish does while it waits on the heat, in ticks from when it was ready.
+	 *
+	 * @param simmerTicks when it simmers into another dish, like soup into stew, or 0 if it doesn't
+	 * @param burnTicks   when it burns into the fallback dish, or 0 if it can't, like the fallback dish itself
+	 */
+	public record DishTimes(int simmerTicks, int burnTicks) {
+	}
+
+	public DishTimes times(ItemStack dish) {
+		String id = BuiltInRegistries.ITEM.getKey(dish.getItem()).toString();
+
+		if (id.equals(resolver.rules().fallbackItem())) {
+			return new DishTimes(0, 0);
+		}
+
+		Optional<DishType> type = dishType(id);
+		int simmer = type.filter(found -> found.simmersInto().isPresent()).map(found -> found.simmerSeconds() * 20).orElse(0);
+		int burn = type.map(DishType::burnSeconds).filter(seconds -> seconds > 0).orElse(resolver.rules().burnSeconds()) * 20;
+		return new DishTimes(simmer, burn);
+	}
+
+	/** The dish a finished one turns into after simmering, like soup into stew, with the same ingredients. */
+	public Optional<ItemStack> simmer(ItemStack dish) {
+		String id = BuiltInRegistries.ITEM.getKey(dish.getItem()).toString();
+
+		return dishType(id).flatMap(DishType::simmersInto)
+				.flatMap(into -> dishInputs(dish).flatMap(inputs -> resolver.simmer(into, inputs)))
+				.map(result -> DishFactory.create(result).copyWithCount(1));
+	}
+
+	/** What a dish left too long on the heat becomes: the fallback dish, with its ingredients' side effects. */
+	public ItemStack burn(ItemStack dish) {
+		return DishFactory.create(resolver.burn(dishInputs(dish).orElse(List.of()))).copyWithCount(1);
+	}
+
+	private Optional<DishType> dishType(String item) {
+		return resolver.dishTypes().stream().filter(type -> type.item().equals(item)).findFirst();
+	}
+
 	/** The ingredients a dish was made from, if they are all still known ingredients. */
 	private Optional<List<CookingInput>> dishInputs(ItemStack dish) {
 		DishContents contents = dish.get(ModComponents.DISH);

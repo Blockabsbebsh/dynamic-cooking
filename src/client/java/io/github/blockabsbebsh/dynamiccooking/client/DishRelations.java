@@ -192,6 +192,24 @@ record DishRelations(boolean probed, Map<String, List<Component>> related, Set<S
 		return out;
 	}
 
+	/**
+	 * Adds what tasting can't find: the dish this one simmers into on the heat, and for a simmered dish, the ones it
+	 * comes from.
+	 */
+	DishRelations withSimmering(DishType type, List<DishType> all) {
+		Map<String, List<Component>> out = new LinkedHashMap<>(related);
+		type.simmersInto().ifPresent(into -> out.computeIfAbsent(into, key -> new ArrayList<>())
+				.add(Component.translatable("guide.dynamic_cooking.related.simmers")));
+
+		for (DishType other : all) {
+			if (other.simmersInto().filter(type.item()::equals).isPresent()) {
+				out.computeIfAbsent(other.item(), key -> new ArrayList<>()).add(Component.translatable("guide.dynamic_cooking.related.simmered"));
+			}
+		}
+
+		return new DishRelations(probed, out, spoils);
+	}
+
 	private static void note(Map<String, Map<String, Set<String>>> found, String dish, String way, String what) {
 		found.computeIfAbsent(dish, key -> new LinkedHashMap<>()).computeIfAbsent(way, key -> new LinkedHashSet<>()).add(what);
 	}

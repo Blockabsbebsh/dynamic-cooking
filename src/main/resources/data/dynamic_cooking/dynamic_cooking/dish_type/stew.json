@@ -1,6 +1,7 @@
 {
 	"item": "dynamic_cooking:stew",
-	"priority": 5,
+	"priority": 7,
+	"method": "simmer",
 	"requires": [
 		{
 			"match": {
@@ -12,14 +13,16 @@
 		{
 			"match": {
 				"roles": [
-					"protein"
+					"produce",
+					"protein",
+					"mushroom"
 				]
 			},
 			"flavor": true
 		}
 	],
 	"bonus_nutrition": 2,
-	"bonus_saturation": 2.0,
-	"liquid": true,
-	"served_with": "minecraft:bowl"
+	"bonus_saturation": 1.5,
+	"served_with": "minecraft:bowl",
+	"burn_seconds": 90
 }

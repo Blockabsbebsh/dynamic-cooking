@@ -290,6 +290,24 @@ public class CookingPotBlock extends BaseEntityBlock {
 			if (random.nextInt(2) == 0) {
 				level.addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE, x, y + 0.2, z, 0.0, 0.02, 0.0);
 			}
+
+			if (level.getBlockEntity(pos) instanceof CookingPotBlockEntity pot && pot.timeline(level.getGameTime()).heated()) {
+				int scorch = pot.scorch();
+
+				if (scorch > 0) {
+					// Close to burning: dark smoke and sizzling, more with every step.
+					for (int i = 0; i < scorch; i++) {
+						level.addParticle(random.nextInt(3) == 0 ? ParticleTypes.LARGE_SMOKE : ParticleTypes.SMOKE, x, y + 0.1, z, 0.0, 0.03, 0.0);
+					}
+
+					if (random.nextInt(6 - scorch) == 0) {
+						level.playLocalSound(x, y, z, SoundEvents.LAVA_POP, SoundSource.BLOCKS, 0.25f + 0.1f * scorch, 1.4f + random.nextFloat() * 0.3f, false);
+					}
+				} else if (pot.timeline(level.getGameTime()).simmerTicks() > 0) {
+					// Soup on the heat simmers gently on its way to stew.
+					level.addParticle(ParticleTypes.BUBBLE_POP, x, y, z, 0.0, 0.02, 0.0);
+				}
+			}
 		} else if (state.getValue(COOKING)) {
 			level.addParticle(ParticleTypes.BUBBLE_POP, x, y, z, 0.0, 0.02, 0.0);
 

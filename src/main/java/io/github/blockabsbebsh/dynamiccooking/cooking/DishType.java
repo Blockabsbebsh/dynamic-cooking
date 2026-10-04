@@ -21,6 +21,10 @@ import java.util.Set;
  * @param servings          how many times the pot can be served from before it is empty, when {@code servedWith} is set
  * @param rawOk             raw ingredients matching one of these are fine uncooked in this dish, like raw fish in a kelp roll
  * @param makes             how many items one batch makes, like 4 kelp rolls; the dish's food is shared out between them
+ * @param simmersInto       the dish this one turns into when left on the heat once cooked, like soup into stew
+ * @param simmerSeconds     how long that takes, from when the dish is ready
+ * @param burnSeconds       how long the dish can wait on the heat before it burns into the fallback dish; 0 for the
+ *                          default in {@link CookingRules}
  */
 public record DishType(
 		String item,
@@ -35,7 +39,10 @@ public record DishType(
 		Optional<String> servedWith,
 		int servings,
 		List<Matcher> rawOk,
-		int makes
+		int makes,
+		Optional<String> simmersInto,
+		int simmerSeconds,
+		int burnSeconds
 ) {
 	public static final Set<String> DEFAULT_FLAVOR_ROLES = Set.of("produce", "protein", "mushroom");
 
@@ -52,6 +59,17 @@ public record DishType(
 		if (makes < 1) {
 			throw new IllegalArgumentException("makes must be at least 1, got " + makes);
 		}
+
+		if (simmersInto.isPresent() && simmerSeconds < 1) {
+			throw new IllegalArgumentException("a dish that simmers into another needs simmer_seconds");
+		}
+	}
+
+	/** A dish type that doesn't simmer into anything and burns after the default time. */
+	public DishType(String item, int priority, CookingMethod method, List<Requirement> requires, List<Matcher> forbids, Set<String> flavorRoles,
+			int bonusNutrition, float bonusSaturation, boolean liquid, Optional<String> servedWith, int servings, List<Matcher> rawOk, int makes) {
+		this(item, priority, method, requires, forbids, flavorRoles, bonusNutrition, bonusSaturation, liquid, servedWith, servings, rawOk, makes,
+				Optional.empty(), 0, 0);
 	}
 
 	/** A dish type where no raw ingredient is excused. */

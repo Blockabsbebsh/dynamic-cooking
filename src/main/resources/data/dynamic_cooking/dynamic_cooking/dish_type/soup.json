@@ -1,6 +1,6 @@
 {
 	"item": "dynamic_cooking:soup",
-	"priority": 7,
+	"priority": 5,
 	"requires": [
 		{
 			"match": {
@@ -13,21 +13,17 @@
 			"match": {
 				"roles": [
 					"produce",
+					"protein",
 					"mushroom"
 				]
 			},
 			"flavor": true
 		}
 	],
-	"forbids": [
-		{
-			"roles": [
-				"protein"
-			]
-		}
-	],
 	"bonus_nutrition": 2,
-	"bonus_saturation": 1.0,
+	"bonus_saturation": 1.5,
 	"liquid": true,
-	"served_with": "minecraft:bowl"
+	"served_with": "minecraft:bowl",
+	"simmers_into": "dynamic_cooking:stew",
+	"simmer_seconds": 30
 }

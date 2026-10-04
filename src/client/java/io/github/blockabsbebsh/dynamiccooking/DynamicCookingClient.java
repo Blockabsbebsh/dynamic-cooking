@@ -6,11 +6,14 @@ import net.minecraft.world.level.block.CampfireBlock;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockgetter.v2.FabricBlockGetter;
 import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin;
+import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockColorRegistry;
 
 import io.github.blockabsbebsh.dynamiccooking.block.DishCakeBlockEntity;
+import io.github.blockabsbebsh.dynamiccooking.block.ModBlockEntities;
 import io.github.blockabsbebsh.dynamiccooking.block.ModBlocks;
 import io.github.blockabsbebsh.dynamiccooking.client.CampfireUnderPotModel;
+import io.github.blockabsbebsh.dynamiccooking.client.CookingPotRenderer;
 import io.github.blockabsbebsh.dynamiccooking.client.GuideScreen;
 import io.github.blockabsbebsh.dynamiccooking.cooking.CookingRules;
 import io.github.blockabsbebsh.dynamiccooking.cooking.PotColors;
@@ -20,6 +23,9 @@ public class DynamicCookingClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 		GuideItem.opener = () -> Minecraft.getInstance().setScreenAndShow(new GuideScreen());
+
+		// A finished cake or roast lying in the pot, and the status panel over a pot the player looks at.
+		BlockEntityRendererRegistry.register(ModBlockEntities.COOKING_POT, CookingPotRenderer::new);
 
 		// Campfires, soul campfires and modded ones: flames shrink to fit under a pot sitting in them.
 		ModelLoadingPlugin.register(plugin -> plugin.modifyBlockModelAfterBake().register((model, context) ->
